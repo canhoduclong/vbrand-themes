@@ -197,12 +197,12 @@ $themeData = vbrand_load_theme_data();
 	<div class="cta cta-horizontal cta-horizontal-box bg-image mb-4 mb-lg-6" style="background-image: url(<?=get_template_directory_uri()?>/assets/images/demos/demo-10/bg-1.jpg);">
 		<div class="row flex-column flex-lg-row align-items-lg-center">
 			<div class="col">
-				<h3 class="cta-title text-primary">New Deals! Start Daily at 12pm e.t.</h3><!-- End .cta-title -->
-				<p class="cta-desc">Get <em class="font-weight-medium">FREE SHIPPING* &amp; 5% rewards</em> on every order with Molla Theme rewards program</p><!-- End .cta-desc -->
+				<h3 class="cta-title text-primary">Ưu đãi mới! Bắt đầu hàng ngày lúc 12 giờ trưa theo giờ</h3><!-- End .cta-title -->
+				<p class="cta-desc">Get <em class="font-weight-medium">GIAO HÀNG MIỄN PHÍ * &amp; 5% giảm giá</em> Hàng ngày vào khung giờ cố địng</p><!-- End .cta-desc -->
 			</div><!-- End .col -->
 			
 			<div class="col-auto">
-				<a href="#" class="btn btn-white-primary btn-round"><span>Add to Cart for $50.00/yr</span><i class="icon-long-arrow-right"></i></a>
+				<a href="#" class="btn btn-white-primary btn-round"><span>Thêm  vào giỏ hàng chỉ $50.00/yr</span><i class="icon-long-arrow-right"></i></a>
 			</div><!-- End .col-auto -->
 		</div><!-- End .row -->
 	</div><!-- End .cta-horizontal -->

@@ -647,8 +647,7 @@ add_action( 'wp', 'initial');
 
 
 
-//------- View type product
-
+//------- List view products
 function list_items(){
     //--- remove default
     remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
@@ -686,6 +685,7 @@ function list_items(){
     add_action ( 'woocommerce_after_shop_loop_item_title' ,    'woocommerce_add_end_row_tag', 60);
 }
 
+//------- Grid view prduct
 function grid_items(){
     add_action ( 'woocommerce_before_shop_loop_item_title' ,  'add_before_figure', 0);
     add_action ( 'woocommerce_before_shop_loop_item_title' ,  'woocommerce_show_product_loop_sale_flash', 10);
@@ -707,6 +707,9 @@ function grid_items(){
     
     //--- end content-product.php 
 }
+
+
+
 
 //------- Element layout
 function list_items_thunails(){
@@ -732,6 +735,7 @@ function end_tag(){
  * ---- functions
  */
 
+//----- xoa bo dau
 function vn_to_str ($str){
     $unicode = array(
         'a'=>'á|à|ả|ã|ạ|ă|ắ|ặ|ằ|ẳ|ẵ|â|ấ|ầ|ẩ|ẫ|ậ',
@@ -756,11 +760,15 @@ function vn_to_str ($str){
     return $str;
 }
 
+//----- remove add to card button
 function remove_add_to_cart_buttons() { 
     remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart' ); 
 }
 
+
+
 /**
+ * ------------- List product
  * ------------- SideBar
  */
 function color_pattern($color ='', $selected = false){
@@ -971,9 +979,26 @@ function price_progress_bar() {
     }
 }
 
+
 /**
  * ------------- products details
  */
+
+function filter_by_size( $query ) {
+    if( ! is_admin() && is_shop() && isset($_GET['filter_pa_size']) ) {
+        $size = sanitize_text_field( $_GET['filter_pa_size'] );
+        
+        // Modify the query to filter by attribute
+        $query->set( 'tax_query', array(
+            array(
+                'taxonomy' => 'pa_size',
+                'field'    => 'slug',
+                'terms'    => $size,
+            ),
+        ));
+    }
+}
+add_action( 'pre_get_posts', 'filter_by_size' );
 
 function woocommerce_template_loop_product_title() {
     global $product;
@@ -1163,7 +1188,6 @@ function product_description() {
         echo '</div>';
     }
 }
- 
 function product_item_rate(){   
     echo    '<div class="ratings-container">
                 <div class="ratings">
@@ -1173,25 +1197,7 @@ function product_item_rate(){
             </div>';
 }
 
-function filter_by_size( $query ) {
-    if( ! is_admin() && is_shop() && isset($_GET['filter_pa_size']) ) {
-        $size = sanitize_text_field( $_GET['filter_pa_size'] );
-        
-        // Modify the query to filter by attribute
-        $query->set( 'tax_query', array(
-            array(
-                'taxonomy' => 'pa_size',
-                'field'    => 'slug',
-                'terms'    => $size,
-            ),
-        ));
-    }
-}
-add_action( 'pre_get_posts', 'filter_by_size' );
-
-/*s
-    --- dang lam 
-*/
+//--------- product rateting
 function product_item_rate_updating() {
     global $product;
     if ( ! $product ) {
@@ -1202,97 +1208,25 @@ function product_item_rate_updating() {
     }
 }
 
-
 // Thêm breadcrumb vào trang checkout
 add_action('woocommerce_before_checkout_form', 'add_breadcrumb_to_checkout_page', 10);
 
 function add_breadcrumb_to_checkout_page() {
     if (function_exists('woocommerce_breadcrumb')) {
-        woocommerce_breadcrumb();
+       // woocommerce_breadcrumb();
     }
 }
-/**
- * Checkout page format
- */
 
-//add_filter('woocommerce_checkout_fields', 'custom_billing_fields');
-function custom_billing_fields($fields) {
-    // Chỉnh sửa từng field trong phần billing
+ /**
+  *  billing form
+  */
 
-    
-    // First Name
-    $fields['billing']['billing_first_name']['before'] = '<div class="row"><div class="col-md-6">';
-    $fields['billing']['billing_first_name']['label'] = 'Your First Name';
-    $fields['billing']['billing_first_name']['placeholder'] = 'Enter First Name';
-    $fields['billing']['billing_first_name']['class'] = array('form-row-wide');
-    $fields['billing']['billing_first_name']['custom_attributes'] = array('custom-attr' => 'value');
-    $fields['billing']['billing_first_name']['after'] = '</div>';
+ 
 
-    // Last Name
-    $fields['billing']['billing_last_name']['before'] = '<div class="col-md-6">';
-    $fields['billing']['billing_last_name']['label'] = 'Your Last Name';
-    $fields['billing']['billing_last_name']['placeholder'] = 'Enter Last Name';
-    $fields['billing']['billing_last_name']['class'] = array('form-row-wide');
-    $fields['billing']['billing_last_name']['after'] = '</div></div>';
 
-    // Company
-    $fields['billing']['billing_company']['label'] = 'Your Company';
-    $fields['billing']['billing_company']['placeholder'] = 'Enter Company Name';
-    $fields['billing']['billing_company']['class'] = array('form-row-wide');
 
-    // Address 1
-    $fields['billing']['billing_address_1']['label'] = 'Street Address';
-    $fields['billing']['billing_address_1']['placeholder'] = 'Enter Street Address';
-    $fields['billing']['billing_address_1']['class'] = array('form-row-wide');
 
-    // Address 2
-    $fields['billing']['billing_address_2']['label'] = 'Apartment/Suite/Unit (optional)';
-    $fields['billing']['billing_address_2']['placeholder'] = 'Enter Additional Address';
-    $fields['billing']['billing_address_2']['class'] = array('form-row-wide');
 
-    // City
-    $fields['billing']['billing_city']['label'] = 'City';
-    $fields['billing']['billing_city']['placeholder'] = 'Enter City';
-    $fields['billing']['billing_city']['class'] = array('form-row-wide');
-
-    // Postcode
-    $fields['billing']['billing_postcode']['label'] = 'Postcode/ZIP';
-    $fields['billing']['billing_postcode']['placeholder'] = 'Enter Postcode';
-    $fields['billing']['billing_postcode']['class'] = array('form-row-wide');
-
-    // Country
-    $fields['billing']['billing_country']['label'] = 'Country';
-    $fields['billing']['billing_country']['class'] = array('form-row-wide');
-
-    // State
-    $fields['billing']['billing_state']['label'] = 'State/Province';
-    $fields['billing']['billing_state']['class'] = array('form-row-wide');
-
-    // Email
-    $fields['billing']['billing_email']['label'] = 'Email Address';
-    $fields['billing']['billing_email']['placeholder'] = 'Enter Email Address';
-    $fields['billing']['billing_email']['class'] = array('form-row-wide');
-
-    // Phone
-    $fields['billing']['billing_phone']['label'] = 'Phone Number';
-    $fields['billing']['billing_phone']['placeholder'] = 'Enter Phone Number';
-    $fields['billing']['billing_phone']['class'] = array('form-row-wide');
-
-    return $fields;
-}
-
-add_filter('woocommerce_checkout_fields', 'custom_checkout_fields');
-
-function custom_checkout_fields($fields) {
-    // Tạo cấu trúc HTML cho phần First Name và Last Name
-    $fields['billing']['billing_first_name']['before'] = '<div class="row"><div class="col-md-6">';
-    $fields['billing']['billing_first_name']['after'] = '</div>';
-    
-    $fields['billing']['billing_last_name']['before'] = '<div class="col-md-6">';
-    $fields['billing']['billing_last_name']['after'] = '</div></div>';
-
-    return $fields;
-}
 
 
 ?>
