@@ -1217,16 +1217,38 @@ function add_breadcrumb_to_checkout_page() {
     }
 }
 
- /**
-  *  billing form
-  */
+/**
+ *  billing form
+*/
 
+
+
+add_filter('woocommerce_checkout_fields', 'addBootstrapToCheckoutFields' );
+function addBootstrapToCheckoutFields($fields) {
+    foreach ($fields as &$fieldset) {
+        foreach ($fieldset as &$field) {
+            // if you want to add the form-group class around the label and the input
+            $field['class'][] = 'form-group'; 
+
+            // add form-control to the actual input
+            $field['input_class'][] = 'form-control';
+        }
+    }
+    return $fields;
+}
  
 
+add_filter( 'woocommerce_form_field', 'updated_woocommerce_form_field' );
 
-
-
-
-
+function updated_woocommerce_form_field( $field ) {
+   
+    $field = preg_replace(
+        '#<p class="form-row (.*?) (.*?) (.*?) (.*?)" (.*?)><span [A-Za-z]+="[A-Za-z]+-[A-Za-z]+-[A-Za-z]+">(.*?)</span></p>#',
+        '$6',
+        $field
+    );
+    
+    return $field;
+}
 
 ?>
