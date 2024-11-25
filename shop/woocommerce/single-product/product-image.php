@@ -35,21 +35,26 @@ $wrapper_classes   = apply_filters(
 		'images',
 	)
 );
-?>
-<div class="<?php echo esc_attr( implode( ' ', array_map( 'sanitize_html_class', $wrapper_classes ) ) ); ?>" data-columns="<?php echo esc_attr( $columns ); ?>" style="opacity: 0; transition: opacity .25s ease-in-out;">
-	<div class="woocommerce-product-gallery__wrapper">
-		<?php
+?> 
+
+<figure class="product-main-image <?php echo esc_attr( implode( ' ', array_map( 'sanitize_html_class', $wrapper_classes ) ) ); ?>"> 
+	<?php 
 		if ( $post_thumbnail_id ) {
 			$html = wc_get_gallery_image_html( $post_thumbnail_id, true );
 		} else {
 			$html  = '<div class="woocommerce-product-gallery__image--placeholder">';
-			$html .= sprintf( '<img src="%s" alt="%s" class="wp-post-image" />', esc_url( wc_placeholder_img_src( 'woocommerce_single' ) ), esc_html__( 'Awaiting product image', 'woocommerce' ) );
+			$html .= sprintf( '<img src="%s" alt="%s" class="wp-post-image" id="product-zoom"  data-zoom-image="%s" />', esc_url( wc_placeholder_img_src( 'woocommerce_single' ) ), esc_html__( 'Awaiting product image', 'woocommerce' ) );
 			$html .= '</div>';
 		}
-
 		echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', $html, $post_thumbnail_id ); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
-
-		do_action( 'woocommerce_product_thumbnails' );
-		?>
-	</div>
-</div>
+	?>
+	<a href="#" id="btn-product-gallery" class="btn-product-gallery">
+		<i class="icon-arrows"></i>
+	</a>	
+</figure><!-- End .product-main-image -->
+<div id="product-zoom-gallery" class="product-image-gallery">
+	<?php
+	
+	do_action( 'woocommerce_product_thumbnails' );
+	?>
+ </div><!-- End .product-gallery -->
