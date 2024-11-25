@@ -1234,21 +1234,21 @@ function addBootstrapToCheckoutFields($fields) {
             $field['input_class'][] = 'form-control';
         }
     }
+
+    //echo "<pre>";print_r($fields);echo "</pre>";
     return $fields;
-}
- 
-
+} 
 add_filter( 'woocommerce_form_field', 'updated_woocommerce_form_field' );
-
 function updated_woocommerce_form_field( $field ) {
-   
-    $field = preg_replace(
-        '#<p class="form-row (.*?) (.*?) (.*?) (.*?)" (.*?)><span [A-Za-z]+="[A-Za-z]+-[A-Za-z]+-[A-Za-z]+">(.*?)</span></p>#',
-        '$6',
+    $field = str_replace(
+        'form-row',
+        '',
         $field
     );
-    
     return $field;
 }
+
+ 
+
 
 ?>
