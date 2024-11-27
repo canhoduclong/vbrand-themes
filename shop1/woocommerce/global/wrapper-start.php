@@ -50,6 +50,6 @@ switch ( $template ) {
 		echo '<div class="page-content"><div class="container">';
 		break;
 	default:
-		echo '<div id="primary" class="content-area"><main id="main" class="site-main" role="main">';
+		echo '<div id="primary" class="content-area"><div class="container"><main id="main" class="site-main" role="main">';
 		break;
 }
