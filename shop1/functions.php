@@ -1279,7 +1279,7 @@ function my_custom_img_function($attachment_id, $main_image = false)
             $main_image
         )
     );
-
+    
     return '<a class="product-gallery-item active" href="' . esc_url($full_src[0]) . '" data-image="' . esc_url( $thumbnail_src[0] ) . '" data-zoom-image="' . esc_url( $thumbnail_src[0] ) . '">
                 ' . $image . '
             </a>';
