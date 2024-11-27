@@ -1246,27 +1246,5 @@ function updated_woocommerce_form_field( $field ) {
 }
 
 
-/**
- * Products details
- */
- 
-
- remove_filter( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
-
- add_filter( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
-
- function woocommerce_output_product_data_tabss( $tabs ) {
-   
-    
-   //unset( $tabs['description'] );        // Remove the description tab
-   //unset( $tabs['reviews'] );            // Remove the reviews tab
-   // unset( $tabs['additional_information'] );      // Remove the additional information tab
-    print_r($tabs['description']);
-    //echo woocommerce_product_description_tab();
-    
-   return $tabs;
-  
- 
- }
  
 ?>

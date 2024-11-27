@@ -65,49 +65,10 @@ if ( post_password_required() ) {
 		</div>
 	</div>
 </div>
-<div class="row">
-	<div class="col-sm-12">
-		<ul class="nav nav-pills justify-content-center" role="tablist">
-			<li class="nav-item">
-				<a class="nav-link active" id="product-desc-link" data-toggle="tab" href="#product-desc-tab" role="tab" aria-controls="product-desc-tab" aria-selected="true">Description</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" id="product-info-link" data-toggle="tab" href="#product-info-tab" role="tab" aria-controls="product-info-tab" aria-selected="false">Additional information</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" id="product-shipping-link" data-toggle="tab" href="#product-shipping-tab" role="tab" aria-controls="product-shipping-tab" aria-selected="false">Shipping &amp; Returns</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" id="product-review-link" data-toggle="tab" href="#product-review-tab" role="tab" aria-controls="product-review-tab" aria-selected="false">Reviews (2)</a>
-			</li>
-		</ul>
-		<div class="tab-content">
-			<div class="tab-pane fade active show" id="product-desc-tab" role="tabpanel" aria-labelledby="product-desc-link">
-				<div class="product-desc-content">
-					 
-				</div><!-- End .product-desc-content -->
-			</div><!-- .End .tab-pane -->
-			<div class="tab-pane fade" id="product-info-tab" role="tabpanel" aria-labelledby="product-info-link">
-				<div class="product-desc-content">
-					 
-				</div><!-- End .product-desc-content -->
-			</div><!-- .End .tab-pane -->
-			<div class="tab-pane fade" id="product-shipping-tab" role="tabpanel" aria-labelledby="product-shipping-link">
-				<div class="product-desc-content">
-					 
-				</div><!-- End .product-desc-content -->
-			</div><!-- .End .tab-pane -->
-			<div class="tab-pane fade" id="product-review-tab" role="tabpanel" aria-labelledby="product-review-link">
-				<div class="reviews">
-					 
-				</div><!-- End .reviews -->
-			</div><!-- .End .tab-pane -->
-		</div>
-	</div>
-</div>
 
 
-<div class="product-details-tab">
+
+
  
 		
 <?php
@@ -122,7 +83,8 @@ do_action( 'woocommerce_after_single_product_summary' );
 ?>
 		 
 	 
-</div>
+ 
+
 <div class="container"> 
 	<div class="upsale">
 		<?php 
