@@ -29,10 +29,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
 
-
-// echo "<pre>"; print_r($product_tabs); echo "</pre>";
-
-
 ?> 
  
 
@@ -66,6 +62,5 @@ $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
   
 	</div><!-- End .tab-content -->
 </div><!-- End .product-details-tab -->
-
 
 <?php endif; ?>
