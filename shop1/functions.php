@@ -292,7 +292,7 @@ function filter_products_by_category($query) {
 
         $query->set('tax_query', $tax_query);
     }
-    return $query;
+    //return $query;
 }
 
 // Hook to filter products based on selected categories
@@ -381,7 +381,7 @@ add_action( 'after_setup_theme', function() {
  * Search area
  */
 function search_by_attributes( $query ) {    
-    if ((is_shop() || is_product_category() || is_product_tag()) && !is_admin() && $query->is_main_query()) {
+    if ((is_shop() || is_product_category() || is_product_tag()) && !is_admin() && $query->is_main_query() | is_archive() ) {
         // Cancel if search term is empty   
         
         if(isset($_GET['filter_pa_size']) && !empty($_GET['filter_pa_size'])){    
@@ -409,7 +409,8 @@ function search_by_attributes( $query ) {
         return $query;
     }
 }
-add_filter('pre_get_posts','search_by_attributes');
+
+//add_filter('pre_get_posts','search_by_attributes');
 
  
 
@@ -839,11 +840,12 @@ function get_all_attributes(){
         return $all_attributes;
     }
 }
+
 function show_attribute_sidebar(  ){
     
-    $sidebar = '';
-    $sizes = [];
-    $colors = [];
+    $sidebar    = '';
+    $sizes      = [];
+    $colors     = [];
     $attribute_array =  get_all_attributes();
     foreach($attribute_array as $key => $attribute_options ){       
         if($key =='Kích thước'  || $key == 'size' ){
@@ -983,6 +985,7 @@ function price_progress_bar() {
  * ------------- products details
  */
 
+ /*
 function filter_by_size( $query ) {
     if( ! is_admin() && is_shop() && isset($_GET['filter_pa_size']) ) {
         $size = sanitize_text_field( $_GET['filter_pa_size'] );
@@ -998,6 +1001,9 @@ function filter_by_size( $query ) {
     }
 }
 add_action( 'pre_get_posts', 'filter_by_size' );
+*/
+
+
 
 function woocommerce_template_loop_product_title() {
     global $product;
@@ -1244,10 +1250,6 @@ function updated_woocommerce_form_field( $field ) {
     );
     return $field;
 }
-
-
-
-
 
 function my_custom_img_function($attachment_id, $main_image = false)
 {

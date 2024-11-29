@@ -36,8 +36,7 @@
 	 */
 	do_action( 'woocommerce_archive_description' );
 
-	
-	echo "cunting herre";
+	 
 
 
 	if ( woocommerce_product_loop() ) {	
