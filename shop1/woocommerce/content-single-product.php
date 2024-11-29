@@ -88,7 +88,7 @@ do_action( 'woocommerce_after_single_product_summary' );
 <div class="container"> 
 	<div class="upsale">
 		<?php 
-			//do_action( 'woocommerce_upsale_product' );
+			do_action( 'woocommerce_upsale_product' );
 		?>
 	</div>
 </div>

@@ -9,7 +9,10 @@
 	    <?php endif; ?> 
     </div>
 </div>
+
+ 
 <?php
+
 
 	do_action('woocommerce_custom_breadcrumb');
  
@@ -33,7 +36,12 @@
 	 */
 	do_action( 'woocommerce_archive_description' );
 
+	
+	echo "cunting herre";
+
+
 	if ( woocommerce_product_loop() ) {	
+		
 		
 		/**
 		 * Hook: woocommerce_before_shop_loop.
@@ -85,6 +93,7 @@
 	 *
 	 * @hooked woocommerce_get_sidebar - 10
 	 */
+	
 	do_action( 'woocommerce_sidebar' );
 
 
