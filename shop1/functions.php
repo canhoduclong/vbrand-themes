@@ -546,12 +546,14 @@ function initial(){
         
         add_action( 'woocommerce_custom_end_content_wrapper', 'woocommerce_add_end_product_tag' ); 
         
+        
         //------- for sidebar
         add_action( 'woocommerce_sidebar', 'woocommerce_before_sidebar', 0 );
         //add_action( 'woocommerce_sidebar', 'display_product_categories_checkbox', 30 );
-        add_action( 'woocommerce_sidebar', '_product_categories', 40 );
+        //add_action( 'woocommerce_sidebar', '_product_categories', 40 );
         add_action( 'woocommerce_sidebar', 'woocommerce_after_sidebar', 60 );
-        add_action('woocommerce_sidebar', 'price_progress_bar', 50);
+
+        //add_action('woocommerce_sidebar', 'price_progress_bar', 50);
 
 
         add_action ( 'woocommerce_before_shop_loop' ,  'before_shop_toolbox', 10 ); // open tag

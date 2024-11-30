@@ -1,7 +1,7 @@
 <aside id="secondary" class="widget-area">
     <?php dynamic_sidebar('sidebar-1'); ?>
     <div class="widget">
-        <h2 class="widget-title">Categories</h2>
+        <h2 class="widget-title">Sản phẩm</h2>
         <ul>
             <?php
             $categories = get_categories();
