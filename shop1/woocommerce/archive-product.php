@@ -38,7 +38,7 @@
 
 	
 	//$tax_query = array( 'relation' => 'AND' ); 
-	$tax_query = array('relation' => 'AND');
+	$tax_query = array('relation' => 'OR');
 	$meta_query = array('relation' => 'OR');
 	 
 	if(isset($_GET['filter_pa_size']) && !empty($_GET['filter_pa_size'])){             
@@ -61,7 +61,7 @@
 			foreach ($size_values as $single_size) {
 				$meta_query[] = array(
 					'key'     => '_product_attributes', // Meta key for variation attributes
-					'value'   => $single_size.'|',          // The color term we want to match (e.g., 'yellow')
+					'value'   =>  $single_size,          // The color term we want to match (e.g., 'yellow')
 					'compare' => 'LIKE',                // Use LIKE for matching serialized data in variations
 				);
 			}
