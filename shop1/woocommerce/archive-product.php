@@ -36,33 +36,31 @@
 	 */
 	do_action( 'woocommerce_archive_description' );
 
-	
-	//$tax_query = array( 'relation' => 'AND' ); 
+	 
 	$tax_query = array('relation' => 'OR');
 	$meta_query = array('relation' => 'OR');
 	 
 	if(isset($_GET['filter_pa_size']) && !empty($_GET['filter_pa_size'])){             
 		$size = sanitize_text_field($_GET['filter_pa_size']);
-		$size_values = explode(',', $size); 
-
-		/*
-		foreach ($size_values as $single_size) {
-			$tax_query[] = array(
-				'taxonomy' => 'pa_size', // Replace with the correct taxonomy for size
-				'field'    => 'name',   // You can use 'slug' or 'term_id' depending on your needs
-				'terms'    => sanitize_text_field($single_size),
-				'operator' => 'LIKE'
-			);
-		}
-		*/
-
-		if (!empty($size)) {
+		$size_values = explode(',', $size);  
+		if (!empty($size_values)) {
+			/*
+			foreach ($size_values as $single_size) {
+				$tax_query[] = array(
+					'taxonomy' => 'pa_size', // Replace with the correct taxonomy for size
+					'field'    => 'slug',   // You can use 'slug' or 'term_id' depending on your needs
+					'terms'    =>[$single_size],
+					//'operator' => 'IN'
+				);
+			} 
+			*/
 			// Check product variations for color by inspecting `_product_attributes` meta
 			foreach ($size_values as $single_size) {
 				$meta_query[] = array(
-					'key'     => '_product_attributes', // Meta key for variation attributes
-					'value'   =>  $single_size,          // The color term we want to match (e.g., 'yellow')
-					'compare' => 'LIKE',                // Use LIKE for matching serialized data in variations
+					'key'     => 'pa_size', 	// Meta key for variation attributes
+					'value'   => $single_size,         // The color term we want to match (e.g., 'yellow')
+					'compare' => '=',                // Use LIKE for matching serialized data in variations
+														//'type'    => 'NUMERIC',
 				);
 			}
 		}
@@ -75,31 +73,30 @@
         $color = sanitize_text_field($_GET['filter_pa_color']);
         $color_values = explode(',', $color);  // Split the color filter into an array of colors
 
-		/*
-        // Build tax_query for color filtering
-        foreach ($color_values as $single_color) {
-            $tax_query[] = array(
-                'taxonomy' => 'pa_color',  // The product attribute taxonomy for color
-                'field'    => 'slug',      // Use 'slug' to match the terms
-                'terms'    => sanitize_text_field($single_color),
-                'operator' => 'like'         // Match products with any of these colors
-            );
-        }
-		*/
-		// Add a meta_query for variations if color is passed in the URL
 		if (!empty($color_values)) {
+			/*
+			// Build tax_query for color filtering
+			foreach ($color_values as $single_color) {
+				$tax_query[] = array(
+					'taxonomy' => 'pa_color',  // The product attribute taxonomy for color
+					'field'    => 'slug',      // Use 'slug' to match the terms
+					'terms'    => [$single_color],
+					//'operator' => 'IN'         // Match products with any of these colors
+				);
+			}
+			*/
 			// Check product variations for color by inspecting `_product_attributes` meta
 			foreach ($color_values as $single_color) {
 				$meta_query[] = array(
-					'key'     => '_product_attributes', // Meta key for variation attributes
+					'key'     => 'pa_color', // Meta key for variation attributes
 					'value'   => $single_color,                // The color term we want to match (e.g., 'yellow')
 					'compare' => 'LIKE',                // Use LIKE for matching serialized data in variations
 				);
 			}
+
 		}
 
-    }
-
+    } 
 
 
 
@@ -108,13 +105,84 @@
 		'post_type'     => array('product', 'product_variation'),  // Query both products and variations
 		'posts_per_page'=> -1,  // Get all matching products (no pagination)
 		'post_status'   => 'publish',  // Only published products
-		'tax_query' 	=> !empty($tax_query) ? $tax_query : '', // Apply the tax_query for size and color filtering
+		//'tax_query' 	=> !empty($tax_query) ? $tax_query : '', // Apply the tax_query for size and color filtering
 		'meta_query'     => $meta_query, 
 	);
 
-	//echo "<pre>";	print_r( $args); 	echo "</pre>";
+
+
+
+	$args = [
+		'post_type'      => ['product'], // Bao gồm cả sản phẩm cha và biến thể
+		'posts_per_page' => -1,
+		'post_status'    => 'publish',
+
+		
+
+		/*
+		'meta_query'     => [ // Lọc sản phẩm biến thể bằng meta key
+			'relation' => 'OR',
+			[
+				'key'     => 'attribute_size', // Meta key của thuộc tính size
+				'value'   => 'S',                // Giá trị cần lọc
+				'compare' => 'like',                // So sánh chính xác
+			],
+		],
+		*/
+	];
+	
+
+	$args = [
+		'post_type'      => 'product', // Chỉ lấy sản phẩm cha
+		'posts_per_page' => -1,        // Lấy tất cả sản phẩm
+		'post_status'    => 'publish', // Chỉ lấy sản phẩm đã xuất bản
+		
+		'meta_query'     => [
+			'relation' => 'OR',
+			[
+				'key'     => '_product_attributes', // Key lưu các thuộc tính sản phẩm
+				'value'   => 'size',               // Tên thuộc tính cần tìm (size)
+				'compare' => 'LIKE',               // So sánh có chứa
+			],
+			[
+				'key'     => 'attribute_size', // Meta key của thuộc tính size
+				'value'   => 'S',                // Giá trị cần lọc
+				'compare' => 'like',                // So sánh chính xác
+			],
+
+
+		],
+
+		/*
+		'tax_query' => [
+			[
+				'taxonomy' => 'pa_size',   // Thuộc tính size được lưu dưới dạng taxonomy
+				'field'    => 'slug',     // Dùng slug để so sánh
+				'terms'    => ['S', 'M', 'L'], // Các giá trị cần lọc
+				'operator' => 'IN',
+			],
+		],
+		*/
+	];
+	
+	  
+	echo "<pre>";	print_r( $args); 	echo "</pre>";
 
 	$query = new WP_Query( $args ); 
+
+
+
+	if ($query->have_posts()) {
+		while ($query->have_posts()) {
+			$query->the_post();
+			echo '<p>' . get_the_title() . '</p>'; // Hiển thị tiêu đề của sản phẩm hoặc biến thể
+		}
+	} else {
+		echo '<p>Không tìm thấy sản phẩm phù hợp.</p>';
+	}
+
+
+
 
 	if ($query->have_posts()) {
 		 

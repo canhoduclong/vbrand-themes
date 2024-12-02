@@ -546,7 +546,7 @@ function initial(){
         
         add_action( 'woocommerce_custom_end_content_wrapper', 'woocommerce_add_end_product_tag' ); 
         
-        
+
         //------- for sidebar
         add_action( 'woocommerce_sidebar', 'woocommerce_before_sidebar', 0 );
         //add_action( 'woocommerce_sidebar', 'display_product_categories_checkbox', 30 );
@@ -1288,6 +1288,7 @@ function my_custom_img_function($attachment_id, $main_image = false)
                 ' . $image . '
             </a>';
 }
+
 
  
 ?>
