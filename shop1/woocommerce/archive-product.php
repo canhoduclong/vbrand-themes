@@ -38,8 +38,10 @@
 
 	 
 	// $tax_query = array('relation' => 'OR');
-	$meta_query = array('relation' => 'OR');
-	 
+
+	$meta_query = array('relation' => 'and');
+	$meta_size 	= array();
+	$meta_color = array();
 	if(isset($_GET['filter_pa_size']) && !empty($_GET['filter_pa_size'])){             
 		$size = sanitize_text_field($_GET['filter_pa_size']);
 		$size_values = explode(',', $size);  
@@ -55,8 +57,9 @@
 			} 
 			*/
 			// Check product variations for color by inspecting `_product_attributes` meta
+			$meta_size 	= array('relation' => 'OR'); 
 			foreach ($size_values as $single_size) {
-				$meta_query[] = array(
+				$meta_size[] = array(
 					'key'     => 'attribute_size', 	// Meta key for variation attributes
 					'value'   => $single_size,         // The color term we want to match (e.g., 'yellow')
 					'compare' => '=',                // Use LIKE for matching serialized data in variations
@@ -86,8 +89,9 @@
 			}
 			*/
 			// Check product variations for color by inspecting `_product_attributes` meta
+			$meta_color = array('relation' => 'OR');
 			foreach ($color_values as $single_color) {
-				$meta_query[] = array(
+				$meta_color[] = array(
 					'key'     => 'attribute_color', // Meta key for variation attributes
 					'value'   => $single_color,                // The color term we want to match (e.g., 'yellow')
 					'compare' => 'LIKE',                // Use LIKE for matching serialized data in variations
@@ -104,7 +108,14 @@
 		'posts_per_page'=> -1,  // Get all matching products (no pagination)
 		'post_status'   => 'publish',  // Only published products
 		//'tax_query' 	=> !empty($tax_query) ? $tax_query : '', // Apply the tax_query for size and color filtering
-		'meta_query'     => $meta_query, 
+		'meta_query'     => array( 
+			'relation' => 'and',
+			array( 
+				(!empty($meta_size) ?  $meta_size :''),
+				(!empty($size_values) ?  $meta_color :''), 
+			),
+		),
+		
 	);
 
 
