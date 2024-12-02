@@ -37,7 +37,7 @@
 	do_action( 'woocommerce_archive_description' );
 
 	 
-	$tax_query = array('relation' => 'OR');
+	// $tax_query = array('relation' => 'OR');
 	$meta_query = array('relation' => 'OR');
 	 
 	if(isset($_GET['filter_pa_size']) && !empty($_GET['filter_pa_size'])){             
@@ -57,7 +57,7 @@
 			// Check product variations for color by inspecting `_product_attributes` meta
 			foreach ($size_values as $single_size) {
 				$meta_query[] = array(
-					'key'     => 'pa_size', 	// Meta key for variation attributes
+					'key'     => 'attribute_size', 	// Meta key for variation attributes
 					'value'   => $single_size,         // The color term we want to match (e.g., 'yellow')
 					'compare' => '=',                // Use LIKE for matching serialized data in variations
 														//'type'    => 'NUMERIC',
@@ -88,7 +88,7 @@
 			// Check product variations for color by inspecting `_product_attributes` meta
 			foreach ($color_values as $single_color) {
 				$meta_query[] = array(
-					'key'     => 'pa_color', // Meta key for variation attributes
+					'key'     => 'attribute_color', // Meta key for variation attributes
 					'value'   => $single_color,                // The color term we want to match (e.g., 'yellow')
 					'compare' => 'LIKE',                // Use LIKE for matching serialized data in variations
 				);
@@ -96,9 +96,7 @@
 
 		}
 
-    } 
-
-
+    }  
 
 	// WP_Query arguments
 	$args = array(
@@ -111,79 +109,70 @@
 
 
 
-
-	$args = [
-		'post_type'      => ['product'], // Bao gồm cả sản phẩm cha và biến thể
-		'posts_per_page' => -1,
-		'post_status'    => 'publish',
-
-		
-
-		/*
-		'meta_query'     => [ // Lọc sản phẩm biến thể bằng meta key
-			'relation' => 'OR',
-			[
-				'key'     => 'attribute_size', // Meta key của thuộc tính size
-				'value'   => 'S',                // Giá trị cần lọc
-				'compare' => 'like',                // So sánh chính xác
-			],
-		],
-		*/
-	];
+	/* search astributês
+	** 
+		$args = [
+			'post_type'      => ['product'], // Bao gồm cả sản phẩm cha và biến thể
+			'posts_per_page' => -1,
+			'post_status'    => 'publish', 
+			'meta_query'     => [ // Lọc sản phẩm biến thể bằng meta key
+				'relation' => 'OR',
+				[
+					'key'     => 'attribute_size', // Meta key của thuộc tính size
+					'value'   => 'S',                // Giá trị cần lọc
+					'compare' => 'like',                // So sánh chính xác
+				],
+			], 
+		];
+	*/
 	
-
-	$args = [
-		'post_type'      => 'product', // Chỉ lấy sản phẩm cha
+	/* test searhc atributes
+	** 	$args = [
+		'post_type'      => ['product'], // Chỉ lấy sản phẩm cha
 		'posts_per_page' => -1,        // Lấy tất cả sản phẩm
-		'post_status'    => 'publish', // Chỉ lấy sản phẩm đã xuất bản
+		//'post_status'    => 'publish', // Chỉ lấy sản phẩm đã xuất bản
 		
 		'meta_query'     => [
-			'relation' => 'OR',
+
+			'relation' => 'AND',
 			[
 				'key'     => '_product_attributes', // Key lưu các thuộc tính sản phẩm
-				'value'   => 'size',               // Tên thuộc tính cần tìm (size)
+				'value'   => 'color',               // Tên thuộc tính cần tìm (size)
 				'compare' => 'LIKE',               // So sánh có chứa
 			],
+			
 			[
 				'key'     => 'attribute_size', // Meta key của thuộc tính size
-				'value'   => 'S',                // Giá trị cần lọc
+				'value'   => 'T',                // Giá trị cần lọc
 				'compare' => 'like',                // So sánh chính xác
 			],
-
+			
 
 		],
 
-		/*
-		'tax_query' => [
+		'tax_query'      => [
 			[
-				'taxonomy' => 'pa_size',   // Thuộc tính size được lưu dưới dạng taxonomy
-				'field'    => 'slug',     // Dùng slug để so sánh
-				'terms'    => ['S', 'M', 'L'], // Các giá trị cần lọc
-				'operator' => 'IN',
+				'taxonomy' => 'pa_size',  // Taxonomy for size
+				'field'    => 'slug',     // Field to compare (slug is typically used)
+				'terms'    => ['S', 'M', 'll'], // Filter by size values (S, M, L)
+				'operator' => 'IN',        // Match any of the terms in the array
 			],
 		],
-		*/
+		 
 	];
-	
-	  
-	echo "<pre>";	print_r( $args); 	echo "</pre>";
+	*/
+
+	/* show taxônmy
+	* 	$taxonomy   = 'pa_size';
+		//$label_name = get_taxonomy( $taxonomy )->labels->singular_name;
+		$taxonomys = get_taxonomy( $taxonomy );
+		echo "<pre>";print_r($taxonomys);echo "</pre>";
+	*/
+
+	//echo "<pre>";	print_r( $args); 	echo "</pre>";
 
 	$query = new WP_Query( $args ); 
-
-
-
-	if ($query->have_posts()) {
-		while ($query->have_posts()) {
-			$query->the_post();
-			echo '<p>' . get_the_title() . '</p>'; // Hiển thị tiêu đề của sản phẩm hoặc biến thể
-		}
-	} else {
-		echo '<p>Không tìm thấy sản phẩm phù hợp.</p>';
-	}
-
-
-
-
+ 
 	if ($query->have_posts()) {
 		 
 		
@@ -202,14 +191,11 @@
 			while ($query->have_posts()) {
 				$query->the_post();   
 
-
 				/*
-				$product = wc_get_product(get_the_ID()); 
-				$attributes = $product->get_attributes();  
-				echo "<pre>"; 	print_r($attributes);  	echo "</pre>";
-				 */
-			 
-
+					$product = wc_get_product(get_the_ID()); 
+					$attributes = $product->get_attributes();  
+					echo "<pre>"; 	print_r($attributes);  	echo "</pre>"; 
+				*/ 
 
 				//the_post();
 				/**
