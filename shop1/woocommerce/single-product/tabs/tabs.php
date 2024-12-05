@@ -39,7 +39,10 @@ $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
 		<?php $tabsindex = 0;?>
 		<?php foreach ( $product_tabs as $key => $product_tab ) : ?>
 			<li class="nav-item" id="tab-title-<?php echo esc_attr( $key ); ?>">
-				<a href="#tab-<?php echo esc_attr( $key ); ?>"  class="nav-link <?php echo ($tabsindex < 1 ? ' active':'');?>" aria-controls="#tab-<?php echo esc_attr( $key ); ?>" role="tab">
+
+				<a class="nav-link<?php echo ($tabsindex < 1 ? ' active':'');?>" id="product-info-link" data-toggle="tab" 
+					href="#tab-<?php echo esc_attr( $key ); ?>" role="tab" 
+					aria-controls="#tab-<?php echo esc_attr( $key ); ?>" aria-selected="false"> 
 					<?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); ?>
 				</a>
 			</li>
