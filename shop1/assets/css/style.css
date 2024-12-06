@@ -16462,3 +16462,6 @@ table .variant{
   width: 100% !important;
 
 }
+.pvtfw_variant_table_block table{
+  width: 100% !important;
+}
