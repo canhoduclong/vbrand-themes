@@ -6535,7 +6535,7 @@ p {
   color: #666;
 }
 .product-price {
-  display: flex;
+  /*display: flex;*/
   align-items: center;
   flex-flow: wrap;
   font-weight: 400;

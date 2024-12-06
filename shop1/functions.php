@@ -599,7 +599,8 @@ function initial(){
         //--- end content-product.php
 
         add_action ( 'woocommerce_output_content_wrapper_end' ,  '_output_content_wrapper_end', 50 );
-        add_action( 'woocommerce_after_shop_loop_item', 'remove_add_to_cart_buttons', 1 );
+
+       
        
     }
     
@@ -622,7 +623,7 @@ function initial(){
         add_action ( 'woocommerce_after_shop_loop_item' ,  'after_shop_loop_item' );
         
         //--- end content-product.php 
-        add_action( 'woocommerce_after_shop_loop_item', 'remove_add_to_cart_buttons', 1 );
+        
          
 
     }
@@ -762,12 +763,7 @@ function vn_to_str ($str){
     }
     $str = str_replace(' ','_',$str);     
     return $str;
-}
-
-//----- remove add to card button
-function remove_add_to_cart_buttons() { 
-    remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart' ); 
-}
+} 
  
 /**
  * ------------- List product
