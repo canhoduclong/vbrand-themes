@@ -16458,5 +16458,7 @@ button:focus {
   }
 }
 table .variant{
-  width: 100%;
+
+  width: 100% !important;
+
 }
