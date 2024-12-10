@@ -4,12 +4,12 @@
         	<div class="footer-middle">
 	            <div class="container">
 	            	<div class="row">
-	            		<div class="col-sm-6 col-lg-3">
+	            		<div class="col-sm-6 col-lg-5">
 	            			<div class="widget widget-about">
 								<?php if ($themeData->get('site_logo')) { ?>
                                     <img src="<?php echo $themeData->get('site_logo'); ?>"  width="82" height="25">
                                 <?php } ?>
-	            				<p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. </p>
+	            				<p>Chuyên cung cấp sản phẩm chất lượng cao tới người tiêu dùng, rất mong được khách hàng ủng hộ. </p>
 
 	            				<div class="social-icons">
 	            					<a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
@@ -23,32 +23,16 @@
 
 	            		<div class="col-sm-6 col-lg-3">
 	            			<div class="widget">
-	            				<h4 class="widget-title">Useful Links</h4><!-- End .widget-title -->
+	            				<h4 class="widget-title">Tiện ích</h4><!-- End .widget-title -->
 
 	            				<ul class="widget-list">
-	            					<li><a href="about.html">About Molla</a></li>
-	            					<li><a href="#">How to shop on Molla</a></li>
-	            					<li><a href="#">FAQ</a></li>
-	            					<li><a href="contact.html">Contact us</a></li>
-	            					<li><a href="login.html">Log in</a></li>
+	            					<li><a href="<?=site_url()?>/gioi-thieu">Giới thiệu</a></li>
+	            					<li><a href="<?=site_url()?>/tin-tuc">Tin tức</a></li>
+	            					<li><a href="<?=site_url()?>/phan-hoi">Phản hồi</a></li>
+	            					<li><a href="<?=site_url()?>/lien-he">Liên hệ</a></li> 
 	            				</ul><!-- End .widget-list -->
 	            			</div><!-- End .widget -->
-	            		</div><!-- End .col-sm-6 col-lg-3 -->
-
-	            		<div class="col-sm-6 col-lg-3">
-	            			<div class="widget">
-	            				<h4 class="widget-title">Customer Service</h4><!-- End .widget-title -->
-
-	            				<ul class="widget-list">
-	            					<li><a href="#">Payment Methods</a></li>
-	            					<li><a href="#">Money-back guarantee!</a></li>
-	            					<li><a href="#">Returns</a></li>
-	            					<li><a href="#">Shipping</a></li>
-	            					<li><a href="#">Terms and conditions</a></li>
-	            					<li><a href="#">Privacy Policy</a></li>
-	            				</ul><!-- End .widget-list -->
-	            			</div><!-- End .widget -->
-	            		</div><!-- End .col-sm-6 col-lg-3 -->
+	            		</div><!-- End .col-sm-6 col-lg-3 --> 
 
 	            		<div class="col-sm-6 col-lg-3">
 	            			<div class="widget">
@@ -69,9 +53,9 @@
 
 	        <div class="footer-bottom">
 	        	<div class="container">
-	        		<p class="footer-copyright">Copyright © 2019 Molla Store. All Rights Reserved.</p> 
+	        		<p class="footer-copyright">Bản quyền @ 2024 </p> 
 	        		<figure class="footer-payments">
-	        			 Payment method 
+	        			 Thiết kế bởi vBrand
 	        		</figure><!-- End .footer-payments -->
 	        	</div><!-- End .container -->
 	        </div><!-- End .footer-bottom -->

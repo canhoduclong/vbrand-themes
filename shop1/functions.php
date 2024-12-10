@@ -1189,7 +1189,8 @@ function product_description() {
         echo '<div class="product-content">';
         echo wp_kses_post( $description ); // Ensure the description is output safely
         echo '</div>';
-    }
+    }  
+
 }
 function product_item_rate(){   
     echo    '<div class="ratings-container">
