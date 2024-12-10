@@ -36,9 +36,8 @@ $attr_lbl = [];
 foreach ($product->get_variation_attributes() as $taxonomy => $term_names ) {
 	$attr_lbl[] = wc_attribute_label($taxonomy);
 }
-echo "<pre>";
-print_r($attr_lbl);
-echo "</pre>";
+
+// echo "<pre>"; print_r($attr_lbl); echo "</pre>";
 
 $product_id = $product->get_id();
  
@@ -130,9 +129,7 @@ foreach ($variations as $value) {
 			'stock_status'	=> $single_variation->is_in_stock(),
 			'text'			=> 'texxt here'
 		); 
-		echo "<pre>";
-		print_r($options);
-		echo "</pre>";
+		//echo "<pre>";		print_r($options);		echo "</pre>";
 
 	endif;
 

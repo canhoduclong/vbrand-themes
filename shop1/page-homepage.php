@@ -292,7 +292,7 @@ $themeData = vbrand_load_theme_data();
 					<?php
 						endforeach; 
 						wp_reset_postdata();
-					} ?> 
+					}else{ ?> 
 
 					<div class="owl-item active" style="width: 277px; margin-right: 20px;"><article class="entry">
 							<figure class="entry-media">
@@ -358,6 +358,7 @@ $themeData = vbrand_load_theme_data();
 							</div><!-- End .entry-body -->
 						</article>
 					</div>
+					<?php }?>
 				</div>
 			</div>
 			<div class="owl-nav disabled">
