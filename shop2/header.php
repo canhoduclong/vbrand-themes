@@ -33,11 +33,11 @@
         <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/plugins/owl-carousel/owl.carousel.css">
         <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/plugins/magnific-popup/magnific-popup.css">
-        
-        <!-- Main CSS File -->
+
+        <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/plugins/jquery.countdown.css">
         <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/style.css">
-        <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/plugins/nouislider/nouislider.css">
-        <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/demos/demo-11.css">
+        <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/skins/skin-demo-2.css">
+        <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/demos/demo-2.css">
         
     </head>
     <body>

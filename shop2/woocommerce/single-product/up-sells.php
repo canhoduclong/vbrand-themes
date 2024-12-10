@@ -20,33 +20,40 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( $upsells ) : ?>
+<!-- Start Product Section -->
+<div class="product-section">
+	<div class="container">
+		 
+			<div class="products mb-3">
 
-	<section class="up-sells upsells products">
-		<?php
-		$heading = apply_filters( 'woocommerce_product_upsells_products_heading', __( 'You may also like&hellip;', 'woocommerce' ) );
+				<?php $heading = apply_filters( 'woocommerce_product_upsells_products_heading', __( 'You may also like&hellip;', 'woocommerce' ) );
+				if ( $heading ) :?>
+				<h2><?php echo esc_html( $heading ); ?></h2>
+				<?php endif; ?>
 
-		if ( $heading ) :
-			?>
-			<h2><?php echo esc_html( $heading ); ?></h2>
-		<?php endif; ?>
+				<div class="row">
 
-		<?php woocommerce_product_loop_start(); ?>
+					<?php woocommerce_product_loop_start(); ?> 
+					<?php foreach ( $upsells as $upsell ) : ?>
+						<div class="col-6 col-md-4 col-lg-4 col-xl-3">
+								<div class="product product-7 text-center">
+							<?php
+							$post_object = get_post( $upsell->get_id() );
 
-			<?php foreach ( $upsells as $upsell ) : ?>
+							setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
 
-				<?php
-				$post_object = get_post( $upsell->get_id() );
+							wc_get_template_part( 'content', 'product' );
+							?>
+							</div>
+						</div>
+					<?php endforeach; ?> 
+					<?php woocommerce_product_loop_end(); ?> 
 
-				setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
-
-				wc_get_template_part( 'content', 'product' );
-				?>
-
-			<?php endforeach; ?>
-
-		<?php woocommerce_product_loop_end(); ?>
-
-	</section>
+				</div>
+			 
+		</div>
+	</div>
+</div>
 
 	<?php
 endif;

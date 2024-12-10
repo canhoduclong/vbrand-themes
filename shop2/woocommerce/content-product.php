@@ -5,6 +5,7 @@ global $product;
 if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
+
 ?>
  
 	<?php

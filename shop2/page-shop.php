@@ -6,10 +6,11 @@ get_header();
 ?>
 
 
+
 <div class="container">
 				<div class="toolbox toolbox-filter">
                     <div class="toolbox-left">
-                        <a href="#" class="filter-toggler">Filters</a>
+                        <a href="#" class="filter-toggler">Filters Shop page </a>
 
                     </div><!-- End .toolbox-left -->
                     <div class="toolbox-right">

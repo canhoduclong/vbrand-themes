@@ -28,11 +28,23 @@ defined( 'ABSPATH' ) || exit;
 	<?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
 
 	<div class="woocommerce-billing-fields__field-wrapper">
+
 		<?php
 		$fields = $checkout->get_checkout_fields( 'billing' );
-
+		//echo "<pre>";  print_r($fields); echo "</pre>";
 		foreach ( $fields as $key => $field ) {
-			woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
+			if($key=='billing_first_name'){
+				echo '<div class="row"><div class="col-sm-6">';
+				woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
+				echo '</div>';
+			}elseif($key=='billing_last_name'){
+				echo '<div class="col-sm-6">';
+				woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
+				echo '</div></div>';
+			}else{
+				woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
+			}
+			
 		}
 		?>
 	</div>
@@ -58,7 +70,7 @@ defined( 'ABSPATH' ) || exit;
 
 			<div class="create-account">
 				<?php foreach ( $checkout->get_checkout_fields( 'account' ) as $key => $field ) : ?>
-					<?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
+					<?php  woocommerce_form_field( $key, $field, $checkout->get_value( $key ) )  ?>
 				<?php endforeach; ?>
 				<div class="clear"></div>
 			</div>

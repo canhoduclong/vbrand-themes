@@ -29,35 +29,41 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
 
-
-// echo "<pre>"; print_r($product_tabs); echo "</pre>";
-
-
-if ( ! empty( $product_tabs ) ) : ?>
-
-		<ul class="nav nav-pills justify-content-center" role="tablist"> 
+?> 
  
-			<?php foreach ( $product_tabs as $key => $product_tab ) : ?>
-				<li class="<?php echo esc_attr( $key ); ?>_tab nav-item" id="tab-title-<?php echo esc_attr( $key ); ?>" role="tab" aria-controls="tab-<?php echo esc_attr( $key ); ?>">
-					<a href="#tab-<?php echo esc_attr( $key ); ?>"  class="nav-link" aria-controls="#tab-<?php echo esc_attr( $key ); ?>">
-						<?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); ?>
-					</a>
-				</li>
-			<?php endforeach; ?>
-		</ul>
 
-		<div class="tab-content">
+<?php if ( ! empty( $product_tabs ) ) : ?>
+
+<div class="product-details-tab">
+	<ul class="nav nav-pills justify-content-center" role="tablist">
+		<?php $tabsindex = 0;?>
 		<?php foreach ( $product_tabs as $key => $product_tab ) : ?>
-			<div class="tab-pane fade show active woocommerce-Tabs-panel woocommerce-Tabs-panel--<?php echo esc_attr( $key ); ?> panel entry-content wc-tab" id="tab-<?php echo esc_attr( $key ); ?>" role="tabpanel" aria-labelledby="tab-title-<?php echo esc_attr( $key ); ?>">
+			<li class="nav-item" id="tab-title-<?php echo esc_attr( $key ); ?>">
+
+				<a class="nav-link<?php echo ($tabsindex < 1 ? ' active':'');?>" id="product-info-link" data-toggle="tab" 
+					href="#tab-<?php echo esc_attr( $key ); ?>" role="tab" 
+					aria-controls="#tab-<?php echo esc_attr( $key ); ?>" aria-selected="false"> 
+					<?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); ?>
+				</a>
+			</li>
+		<?php $tabsindex++;?>
+		<?php endforeach; ?>
+	</ul>
+	<div class="tab-content">
+		<?php $index = 0;?>
+		<?php foreach ( $product_tabs as $key => $product_tab ) :  ?>
+			<div class="tab-pane fade <?php echo ($index < 1 ? ' show active':'') ;?>" id="tab-<?php echo esc_attr( $key ); ?>" role="tabpanel" aria-labelledby="tab-title-<?php echo esc_attr( $key ); ?>">
 				<?php
 				if ( isset( $product_tab['callback'] ) ) {
 					call_user_func( $product_tab['callback'], $key, $product_tab );
 				}
 				?>
 			</div>
+		<?php $index++;?>
 		<?php endforeach; ?>
-
 		<?php do_action( 'woocommerce_product_after_tabs' ); ?>
-	</div>
+  
+	</div><!-- End .tab-content -->
+</div><!-- End .product-details-tab -->
 
 <?php endif; ?>

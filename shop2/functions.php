@@ -292,7 +292,7 @@ function filter_products_by_category($query) {
 
         $query->set('tax_query', $tax_query);
     }
-    return $query;
+    //return $query;
 }
 
 // Hook to filter products based on selected categories
@@ -381,7 +381,7 @@ add_action( 'after_setup_theme', function() {
  * Search area
  */
 function search_by_attributes( $query ) {    
-    if ((is_shop() || is_product_category() || is_product_tag()) && !is_admin() && $query->is_main_query()) {
+    if ((is_shop() || is_product_category() || is_product_tag()) && !is_admin() && $query->is_main_query() | is_archive() ) {
         // Cancel if search term is empty   
         
         if(isset($_GET['filter_pa_size']) && !empty($_GET['filter_pa_size'])){    
@@ -409,7 +409,8 @@ function search_by_attributes( $query ) {
         return $query;
     }
 }
-add_filter('pre_get_posts','search_by_attributes');
+
+//add_filter('pre_get_posts','search_by_attributes');
 
  
 
@@ -545,12 +546,14 @@ function initial(){
         
         add_action( 'woocommerce_custom_end_content_wrapper', 'woocommerce_add_end_product_tag' ); 
         
+
         //------- for sidebar
         add_action( 'woocommerce_sidebar', 'woocommerce_before_sidebar', 0 );
         //add_action( 'woocommerce_sidebar', 'display_product_categories_checkbox', 30 );
-        add_action( 'woocommerce_sidebar', '_product_categories', 40 );
+        //add_action( 'woocommerce_sidebar', '_product_categories', 40 );
         add_action( 'woocommerce_sidebar', 'woocommerce_after_sidebar', 60 );
-        add_action('woocommerce_sidebar', 'price_progress_bar', 50);
+
+        //add_action('woocommerce_sidebar', 'price_progress_bar', 50);
 
 
         add_action ( 'woocommerce_before_shop_loop' ,  'before_shop_toolbox', 10 ); // open tag
@@ -596,9 +599,11 @@ function initial(){
         //--- end content-product.php
 
         add_action ( 'woocommerce_output_content_wrapper_end' ,  '_output_content_wrapper_end', 50 );
-        add_action( 'woocommerce_after_shop_loop_item', 'remove_add_to_cart_buttons', 1 );
+
+       
        
     }
+    
     //-- listings for homepage product
     if(is_front_page()){
         add_action( 'wp_enqueue_scripts', 'custom_enqueue_scripts' );  
@@ -618,18 +623,21 @@ function initial(){
         add_action ( 'woocommerce_after_shop_loop_item' ,  'after_shop_loop_item' );
         
         //--- end content-product.php 
-        add_action( 'woocommerce_after_shop_loop_item', 'remove_add_to_cart_buttons', 1 );
+        
          
 
     }
+
     if(is_product()){
         add_action( 'wp_enqueue_scripts', 'custom_enqueue_scripts' ); 
 
         //--- remove default function
         remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
-        remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
-        remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 ); 
-
+        
+        /*      
+            remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
+            remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 ); 
+        */
         //----- Build Infomation
         add_action( 'woocommerce_custom_breadcrumb', 'woocommerce_breadcrumb', 10 );
        
@@ -707,10 +715,7 @@ function grid_items(){
     
     //--- end content-product.php 
 }
-
-
-
-
+ 
 //------- Element layout
 function list_items_thunails(){
     echo '<div class="col-6 col-lg-3">';
@@ -758,15 +763,8 @@ function vn_to_str ($str){
     }
     $str = str_replace(' ','_',$str);     
     return $str;
-}
-
-//----- remove add to card button
-function remove_add_to_cart_buttons() { 
-    remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart' ); 
-}
-
-
-
+} 
+ 
 /**
  * ------------- List product
  * ------------- SideBar
@@ -840,11 +838,12 @@ function get_all_attributes(){
         return $all_attributes;
     }
 }
+
 function show_attribute_sidebar(  ){
     
-    $sidebar = '';
-    $sizes = [];
-    $colors = [];
+    $sidebar    = '';
+    $sizes      = [];
+    $colors     = [];
     $attribute_array =  get_all_attributes();
     foreach($attribute_array as $key => $attribute_options ){       
         if($key =='Kích thước'  || $key == 'size' ){
@@ -984,6 +983,7 @@ function price_progress_bar() {
  * ------------- products details
  */
 
+ /*
 function filter_by_size( $query ) {
     if( ! is_admin() && is_shop() && isset($_GET['filter_pa_size']) ) {
         $size = sanitize_text_field( $_GET['filter_pa_size'] );
@@ -999,6 +999,9 @@ function filter_by_size( $query ) {
     }
 }
 add_action( 'pre_get_posts', 'filter_by_size' );
+*/
+
+
 
 function woocommerce_template_loop_product_title() {
     global $product;
@@ -1186,7 +1189,8 @@ function product_description() {
         echo '<div class="product-content">';
         echo wp_kses_post( $description ); // Ensure the description is output safely
         echo '</div>';
-    }
+    }  
+
 }
 function product_item_rate(){   
     echo    '<div class="ratings-container">
@@ -1217,16 +1221,73 @@ function add_breadcrumb_to_checkout_page() {
     }
 }
 
- /**
-  *  billing form
-  */
+/**
+ *  billing form
+*/
+add_filter('woocommerce_checkout_fields', 'addBootstrapToCheckoutFields' );
+function addBootstrapToCheckoutFields($fields) {
+    foreach ($fields as &$fieldset) {
+        foreach ($fieldset as &$field) {
+            // if you want to add the form-group class around the label and the input
+            $field['class'][] = 'form-group'; 
+
+            // add form-control to the actual input
+            $field['input_class'][] = 'form-control';
+        }
+    }
+
+    //echo "<pre>";print_r($fields);echo "</pre>";
+    return $fields;
+} 
+
+add_filter( 'woocommerce_form_field', 'updated_woocommerce_form_field' );
+function updated_woocommerce_form_field( $field ) {
+    $field = str_replace(
+        'form-row',
+        '',
+        $field
+    );
+    return $field;
+}
+
+function my_custom_img_function($attachment_id, $main_image = false)
+{
+    $flexslider        = (bool) apply_filters('woocommerce_single_product_flexslider_enabled', get_theme_support('wc-product-gallery-slider'));
+    $gallery_thumbnail = wc_get_image_size('gallery_thumbnail');
+    $thumbnail_size    = apply_filters('woocommerce_gallery_thumbnail_size', array($gallery_thumbnail['width'], $gallery_thumbnail['height']));
+    $image_size        = apply_filters('woocommerce_gallery_image_size', $flexslider || $main_image ? 'woocommerce_single' : $thumbnail_size);
+    $full_size         = apply_filters('woocommerce_gallery_full_size', apply_filters('woocommerce_product_thumbnails_large_size', 'full'));
+    $thumbnail_src     = wp_get_attachment_image_src($attachment_id, $thumbnail_size);
+    $full_src          = wp_get_attachment_image_src($attachment_id, $full_size);
+    $alt_text          = trim(wp_strip_all_tags(get_post_meta($attachment_id, '_wp_attachment_image_alt', true)));
+    $image             = wp_get_attachment_image(
+        $attachment_id,
+        $image_size,
+        false,
+        apply_filters(
+            'woocommerce_gallery_image_html_attachment_image_params',
+            array(
+                'title'                   => _wp_specialchars(get_post_field('post_title', $attachment_id), ENT_QUOTES, 'UTF-8', true),
+                'data-caption'            => _wp_specialchars(get_post_field('post_excerpt', $attachment_id), ENT_QUOTES, 'UTF-8', true),
+                'data-src'                => esc_url($full_src[0]),
+                'data-large_image'        => esc_url($full_src[0]),
+                'data-large_image_width'  => esc_attr($full_src[1]),
+                'data-large_image_height' => esc_attr($full_src[2]),
+                'class'                   => esc_attr($main_image ? 'wp-post-image' : ''),
+            ),
+            $attachment_id,
+            $image_size,
+            $main_image
+        )
+    );
+    
+    return '<a class="product-gallery-item" href="#" 
+			data-image="' . esc_url( $full_src[0] ) . '" 
+			data-zoom-image="' . esc_url( $full_src[0] ) . '">
+				' . $image . '
+			</a> ';
+}
+
 
  
-
-
-
-
-
-
-
 ?>
