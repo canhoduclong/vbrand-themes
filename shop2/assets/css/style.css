@@ -1167,8 +1167,7 @@ blockquote.text-white cite span {
 .header-search-extended select {
   font-weight: 300;
 }
-.header-search-extended .form-control {
-  height: 44px;
+.header-search-extended .form-control { 
   padding-top: 1.2rem;
   padding-bottom: 1.2rem;
   padding-right: 2.4rem;
@@ -1743,7 +1742,7 @@ blockquote.text-white cite span {
   font-weight: 500;
   font-size: 1.4rem;
   letter-spacing: -0.01em;
-  padding: 3.95rem 3rem;
+  padding: 3.95rem 1.5rem;
   text-transform: uppercase;
 }
 .menu > li + li {
@@ -3088,10 +3087,10 @@ p {
   margin-bottom: 0;
 }
 .header-5 .header-search-extended .form-control {
-  background-color: transparent;
-  color: #fff;
-  border-radius: 0;
+  border-radius: 25px;
   padding-left: 1rem;
+  background-color: rgba(255,255,255,.3);
+  color: #fff !important;
 }
 .header-5 .header-search-extended .form-control::placeholder {
   color: #fff;
@@ -3112,7 +3111,7 @@ p {
   color: #fff;
 }
 .header-5 .logo {
-  margin-top: 0;
+  margin-top: 9px;
   margin-bottom: 0;
 }
 .header-5 .menu ul,
@@ -3120,7 +3119,9 @@ p {
   margin-top: 0;
 }
 .header-5 .menu > li > a {
+  /*
   padding-top: 2rem;
+  */
   padding-bottom: 2rem;
   font-weight: 400;
   font-size: 1.5rem;

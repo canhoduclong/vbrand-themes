@@ -38,31 +38,41 @@
         <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/style.css">
         <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/skins/skin-demo-2.css">
         <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/demos/demo-2.css">
-        
+        <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/demos/customs.css">
     </head>
     <body>
         <div class="page-wrapper">
-            <header class="header header-7">
+            <div style="display:block; position:relative">
+                <div class="container">
+                    <div class="col col-md-6">
+                        <div class="my-2">
+                            <img src="<?=get_template_directory_uri()?>/assets/images/logitechg.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="col col-md-6">
+
+                    </div>
+                </div> 
+            </div>
+
+            <header class="header header-5"> 
+
                 <div class="header-middle sticky-header">
-                    <div class="container">
+                    <div class="container-fluid">
                         <div class="header-left">
                             <button class="mobile-menu-toggler">
                                 <span class="sr-only">Toggle mobile menu</span>
                                 <i class="icon-bars"></i>
                             </button>
- 
-                            <a class="logo" href="<?php echo home_url('/');?>">
-                                <?php if ($themeData->get('site_logo')) { ?>
-                                    <img src="<?php echo $themeData->get('site_logo'); ?>"  width="82" height="25">
-                                <?php } else { ?>
-                                    Shop Funiture
-                                <?php } ?> 
-                            </a> 
-                        </div>
-                        <!-- End .header-left -->
-
-                        <div class="header-right">
-
+                            <div class="logo"> 
+                                <a class="logo" href="<?php echo home_url('/');?>">
+                                    <?php if ($themeData->get('site_logo')) { ?>
+                                        <img src="<?php echo $themeData->get('site_logo'); ?>"  width="82" height="25">
+                                    <?php } else { ?>
+                                        Logo Here
+                                    <?php } ?> 
+                                </a> 
+                            </div>
                             <nav class="main-nav">
                                 <ul class="menu sf-arrows">
  
@@ -111,17 +121,22 @@
                                     } ?>
                                 </ul>
                             </nav>
-                            
-                            <div class="header-search">
+                        
+                        </div><!-- End .header-left -->
+
+                        <div class="header-right">
+                            <div class="header-search header-search-extended header-search-visible">
                                 <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
-                                <?php echo do_shortcode('[custom_product_search]'); ?>
+                                <div class="mt-1">
+                                    <?php echo do_shortcode('[custom_product_search]'); ?>
+                                </div>
                             </div><!-- End .header-search -->
                             
                             <a href="<?php echo home_url('/');?>/wishlist" class="wishlist-link">
                                 <i class="icon-heart-o"></i>
                                     <span class="wishlist-count">3</span>
                             </a>
-
+ 
                             <div class="dropdown cart-dropdown">
                                 <a href="<?php echo home_url('/');?>/card" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                                     <i class="icon-shopping-cart"></i>
@@ -152,8 +167,11 @@
                             </div><!-- End .cart-dropdown -->
                             
                         </div><!-- End .header-right -->
-                    </div><!-- End .container -->
+                    </div><!-- End .container-fluid -->
                 </div><!-- End .header-middle -->
             </header><!-- End .header -->
 
             <main class="main">
+           
+
+            
