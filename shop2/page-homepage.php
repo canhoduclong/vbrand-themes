@@ -710,109 +710,13 @@ $themeData = vbrand_load_theme_data();
 		</div><!-- .End .tab-pane -->
 	</div><!-- End .tab-content -->
 </div><!-- End .container-fluid -->
+ 
 
 <div class="mb-5"></div><!-- End .mb-5 -->
 
 <div class="banner-group">
 	<div class="container">
-		<h2 class="title-lg text-center mb-4 text-upper">MUA SẮN SẢN PHẨM</h2>
-		<div class="row">
-
-			<div class="col-md-4 col-lg-4">
-				<div class="banner banner-large banner-overlay banner-overlay-light">
-					<a href="#">
-						<img src="<?=get_template_directory_uri()?>/assets/images//banners/chuoi-1.png" alt="Banner">
-					</a>
-
-					<div class="banner-content banner-content-top">
-						<h4 class="banner-subtitle">Clearence</h4><!-- End .banner-subtitle -->
-						<h3 class="banner-title">Coffee Tables</h3><!-- End .banner-title -->
-						<div class="banner-text">from $19.99</div><!-- End .banner-text -->
-						<a href="#" class="btn btn-outline-gray banner-link">Shop Now<i class="icon-long-arrow-right"></i></a>
-					</div><!-- End .banner-content -->
-				</div><!-- End .banner -->
-			</div><!-- End .col-lg-5 -->
-
-			<div class="col-md-4 col-lg-4">
-				<div class="banner banner-overlay">
-					<a href="#">
-						<img src="<?=get_template_directory_uri()?>/assets/images//banners/chuoi-2.png" alt="Banner">
-					</a>
-
-					<div class="banner-content banner-content-bottom">
-						<h4 class="banner-subtitle text-grey">On Sale</h4><!-- End .banner-subtitle -->
-						<h3 class="banner-title text-white">Amazing <br>Armchairs</h3><!-- End .banner-title -->
-						<div class="banner-text text-white">from $39.99</div><!-- End .banner-text -->
-						<a href="#" class="btn btn-outline-white banner-link">Discover Now<i class="icon-long-arrow-right"></i></a>
-					</div><!-- End .banner-content -->
-				</div><!-- End .banner -->
-			</div><!-- End .col-lg-3 -->
-
-			<div class="col-md-4 col-lg-4">
-				<div class="banner banner-overlay">
-					<a href="#">
-						<img src="<?=get_template_directory_uri()?>/assets/images//banners/chuoi-3.png" alt="Banner">
-					</a>
-
-					<div class="banner-content banner-content-top">
-						<h4 class="banner-subtitle text-grey">New Arrivals</h4><!-- End .banner-subtitle -->
-						<h3 class="banner-title text-white">Storage <br>Boxes & Baskets</h3><!-- End .banner-title -->
-						<a href="#" class="btn btn-outline-white banner-link">Discover Now<i class="icon-long-arrow-right"></i></a>
-					</div><!-- End .banner-content -->
-				</div><!-- End .banner -->
-
-				<div class="banner banner-overlay banner-overlay-light">
-					<a href="#">
-						<img src="<?=get_template_directory_uri()?>/assets/images//banners/chuoi-4.png" alt="Banner">
-					</a>
-
-					<div class="banner-content banner-content-top">
-						<h4 class="banner-subtitle">On Sale</h4><!-- End .banner-subtitle -->
-						<h3 class="banner-title">Lamps Offer</h3><!-- End .banner-title -->
-						<div class="banner-text">up to 30% off</div><!-- End .banner-text -->
-						<a href="#" class="btn btn-outline-gray banner-link">Shop Now<i class="icon-long-arrow-right"></i></a>
-					</div><!-- End .banner-content -->
-				</div><!-- End .banner -->
-			</div><!-- End .col-lg-4 -->
-
-			<div class="col-md-4 col-lg-4">
-				<div class="banner banner-overlay">
-					<a href="#">
-						<img src="<?=get_template_directory_uri()?>/assets/images//banners/chuoi-5.png" alt="Banner">
-					</a>
-
-					<div class="banner-content banner-content-bottom">
-						<h4 class="banner-subtitle text-grey">On Sale</h4><!-- End .banner-subtitle -->
-						<h3 class="banner-title text-white">Amazing <br>Armchairs</h3><!-- End .banner-title -->
-						<div class="banner-text text-white">from $39.99</div><!-- End .banner-text -->
-						<a href="#" class="btn btn-outline-white banner-link">Discover Now<i class="icon-long-arrow-right"></i></a>
-					</div><!-- End .banner-content -->
-				</div><!-- End .banner -->
-			</div><!-- End .col-lg-3 -->
-			<div class="col-md-8 col-lg-8">
-				<div class="banner banner-overlay">
-					<a href="#">
-						<img src="<?=get_template_directory_uri()?>/assets/images//banners/banner-2.jpg" alt="Banner">
-					</a>
-
-					<div class="banner-content banner-content-bottom">
-						<h4 class="banner-subtitle text-grey">On Sale</h4><!-- End .banner-subtitle -->
-						<h3 class="banner-title text-white">Amazing <br>Armchairs</h3><!-- End .banner-title -->
-						<div class="banner-text text-white">from $39.99</div><!-- End .banner-text -->
-						<a href="#" class="btn btn-outline-white banner-link">Discover Now<i class="icon-long-arrow-right"></i></a>
-					</div><!-- End .banner-content -->
-				</div><!-- End .banner -->
-			</div><!-- End .col-lg-3 -->
-
-		</div><!-- End .row -->
-	</div><!-- End .container -->
-</div><!-- End .banner-group -->
-
-<div class="mb-5"></div><!-- End .mb-5 -->
-
-<div class="banner-group">
-	<div class="container">
-		<h2 class="title-lg text-center mb-4 text-upper">Chuỗi cửa hàng</h2>
+		<h2 class="title-lg text-center mb-4 text-upper">CHUỖII CỬA HÀNG</h2>
 		<div class="row">
 			<div class="col-md-12 col-lg-5">
 				<div class="banner banner-large banner-overlay banner-overlay-light">
@@ -874,105 +778,7 @@ $themeData = vbrand_load_theme_data();
 	</div><!-- End .container -->
 </div><!-- End .banner-group -->
 
- 
-<div class="container"> 
-	<div class="heading text-center mb-3">
-		<h2 class="title">BỘ SƯU TẬP MỚI</h2> 
-	</div>
-
-	<div class="products mb-3">
-		<div class="row">
-
-		<?php if ($themeData->get('products_module_show')) { ?>
-		<?php
-			$count = $themeData->get('products_module_number');					
-			$case = $themeData->get('products_module_type');
-		?>
-		<?php
-			switch ($case) {
-				case "hot":
-					$args = array(
-						'post_type'      => 'product',
-						'posts_per_page' => $count,
-						'meta_query'     => array(
-							'relation' => 'OR',
-							array(
-								'key'   => 'hot_product', // Change this to your hot product custom field
-								'value' => '1',           // Assuming '1' means it's marked as hot
-							)
-						),
-					); 
-					break;                        
-				case "feature":
-					$args = array(
-						'post_type'      => 'product',
-						'posts_per_page' => $count,
-						'meta_query'     => array(
-							'relation' => 'OR' ,
-							array(
-								'key'   => '_featured',   // WooCommerce uses '_featured' for featured products
-								'value' => 'yes',
-							),
-						),
-					);
-					break;
-				case "new":
-					$args = array(
-						'post_type'      => 'product',
-						'posts_per_page' => $count,
-						'meta_query'     => array(
-							'relation' => 'OR',
-							array(
-								'key'   => 'new_product', // Change this to your new product custom field
-								'value' => '1',           // Assuming '1' means it's marked as new
-							), 
-						),
-					);
-				default:
-					$args = array(
-						'post_type'      => 'product',
-						'posts_per_page' => $count,
-					);
-			}
-			$products = new WP_Query($args);
-			if ( woocommerce_product_loop() ) {							
-				/**
-				 * Hook: woocommerce_before_shop_loop.
-				 *
-				 * @hooked woocommerce_output_all_notices - 10
-				 * @hooked woocommerce_result_count - 20
-				 * @hooked woocommerce_catalog_ordering - 30
-				 */
-				do_action( 'woocommerce_before_shop_loop' );
-				woocommerce_product_loop_start();
-				if ($products->have_posts()){ 
-					$i=1;
-					while ($products->have_posts()){
-						$products->the_post(); 
-
-						/**
-						 * Hook: woocommerce_shop_loop.
-						 */
-						do_action( 'woocommerce_shop_loop' ); 
-
-						wc_get_template_part( 'content', 'product' );
-						
-						$i++;
-					}
-				}
-				wp_reset_postdata(); // Đặt lại truy vấn sản phẩm 
-				woocommerce_product_loop_end();
-				/**
-				 * Hook: woocommerce_after_shop_loop.
-				 *
-				 * @hooked woocommerce_pagination - 10
-				 */
-				do_action( 'woocommerce_after_shop_loop' );
-			}
-		}?> 
-		</div>
-	</div>					
-</div> 
+<div class="mb-5"></div><!-- End .mb-5 -->
 
 <div class="container">
 	<div class="cta cta-horizontal cta-horizontal-box bg-image mb-4 mb-lg-6" style="background-image: url(<?=get_template_directory_uri()?>/assets/images/demos/demo-10/bg-1.jpg);">
@@ -990,7 +796,40 @@ $themeData = vbrand_load_theme_data();
 </div>
 
  
- 
+<div class="intro-slider-container mb-4">
+	<div id="banerslider" class="intro-slider owl-carousel owl-theme owl-nav-inside owl-light" data-toggle="owl" data-owl-options='{"nav": false, "dots": false}'>
+		<?php foreach($themeData->get('slider') as $slider): ?>
+			<div class="intro-slide" style="background-image: url(<?php echo $slider['anh']; ?>);">
+				<div class="container intro-content text-center">
+					<div class="intro-title text-white mb-0 lh-sm">THIẾT KẾ VÌ SỰ</div><!-- End .h3 intro-subtitle -->
+					<div class="intro-title text-white mb-0 lh-sm">BỀN VỮNG</div><!-- End .intro-title --> 
+					<div class="row mb-2 justify-content-center">
+						<div class="col col-md-4">
+							<div class="fs-5 text-white">
+								Giới thiệu MX Brio. Trải nghiệm video ultra HD 4K sắc nét với webcam tiên tiến nhất từ trước tới nay của chúng tôi. 
+							</div>
+						</div>
+					</div>
+					<a href="category.html" class="btn btn-primary">TÌM HIỂU THÊM</a> 
+				</div><!-- End .intro-content -->
+			</div><!-- End .intro-slide --> 
+		<?php endforeach?> 
+	</div><!-- End .intro-slider owl-carousel owl-theme -->
+
+	<span class="slider-loader text-white"></span><!-- End .slider-loader -->
+</div><!-- End .intro-slider-container -->
+
+
 <?php
 	get_footer();
 ?> 
+<script>
+	$('#banerslider').owlCarousel({
+	center: true,
+	items:1,
+	loop:true,
+	margin:5,
+	animateOut: 'slideInLeft',
+	animateIn: 'slideOutRight'
+	});
+</script>
