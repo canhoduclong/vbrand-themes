@@ -70,7 +70,7 @@ $themeData = vbrand_load_theme_data();
 					$args=array(
 						'post_type'     	=> 'post',
 						'post_status'   	=> 'publish',
-						'posts_per_page' 	=> 3,
+						'posts_per_page' 	=> 4,
 						//'lang' 				=> language,
 						/*
 						'tax_query' => array( 			
@@ -117,7 +117,7 @@ $themeData = vbrand_load_theme_data();
 						wp_reset_postdata();
 					}else{ ?> 
 
-					<div class="owl-item active" style="width: 277px; margin-right: 20px;"><article class="entry">
+					<div class="owl-item active" ><article class="entry">
 							<figure class="entry-media">
 								<a href="single.html">
 									<img src="<?=get_template_directory_uri()?>/assets/images/demos/demo-10/blog/post-2.jpg" alt="image desc">
