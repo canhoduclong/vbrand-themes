@@ -710,13 +710,137 @@ $themeData = vbrand_load_theme_data();
 		</div><!-- .End .tab-pane -->
 	</div><!-- End .tab-content -->
 </div><!-- End .container-fluid -->
- 
+
+<div class="mb-5"></div><!-- End .mb-5 -->
+<div class="categories-page">
+	
+	<div class="container">
+		<h2 class="title-lg text-center mb-4 text-uppercase">Mua sắm sản phẩm </h2>
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="row">
+					<div class="col-sm-8">
+						<div class="banner banner-cat banner-badge">
+							<a href="#">
+								<img src="<?=get_template_directory_uri()?>/assets/images/category/fullwidth-page/banner-1.jpg" alt="Banner">
+							</a>
+
+							<a class="banner-link" href="#">
+								<h3 class="banner-title">Jackets</h3><!-- End .banner-title -->
+								<h4 class="banner-subtitle">2 Products</h4><!-- End .banner-subtitle -->
+								<span class="banner-link-text">Shop Now</span>
+							</a><!-- End .banner-link -->
+						</div><!-- End .banner -->
+					</div><!-- End .col-sm-8 -->
+
+					<div class="col-sm-4">
+						<div class="banner banner-cat banner-badge">
+							<a href="#">
+								<img src="<?=get_template_directory_uri()?>/assets/images/category/fullwidth-page/banner-2.jpg" alt="Banner">
+							</a>
+
+							<a class="banner-link" href="#">
+								<h3 class="banner-title">Jeans</h3><!-- End .banner-title -->
+								<h4 class="banner-subtitle">1 Product</h4><!-- End .banner-subtitle -->
+								<span class="banner-link-text">Shop Now</span>
+							</a><!-- End .banner-link -->
+						</div><!-- End .banner -->
+					</div><!-- End .col-sm-4 -->
+
+					<div class="col-sm-4">
+						<div class="banner banner-cat banner-badge">
+							<a href="#">
+								<img src="<?=get_template_directory_uri()?>/assets/images/category/fullwidth-page/banner-3.jpg" alt="Banner">
+							</a>
+
+							<a class="banner-link" href="#">
+								<h3 class="banner-title">Sportwear</h3><!-- End .banner-title -->
+								<h4 class="banner-subtitle">0 Product</h4><!-- End .banner-subtitle -->
+								<span class="banner-link-text">Shop Now</span>
+							</a><!-- End .banner-link -->
+						</div><!-- End .banner -->
+					</div><!-- End .col-sm-4 -->
+
+					<div class="col-sm-8">
+						<div class="banner banner-cat banner-badge">
+							<a href="#">
+								<img src="<?=get_template_directory_uri()?>/assets/images/category/fullwidth-page/banner-4.jpg" alt="Banner">
+							</a>
+
+							<a class="banner-link" href="#">
+								<h3 class="banner-title">Bags</h3><!-- End .banner-title -->
+								<h4 class="banner-subtitle">4 Products</h4><!-- End .banner-subtitle -->
+								<span class="banner-link-text">Shop Now</span>
+							</a><!-- End .banner-link -->
+						</div><!-- End .banner -->
+					</div><!-- End .col-sm-8 -->
+				</div><!-- End .row -->
+			</div><!-- End .col-lg-6 -->
+
+			<div class="col-lg-6">
+				<div class="row">
+					<div class="col-sm-8">
+						<div class="banner banner-cat banner-badge">
+							<a href="#">
+								<img src="<?=get_template_directory_uri()?>/assets/images/category/fullwidth-page/banner-5.jpg" alt="Banner">
+							</a>
+
+							<a class="banner-link" href="#">
+								<h3 class="banner-title">Dresses</h3><!-- End .banner-title -->
+								<h4 class="banner-subtitle">3 Products</h4><!-- End .banner-subtitle -->
+								<span class="banner-link-text">Shop Now</span>
+							</a><!-- End .banner-link -->
+						</div><!-- End .banner -->
+
+						<div class="banner banner-cat banner-badge">
+							<a href="#">
+								<img src="<?=get_template_directory_uri()?>/assets/images/category/fullwidth-page/banner-6.jpg" alt="Banner">
+							</a>
+
+							<a class="banner-link" href="#">
+								<h3 class="banner-title">Shoes</h3><!-- End .banner-title -->
+								<h4 class="banner-subtitle">2 Products</h4><!-- End .banner-subtitle -->
+								<span class="banner-link-text">Shop Now</span>
+							</a><!-- End .banner-link -->
+						</div><!-- End .banner -->
+					</div><!-- End .col-sm-8 -->
+
+					<div class="col-sm-4">
+						<div class="banner banner-cat banner-badge">
+							<a href="#">
+								<img src="<?=get_template_directory_uri()?>/assets/images/category/fullwidth-page/banner-7.jpg" alt="Banner">
+							</a>
+
+							<a class="banner-link" href="#">
+								<h3 class="banner-title">T-shirts</h3><!-- End .banner-title -->
+								<h4 class="banner-subtitle">0 Products</h4><!-- End .banner-subtitle -->
+								<span class="banner-link-text">Shop Now</span>
+							</a><!-- End .banner-link -->
+						</div><!-- End .banner -->
+
+						<div class="banner banner-cat banner-badge">
+							<a href="#">
+								<img src="<?=get_template_directory_uri()?>/assets/images/category/fullwidth-page/banner-8.jpg" alt="Banner">
+							</a>
+
+							<a class="banner-link" href="#">
+								<h3 class="banner-title">Jumpers</h3><!-- End .banner-title -->
+								<h4 class="banner-subtitle">1 Product</h4><!-- End .banner-subtitle -->
+								<span class="banner-link-text">Shop Now</span>
+							</a><!-- End .banner-link -->
+						</div><!-- End .banner -->
+					</div><!-- End .col-sm-4 -->
+				</div><!-- End .row -->
+			</div><!-- End .col-lg-6 -->
+		</div><!-- End .row -->
+	</div><!-- End .container-fluid -->
+</div><!-- End .categories-page -->
 
 <div class="mb-5"></div><!-- End .mb-5 -->
 
 <div class="banner-group">
 	<div class="container">
-		<h2 class="title-lg text-center mb-4 text-upper">CHUỖII CỬA HÀNG</h2>
+		<h2 class="title-lg text-center mb-4 text-upper">CHUỖI CỬA HÀNG</h2>
 		<div class="row">
 			<div class="col-md-12 col-lg-5">
 				<div class="banner banner-large banner-overlay banner-overlay-light">
@@ -779,22 +903,7 @@ $themeData = vbrand_load_theme_data();
 </div><!-- End .banner-group -->
 
 <div class="mb-5"></div><!-- End .mb-5 -->
-
-<div class="container">
-	<div class="cta cta-horizontal cta-horizontal-box bg-image mb-4 mb-lg-6" style="background-image: url(<?=get_template_directory_uri()?>/assets/images/demos/demo-10/bg-1.jpg);">
-		<div class="row flex-column flex-lg-row align-items-lg-center">
-			<div class="col">
-				<h3 class="cta-title text-primary">Ưu đãi mới! Bắt đầu hàng ngày lúc 12 giờ trưa theo giờ</h3><!-- End .cta-title -->
-				<p class="cta-desc">Get <em class="font-weight-medium">GIAO HÀNG MIỄN PHÍ * &amp; 5% giảm giá</em> Hàng ngày vào khung giờ cố địng</p><!-- End .cta-desc -->
-			</div><!-- End .col -->
-			
-			<div class="col-auto">
-				<a href="#" class="btn btn-white-primary btn-round"><span>Thêm  vào giỏ hàng chỉ $50.00/yr</span><i class="icon-long-arrow-right"></i></a>
-			</div><!-- End .col-auto -->
-		</div><!-- End .row -->
-	</div><!-- End .cta-horizontal -->
-</div>
-
+  
  
 <div class="intro-slider-container mb-4">
 	<div id="banerslider" class="intro-slider owl-carousel owl-theme owl-nav-inside owl-light" data-toggle="owl" data-owl-options='{"nav": false, "dots": false}'>
@@ -828,7 +937,7 @@ $themeData = vbrand_load_theme_data();
 	center: true,
 	items:1,
 	loop:true,
-	margin:5,
+	//margin:5,
 	animateOut: 'slideInLeft',
 	animateIn: 'slideOutRight'
 	});
