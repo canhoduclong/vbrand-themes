@@ -727,8 +727,8 @@ $themeData = vbrand_load_theme_data();
 
 							<a class="banner-link" href="#">
 								<h3 class="banner-title">Jackets</h3><!-- End .banner-title -->
-								<h4 class="banner-subtitle">2 Products</h4><!-- End .banner-subtitle -->
-								<span class="banner-link-text">Shop Now</span>
+								<h4 class="banner-subtitle">2 Sản phẩm</h4><!-- End .banner-subtitle -->
+								<span class="banner-link-text">Xem thêm</span>
 							</a><!-- End .banner-link -->
 						</div><!-- End .banner -->
 					</div><!-- End .col-sm-8 -->
@@ -742,7 +742,7 @@ $themeData = vbrand_load_theme_data();
 							<a class="banner-link" href="#">
 								<h3 class="banner-title">Jeans</h3><!-- End .banner-title -->
 								<h4 class="banner-subtitle">1 Product</h4><!-- End .banner-subtitle -->
-								<span class="banner-link-text">Shop Now</span>
+								<span class="banner-link-text">Xem thêm</span>
 							</a><!-- End .banner-link -->
 						</div><!-- End .banner -->
 					</div><!-- End .col-sm-4 -->
@@ -756,7 +756,7 @@ $themeData = vbrand_load_theme_data();
 							<a class="banner-link" href="#">
 								<h3 class="banner-title">Sportwear</h3><!-- End .banner-title -->
 								<h4 class="banner-subtitle">0 Product</h4><!-- End .banner-subtitle -->
-								<span class="banner-link-text">Shop Now</span>
+								<span class="banner-link-text">Xem thêm</span>
 							</a><!-- End .banner-link -->
 						</div><!-- End .banner -->
 					</div><!-- End .col-sm-4 -->
@@ -769,8 +769,8 @@ $themeData = vbrand_load_theme_data();
 
 							<a class="banner-link" href="#">
 								<h3 class="banner-title">Bags</h3><!-- End .banner-title -->
-								<h4 class="banner-subtitle">4 Products</h4><!-- End .banner-subtitle -->
-								<span class="banner-link-text">Shop Now</span>
+								<h4 class="banner-subtitle">4 Sản phẩm</h4><!-- End .banner-subtitle -->
+								<span class="banner-link-text">Xem thêm</span>
 							</a><!-- End .banner-link -->
 						</div><!-- End .banner -->
 					</div><!-- End .col-sm-8 -->
@@ -787,8 +787,8 @@ $themeData = vbrand_load_theme_data();
 
 							<a class="banner-link" href="#">
 								<h3 class="banner-title">Dresses</h3><!-- End .banner-title -->
-								<h4 class="banner-subtitle">3 Products</h4><!-- End .banner-subtitle -->
-								<span class="banner-link-text">Shop Now</span>
+								<h4 class="banner-subtitle">3 Sản phẩm</h4><!-- End .banner-subtitle -->
+								<span class="banner-link-text">Xem thêm</span>
 							</a><!-- End .banner-link -->
 						</div><!-- End .banner -->
 
@@ -799,8 +799,8 @@ $themeData = vbrand_load_theme_data();
 
 							<a class="banner-link" href="#">
 								<h3 class="banner-title">Shoes</h3><!-- End .banner-title -->
-								<h4 class="banner-subtitle">2 Products</h4><!-- End .banner-subtitle -->
-								<span class="banner-link-text">Shop Now</span>
+								<h4 class="banner-subtitle">2 Sản phẩm</h4><!-- End .banner-subtitle -->
+								<span class="banner-link-text">Xem thêm</span>
 							</a><!-- End .banner-link -->
 						</div><!-- End .banner -->
 					</div><!-- End .col-sm-8 -->
@@ -813,8 +813,8 @@ $themeData = vbrand_load_theme_data();
 
 							<a class="banner-link" href="#">
 								<h3 class="banner-title">T-shirts</h3><!-- End .banner-title -->
-								<h4 class="banner-subtitle">0 Products</h4><!-- End .banner-subtitle -->
-								<span class="banner-link-text">Shop Now</span>
+								<h4 class="banner-subtitle">0 Sản phẩm</h4><!-- End .banner-subtitle -->
+								<span class="banner-link-text">Xem thêm</span>
 							</a><!-- End .banner-link -->
 						</div><!-- End .banner -->
 
@@ -826,7 +826,7 @@ $themeData = vbrand_load_theme_data();
 							<a class="banner-link" href="#">
 								<h3 class="banner-title">Jumpers</h3><!-- End .banner-title -->
 								<h4 class="banner-subtitle">1 Product</h4><!-- End .banner-subtitle -->
-								<span class="banner-link-text">Shop Now</span>
+								<span class="banner-link-text">Xem thêm</span>
 							</a><!-- End .banner-link -->
 						</div><!-- End .banner -->
 					</div><!-- End .col-sm-4 -->
@@ -852,7 +852,7 @@ $themeData = vbrand_load_theme_data();
 						<h4 class="banner-subtitle">Clearence</h4><!-- End .banner-subtitle -->
 						<h3 class="banner-title">Coffee Tables</h3><!-- End .banner-title -->
 						<div class="banner-text">from $19.99</div><!-- End .banner-text -->
-						<a href="#" class="btn btn-outline-gray banner-link">Shop Now<i class="icon-long-arrow-right"></i></a>
+						<a href="#" class="btn btn-outline-gray banner-link">Xem thêm<i class="icon-long-arrow-right"></i></a>
 					</div><!-- End .banner-content -->
 				</div><!-- End .banner -->
 			</div><!-- End .col-lg-5 -->
@@ -894,7 +894,7 @@ $themeData = vbrand_load_theme_data();
 						<h4 class="banner-subtitle">On Sale</h4><!-- End .banner-subtitle -->
 						<h3 class="banner-title">Lamps Offer</h3><!-- End .banner-title -->
 						<div class="banner-text">up to 30% off</div><!-- End .banner-text -->
-						<a href="#" class="btn btn-outline-gray banner-link">Shop Now<i class="icon-long-arrow-right"></i></a>
+						<a href="#" class="btn btn-outline-gray banner-link">Xem thêm<i class="icon-long-arrow-right"></i></a>
 					</div><!-- End .banner-content -->
 				</div><!-- End .banner -->
 			</div><!-- End .col-lg-4 -->
