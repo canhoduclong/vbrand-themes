@@ -26,6 +26,7 @@ global $product;
 
 $columns           = apply_filters( 'woocommerce_product_thumbnails_columns', 4 );
 $post_thumbnail_id = $product->get_image_id();
+/*
 $wrapper_classes   = apply_filters(
 	'woocommerce_single_product_image_gallery_classes',
 	array(
@@ -35,10 +36,12 @@ $wrapper_classes   = apply_filters(
 		'images',
 	)
 );
+*/
 ?> 
 
 
 <div class="product-gallery product-gallery-vertical">
+	 
 	<div class="row">
 		<figure class="product-main-image">
 			<?php  

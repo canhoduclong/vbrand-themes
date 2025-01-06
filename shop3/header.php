@@ -27,17 +27,14 @@
 
         <?php wp_head(); ?>
 
-        <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/vendor/line-awesome/line-awesome/line-awesome/css/line-awesome.min.css">
-        
-        <!-- Plugins CSS File -->
-        <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/plugins/owl-carousel/owl.carousel.css">
-        <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/plugins/magnific-popup/magnific-popup.css">
-        
-        <!-- Main CSS File -->
-        <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/style.css">
-        <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/plugins/nouislider/nouislider.css">
-        <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/demos/demo-11.css">
+<!-- Plugins CSS File -->
+<link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/plugins/owl-carousel/owl.carousel.css">
+<link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/plugins/magnific-popup/magnific-popup.css">
+<!-- Main CSS File -->
+<link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/style.css">
+<link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/plugins/nouislider/nouislider.css">
+
         
     </head>
     <body>

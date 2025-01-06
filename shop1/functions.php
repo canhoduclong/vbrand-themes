@@ -638,7 +638,8 @@ function initial(){
             remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
             remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 ); 
         */
-        //----- Build Infomation
+        
+        //----- Re Build Infomation
         add_action( 'woocommerce_custom_breadcrumb', 'woocommerce_breadcrumb', 10 );
        
         add_action( 'woocommerce_before_main_content', 'woocommerce_before_product_details_tag');       
@@ -806,10 +807,12 @@ function color_pattern($color ='', $selected = false){
     }
     if( in_array($color, $nau ) ){
         return '<a href="javascript:;" data-color="nau" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #b87145;"><span class="sr-only">Color Name</span></a>';
-    } 
-
+    }
     return '<a href="javascript:;" data-color="xam" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #ebebeb;"><span class="sr-only">Color Name</span></a>';
 }
+
+
+
 function get_all_attributes(){  
     if ( class_exists( 'WooCommerce' ) ) {   
         $args = array(
@@ -917,6 +920,7 @@ function show_attribute_sidebar(  ){
     $sidebar .= '</div>';
     echo $sidebar;     
 }
+
 function price_progress_bar() {
     // Get the minimum and maximum prices of products
     global $wpdb;
@@ -982,26 +986,6 @@ function price_progress_bar() {
 /**
  * ------------- products details
  */
-
- /*
-function filter_by_size( $query ) {
-    if( ! is_admin() && is_shop() && isset($_GET['filter_pa_size']) ) {
-        $size = sanitize_text_field( $_GET['filter_pa_size'] );
-        
-        // Modify the query to filter by attribute
-        $query->set( 'tax_query', array(
-            array(
-                'taxonomy' => 'pa_size',
-                'field'    => 'slug',
-                'terms'    => $size,
-            ),
-        ));
-    }
-}
-add_action( 'pre_get_posts', 'filter_by_size' );
-*/
-
-
 
 function woocommerce_template_loop_product_title() {
     global $product;

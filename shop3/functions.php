@@ -117,8 +117,6 @@ function productbycat_init() {
     }
     die();  //---- bắt buộc phải có khi kết thúc
 }
-
-
 /**
  * sidebar
  */
@@ -153,10 +151,7 @@ function theme_register_sidebar() {
     ));
 }
 add_action('widgets_init', 'theme_register_sidebar');
-
-
  
-
 /**
  * Show checkbox listing caegory
  */
@@ -225,8 +220,6 @@ function display_product_categories_checkbox() {
     return ob_get_clean();
 }
 
-
-
 function _product_categories() {
     // Get product categories
     $product_categories = get_terms( 'product_cat', array(
@@ -265,8 +258,6 @@ function _product_categories() {
         </div>';
     }
 }
-
-
 
 // Shortcode for displaying product category filter
 function product_category_filter_shortcode() {
@@ -451,7 +442,6 @@ function add_product_to_cart() {
         wp_send_json_error();
     }
 }
-
 add_action('wp_ajax_add_to_cart', 'add_product_to_cart');
 add_action('wp_ajax_nopriv_add_to_cart', 'add_product_to_cart');
 
@@ -485,9 +475,9 @@ function remove_from_cart() {
         wp_send_json_error();
     }
 }
-
 add_action('wp_ajax_remove_from_cart', 'remove_from_cart');
 add_action('wp_ajax_nopriv_remove_from_cart', 'remove_from_cart');
+
 //------ get short cart 
 function get_cart_data() {
     $cart_contents = WC()->cart->get_cart();
@@ -526,8 +516,7 @@ add_action('wp_ajax_nopriv_get_cart_data', 'get_cart_data');
 
 
 
-function initial(){
-    
+function initial(){ 
     //-- listings for shop and category pages
     if(is_shop() || is_product_category() || is_product_tag() ) { 
         add_action( 'wp_enqueue_scripts', 'custom_enqueue_scripts' ); 
@@ -639,13 +628,183 @@ function initial(){
        
         add_action( 'woocommerce_upsale_product', 'woocommerce_upsell_display', 15 );
         add_action( 'woocommerce_related_product', 'woocommerce_output_related_products' ); 
+
+        // display for variation
+        
+        $product = wc_get_product( get_the_ID() ); 
+        
+        
+        //echo "<pre>"; print_r( $product);  echo "</pre>";
+        //echo "<pre>"; print_r( $upsells);  echo "</pre>";  
+        /*
+        product:
+             [category_ids] => Array
+                (
+                    [0] => 17
+                    [1] => 46
+                )
+
+            [tag_ids] => Array
+                (
+                    [0] => 18
+                    [1] => 21
+                )
+        */
+        
+        if ($product) {
+            
+           remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
+           remove_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_thumbnails', 20);
+           remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
+           remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
+
+
+           remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
+           
+
+
+           add_action( 'woocommerce_single_product_summary', '_product_category', 7 ); 
+           add_action( 'woocommerce_single_product_summary', '_product_price', 8);
+           add_action( 'woocommerce_single_product_summary', 'custom_quantity_input_position', 10 );
+           
+
+           add_action( 'woocommerce_before_single_product_summary', '_product_gellary', 20);
+           add_action( 'woocommerce_product_thumbnails', '_product_thumbnails', 20);
+           
+
+            if( $product->is_type('variable')){
+                // Loại bỏ dropdown chọn biến thể
+                remove_action('woocommerce_single_product_summary', 'woocommerce_single_variation', 20);
+                remove_action('woocommerce_single_product_summary', 'woocommerce_single_variation_add_to_cart_button', 30);
+                
+                // Loại bỏ nút "Add to Cart" mặc định
+                remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
+
+                // move excerpt
+                remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 ); 
+                add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 35 ); 
+
+            }
+
+            if($product->is_type('simple')) {
+                
+                remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 ); 
+                
+
+                
+
+
+                add_filter( 'woocommerce_get_price_html', 'custom_price_label', 10, 2 );
+                add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 35 );
+                add_action( 'woocommerce_single_product_summary', 'show_data_excerpt_content', 36 );
+
+            }
+
+        }
         
     }
 
 }
 add_action( 'wp', 'initial');
 
+ 
+   
 
+function _product_category(){
+    global $product ; 
+    echo wc_get_product_category_list( $product->get_id(), ', ', '<div class="product-cat"><span class="posted_in">' . _n( 'Category:', 'Categories:', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span></div>' );
+}
+function _product_tags(){
+    global $product ; 
+    echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</span>' );
+}
+function _product_skus(){
+    global $product ; 
+    if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) {
+        echo '<span class="sku_wrapper">'.esc_html_e( 'SKU:', 'woocommerce' ).' <span class="sku">'.( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' ).'</span></span>';
+    }
+}
+function _product_price(){
+    global $product ;
+    echo '<div class="product-price  price my-4">Giá bán: '.$product->get_price_html().'</div>'; 
+}
+function _product_quantity(){
+    global $product ;
+    echo '<div class="details-filter-row details-row-size">
+			<label for="qty">Số lượng:</label>
+			<div class="product-details-quantity">
+				<div class="quantity">
+                    <label class="screen-reader-text" for="quantity">Ghế nội thất thời trang quantity</label>
+                    <input type="number" id="quantity" class="input-text qty text" name="quantity" value="1" aria-label="Product quantity" size="4" min="1" max="" step="1" placeholder="" inputmode="numeric" autocomplete="off" style="display: none;"><div class="input-group  input-spinner"><div class="input-group-prepend"><button style="min-width: 26px" class="btn btn-decrement btn-spinner" type="button"><i class="icon-minus"></i></button></div><input type="text" style="text-align: center" class="form-control input-text qty text" placeholder=""><div class="input-group-append"><button style="min-width: 26px" class="btn btn-increment btn-spinner" type="button"><i class="icon-plus"></i></button></div></div>
+                </div>
+			</div>
+		</div>';
+}
+
+function custom_quantity_input_position() { 
+    woocommerce_quantity_input();
+}
+
+function _product_gellary(){
+    get_template_part('inic/product', 'image');
+}
+
+function _product_thumbnails() {
+	get_template_part( 'inic/product','thumbnails' );
+}
+
+function my_custom_img_function($attachment_id, $main_image = false){
+    $flexslider        = (bool) apply_filters('woocommerce_single_product_flexslider_enabled', get_theme_support('wc-product-gallery-slider'));
+    $gallery_thumbnail = wc_get_image_size('gallery_thumbnail');
+    $thumbnail_size    = apply_filters('woocommerce_gallery_thumbnail_size', array($gallery_thumbnail['width'], $gallery_thumbnail['height']));
+    $image_size        = apply_filters('woocommerce_gallery_image_size', $flexslider || $main_image ? 'woocommerce_single' : $thumbnail_size);
+    $full_size         = apply_filters('woocommerce_gallery_full_size', apply_filters('woocommerce_product_thumbnails_large_size', 'full'));
+    $thumbnail_src     = wp_get_attachment_image_src($attachment_id, $thumbnail_size);
+    $full_src          = wp_get_attachment_image_src($attachment_id, $full_size);
+    $alt_text          = trim(wp_strip_all_tags(get_post_meta($attachment_id, '_wp_attachment_image_alt', true)));
+    $image             = wp_get_attachment_image(
+        $attachment_id,
+        $image_size,
+        false,
+        apply_filters(
+            'woocommerce_gallery_image_html_attachment_image_params',
+            array(
+                'title'                   => _wp_specialchars(get_post_field('post_title', $attachment_id), ENT_QUOTES, 'UTF-8', true),
+                'data-caption'            => _wp_specialchars(get_post_field('post_excerpt', $attachment_id), ENT_QUOTES, 'UTF-8', true),
+                'data-src'                => esc_url($full_src[0]),
+                'data-large_image'        => esc_url($full_src[0]),
+                'data-large_image_width'  => esc_attr($full_src[1]),
+                'data-large_image_height' => esc_attr($full_src[2]),
+                'class'                   => esc_attr($main_image ? 'wp-post-image' : ''),
+            ),
+            $attachment_id,
+            $image_size,
+            $main_image
+        )
+    );
+    
+    return '<a class="product-gallery-item" href="#" 
+			data-image="' . esc_url( $full_src[0] ) . '" 
+			data-zoom-image="' . esc_url( $full_src[0] ) . '">
+				' . $image . '
+			</a> ';
+}
+
+
+
+
+function show_data_excerpt_content() {
+    // Capture the original excerpt output
+    ob_start();
+    woocommerce_template_single_excerpt();
+    $original_excerpt = ob_get_clean();
+
+    // Modify the excerpt content (example: add extra text)
+    $updated_excerpt = $original_excerpt . '<p class="custom-message">This is an additional message appended to the excerpt.</p>';
+
+    // Output the updated content
+    echo $updated_excerpt;
+}
 
 //------- List view products
 function list_items(){
@@ -1222,9 +1381,19 @@ function add_breadcrumb_to_checkout_page() {
   */
 
  
-
-
-
+/*
+add_action('wp', 'hide_woocommerce_variations', 20);
+function hide_woocommerce_variations() {
+    if (is_product()) {
+        // Loại bỏ dropdown chọn biến thể
+        remove_action('woocommerce_single_product_summary', 'woocommerce_single_variation', 20);
+        remove_action('woocommerce_single_product_summary', 'woocommerce_single_variation_add_to_cart_button', 30);
+        
+        // Loại bỏ nút "Add to Cart" mặc định
+        remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
+    }
+}
+*/
 
 
 

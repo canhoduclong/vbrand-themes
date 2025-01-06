@@ -237,25 +237,23 @@
 
 		<?php  wp_footer(); ?>
 
-		<script src="<?=get_template_directory_uri()?>/assets/js/jquery.min.js"></script>
-		<script src="<?=get_template_directory_uri()?>/assets/js/bootstrap.bundle.min.js"></script>
-		<script src="<?=get_template_directory_uri()?>/assets/js/jquery.hoverIntent.min.js"></script>
-		<script src="<?=get_template_directory_uri()?>/assets/js/jquery.waypoints.min.js"></script>
-		<script src="<?=get_template_directory_uri()?>/assets/js/superfish.min.js"></script>
-		<script src="<?=get_template_directory_uri()?>/assets/js/owl.carousel.min.js"></script>
-		<script src="<?=get_template_directory_uri()?>/assets/js/wNumb.js"></script>
-		<script src="<?=get_template_directory_uri()?>/assets/js/bootstrap-input-spinner.js"></script>
-		<script src="<?=get_template_directory_uri()?>/assets/js/jquery.magnific-popup.min.js"></script>
-		<script src="<?=get_template_directory_uri()?>/assets/js/nouislider.min.js"></script>
-		<!-- Main JS File -->
-		<script src="<?=get_template_directory_uri()?>/assets/js/main.js"></script>
-		<script src="<?=get_template_directory_uri()?>/assets/js/demos/demo-11.js"></script> 
+<!-- Plugins JS File -->
+<script src="<?=get_template_directory_uri()?>/assets/js/jquery.min.js"></script>
+<script src="<?=get_template_directory_uri()?>/assets/js/bootstrap.bundle.min.js"></script>
+<script src="<?=get_template_directory_uri()?>/assets/js/jquery.hoverIntent.min.js"></script>
+<script src="<?=get_template_directory_uri()?>/assets/js/jquery.waypoints.min.js"></script>
+<script src="<?=get_template_directory_uri()?>/assets/js/superfish.min.js"></script>
+<script src="<?=get_template_directory_uri()?>/assets/js/owl.carousel.min.js"></script>
+<script src="<?=get_template_directory_uri()?>/assets/js/bootstrap-input-spinner.js"></script>
+<script src="<?=get_template_directory_uri()?>/assets/js/jquery.elevateZoom.min.js"></script>
+<script src="<?=get_template_directory_uri()?>/assets/js/bootstrap-input-spinner.js"></script>
+<script src="<?=get_template_directory_uri()?>/assets/js/jquery.magnific-popup.min.js"></script>
+<!-- Main JS File -->
+<script src="<?=get_template_directory_uri()?>/assets/js/main.js"></script>
 
+ 
 
-
-
-	
-
+ 
 		 
 
 		
