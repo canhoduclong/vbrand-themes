@@ -512,10 +512,7 @@ function get_cart_data() {
 add_action('wp_ajax_get_cart_data', 'get_cart_data');
 add_action('wp_ajax_nopriv_get_cart_data', 'get_cart_data');
 
-
-
-
-
+ 
 function initial(){ 
     //-- listings for shop and category pages
     if(is_shop() || is_product_category() || is_product_tag() ) { 
@@ -541,13 +538,11 @@ function initial(){
         add_action( 'woocommerce_sidebar', 'woocommerce_after_sidebar', 60 );
         add_action('woocommerce_sidebar', 'price_progress_bar', 50);
 
-
         add_action ( 'woocommerce_before_shop_loop' ,  'before_shop_toolbox', 10 ); // open tag
         add_action ( 'woocommerce_before_shop_loop' ,  'after_shop_toolbox', 40 ); // close tag
         
         add_action ( 'woocommerce_before_shop_loop' ,  'before_shop_loop', 50);
         add_action ( 'woocommerce_after_shop_loop' ,  'after_shop_loop');
-
         
         if(isset($_GET['view'])){
             if( $_GET['view'] !='list'){ 
@@ -624,7 +619,7 @@ function initial(){
        
         add_action( 'woocommerce_before_main_content', 'woocommerce_before_product_details_tag');       
         //  add_action( 'woocommerce_before_main_content', 'woocommerce_add_row_tag', 30 ); 
-        add_action( 'woocommerce_related_product', 'woocommerce_before_product_details_tag' );       
+        add_action( 'woocommerce_related_product', 'woocommerce_before_product_details_tag' );
        
         add_action( 'woocommerce_upsale_product', 'woocommerce_upsell_display', 15 );
         add_action( 'woocommerce_related_product', 'woocommerce_output_related_products' ); 
@@ -656,23 +651,26 @@ function initial(){
            remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
            remove_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_thumbnails', 20);
            remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
-           remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
-
-
-           remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
-           
-
+           remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10); 
 
            add_action( 'woocommerce_single_product_summary', '_product_category', 7 ); 
            add_action( 'woocommerce_single_product_summary', '_product_price', 8);
-           add_action( 'woocommerce_single_product_summary', 'custom_quantity_input_position', 10 );
+          
+
+
+            //add_action( 'woocommerce_single_product_summary', 'custom_quantity_input_position', 9 );
            
+
 
            add_action( 'woocommerce_before_single_product_summary', '_product_gellary', 20);
            add_action( 'woocommerce_product_thumbnails', '_product_thumbnails', 20);
            
+            
 
-            if( $product->is_type('variable')){
+
+
+             if( $product->is_type('variable')){
+
                 // Loại bỏ dropdown chọn biến thể
                 remove_action('woocommerce_single_product_summary', 'woocommerce_single_variation', 20);
                 remove_action('woocommerce_single_product_summary', 'woocommerce_single_variation_add_to_cart_button', 30);
@@ -682,18 +680,18 @@ function initial(){
 
                 // move excerpt
                 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 ); 
-                add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 35 ); 
+
+               // add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 35 ); 
 
             }
 
             if($product->is_type('simple')) {
                 
+                // Remove "Add to Cart" button on single product page
+                remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
+
                 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 ); 
                 
-
-                
-
-
                 add_filter( 'woocommerce_get_price_html', 'custom_price_label', 10, 2 );
                 add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 35 );
                 add_action( 'woocommerce_single_product_summary', 'show_data_excerpt_content', 36 );
@@ -789,9 +787,6 @@ function my_custom_img_function($attachment_id, $main_image = false){
 				' . $image . '
 			</a> ';
 }
-
-
-
 
 function show_data_excerpt_content() {
     // Capture the original excerpt output
