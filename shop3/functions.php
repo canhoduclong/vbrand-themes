@@ -724,8 +724,13 @@ function _product_skus(){
 }
 function _product_price(){
     global $product ;
-    echo '<div class="product-price  price my-4">Giá bán: '.$product->get_price_html().'</div>'; 
+    if($product->is_type('simple')) {
+        echo '<div class="product-price  price my-4">'.$product->get_price_html().'</div>'; 
+    }else{
+        echo '<div class="product-price  price my-4">Giá: '.$product->get_price_html().'</div>'; 
+    }
 }
+
 function _product_quantity(){
     global $product ;
     echo '<div class="details-filter-row details-row-size">
