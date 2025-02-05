@@ -729,20 +729,7 @@ function _product_price(){
     }else{
         echo '<div class="product-price  price my-4">Giá: '.$product->get_price_html().'</div>'; 
     }
-}
-
-function _product_quantity(){
-    global $product ;
-    echo '<div class="details-filter-row details-row-size">
-			<label for="qty">Số lượng:</label>
-			<div class="product-details-quantity">
-				<div class="quantity">
-                    <label class="screen-reader-text" for="quantity">Ghế nội thất thời trang quantity</label>
-                    <input type="number" id="quantity" class="input-text qty text" name="quantity" value="1" aria-label="Product quantity" size="4" min="1" max="" step="1" placeholder="" inputmode="numeric" autocomplete="off" style="display: none;"><div class="input-group  input-spinner"><div class="input-group-prepend"><button style="min-width: 26px" class="btn btn-decrement btn-spinner" type="button"><i class="icon-minus"></i></button></div><input type="text" style="text-align: center" class="form-control input-text qty text" placeholder=""><div class="input-group-append"><button style="min-width: 26px" class="btn btn-increment btn-spinner" type="button"><i class="icon-plus"></i></button></div></div>
-                </div>
-			</div>
-		</div>';
-}
+} 
 
 function custom_quantity_input_position() { 
     woocommerce_quantity_input();

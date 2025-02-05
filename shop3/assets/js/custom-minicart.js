@@ -13,15 +13,6 @@ jQuery(document).ready(function($) {
         $('#minicart').removeClass('open');
         $('#close-minicart').removeClass('open');
     }
-
-
-    // Click event to close the minicart
-    $('#close-minicart').on('click', function() {
-        hideMinicart(); 
-    });
-
-    updateMinicartOnLoad();
-    
     // Update minicart content
     function updateMinicart(cartData) {
         var itemsHtml = '';
@@ -70,6 +61,16 @@ jQuery(document).ready(function($) {
         });
     }
 
+    
+
+    // Click event to close the minicart
+    $('#close-minicart').on('click', function() {
+        hideMinicart(); 
+    });
+
+    updateMinicartOnLoad();
+    
+
 
 
     // Add product to cart via AJAX
@@ -95,6 +96,8 @@ jQuery(document).ready(function($) {
                     //updateMinicart(response.data);
                     updateMinicartOnLoad();
                     showMinicart();
+
+                    setTimeout(hideMinicart, 5000); 
                     
                 } else {
                     alert('Error adding product to cart.');
