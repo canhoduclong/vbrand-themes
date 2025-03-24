@@ -5,7 +5,7 @@
 <div class="page-header text-center" style="background-image: url('<?=get_template_directory_uri()?>/assets/images/page-header-bg.jpg')">
     <div class="container">
         <?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-		<h1 class="page-title"><?php woocommerce_page_title(); ?><span>Shop</span></h1>
+		<h1 class="page-title"><?php woocommerce_page_title(); ?><span>Thông tin trang shop</span></h1>
 	    <?php endif; ?> 
     </div>
 </div>

@@ -665,6 +665,7 @@ function initial(){
            add_action( 'woocommerce_before_single_product_summary', '_product_gellary', 20);
            add_action( 'woocommerce_product_thumbnails', '_product_thumbnails', 20);
            
+ 
             
 
 
@@ -672,14 +673,14 @@ function initial(){
              if( $product->is_type('variable')){
 
                 // Loại bỏ dropdown chọn biến thể
-                remove_action('woocommerce_single_product_summary', 'woocommerce_single_variation', 20);
-                remove_action('woocommerce_single_product_summary', 'woocommerce_single_variation_add_to_cart_button', 30);
+            //    remove_action('woocommerce_single_product_summary', 'woocommerce_single_variation', 20);
+            //    remove_action('woocommerce_single_product_summary', 'woocommerce_single_variation_add_to_cart_button', 30);
                 
                 // Loại bỏ nút "Add to Cart" mặc định
-                remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
+            //    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
 
                 // move excerpt
-                remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 ); 
+            //    remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 ); 
 
                // add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 35 ); 
 
@@ -1382,6 +1383,50 @@ function hide_woocommerce_variations() {
 }
 */
 
+function get_product_variants() {
+    global $wpdb;
+
+    if (!isset($_GET['product_id'])) {
+        wp_send_json_error(['message' => 'Missing product_id']);
+    }
+
+    $product_id = intval($_GET['product_id']);
+    $variants = [];
+
+    $variations = $wpdb->get_results(
+        $wpdb->prepare(
+            "SELECT p.ID AS variation_id, pm_price.meta_value AS price
+             FROM {$wpdb->posts} p
+             INNER JOIN {$wpdb->postmeta} pm_price ON p.ID = pm_price.post_id AND pm_price.meta_key = '_price'
+             WHERE p.post_parent = %d AND p.post_type = 'product_variation'",
+            $product_id
+        )
+    );
+
+    foreach ($variations as $variation) {
+        $attributes = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT meta_key, meta_value FROM {$wpdb->postmeta} WHERE post_id = %d AND meta_key LIKE 'attribute_pa_%'",
+                $variation->variation_id
+            )
+        );
+
+        $attr_data = [];
+        foreach ($attributes as $attr) {
+            $attr_name = str_replace('attribute_pa_', '', $attr->meta_key);
+            $attr_data[$attr_name] = $attr->meta_value;
+        }
+
+        $variants[] = [
+            'attributes' => $attr_data,
+            'price' => (int)$variation->price
+        ];
+    }
+
+    wp_send_json_success($variants);
+}
+add_action('wp_ajax_get_product_variants', 'get_product_variants');
+add_action('wp_ajax_nopriv_get_product_variants', 'get_product_variants');
 
 
 

@@ -20,9 +20,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header( 'shop' ); ?>
+ 
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+    let productId = 123; // Thay bằng ID sản phẩm thực tế
+
+    fetch(`/wp-admin/admin-ajax.php?action=get_product_variants&product_id=${productId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.variants = data.data;
+                generateAttributes();
+            } else {
+                console.error("Lỗi khi lấy dữ liệu biến thể:", data);
+            }
+        })
+        .catch(error => console.error("Lỗi khi tải dữ liệu:", error));
+});
 
 
-
+</script>
 	<?php
 		/**
 		 * @hooked woocommerce_breadcrumb - 20

@@ -653,9 +653,6 @@ function initial(){
 
 }
 add_action( 'wp', 'initial');
-
-
-
 //------- List view products
 function list_items(){
     //--- remove default
@@ -693,7 +690,6 @@ function list_items(){
     //add_action ( 'woocommerce_shop_loop_item_title' ,  'product_item_cat', 1 ); 
     add_action ( 'woocommerce_after_shop_loop_item_title' ,    'woocommerce_add_end_row_tag', 60);
 }
-
 //------- Grid view prduct
 function grid_items(){
     add_action ( 'woocommerce_before_shop_loop_item_title' ,  'add_before_figure', 0);
@@ -716,7 +712,7 @@ function grid_items(){
     
     //--- end content-product.php 
 }
- 
+
 //------- Element layout
 function list_items_thunails(){
     echo '<div class="col-6 col-lg-3">';
@@ -736,11 +732,9 @@ function list_items_action_end(){
 function end_tag(){
     echo '</div>';
 }
-
 /**
  * ---- functions
  */
-
 //----- xoa bo dau
 function vn_to_str ($str){
     $unicode = array(
@@ -765,7 +759,6 @@ function vn_to_str ($str){
     $str = str_replace(' ','_',$str);     
     return $str;
 } 
- 
 /**
  * ------------- List product
  * ------------- SideBar
@@ -810,9 +803,6 @@ function color_pattern($color ='', $selected = false){
     }
     return '<a href="javascript:;" data-color="xam" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #ebebeb;"><span class="sr-only">Color Name</span></a>';
 }
-
-
-
 function get_all_attributes(){  
     if ( class_exists( 'WooCommerce' ) ) {   
         $args = array(
@@ -981,12 +971,9 @@ function price_progress_bar() {
         */
     }
 }
-
-
 /**
  * ------------- products details
  */
-
 function woocommerce_template_loop_product_title() {
     global $product;
     $link = apply_filters( 'woocommerce_loop_product_link', get_the_permalink(), $product );
