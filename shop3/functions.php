@@ -1382,52 +1382,61 @@ function hide_woocommerce_variations() {
     }
 }
 */
+ 
+  
+
+function get_data() {
+    echo  "test";
+    wp_die();  //die();
+}
+
+add_action( 'wp_ajax_nopriv_get_data', 'get_data' );
+add_action( 'wp_ajax_get_data', 'get_data' );
+
+add_action('wp_ajax_get_product_variants', 'get_product_variants');
+add_action('wp_ajax_nopriv_get_product_variants', 'get_product_variants');
 
 function get_product_variants() {
-    global $wpdb;
-
-    if (!isset($_GET['product_id'])) {
-        wp_send_json_error(['message' => 'Missing product_id']);
+    if (!isset($_POST['product_id'])) {
+        wp_send_json_error(['message' => 'Product ID is required.']);
     }
 
-    $product_id = intval($_GET['product_id']);
+    $product_id = intval($_POST['product_id']);
+    echo $product_id."nguyen huy";
+    $product = wc_get_product($product_id);
+
+    if (!$product || !$product->is_type('variable')) {
+        wp_send_json_error(['message' => 'Product not found or is not a variable product.']);
+    }
+
     $variants = [];
+    foreach ($product->get_children() as $variation_id) {
+        $variation = wc_get_product($variation_id);
+        if ($variation) {
 
-    $variations = $wpdb->get_results(
-        $wpdb->prepare(
-            "SELECT p.ID AS variation_id, pm_price.meta_value AS price
-             FROM {$wpdb->posts} p
-             INNER JOIN {$wpdb->postmeta} pm_price ON p.ID = pm_price.post_id AND pm_price.meta_key = '_price'
-             WHERE p.post_parent = %d AND p.post_type = 'product_variation'",
-            $product_id
-        )
-    );
+            $variant_data = [
+                'attributes' => [],
+                'price' => (float) $variation->get_price(),
+                'regular_price' => (float) $variation->get_regular_price(),
+                'sale_price' => (float) $variation->get_sale_price(),
+                'stock_status' => $variation->get_stock_status(),
+                'image' => wp_get_attachment_image_url($variation->get_image_id(), 'full')
+            ];
 
-    foreach ($variations as $variation) {
-        $attributes = $wpdb->get_results(
-            $wpdb->prepare(
-                "SELECT meta_key, meta_value FROM {$wpdb->postmeta} WHERE post_id = %d AND meta_key LIKE 'attribute_pa_%'",
-                $variation->variation_id
-            )
-        );
+            // Lấy thuộc tính của biến thể
+            $attributes = $variation->get_attributes();
+            foreach ($attributes as $key => $value) {
+                $attribute_name = wc_attribute_label($key); // Chuyển slug thành tên hiển thị
+                $variant_data['attributes'][$attribute_name] = $value;
+            }
 
-        $attr_data = [];
-        foreach ($attributes as $attr) {
-            $attr_name = str_replace('attribute_pa_', '', $attr->meta_key);
-            $attr_data[$attr_name] = $attr->meta_value;
+            $variants[] = $variant_data;
+
         }
-
-        $variants[] = [
-            'attributes' => $attr_data,
-            'price' => (int)$variation->price
-        ];
     }
 
     wp_send_json_success($variants);
 }
-add_action('wp_ajax_get_product_variants', 'get_product_variants');
-add_action('wp_ajax_nopriv_get_product_variants', 'get_product_variants');
-
 
 
 ?>
