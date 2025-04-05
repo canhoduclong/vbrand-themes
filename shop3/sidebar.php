@@ -1,5 +1,6 @@
 <aside id="secondary" class="widget-area">
-    <?php dynamic_sidebar('sidebar-1'); ?>
+
+    <?php //ynamic_sidebar('sidebar-1'); ?>
     <div class="widget">
         <h2 class="widget-title">Categories</h2>
         <ul>

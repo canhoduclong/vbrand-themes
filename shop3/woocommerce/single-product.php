@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header( 'shop' ); ?>
  
 <script>
-
+/*
 document.addEventListener("DOMContentLoaded", function () {
     let productId = 123; // Thay bằng ID sản phẩm thực tế
 
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error("Lỗi khi tải dữ liệu:", error));
 });
-
+*/
 
 </script>
 	<?php

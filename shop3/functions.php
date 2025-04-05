@@ -233,7 +233,7 @@ function _product_categories() {
 
         echo '<div class="widget widget-collapsible">';
         echo '<h3 class="widget-title">';
-        echo '<a data-toggle="collapse" href="#widget-1" role="button" aria-expanded="true" aria-controls="widget-1">Sản phẩm</a>';
+        echo '<a data-toggle="collapse" href="#widget-1" role="button" aria-expanded="true" aria-controls="widget-1">Chuyên mục sản phẩm</a>';
         echo '</h3>';
         echo '
             <div class="collapse show" id="widget-1">
@@ -404,12 +404,6 @@ add_filter('pre_get_posts','search_by_attributes');
 
  
 
-function debug_woocommerce_shop_query($query) {
-    if (is_shop() && $query->is_main_query()) {
-       // echo '<pre>';  print_r($query); echo '</pre>';
-    }
-}
-add_action('pre_get_posts', 'debug_woocommerce_shop_query');
 
 
 
@@ -514,8 +508,10 @@ add_action('wp_ajax_nopriv_get_cart_data', 'get_cart_data');
 
  
 function initial(){ 
+
     //-- listings for shop and category pages
     if(is_shop() || is_product_category() || is_product_tag() ) { 
+        
         add_action( 'wp_enqueue_scripts', 'custom_enqueue_scripts' ); 
         /**
          *  archive-product.php
@@ -532,11 +528,12 @@ function initial(){
         add_action( 'woocommerce_custom_end_content_wrapper', 'woocommerce_add_end_product_tag' ); 
         
         //------- for sidebar
-        add_action( 'woocommerce_sidebar', 'woocommerce_before_sidebar', 0 );
-        //add_action( 'woocommerce_sidebar', 'display_product_categories_checkbox', 30 );
+        add_action( 'woocommerce_sidebar', 'woocommerce_before_sidebar', 0 );        
         add_action( 'woocommerce_sidebar', '_product_categories', 40 );
         add_action( 'woocommerce_sidebar', 'woocommerce_after_sidebar', 60 );
-        add_action('woocommerce_sidebar', 'price_progress_bar', 50);
+
+        //add_action( 'woocommerce_sidebar', 'display_product_categories_checkbox', 30 );
+        //add_action('woocommerce_sidebar', 'price_progress_bar', 50);
 
         add_action ( 'woocommerce_before_shop_loop' ,  'before_shop_toolbox', 10 ); // open tag
         add_action ( 'woocommerce_before_shop_loop' ,  'after_shop_toolbox', 40 ); // close tag
@@ -562,9 +559,9 @@ function initial(){
         remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 );
         remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10 );
         
-        
-        add_action ( 'woocommerce_before_shop_loop_item' ,  'before_shop_loop_item');   //----> Defind List or Grid Products
-        
+        add_action ( 'woocommerce_before_shop_loop_item' ,  'before_shop_loop_item');
+
+        //----> Defind List or Grid Products
         if(isset($_GET['view'])){
             if( $_GET['view'] =='list'){ 
                 list_items();
@@ -578,7 +575,6 @@ function initial(){
         add_action ( 'woocommerce_after_shop_loop_item' ,  'after_shop_loop_item' ); 
         
         //--- end content-product.php
-
         add_action ( 'woocommerce_output_content_wrapper_end' ,  '_output_content_wrapper_end', 50 );
         add_action( 'woocommerce_after_shop_loop_item', 'remove_add_to_cart_buttons', 1 );
        
@@ -1163,27 +1159,7 @@ function get_current_page_slug() {
     }
     return null;
 }
-function woocommerce_before_product_details_tag() { 
-    echo   '<div class="product-details-top mb-2">';
-}
-function woocommerce_before_product_tag() { 
-    echo   '<div class="col-lg-9">';
-}
-function woocommerce_after_product_tag() { 
-    echo   '</div>';
-}
-function woocommerce_add_end_row_tag() { 
-    echo   '</div>';
-} 
-function woocommerce_add_row_tag() {  
-    echo   '<div class="row">'; 
-}
-function woocommerce_before_sidebar() { 
-    echo   '<aside class="col-lg-3 order-lg-first"> <div class="sidebar sidebar-shop">'; 
-}
-function woocommerce_after_sidebar() { 
-    echo   '</div></aside>'; 
-}
+
 function before_shop_loop (){ 
     if ( is_shop() || is_product_category() || is_product_tag() ) { 
         if(isset($_GET['view'])){
@@ -1197,6 +1173,7 @@ function before_shop_loop (){
         }
     }
 }
+
 function after_shop_loop (){ 
     if ( is_shop() || is_product_category() || is_product_tag() ) { 
         if(isset($_GET['view'])){
@@ -1210,6 +1187,7 @@ function after_shop_loop (){
         }
     }
 }
+
 function before_shop_loop_item (){ 
     
     if ( is_shop() || is_product_category() || is_product_tag() ) { 
@@ -1253,6 +1231,31 @@ function before_shop_loop_item (){
     }
      
 }
+
+
+function woocommerce_before_product_details_tag() { 
+    echo   '<div class="product-details-top mb-2">';
+}
+function woocommerce_before_product_tag() { 
+    echo   '<div class="col-lg-9">';
+}
+function woocommerce_after_product_tag() { 
+    echo   '</div>';
+}
+function woocommerce_add_end_row_tag() { 
+    echo   '</div>';
+} 
+function woocommerce_add_row_tag() {  
+    echo   '<div class="row">'; 
+}
+function woocommerce_before_sidebar() { 
+    echo   '<aside class="col-lg-3 order-lg-first"> <div class="sidebar sidebar-shop">'; 
+}
+function woocommerce_after_sidebar() { 
+    echo   '</div></aside>'; 
+}
+
+
 function after_shop_loop_item(){  
     if ( is_shop() || is_product_category() || is_product_tag() ) {  
         if(isset($_GET['view'])){
@@ -1364,6 +1367,8 @@ function add_breadcrumb_to_checkout_page() {
     }
 }
 
+
+
  /**
   *  billing form
   */
@@ -1383,11 +1388,40 @@ function hide_woocommerce_variations() {
 }
 */
  
-  
+/**
+ *  For ajax to get product variations
+ */
+
+
 
 function get_data() {
-    echo  "test";
-    wp_die();  //die();
+    $cart_contents = WC()->cart->get_cart();
+    $items = array();
+    $total_count = WC()->cart->get_cart_contents_count();
+    $subtotal = WC()->cart->get_cart_subtotal();
+
+    foreach ($cart_contents as $cart_item_key => $cart_item) {
+        $product = $cart_item['data'];
+        $items[] = array(
+            'cart_item_key' => $cart_item_key,
+            'name' => $product->get_name(),
+            'permalink' => $product->get_permalink(),
+            'image' => $product->get_image(),
+            'price' => $product->get_price(),
+            'price_html' => $product->get_price_html(),
+            'quantity' => $cart_item['quantity'],
+            'subtotal' => wc_price($cart_item['line_subtotal'])
+        );
+    }
+
+    $data = array(
+        'items' => $items,
+        'total_count' => $total_count,
+        'subtotal' => $subtotal
+    );
+
+    wp_send_json_success($data);
+    wp_die(); 
 }
 
 add_action( 'wp_ajax_nopriv_get_data', 'get_data' );
@@ -1439,4 +1473,16 @@ function get_product_variants() {
 }
 
 
+
+
+/**
+ * Debug SQL query
+ */
+
+function debug_woocommerce_shop_query($query) {
+    if (is_shop() && $query->is_main_query()) {
+       // echo '<pre>';  print_r($query); echo '</pre>';
+    }
+}
+add_action('pre_get_posts', 'debug_woocommerce_shop_query');
 ?>
