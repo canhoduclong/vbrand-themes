@@ -29,12 +29,43 @@ jQuery(document).ready(function($) {
         event.preventDefault();
         $(this).toggleClass('selected');
         var color = $(this).data('color');
+        
         var queryString = window.location.search;
         var urlParams = new URLSearchParams(queryString);
         var paramName = 'filter_pa_color';
         var currentValues = urlParams.get(paramName) ? urlParams.get(paramName).split(',') : [];
 
         if ($(this).hasClass('selected')) {
+            if (!currentValues.includes(color)) {
+                currentValues.push(color);
+            }
+        } else {
+            currentValues = currentValues.filter(function(value) {
+                return value !== color;
+            });
+            
+        }
+       
+        if (currentValues.length > 0) {
+            urlParams.set(paramName, currentValues.join(','));
+        } else {
+            urlParams.delete(paramName);
+        }
+        //alert (urlParams);
+        window.location.search = urlParams.toString();
+        
+    })
+
+    $('.clcate').on('click', function(event){
+        event.preventDefault();
+        $(this).toggleClass('checked');
+        var color = $(this).data('cate');
+        var queryString = window.location.search;
+        var urlParams = new URLSearchParams(queryString);
+        var paramName = 'filter_pa_cate';
+        var currentValues = urlParams.get(paramName) ? urlParams.get(paramName).split(',') : [];
+
+        if ($(this).hasClass('checked')) {
             if (!currentValues.includes(color)) {
                 currentValues.push(color);
             }
@@ -53,6 +84,5 @@ jQuery(document).ready(function($) {
         window.location.search = urlParams.toString();
         
     })
-    
 
 });

@@ -612,37 +612,25 @@ function initial(){
            remove_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_thumbnails', 20);
            remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
            remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10); 
-
            add_action( 'woocommerce_single_product_summary', '_product_category', 7 ); 
            add_action( 'woocommerce_single_product_summary', '_product_price', 8);
-          
-
-
             //add_action( 'woocommerce_single_product_summary', 'custom_quantity_input_position', 9 );
-           
-
-
-           add_action( 'woocommerce_before_single_product_summary', '_product_gellary', 20);
-           add_action( 'woocommerce_product_thumbnails', '_product_thumbnails', 20);
-           
- 
+            add_action( 'woocommerce_before_single_product_summary', '_product_gellary', 20);
+            add_action( 'woocommerce_product_thumbnails', '_product_thumbnails', 20);
             
-
-
-
-             if( $product->is_type('variable')){
+            if( $product->is_type('variable')){
 
                 // Loại bỏ dropdown chọn biến thể
-            //    remove_action('woocommerce_single_product_summary', 'woocommerce_single_variation', 20);
-            //    remove_action('woocommerce_single_product_summary', 'woocommerce_single_variation_add_to_cart_button', 30);
+                //    remove_action('woocommerce_single_product_summary', 'woocommerce_single_variation', 20);
+                //    remove_action('woocommerce_single_product_summary', 'woocommerce_single_variation_add_to_cart_button', 30);
                 
                 // Loại bỏ nút "Add to Cart" mặc định
-            //    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
+                //    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
 
                 // move excerpt
-            //    remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 ); 
+                //    remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 ); 
 
-               // add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 35 ); 
+                // add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 35 ); 
 
             }
 
@@ -665,9 +653,6 @@ function initial(){
 
 }
 add_action( 'wp', 'initial');
-
- 
-   
 
 function _product_category(){
     global $product ; 
@@ -878,8 +863,13 @@ function remove_add_to_cart_buttons() {
  * ------------- List product
  * ------------- SideBar
  */
-function _product_categories() {
+function _product_categories( ) {
     // Get product categories
+    $selecteds = [0] ;
+    if (isset($_GET['filter_pa_cate'])) {
+        // Get the raw value from URL and convert it to an array of integers
+        $selecteds = array_map('intval', explode(',', $_GET['filter_pa_cate']));
+    } 
     $product_categories = get_terms( 'product_cat', array(
         'orderby'    => 'name',
         'order'      => 'ASC',
@@ -900,10 +890,11 @@ function _product_categories() {
 
         // Loop through each category
         foreach ( $product_categories as $category ) {
-                     echo '<div class="filter-item">';
+                    $checked = in_array($category->term_id, $selecteds ) ? ' checked' :'';
+                    echo '<div class="filter-item">';
                     echo '<div class="custom-control custom-checkbox">';
-                                echo '<input type="checkbox" class="custom-control-input"  value="' . esc_attr($category->slug) . '" id="' . esc_attr($category->slug) . '">';
-                                echo '<label class="custom-control-label" for="'.$category->slug.'">' . esc_html( $category->name ) . '</label>';
+                                echo '<input type="checkbox" class="custom-control-input clcate  ' . $checked . '" data-cate="' . esc_attr($category->term_id) . '"  value="' . esc_attr($category->term_id) . '" id="' . esc_attr($category->slug) . '" ' . $checked . '>';
+                                echo '<label class="custom-control-label" for="'.$category->slug.'">' . esc_html( $category->name ).'</label>';
                             echo '</div> ';
                            echo ' <span class="item-count">'.$category->count.'</span>';
                         echo '</div> '; 
@@ -935,28 +926,27 @@ function color_pattern($color ='', $selected = false){
     $nau    = array("Nâu Đen", "Nâu", "nau", "nâu");
 
     if( in_array($color, $vang ) ){ 
-        return '<a href="'.$link.'" data-color="vang" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #f0c04a;"><span class="sr-only">Color Name</span></a>';
+        return '<a  data-color="vang" href="javascript:;" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #f0c04a;"><span class="sr-only">Color Name</span></a>';
     }
     if( in_array($color, $do ) ){
-        return '<a href="'.$link.'" data-color="do" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #cc3333;"><span class="sr-only">Color Name</span></a>';
+        return '<a data-color="do" href="javascript:;"  class="clcolor '. ($selected ? ' selected' :'').'" style="background: #cc3333;"><span class="sr-only">Color Name</span></a>';
     }
     if( in_array($color, $green ) ){
-        return '<a href="'.$link.' data-color="green" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #669933;"><span class="sr-only">Color Name</span></a>';
+        return '<a data-color="green" href="javascript:;" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #669933;"><span class="sr-only">Color Name</span></a>';
     }
     if( in_array($color, $blue ) ){
-        return '<a href="javascript:;" data-color="blue" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #3399cc;"><span class="sr-only">Color Name</span></a>';
+        return '<a data-color="blue" href="javascript:;" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #3399cc;"><span class="sr-only">Color Name</span></a>';
     }
     if( in_array($color, $den ) ){
-        return '<a href="javascript:;" data-color="den" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #333333;"><span class="sr-only">Color Name</span></a>';
+        return '<a data-color="den" href="javascript:;" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #333333;"><span class="sr-only">Color Name</span></a>';
     }
     if( in_array($color, $hong ) ){
-        return '<a href="javascript:;" data-color="hong" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #f2719c;"><span class="sr-only">Color Name</span></a>';
+        return '<a data-color="hong" href="javascript:;"  class="clcolor '. ($selected ? ' selected' :'').'" style="background: #f2719c;"><span class="sr-only">Color Name</span></a>';
     }
     if( in_array($color, $nau ) ){
-        return '<a href="javascript:;" data-color="nau" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #b87145;"><span class="sr-only">Color Name</span></a>';
-    } 
-
-    return '<a href="javascript:;" data-color="xam" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #ebebeb;"><span class="sr-only">Color Name</span></a>';
+        return '<a data-color="nau"  href="javascript:;" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #b87145;"><span class="sr-only">Color Name</span></a>';
+    }
+    return '<a data-color="xam" href="javascript:;" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #ebebeb;"><span class="sr-only">Color Name</span></a>';
 }
  
 function show_sidebar_attribute(){
@@ -981,17 +971,15 @@ function show_sidebar_attribute(){
             'hide_empty' => false, // Hiển thị tất cả terms, kể cả các terms không có sản phẩm
         ) );
 
-       
- 
         if( $taxonomy->name  == 'pa_size' ){ 
             //$label =  $taxonomy->label; 
 
             $sidebar .= '<div class="widget widget-collapsible">
-            <h3 class="widget-title">
-                <a data-toggle="collapse" href="#widget-12" role="button" aria-expanded="true" aria-controls="widget-12">
-                '.esc_html( $taxonomy->label ).'
-                </a>
-            </h3>';
+                            <h3 class="widget-title">
+                                <a data-toggle="collapse" href="#widget-12" role="button" aria-expanded="true" aria-controls="widget-12">
+                                Kích thước
+                                </a>
+                            </h3>';
             $sidebar .= '<div class="collapse show" id="widget-12">
                         <div class="widget-body">
                             <div class="filter-items">';
@@ -1016,7 +1004,7 @@ function show_sidebar_attribute(){
                 $sidebar .= '<div class="widget widget-collapsible">
                     <h3 class="widget-title">
                         <a data-toggle="collapse" href="#widget-22" role="button" aria-expanded="true" aria-controls="widget-22">
-                             '.$taxonomy->name.'
+                            Màu sắc
                         </a>
                     </h3>';
                 $sidebar .= '<div class="collapse show" id="widget-22">
@@ -1026,7 +1014,8 @@ function show_sidebar_attribute(){
                 $taxonomy_color = 'pa_color'; 
                 foreach($terms as $colors){
                     $color = strtolower(vn_to_str($colors->slug));  
-                    $checked = isset( $_GET['filter_' . esc_attr( $taxonomy_color )] ) && in_array( $color,   explode(',',($_GET['filter_' . esc_attr( $taxonomy_color )] )  ) ) ? true : false;
+                    //$checked = isset( $_GET['filter_' . esc_attr( $taxonomy_color )] ) && in_array( $color,   explode(',',($_GET['filter_' . esc_attr( $taxonomy_color )] )  ) ) ? true : false;
+                    $checked = isset( $_GET['filter_pa_color'] ) && in_array( $color,   explode(',',($_GET['filter_pa_color'] )  ) ) ? true : false;
                     $color_list[] = color_pattern($color,  $checked);
                 }
                 $sidebar .= join('', $color_list);
@@ -1139,6 +1128,45 @@ function filter_by_size( $query ) {
     }
 }
 add_action( 'pre_get_posts', 'filter_by_size' );
+
+function filter_by_color( $query ) {
+    if( ! is_admin() && is_shop() && isset($_GET['filter_pa_color']) ) {
+        $color = sanitize_text_field( $_GET['filter_pa_color'] );
+        
+        // Modify the query to filter by attribute
+        $query->set( 'tax_query', array(
+            array(
+                'taxonomy' => 'pa_color',
+                'field'    => 'slug',
+                'terms'    => $color,
+            ),
+        ));
+    }
+}
+add_action( 'pre_get_posts', 'filter_by_cate' );
+
+function filter_by_cate( $query ) {
+    if( ! is_admin() && is_shop() && isset($_GET['filter_by_cate']) ) {
+        if (isset($_GET['filter_by_cate'])) {
+            // Get the raw value from URL and convert it to an array of integers
+            $cate_ids = array_map('intval', explode(',', $_GET['filter_by_cate']));
+            
+            if (!empty($cate_ids)) {
+                // Filter by product category term IDs (taxonomy: 'product_cat')
+                $query->set('tax_query', array(
+                    array(
+                        'taxonomy' => 'product_cat',
+                        'field'    => 'term_id',
+                        'terms'    => $cate_ids,
+                        'operator' => 'IN',
+                    ),
+                ));
+            }
+        }
+    }
+}
+add_action( 'pre_get_posts', 'filter_by_cate' );
+
 
 
 function woocommerce_template_loop_product_title() {
