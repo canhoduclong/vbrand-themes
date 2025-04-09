@@ -25,7 +25,6 @@ jQuery(document).ready(function($) {
        //$selectGender.hide();
 
         // Tạo các thẻ <a> với mã màu tương ứng cho Color
-
         
         $selectColor.find('option').each(function() {
             var $option = $(this);

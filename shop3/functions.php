@@ -220,44 +220,7 @@ function display_product_categories_checkbox() {
     return ob_get_clean();
 }
 
-function _product_categories() {
-    // Get product categories
-    $product_categories = get_terms( 'product_cat', array(
-        'orderby'    => 'name',
-        'order'      => 'ASC',
-        'hide_empty' => true,
-    ) );
 
-    // Check if categories are found
-    if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ) {
-
-        echo '<div class="widget widget-collapsible">';
-        echo '<h3 class="widget-title">';
-        echo '<a data-toggle="collapse" href="#widget-1" role="button" aria-expanded="true" aria-controls="widget-1">Chuyên mục sản phẩm</a>';
-        echo '</h3>';
-        echo '
-            <div class="collapse show" id="widget-1">
-                <div class="widget-body">
-                    <div class="filter-items filter-items-count">'; 
-
-        // Loop through each category
-        foreach ( $product_categories as $category ) {
-                     echo '<div class="filter-item">';
-                    echo '<div class="custom-control custom-checkbox">';
-                                echo '<input type="checkbox" class="custom-control-input"  value="' . esc_attr($category->slug) . '" id="' . esc_attr($category->slug) . '">';
-                                echo '<label class="custom-control-label" for="'.$category->slug.'">' . esc_html( $category->name ) . '</label>';
-                            echo '</div> ';
-                           echo ' <span class="item-count">'.$category->count.'</span>';
-                        echo '</div> '; 
-        }
-
-        echo '
-                    </div><!-- End .filter-items -->
-                </div><!-- End .widget-body -->
-            </div><!-- End .collapse -->
-        </div>';
-    }
-}
 
 // Shortcode for displaying product category filter
 function product_category_filter_shortcode() {
@@ -915,6 +878,45 @@ function remove_add_to_cart_buttons() {
  * ------------- List product
  * ------------- SideBar
  */
+function _product_categories() {
+    // Get product categories
+    $product_categories = get_terms( 'product_cat', array(
+        'orderby'    => 'name',
+        'order'      => 'ASC',
+        'hide_empty' => true,
+    ) );
+
+    // Check if categories are found
+    if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ) {
+
+        echo '<div class="widget widget-collapsible">';
+        echo '<h3 class="widget-title">';
+        echo '<a data-toggle="collapse" href="#widget-1" role="button" aria-expanded="true" aria-controls="widget-1">Chuyên mục sản phẩm</a>';
+        echo '</h3>';
+        echo '
+            <div class="collapse show" id="widget-1">
+                <div class="widget-body">
+                    <div class="filter-items filter-items-count">'; 
+
+        // Loop through each category
+        foreach ( $product_categories as $category ) {
+                     echo '<div class="filter-item">';
+                    echo '<div class="custom-control custom-checkbox">';
+                                echo '<input type="checkbox" class="custom-control-input"  value="' . esc_attr($category->slug) . '" id="' . esc_attr($category->slug) . '">';
+                                echo '<label class="custom-control-label" for="'.$category->slug.'">' . esc_html( $category->name ) . '</label>';
+                            echo '</div> ';
+                           echo ' <span class="item-count">'.$category->count.'</span>';
+                        echo '</div> '; 
+        }
+
+        echo '
+                    </div>
+                </div>
+            </div>
+        </div>';
+    }
+}
+
 function color_pattern($color ='', $selected = false){
     
     $taxonomy = 'pa_color'; 
@@ -956,99 +958,7 @@ function color_pattern($color ='', $selected = false){
 
     return '<a href="javascript:;" data-color="xam" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #ebebeb;"><span class="sr-only">Color Name</span></a>';
 }
-
-function get_all_attributes(){
-
  
-/*
-    echo '<div class="product-attributes">';
-    foreach ( $all_attributes as $taxonomy => $terms ) {
-        echo '<h3>' . esc_html( get_taxonomy( $taxonomy )->label ) . '</h3>';
-        echo '<ul>';
-        foreach ( $terms as $term ) {
-            echo '<li><a href="' . esc_url( add_query_arg( 'filter_' . $taxonomy, $term->slug ) ) . '">' . esc_html( $term->name ) . '</a></li>';
-        }
-        echo '</ul>';
-    }
-    echo '</div>';
-*/
-
-    
-    if ( class_exists( 'WooCommerce' ) ) {
-        $taxonomies = get_object_taxonomies( 'product', 'objects' );
-        $attribute_taxonomies = array();
-        foreach ( $taxonomies as $taxonomy ) {
-            if ( strpos( $taxonomy->name, 'pa_' ) === 0 ) { // Lọc taxonomy thuộc tính (ví dụ: pa_size, pa_color)
-                $attribute_taxonomies[] = $taxonomy;
-            }
-        }
-        $all_attributes = array();
-        foreach ( $attribute_taxonomies as $taxonomy ) {
-            $terms = get_terms( array(
-                'taxonomy'   => $taxonomy->name,
-                'hide_empty' => false, // Hiển thị tất cả terms, kể cả các terms không có sản phẩm
-            ) );
-
-            if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
-                $all_attributes[ $taxonomy->name ] = $terms;
-            }
-        }
-
-
-
-
-
-        $args = array(
-            'post_type'      => 'product',
-            'posts_per_page' => -1,
-            'post_status'    => 'publish',
-            'suppress_filters' => true, // <-- Ngăn các hook can thiệp vào query 
-            'tax_query' => array(),
-        );
-
-        $query = new WP_Query( $args );
-        $products = $query->posts;
-        
-        echo 'Tổng số sản phẩm: ' . count($products).'san npham'; // Sẽ luôn là 9
-        
-        $all_attributes = [];
-        // Loop through each product
-        foreach ( $products as $product_post ) {
-            $_pf = new WC_Product_Factory();
-            $product = $_pf->get_product( $product_post->ID );
-            //$product = wc_get_product( $product_post->ID );
-            $product_id = $product->get_id();
-            $product_name = $product->get_name();
-            $product_attributes = $product->get_attributes();
-            
-            //echo "<pre>"; print_r($product_attributes);  echo "</pre>";
-
-            if ( ! empty( $product_attributes ) ) {  
-                foreach ( $product_attributes as $key=>$attribute ) {
-                    if ( $attribute->is_taxonomy() ) {
-                        $taxonomy = $attribute->get_name(); // e.g., 'pa_color' 
-                        $attributes_name = wc_attribute_label( $taxonomy );  // color
-                        // get list options
-                        $terms = wp_get_post_terms( $product->get_id(), $taxonomy ); // Prepare a list of term names (like "Red, Blue")
-                        $term_names = wp_list_pluck( $terms, 'name' );  
-
-                        $attributes_options = $term_names;
-                        $all_attributes[$attributes_name][]= $term_names; 
-                    } else {
-                        $attributes_name  = $attribute->get_name();
-                        $attributes_options = $attribute->get_options();
-                        $all_attributes[$attributes_name][]= $attributes_options;
-                    }
-                   
-                }
-            }
-        }
-        echo "<pre>";
-        print_r($all_attributes);
-        echo "</pre>";
-        return $all_attributes;
-    }
-}
 function show_sidebar_attribute(){
     $sidebar = '';
     $sizes = [];
@@ -1061,23 +971,25 @@ function show_sidebar_attribute(){
             $attribute_taxonomies[] = $taxonomy;
         }
     }
+    
     $all_attributes = array();
+    
     foreach ( $attribute_taxonomies as $taxonomy ) {
+        
         $terms = get_terms( array(
             'taxonomy'   => $taxonomy->name,
             'hide_empty' => false, // Hiển thị tất cả terms, kể cả các terms không có sản phẩm
         ) );
-        
+
+       
  
         if( $taxonomy->name  == 'pa_size' ){ 
-            //$label =  $taxonomy->label;
-            
-          
+            //$label =  $taxonomy->label; 
 
             $sidebar .= '<div class="widget widget-collapsible">
             <h3 class="widget-title">
                 <a data-toggle="collapse" href="#widget-12" role="button" aria-expanded="true" aria-controls="widget-12">
-                '.$taxonomy->name.'
+                '.esc_html( $taxonomy->label ).'
                 </a>
             </h3>';
             $sidebar .= '<div class="collapse show" id="widget-12">
@@ -1100,12 +1012,11 @@ function show_sidebar_attribute(){
             $sidebar .= '</div></div></div>';
             $sidebar .= '</div>';
 
-        }elseif( $taxonomy->name  == 'pa_color' ){
-            
+        }elseif( $taxonomy->name  == 'pa_color' ){ 
                 $sidebar .= '<div class="widget widget-collapsible">
                     <h3 class="widget-title">
                         <a data-toggle="collapse" href="#widget-22" role="button" aria-expanded="true" aria-controls="widget-22">
-                            Màu sắc
+                             '.$taxonomy->name.'
                         </a>
                     </h3>';
                 $sidebar .= '<div class="collapse show" id="widget-22">
@@ -1114,17 +1025,16 @@ function show_sidebar_attribute(){
                 $color_list = [];
                 $taxonomy_color = 'pa_color'; 
                 foreach($terms as $colors){
-                    $color = strtolower(vn_to_str($colors->slug)); 
+                    $color = strtolower(vn_to_str($colors->slug));  
                     $checked = isset( $_GET['filter_' . esc_attr( $taxonomy_color )] ) && in_array( $color,   explode(',',($_GET['filter_' . esc_attr( $taxonomy_color )] )  ) ) ? true : false;
                     $color_list[] = color_pattern($color,  $checked);
                 }
-                $colorlist = array_unique($color_list );
-                $sidebar .= join('', $colorlist);
+                $sidebar .= join('', $color_list);
                 $sidebar .= '</div></div></div>'; 
                 $sidebar .= '</div>';
-             
 
         }else{
+            
             if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
                 $all_attributes[ $taxonomy->name ] = $terms;
                 // Hiển thị các thuộc tính và giá trị của chúng
@@ -1132,102 +1042,22 @@ function show_sidebar_attribute(){
                 foreach ( $all_attributes as $taxonomy => $terms ) {
                     // Lấy tên của thuộc tính (ví dụ: 'Size', 'Color')
                     $taxonomy_label = get_taxonomy( $taxonomy )->label;
-
                     echo '<h3>' . esc_html( $taxonomy_label ) . '</h3>';
                     echo '<ul>';
-
                     // Hiển thị từng giá trị (term) của thuộc tính
                     foreach ( $terms as $term ) {
                         echo '<li><a href="' . esc_url( add_query_arg( 'filter_' . $taxonomy, $term->slug ) ) . '">' . esc_html( $term->name ) . '</a></li>';
                     }
-
                     echo '</ul>';
                 }
                 echo '</div>'; 
-
-            }
-        } 
-        echo $sidebar;
-    } 
-}
-
-function show_attribute_sidebar(  ){
-    
-    $sidebar = '';
-    $sizes = [];
-    $colors = [];
-    $attribute_array =  get_all_attributes();
-    // echo "<pre>"; print_r($attribute_array);  echo "</pre>";
-    foreach($attribute_array as $key => $attribute_options ){       
-        if($key =='Kích thước'  || $key == 'size' ){
-            foreach($attribute_options as $attribute_option ){
-                foreach($attribute_option as $option )
-                $sizes[] = $option;
-            }
-        }elseif($key =='color'  || $key == 'Màu sắc'){
-            foreach($attribute_options as $attribute_option ){
-                foreach($attribute_option as $option )
-                $colors[] = $option;
             } 
-        }
+        } 
+        
     }
-
-    //---- array unique
-
-    $attribute_sizes = array_unique($sizes);
-    $attribute_colors = array_unique($colors);
-    
-    $sidebar .= '<div class="widget widget-collapsible">
-                    <h3 class="widget-title">
-                        <a data-toggle="collapse" href="#widget-12" role="button" aria-expanded="true" aria-controls="widget-12">
-                        Kích thước
-                        </a>
-                    </h3>';
-    if($attribute_sizes){
-        $sidebar .= '<div class="collapse show" id="widget-12">
-                        <div class="widget-body">
-                            <div class="filter-items">';
-        $taxonomy_size = 'pa_size';
-        foreach($attribute_sizes as $key => $size){
-
-            $checked = isset( $_GET['filter_' . esc_attr( $taxonomy_size )] ) && in_array( $size,   explode(',',($_GET['filter_' . esc_attr( $taxonomy_size )] )  ) ) ? ' checked' : '';
-
-            $sidebar .= '<div class="filter-item">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input size-filter-checkbox"  data-term="' . $size  . '" id="size-'.$key.'"  ' . $checked . '>
-                                <label class="custom-control-label" for="size-'.$key.'">'.$size.'</label>
-                            </div>
-                        </div>';
-        }
-        $sidebar .= '</div></div></div>';
-    }
-    $sidebar .= '</div>';
-
-    //------ Color Filter
-    $sidebar .= '<div class="widget widget-collapsible">
-                    <h3 class="widget-title">
-                        <a data-toggle="collapse" href="#widget-22" role="button" aria-expanded="true" aria-controls="widget-22">
-                            Màu sắc
-                        </a>
-                    </h3>';
-    if($attribute_colors){
-        $sidebar .= '<div class="collapse show" id="widget-22">
-                        <div class="widget-body">
-                            <div class="filter-colors">';
-        $color_list = [];
-        $taxonomy_color = 'pa_color'; 
-        foreach($attribute_colors as $color){
-            $color = strtolower(vn_to_str($color)); 
-            $checked = isset( $_GET['filter_' . esc_attr( $taxonomy_color )] ) && in_array( $color,   explode(',',($_GET['filter_' . esc_attr( $taxonomy_color )] )  ) ) ? true : false;
-            $color_list[] = color_pattern($color,  $checked);
-        }
-        $colorlist = array_unique($color_list );
-        $sidebar .= join('', $colorlist);
-        $sidebar .= '</div></div></div>';
-    }
-    $sidebar .= '</div>';
-    echo $sidebar;     
+    echo $sidebar;
 }
+ 
 function price_progress_bar() {
     // Get the minimum and maximum prices of products
     global $wpdb;
@@ -1309,6 +1139,7 @@ function filter_by_size( $query ) {
     }
 }
 add_action( 'pre_get_posts', 'filter_by_size' );
+
 
 function woocommerce_template_loop_product_title() {
     global $product;

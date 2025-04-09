@@ -689,6 +689,7 @@ $(document).ready(function () {
             e.preventDefault();
         }
     });
+    
     $('body').on('click', '.carousel-dot', function () {
         $(this).siblings().removeClass('active');
         $(this).addClass('active');
