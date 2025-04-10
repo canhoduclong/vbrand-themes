@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<div class="toolbox-left">
+<div class="col-md-12 col-lg-12">
 	<div class="toolbox-info"> 
 			<?php
 			// phpcs:disable WordPress.Security
