@@ -1,15 +1,13 @@
 <?php
 add_theme_support('woocommerce');
- /**
-  * Định nghĩa menu cho themes
-  */
+
+//Định nghĩa menu cho themes  
 function register_my_menu() {
     register_nav_menu('primary-menu', __('Primary Menu'));
 }
 add_action('after_setup_theme', 'register_my_menu');
- /**
- * design for widget for footer 
- */
+
+// design for widget for footer 
 function vbrand_widget_filter() {
 	register_sidebar(array(
     	'name' => 'filter Widget Area',
@@ -23,24 +21,17 @@ function vbrand_widget_filter() {
 }
 add_action('widgets_init', 'vbrand_widget_filter');
 
-/**
- * Use my custum plugin defind
- */
+//Use my custum plugin defind
 @include_once( ABSPATH.'/wp-content/plugins/shopmaker/shopmaker.php' );  
 
-/**
- * use hook of woocommerce
- */
+//use hook of woocommerce
 add_action( 'filter_price', 'vbrand_filter_price' );
 function vbrand_filter_price() {
-// Your code
+    // Your code
 }
 
 
-/**
- * Menu vBrand Synch
- */
-
+// Menu vBrand Synch
 function vbrand_shop_activate()
 {
     $themeData = vbrand_load_theme_data();
@@ -81,10 +72,8 @@ function custom_variation_price ($price, $variation, $product) {
     }
 }
 
-/**
- * ajax function
- */
-
+// ajax function
+// show product by cat
 add_action( 'wp_ajax_productbycat', 'productbycat_init' );
 add_action( 'wp_ajax_nopriv_productbycat', 'productbycat_init' );
 function productbycat_init() { 
@@ -117,9 +106,8 @@ function productbycat_init() {
     }
     die();  //---- bắt buộc phải có khi kết thúc
 }
-/**
- * sidebar
- */
+
+// sidebar register
 function theme_register_sidebars() {
     register_sidebar(array(
         'name' => __('Main Sidebar', 'theme-text-domain'),
@@ -133,12 +121,8 @@ function theme_register_sidebars() {
 }
 add_action('widgets_init', 'theme_register_sidebars');
 
-/**
- * Breadcrumb
- */ 
-
-// Add the breadcrumbs to your theme by calling this function where you want them to appear 
-
+//Breadcrumb 
+// Add the breadcrumbs to your theme by calling this function where you want them to appear  
 function theme_register_sidebar() {
     register_sidebar(array(
         'name'          => __('Product Archive Sidebar', 'your-theme-textdomain'),
@@ -152,37 +136,31 @@ function theme_register_sidebar() {
 }
 add_action('widgets_init', 'theme_register_sidebar');
  
-/**
- * Show checkbox listing caegory
- */
 
-// Hàm thay đổi câu lệnh query để lọc sản phẩm theo danh mục
-function custom_shop_page_query($query) {
-    //if (is_shop() && $query->is_main_query()) {
-        // Kiểm tra xem có thể lọc theo danh mục hay không
-        if (isset($_GET['productcategories']) && !empty($_GET['productcategories'])) {
-            $category_slugs = explode(',', $_GET['productcategories']);
 
-            // Thêm điều kiện lọc theo danh mục vào câu lệnh query
-            $tax_query = array(
-                array(
-                    'taxonomy' => 'product_cat',
-                    'field'    => 'slug',
-                    'terms'    => $category_slugs,
-                    'operator' => 'IN',
-                ),
-            );
+//  Show checkbox listing caegory 
+function custom_shop_page_query($query) { 
+    // Kiểm tra xem có thể lọc theo danh mục hay không
+    if (isset($_GET['productcategories']) && !empty($_GET['productcategories'])) {
+        $category_slugs = explode(',', $_GET['productcategories']);
 
-            $query->set('tax_query', $tax_query);
-        }
-        return $query;
-   // }
+        // Thêm điều kiện lọc theo danh mục vào câu lệnh query
+        $tax_query = array(
+            array(
+                'taxonomy' => 'product_cat',
+                'field'    => 'slug',
+                'terms'    => $category_slugs,
+                'operator' => 'IN',
+            ),
+        );
+
+        $query->set('tax_query', $tax_query);
+    }
+    return $query; 
 }
 
 // Hook để thực hiện thay đổi câu lệnh query trước khi thực hiện truy vấn
-add_action('pre_get_posts', 'custom_shop_page_query');
-
-
+add_action('pre_get_posts', 'custom_shop_page_query'); 
 
 
 function display_product_categories_checkbox() {
@@ -1109,28 +1087,7 @@ function price_progress_bar() {
                     </div>
                 </div>
             </div>
-        </div>';
-        /*
-        echo '<div class="widget widget-collapsible">
-                <h3 class="widget-title">
-                    <a data-toggle="collapse" href="#widget-5" role="button" aria-expanded="true" aria-controls="widget-5">
-                        Price
-                    </a>
-                </h3>';
-            echo '<div class="price-progress-bar">';
-            echo '<h2>Price Range</h2>';
-            echo '<div class="progress-bar-wrapper">';
-            echo '<span class="min-price">Min: ' . wc_price($min_price) . '</span>';
-            echo '<span class="max-price">Max: ' . wc_price($max_price) . '</span>';
-            echo '<div class="progress-bar">';
-            echo '<div class="progress" style="width:' . esc_attr($current_progress) . '%;"></div>';
-            echo '</div>';
-            echo '<span class="current-range">Current: ' . wc_price($current_min) . ' - ' . wc_price($current_max) . '</span>';
-            echo '</div>';
-            echo '</div>';
-
-        echo '</div>';
-        */
+        </div>'; 
     }
 }
 

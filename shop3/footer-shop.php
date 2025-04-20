@@ -250,7 +250,7 @@
 <script src="<?=get_template_directory_uri()?>/assets/js/jquery.magnific-popup.min.js"></script>
 <!-- Main JS File -->
 <script src="<?=get_template_directory_uri()?>/assets/js/main.js"></script>
-
+<script src="<?=get_template_directory_uri()?>/assets/js/variation.js"></script>
  
 
  
