@@ -8643,6 +8643,53 @@ small.form-text {
   border-color: #333;
   background-color: #333;
 }
+
+.custom-checkbox .custom-control-input.rd-color  ~ .custom-control-label::before { 
+  border-radius: 1.2rem !important;
+}
+.custom-checkbox .custom-control-input.rd-color:checked ~ .custom-control-label::before{
+  border-radius: 1.2rem !important; 
+  color: #fff; 
+}
+
+.custom-checkbox .custom-control-input ~ .custom-control-label::before { 
+  border-color: #ebebeb;
+  background-color: #ebebeb;
+}
+.custom-checkbox .custom-control-input ~ .custom-control-label.green::before { 
+  border-color: #669933;
+  background-color: #669933;
+}
+.custom-checkbox .custom-control-input ~ .custom-control-label.vang::before { 
+  border-color: #f0c04a;
+  background-color: #f0c04a;
+}
+.custom-checkbox .custom-control-input ~ .custom-control-label.do::before { 
+  border-color: #cc3333;
+  background-color: #cc3333;
+}
+.custom-checkbox .custom-control-input ~ .custom-control-label.red::before { 
+  border-color: #cc3333;
+  background-color: #cc3333;
+}
+.custom-checkbox .custom-control-input ~ .custom-control-label.blue::before { 
+  border-color: #3399cc;
+  background-color: #3399cc;
+}
+.custom-checkbox .custom-control-input ~ .custom-control-label.den::before { 
+  border-color: #333333;
+  background-color: #333333;
+}
+.custom-checkbox .custom-control-input ~ .custom-control-label.nau::before { 
+  border-color: #b87145;
+  background-color: #b87145;
+}
+.custom-checkbox .custom-control-input ~ .custom-control-label.hong::before { 
+  border-color: #f2719c;
+  background-color: #f2719c;
+}
+
+
 .custom-checkbox
   .custom-control-input:indeterminate
   ~ .custom-control-label::before {

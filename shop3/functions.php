@@ -891,9 +891,10 @@ function _product_categories( ) {
         // Loop through each category
         foreach ( $product_categories as $category ) {
                     $checked = in_array($category->term_id, $selecteds ) ? ' checked' :'';
+                    
                     echo '<div class="filter-item">';
                     echo '<div class="custom-control custom-checkbox">';
-                                echo '<input type="checkbox" class="custom-control-input clcate  ' . $checked . '" data-cate="' . esc_attr($category->term_id) . '"  value="' . esc_attr($category->term_id) . '" id="' . esc_attr($category->slug) . '" ' . $checked . '>';
+                                echo '<input type="checkbox" class="custom-control-input clcate " data-cate="' . esc_attr($category->term_id) . '"  value="' . esc_attr($category->term_id) . '" id="' . esc_attr($category->slug) . '" ' . $checked . '>';
                                 echo '<label class="custom-control-label" for="'.$category->slug.'">' . esc_html( $category->name ).'</label>';
                             echo '</div> ';
                            echo ' <span class="item-count">'.$category->count.'</span>';
@@ -948,7 +949,25 @@ function color_pattern($color ='', $selected = false){
     }
     return '<a data-color="xam" href="javascript:;" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #ebebeb;"><span class="sr-only">Color Name</span></a>';
 }
- 
+function get_color_name($color =''){
+    $color = trim($color);
+    $colors = [
+        'vang'   => ["cam", "vàng", "vang" ,"yellow" ],
+        'do'     => ["Đỏ", "Đỏ bi", "đỏ", "do" ,'red' ],
+        'green'   => ["green", "Xanh lá", "xanh la", "xanh lá", 'Green'],
+        'blue'    => ["xanh", 'Xanh', "blue", "xanh da troi", "Xanh da trời", "Xanh Lam"],
+        'den'     => ["Đen", "DEN", "den", "black"],
+        'hong'    => ["hồng", "Hồng", "Pink", "pink"],
+        'nau'     => ["Nâu Đen", "Nâu", "nau", "nâu"]
+    ];
+   
+    foreach ( $colors as $key=>$color_type ) {
+        if(in_array($color, $color_type )){
+            return $key;
+        }
+    }
+}
+
 function show_sidebar_attribute(){
     $sidebar = '';
     $sizes = [];
@@ -990,11 +1009,11 @@ function show_sidebar_attribute(){
                 $checked = isset( $_GET['filter_' . esc_attr( $taxonomy_size )] ) && in_array( $size->slug,   explode(',',($_GET['filter_' . esc_attr( $taxonomy_size )] )  ) ) ? ' checked' : '';
 
                 $sidebar .= '<div class="filter-item">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input size-filter-checkbox"  data-term="' . $size->slug. '" id="size-'.$key.'"  ' . $checked . '>
-                                <label class="custom-control-label" for="size-'.$key.'">'.$size->slug.'</label>
-                            </div>
-                        </div>';
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input size-filter-checkbox"  data-term="' . $size->slug. '" id="size-'.$key.'"  ' . $checked . '>
+                                    <label class="custom-control-label" for="size-'.$key.'">'.$size->slug.'</label>
+                                </div>
+                            </div>';
             }
            
             $sidebar .= '</div></div></div>';
@@ -1012,12 +1031,19 @@ function show_sidebar_attribute(){
                                     <div class="filter-colors">';
                 $color_list = [];
                 $taxonomy_color = 'pa_color'; 
-                foreach($terms as $colors){
+                foreach($terms as $key => $colors){
                     $color = strtolower(vn_to_str($colors->slug));  
                     //$checked = isset( $_GET['filter_' . esc_attr( $taxonomy_color )] ) && in_array( $color,   explode(',',($_GET['filter_' . esc_attr( $taxonomy_color )] )  ) ) ? true : false;
-                    $checked = isset( $_GET['filter_pa_color'] ) && in_array( $color,   explode(',',($_GET['filter_pa_color'] )  ) ) ? true : false;
-                    $color_list[] = color_pattern($color,  $checked);
+                    $checked = isset( $_GET['filter_pa_color'] ) && in_array( $color,   explode(',',($_GET['filter_pa_color'] )  ) ) ?  ' checked' : '';
+                    //$color_list[] = color_pattern($color,  $checked); // use color patterm
+                    $color_list[] = '<div class="filter-item">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input color-filter-checkbox rd-color "  data-color="' . $color. '" id="color-'.$key.'"  ' . $checked . '>
+                                            <label class="custom-control-label rd-color '.get_color_name($color).'" for="color-'.$key.'">&nbsp;</label>
+                                        </div>
+                                    </div>';
                 }
+
                 $sidebar .= join('', $color_list);
                 $sidebar .= '</div></div></div>'; 
                 $sidebar .= '</div>';
@@ -1112,60 +1138,54 @@ function price_progress_bar() {
 /**
  * ------------- products details
  */
+function filter_products_by_attributes( $query ) {
+    if ( ! is_admin() && $query->is_main_query() && is_shop() ) {
 
-function filter_by_size( $query ) {
-    if( ! is_admin() && is_shop() && isset($_GET['filter_pa_size']) ) {
-        $size = sanitize_text_field( $_GET['filter_pa_size'] );
-        
-        // Modify the query to filter by attribute
-        $query->set( 'tax_query', array(
-            array(
+        $tax_query = array();
+
+        if ( isset( $_GET['filter_pa_size'] ) ) {
+            $sizes = array_map( 'sanitize_text_field', explode( ',', $_GET['filter_pa_size'] ) );
+            $tax_query[] = array(
                 'taxonomy' => 'pa_size',
                 'field'    => 'slug',
-                'terms'    => $size,
-            ),
-        ));
-    }
-}
-add_action( 'pre_get_posts', 'filter_by_size' );
+                'terms'    => $sizes,
+                'operator' => 'IN',
+            );
+        }
 
-function filter_by_color( $query ) {
-    if( ! is_admin() && is_shop() && isset($_GET['filter_pa_color']) ) {
-        $color = sanitize_text_field( $_GET['filter_pa_color'] );
-        
-        // Modify the query to filter by attribute
-        $query->set( 'tax_query', array(
-            array(
+        if ( isset( $_GET['filter_pa_color'] ) ) {
+            $colors = array_map( 'sanitize_text_field', explode( ',', $_GET['filter_pa_color'] ) );
+            $tax_query[] = array(
                 'taxonomy' => 'pa_color',
                 'field'    => 'slug',
-                'terms'    => $color,
-            ),
-        ));
-    }
-}
-add_action( 'pre_get_posts', 'filter_by_cate' );
+                'terms'    => $colors,
+                'operator' => 'IN',
+            );
+        }
 
-function filter_by_cate( $query ) {
-    if( ! is_admin() && is_shop() && isset($_GET['filter_by_cate']) ) {
-        if (isset($_GET['filter_by_cate'])) {
+        if (isset($_GET['filter_pa_cate'])) {
             // Get the raw value from URL and convert it to an array of integers
-            $cate_ids = array_map('intval', explode(',', $_GET['filter_by_cate']));
+            $cate_ids = array_map('intval', explode(',', $_GET['filter_pa_cate']));
             
             if (!empty($cate_ids)) {
                 // Filter by product category term IDs (taxonomy: 'product_cat')
-                $query->set('tax_query', array(
-                    array(
-                        'taxonomy' => 'product_cat',
-                        'field'    => 'term_id',
-                        'terms'    => $cate_ids,
-                        'operator' => 'IN',
-                    ),
-                ));
+                $tax_query[] =  array(
+                    'taxonomy' => 'product_cat',
+                    'field'    => 'term_id',
+                    'terms'    => $cate_ids,
+                    'operator' => 'IN',
+                ); 
             }
+        }
+        //echo "<pre>";  print_r( $tax_query);        echo "</pre>";
+        if ( ! empty( $tax_query ) ) {
+            $query->set( 'tax_query', $tax_query );
         }
     }
 }
-add_action( 'pre_get_posts', 'filter_by_cate' );
+add_action( 'pre_get_posts', 'filter_products_by_attributes' );
+ 
+  
 
 
 
@@ -1507,7 +1527,7 @@ function get_product_variants() {
 
 function debug_woocommerce_shop_query($query) {
     if (is_shop() && $query->is_main_query()) {
-       // echo '<pre>';  print_r($query); echo '</pre>';
+        // echo '<pre>';  print_r($query); echo '</pre>';
     }
 }
 add_action('pre_get_posts', 'debug_woocommerce_shop_query');
