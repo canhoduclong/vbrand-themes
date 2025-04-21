@@ -21,12 +21,12 @@ $(document).ready(function () {
 
     //-----
     get_variantions();
-    console.log('thanh cong');
+    
     function get_variantions(){
         var url_get_variations = 'get_product_variations';
         // Perform AJAX request
         let productId = $('#product_id').val();
-        let pid = document.getElementById('product_id').value;
+        //let pid = document.getElementById('product_id').value;
          
         $.ajax({
             url: url_get_variations,
