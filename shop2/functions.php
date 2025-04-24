@@ -1,15 +1,13 @@
 <?php
 add_theme_support('woocommerce');
- /**
-  * Định nghĩa menu cho themes
-  */
+
+//Định nghĩa menu cho themes  
 function register_my_menu() {
     register_nav_menu('primary-menu', __('Primary Menu'));
 }
 add_action('after_setup_theme', 'register_my_menu');
- /**
- * design for widget for footer 
- */
+
+// design for widget for footer 
 function vbrand_widget_filter() {
 	register_sidebar(array(
     	'name' => 'filter Widget Area',
@@ -23,24 +21,17 @@ function vbrand_widget_filter() {
 }
 add_action('widgets_init', 'vbrand_widget_filter');
 
-/**
- * Use my custum plugin defind
- */
+//Use my custum plugin defind
 @include_once( ABSPATH.'/wp-content/plugins/shopmaker/shopmaker.php' );  
 
-/**
- * use hook of woocommerce
- */
+//use hook of woocommerce
 add_action( 'filter_price', 'vbrand_filter_price' );
 function vbrand_filter_price() {
-// Your code
+    // Your code
 }
 
 
-/**
- * Menu vBrand Synch
- */
-
+// Menu vBrand Synch
 function vbrand_shop_activate()
 {
     $themeData = vbrand_load_theme_data();
@@ -81,10 +72,8 @@ function custom_variation_price ($price, $variation, $product) {
     }
 }
 
-/**
- * ajax function
- */
-
+// ajax function
+// show product by cat
 add_action( 'wp_ajax_productbycat', 'productbycat_init' );
 add_action( 'wp_ajax_nopriv_productbycat', 'productbycat_init' );
 function productbycat_init() { 
@@ -118,10 +107,7 @@ function productbycat_init() {
     die();  //---- bắt buộc phải có khi kết thúc
 }
 
-
-/**
- * sidebar
- */
+// sidebar register
 function theme_register_sidebars() {
     register_sidebar(array(
         'name' => __('Main Sidebar', 'theme-text-domain'),
@@ -135,12 +121,8 @@ function theme_register_sidebars() {
 }
 add_action('widgets_init', 'theme_register_sidebars');
 
-/**
- * Breadcrumb
- */ 
-
-// Add the breadcrumbs to your theme by calling this function where you want them to appear 
-
+//Breadcrumb 
+// Add the breadcrumbs to your theme by calling this function where you want them to appear  
 function theme_register_sidebar() {
     register_sidebar(array(
         'name'          => __('Product Archive Sidebar', 'your-theme-textdomain'),
@@ -153,41 +135,32 @@ function theme_register_sidebar() {
     ));
 }
 add_action('widgets_init', 'theme_register_sidebar');
-
-
  
 
-/**
- * Show checkbox listing caegory
- */
 
-// Hàm thay đổi câu lệnh query để lọc sản phẩm theo danh mục
-function custom_shop_page_query($query) {
-    //if (is_shop() && $query->is_main_query()) {
-        // Kiểm tra xem có thể lọc theo danh mục hay không
-        if (isset($_GET['productcategories']) && !empty($_GET['productcategories'])) {
-            $category_slugs = explode(',', $_GET['productcategories']);
+//  Show checkbox listing caegory 
+function custom_shop_page_query($query) { 
+    // Kiểm tra xem có thể lọc theo danh mục hay không
+    if (isset($_GET['productcategories']) && !empty($_GET['productcategories'])) {
+        $category_slugs = explode(',', $_GET['productcategories']);
 
-            // Thêm điều kiện lọc theo danh mục vào câu lệnh query
-            $tax_query = array(
-                array(
-                    'taxonomy' => 'product_cat',
-                    'field'    => 'slug',
-                    'terms'    => $category_slugs,
-                    'operator' => 'IN',
-                ),
-            );
+        // Thêm điều kiện lọc theo danh mục vào câu lệnh query
+        $tax_query = array(
+            array(
+                'taxonomy' => 'product_cat',
+                'field'    => 'slug',
+                'terms'    => $category_slugs,
+                'operator' => 'IN',
+            ),
+        );
 
-            $query->set('tax_query', $tax_query);
-        }
-        return $query;
-   // }
+        $query->set('tax_query', $tax_query);
+    }
+    return $query; 
 }
 
 // Hook để thực hiện thay đổi câu lệnh query trước khi thực hiện truy vấn
-add_action('pre_get_posts', 'custom_shop_page_query');
-
-
+add_action('pre_get_posts', 'custom_shop_page_query'); 
 
 
 function display_product_categories_checkbox() {
@@ -227,47 +200,6 @@ function display_product_categories_checkbox() {
 
 
 
-function _product_categories() {
-    // Get product categories
-    $product_categories = get_terms( 'product_cat', array(
-        'orderby'    => 'name',
-        'order'      => 'ASC',
-        'hide_empty' => true,
-    ) );
-
-    // Check if categories are found
-    if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ) {
-
-        echo '<div class="widget widget-collapsible">';
-        echo '<h3 class="widget-title">';
-        echo '<a data-toggle="collapse" href="#widget-1" role="button" aria-expanded="true" aria-controls="widget-1">Sản phẩm</a>';
-        echo '</h3>';
-        echo '
-            <div class="collapse show" id="widget-1">
-                <div class="widget-body">
-                    <div class="filter-items filter-items-count">'; 
-
-        // Loop through each category
-        foreach ( $product_categories as $category ) {
-                     echo '<div class="filter-item">';
-                    echo '<div class="custom-control custom-checkbox">';
-                                echo '<input type="checkbox" class="custom-control-input"  value="' . esc_attr($category->slug) . '" id="' . esc_attr($category->slug) . '">';
-                                echo '<label class="custom-control-label" for="'.$category->slug.'">' . esc_html( $category->name ) . '</label>';
-                            echo '</div> ';
-                           echo ' <span class="item-count">'.$category->count.'</span>';
-                        echo '</div> '; 
-        }
-
-        echo '
-                    </div><!-- End .filter-items -->
-                </div><!-- End .widget-body -->
-            </div><!-- End .collapse -->
-        </div>';
-    }
-}
-
-
-
 // Shortcode for displaying product category filter
 function product_category_filter_shortcode() {
     return display_product_categories_checkbox();
@@ -292,7 +224,7 @@ function filter_products_by_category($query) {
 
         $query->set('tax_query', $tax_query);
     }
-    //return $query;
+    return $query;
 }
 
 // Hook to filter products based on selected categories
@@ -368,7 +300,8 @@ add_action( 'after_setup_theme', function() {
     add_action( 'woocommerce_after_shop_loop', 'woocommerce_result_count', 9 );
     add_action( 'woocommerce_after_shop_loop', 'woocommerce_pagination', 10 );
     //add_action( 'pre_get_posts', 'custom_woocommerce_product_query' );
-    add_action( 'woocommerce_sidebar', 'show_attribute_sidebar', 10 ); 
+   // add_action( 'woocommerce_sidebar', 'show_attribute_sidebar', 10 ); 
+    add_action( 'woocommerce_sidebar', 'show_sidebar_attribute', 10 ); 
     
 });
  
@@ -381,7 +314,7 @@ add_action( 'after_setup_theme', function() {
  * Search area
  */
 function search_by_attributes( $query ) {    
-    if ((is_shop() || is_product_category() || is_product_tag()) && !is_admin() && $query->is_main_query() | is_archive() ) {
+    if ((is_shop() || is_product_category() || is_product_tag()) && !is_admin() && $query->is_main_query()) {
         // Cancel if search term is empty   
         
         if(isset($_GET['filter_pa_size']) && !empty($_GET['filter_pa_size'])){    
@@ -409,17 +342,10 @@ function search_by_attributes( $query ) {
         return $query;
     }
 }
-
-//add_filter('pre_get_posts','search_by_attributes');
+add_filter('pre_get_posts','search_by_attributes');
 
  
 
-function debug_woocommerce_shop_query($query) {
-    if (is_shop() && $query->is_main_query()) {
-       // echo '<pre>';  print_r($query); echo '</pre>';
-    }
-}
-add_action('pre_get_posts', 'debug_woocommerce_shop_query');
 
 
 
@@ -452,7 +378,6 @@ function add_product_to_cart() {
         wp_send_json_error();
     }
 }
-
 add_action('wp_ajax_add_to_cart', 'add_product_to_cart');
 add_action('wp_ajax_nopriv_add_to_cart', 'add_product_to_cart');
 
@@ -486,9 +411,9 @@ function remove_from_cart() {
         wp_send_json_error();
     }
 }
-
 add_action('wp_ajax_remove_from_cart', 'remove_from_cart');
 add_action('wp_ajax_nopriv_remove_from_cart', 'remove_from_cart');
+
 //------ get short cart 
 function get_cart_data() {
     $cart_contents = WC()->cart->get_cart();
@@ -523,14 +448,12 @@ function get_cart_data() {
 add_action('wp_ajax_get_cart_data', 'get_cart_data');
 add_action('wp_ajax_nopriv_get_cart_data', 'get_cart_data');
 
+ 
+function initial(){ 
 
-
-
-
-function initial(){
-    
     //-- listings for shop and category pages
     if(is_shop() || is_product_category() || is_product_tag() ) { 
+        
         add_action( 'wp_enqueue_scripts', 'custom_enqueue_scripts' ); 
         /**
          *  archive-product.php
@@ -546,22 +469,19 @@ function initial(){
         
         add_action( 'woocommerce_custom_end_content_wrapper', 'woocommerce_add_end_product_tag' ); 
         
-
         //------- for sidebar
-        add_action( 'woocommerce_sidebar', 'woocommerce_before_sidebar', 0 );
-        //add_action( 'woocommerce_sidebar', 'display_product_categories_checkbox', 30 );
-        //add_action( 'woocommerce_sidebar', '_product_categories', 40 );
+        add_action( 'woocommerce_sidebar', 'woocommerce_before_sidebar', 0 );        
+        add_action( 'woocommerce_sidebar', '_product_categories', 40 );
         add_action( 'woocommerce_sidebar', 'woocommerce_after_sidebar', 60 );
 
+        //add_action( 'woocommerce_sidebar', 'display_product_categories_checkbox', 30 );
         //add_action('woocommerce_sidebar', 'price_progress_bar', 50);
-
 
         add_action ( 'woocommerce_before_shop_loop' ,  'before_shop_toolbox', 10 ); // open tag
         add_action ( 'woocommerce_before_shop_loop' ,  'after_shop_toolbox', 40 ); // close tag
         
         add_action ( 'woocommerce_before_shop_loop' ,  'before_shop_loop', 50);
         add_action ( 'woocommerce_after_shop_loop' ,  'after_shop_loop');
-
         
         if(isset($_GET['view'])){
             if( $_GET['view'] !='list'){ 
@@ -581,9 +501,9 @@ function initial(){
         remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 );
         remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10 );
         
-        
-        add_action ( 'woocommerce_before_shop_loop_item' ,  'before_shop_loop_item');   //----> Defind List or Grid Products
-        
+        add_action ( 'woocommerce_before_shop_loop_item' ,  'before_shop_loop_item');
+
+        //----> Defind List or Grid Products
         if(isset($_GET['view'])){
             if( $_GET['view'] =='list'){ 
                 list_items();
@@ -597,13 +517,10 @@ function initial(){
         add_action ( 'woocommerce_after_shop_loop_item' ,  'after_shop_loop_item' ); 
         
         //--- end content-product.php
-
         add_action ( 'woocommerce_output_content_wrapper_end' ,  '_output_content_wrapper_end', 50 );
-
-       
+        add_action( 'woocommerce_after_shop_loop_item', 'remove_add_to_cart_buttons', 1 );
        
     }
-    
     //-- listings for homepage product
     if(is_front_page()){
         add_action( 'wp_enqueue_scripts', 'custom_enqueue_scripts' );  
@@ -623,37 +540,182 @@ function initial(){
         add_action ( 'woocommerce_after_shop_loop_item' ,  'after_shop_loop_item' );
         
         //--- end content-product.php 
-        
+        add_action( 'woocommerce_after_shop_loop_item', 'remove_add_to_cart_buttons', 1 );
          
 
     }
-
     if(is_product()){
         add_action( 'wp_enqueue_scripts', 'custom_enqueue_scripts' ); 
 
         //--- remove default function
         remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
-        
-        /*      
-            remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
-            remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 ); 
-        */
+        remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
+        remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 ); 
+
         //----- Build Infomation
         add_action( 'woocommerce_custom_breadcrumb', 'woocommerce_breadcrumb', 10 );
        
         add_action( 'woocommerce_before_main_content', 'woocommerce_before_product_details_tag');       
         //  add_action( 'woocommerce_before_main_content', 'woocommerce_add_row_tag', 30 ); 
-        add_action( 'woocommerce_related_product', 'woocommerce_before_product_details_tag' );       
+        add_action( 'woocommerce_related_product', 'woocommerce_before_product_details_tag' );
        
         add_action( 'woocommerce_upsale_product', 'woocommerce_upsell_display', 15 );
         add_action( 'woocommerce_related_product', 'woocommerce_output_related_products' ); 
+
+        // display for variation
+        
+        $product = wc_get_product( get_the_ID() ); 
+        
+        
+        //echo "<pre>"; print_r( $product);  echo "</pre>";
+        //echo "<pre>"; print_r( $upsells);  echo "</pre>";  
+        /*
+        product:
+             [category_ids] => Array
+                (
+                    [0] => 17
+                    [1] => 46
+                )
+
+            [tag_ids] => Array
+                (
+                    [0] => 18
+                    [1] => 21
+                )
+        */
+        
+        if ($product) {
+            
+           remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
+           remove_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_thumbnails', 20);
+           remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
+           remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10); 
+           add_action( 'woocommerce_single_product_summary', '_product_category', 7 ); 
+           add_action( 'woocommerce_single_product_summary', '_product_price', 8);
+            //add_action( 'woocommerce_single_product_summary', 'custom_quantity_input_position', 9 );
+            add_action( 'woocommerce_before_single_product_summary', '_product_gellary', 20);
+            add_action( 'woocommerce_product_thumbnails', '_product_thumbnails', 20);
+            
+            if( $product->is_type('variable')){
+
+                // Loại bỏ dropdown chọn biến thể
+                //    remove_action('woocommerce_single_product_summary', 'woocommerce_single_variation', 20);
+                //    remove_action('woocommerce_single_product_summary', 'woocommerce_single_variation_add_to_cart_button', 30);
+                
+                // Loại bỏ nút "Add to Cart" mặc định
+                //    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
+
+                // move excerpt
+                //    remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 ); 
+
+                // add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 35 ); 
+
+            }
+
+            if($product->is_type('simple')) {
+                
+                // Remove "Add to Cart" button on single product page
+                remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
+
+                remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 ); 
+                
+                add_filter( 'woocommerce_get_price_html', 'custom_price_label', 10, 2 );
+                add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 35 );
+                add_action( 'woocommerce_single_product_summary', 'show_data_excerpt_content', 36 );
+
+            }
+
+        }
         
     }
 
 }
 add_action( 'wp', 'initial');
 
+function _product_category(){
+    global $product ; 
+    echo wc_get_product_category_list( $product->get_id(), ', ', '<div class="product-cat"><span class="posted_in">' . _n( 'Category:', 'Categories:', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span></div>' );
+}
+function _product_tags(){
+    global $product ; 
+    echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</span>' );
+}
+function _product_skus(){
+    global $product ; 
+    if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) {
+        echo '<span class="sku_wrapper">'.esc_html_e( 'SKU:', 'woocommerce' ).' <span class="sku">'.( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' ).'</span></span>';
+    }
+}
+function _product_price(){
+    global $product ;
+    if($product->is_type('simple')) {
+        echo '<div class="product-price  price my-4">'.$product->get_price_html().'</div>'; 
+    }else{
+        echo '<div class="product-price  price my-4">Giá: '.$product->get_price_html().'</div>'; 
+    }
+} 
 
+function custom_quantity_input_position() { 
+    woocommerce_quantity_input();
+}
+
+function _product_gellary(){
+    get_template_part('inic/product', 'image');
+}
+
+function _product_thumbnails() {
+	get_template_part( 'inic/product','thumbnails' );
+}
+
+function my_custom_img_function($attachment_id, $main_image = false){
+    $flexslider        = (bool) apply_filters('woocommerce_single_product_flexslider_enabled', get_theme_support('wc-product-gallery-slider'));
+    $gallery_thumbnail = wc_get_image_size('gallery_thumbnail');
+    $thumbnail_size    = apply_filters('woocommerce_gallery_thumbnail_size', array($gallery_thumbnail['width'], $gallery_thumbnail['height']));
+    $image_size        = apply_filters('woocommerce_gallery_image_size', $flexslider || $main_image ? 'woocommerce_single' : $thumbnail_size);
+    $full_size         = apply_filters('woocommerce_gallery_full_size', apply_filters('woocommerce_product_thumbnails_large_size', 'full'));
+    $thumbnail_src     = wp_get_attachment_image_src($attachment_id, $thumbnail_size);
+    $full_src          = wp_get_attachment_image_src($attachment_id, $full_size);
+    $alt_text          = trim(wp_strip_all_tags(get_post_meta($attachment_id, '_wp_attachment_image_alt', true)));
+    $image             = wp_get_attachment_image(
+        $attachment_id,
+        $image_size,
+        false,
+        apply_filters(
+            'woocommerce_gallery_image_html_attachment_image_params',
+            array(
+                'title'                   => _wp_specialchars(get_post_field('post_title', $attachment_id), ENT_QUOTES, 'UTF-8', true),
+                'data-caption'            => _wp_specialchars(get_post_field('post_excerpt', $attachment_id), ENT_QUOTES, 'UTF-8', true),
+                'data-src'                => esc_url($full_src[0]),
+                'data-large_image'        => esc_url($full_src[0]),
+                'data-large_image_width'  => esc_attr($full_src[1]),
+                'data-large_image_height' => esc_attr($full_src[2]),
+                'class'                   => esc_attr($main_image ? 'wp-post-image' : ''),
+            ),
+            $attachment_id,
+            $image_size,
+            $main_image
+        )
+    );
+    
+    return '<a class="product-gallery-item" href="#" 
+			data-image="' . esc_url( $full_src[0] ) . '" 
+			data-zoom-image="' . esc_url( $full_src[0] ) . '">
+				' . $image . '
+			</a> ';
+}
+
+function show_data_excerpt_content() {
+    // Capture the original excerpt output
+    ob_start();
+    woocommerce_template_single_excerpt();
+    $original_excerpt = ob_get_clean();
+
+    // Modify the excerpt content (example: add extra text)
+    $updated_excerpt = $original_excerpt . '<p class="custom-message">This is an additional message appended to the excerpt.</p>';
+
+    // Output the updated content
+    echo $updated_excerpt;
+}
 
 //------- List view products
 function list_items(){
@@ -715,7 +777,10 @@ function grid_items(){
     
     //--- end content-product.php 
 }
- 
+
+
+
+
 //------- Element layout
 function list_items_thunails(){
     echo '<div class="col-6 col-lg-3">';
@@ -763,12 +828,65 @@ function vn_to_str ($str){
     }
     $str = str_replace(' ','_',$str);     
     return $str;
-} 
- 
+}
+
+//----- remove add to card button
+function remove_add_to_cart_buttons() { 
+    remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart' ); 
+}
+
+
+
 /**
  * ------------- List product
  * ------------- SideBar
  */
+function _product_categories( ) {
+    // Get product categories
+    $selecteds = [0] ;
+    if (isset($_GET['filter_pa_cate'])) {
+        // Get the raw value from URL and convert it to an array of integers
+        $selecteds = array_map('intval', explode(',', $_GET['filter_pa_cate']));
+    } 
+    $product_categories = get_terms( 'product_cat', array(
+        'orderby'    => 'name',
+        'order'      => 'ASC',
+        'hide_empty' => true,
+    ) );
+
+    // Check if categories are found
+    if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ) {
+
+        echo '<div class="widget widget-collapsible">';
+        echo '<h3 class="widget-title">';
+        echo '<a data-toggle="collapse" href="#widget-1" role="button" aria-expanded="true" aria-controls="widget-1">Chuyên mục sản phẩm</a>';
+        echo '</h3>';
+        echo '
+            <div class="collapse show" id="widget-1">
+                <div class="widget-body">
+                    <div class="filter-items filter-items-count">'; 
+
+        // Loop through each category
+        foreach ( $product_categories as $category ) {
+                    $checked = in_array($category->term_id, $selecteds ) ? ' checked' :'';
+                    
+                    echo '<div class="filter-item">';
+                    echo '<div class="custom-control custom-checkbox">';
+                                echo '<input type="checkbox" class="custom-control-input clcate " data-cate="' . esc_attr($category->term_id) . '"  value="' . esc_attr($category->term_id) . '" id="' . esc_attr($category->slug) . '" ' . $checked . '>';
+                                echo '<label class="custom-control-label" for="'.$category->slug.'">' . esc_html( $category->name ).'</label>';
+                            echo '</div> ';
+                           echo ' <span class="item-count">'.$category->count.'</span>';
+                        echo '</div> '; 
+        }
+
+        echo '
+                    </div>
+                </div>
+            </div>
+        </div>';
+    }
+}
+
 function color_pattern($color ='', $selected = false){
     
     $taxonomy = 'pa_color'; 
@@ -787,136 +905,152 @@ function color_pattern($color ='', $selected = false){
     $nau    = array("Nâu Đen", "Nâu", "nau", "nâu");
 
     if( in_array($color, $vang ) ){ 
-        return '<a href="'.$link.'" data-color="vang" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #f0c04a;"><span class="sr-only">Color Name</span></a>';
+        return '<a  data-color="vang" href="javascript:;" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #f0c04a;"><span class="sr-only">Color Name</span></a>';
     }
     if( in_array($color, $do ) ){
-        return '<a href="'.$link.'" data-color="do" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #cc3333;"><span class="sr-only">Color Name</span></a>';
+        return '<a data-color="do" href="javascript:;"  class="clcolor '. ($selected ? ' selected' :'').'" style="background: #cc3333;"><span class="sr-only">Color Name</span></a>';
     }
     if( in_array($color, $green ) ){
-        return '<a href="'.$link.' data-color="green" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #669933;"><span class="sr-only">Color Name</span></a>';
+        return '<a data-color="green" href="javascript:;" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #669933;"><span class="sr-only">Color Name</span></a>';
     }
     if( in_array($color, $blue ) ){
-        return '<a href="javascript:;" data-color="blue" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #3399cc;"><span class="sr-only">Color Name</span></a>';
+        return '<a data-color="blue" href="javascript:;" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #3399cc;"><span class="sr-only">Color Name</span></a>';
     }
     if( in_array($color, $den ) ){
-        return '<a href="javascript:;" data-color="den" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #333333;"><span class="sr-only">Color Name</span></a>';
+        return '<a data-color="den" href="javascript:;" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #333333;"><span class="sr-only">Color Name</span></a>';
     }
     if( in_array($color, $hong ) ){
-        return '<a href="javascript:;" data-color="hong" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #f2719c;"><span class="sr-only">Color Name</span></a>';
+        return '<a data-color="hong" href="javascript:;"  class="clcolor '. ($selected ? ' selected' :'').'" style="background: #f2719c;"><span class="sr-only">Color Name</span></a>';
     }
     if( in_array($color, $nau ) ){
-        return '<a href="javascript:;" data-color="nau" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #b87145;"><span class="sr-only">Color Name</span></a>';
-    } 
-
-    return '<a href="javascript:;" data-color="xam" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #ebebeb;"><span class="sr-only">Color Name</span></a>';
+        return '<a data-color="nau"  href="javascript:;" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #b87145;"><span class="sr-only">Color Name</span></a>';
+    }
+    return '<a data-color="xam" href="javascript:;" class="clcolor '. ($selected ? ' selected' :'').'" style="background: #ebebeb;"><span class="sr-only">Color Name</span></a>';
 }
-function get_all_attributes(){  
-    if ( class_exists( 'WooCommerce' ) ) {   
-        $args = array(
-            'post_type' => 'product',
-            'posts_per_page' => -1, // Get all products
-            'post_status' => 'publish',
-        );
-        $products = get_posts( $args );
-        $all_attributes = [];
-        // Loop through each product
-        foreach ( $products as $product_post ) {
-            $_pf = new WC_Product_Factory();
-            $product = $_pf->get_product( $product_post->ID );
-            //$product = wc_get_product( $product_post->ID );
-            $product_id = $product->get_id();
-            $product_name = $product->get_name();
-            $product_attributes = $product->get_attributes();
-            if ( ! empty( $product_attributes ) ) {
-                foreach ( $product_attributes as $attribute ) {
-                    $attributes_name = wc_attribute_label( $attribute->get_name() );
-                    $attributes_options = $attribute->get_options();
-                    $all_attributes[$attributes_name][]= $attributes_options;
-                }
-            }
+function get_color_name($color =''){
+    $color = trim($color);
+    $colors = [
+        'vang'   => ["cam", "vàng", "vang" ,"yellow" ],
+        'do'     => ["Đỏ", "Đỏ bi", "đỏ", "do" ,'red' ],
+        'green'   => ["green", "Xanh lá", "xanh la", "xanh lá", 'Green'],
+        'blue'    => ["xanh", 'Xanh', "blue", "xanh da troi", "Xanh da trời", "Xanh Lam"],
+        'den'     => ["Đen", "DEN", "den", "black"],
+        'hong'    => ["hồng", "Hồng", "Pink", "pink"],
+        'nau'     => ["Nâu Đen", "Nâu", "nau", "nâu"]
+    ];
+   
+    foreach ( $colors as $key=>$color_type ) {
+        if(in_array($color, $color_type )){
+            return $key;
         }
-        return $all_attributes;
     }
 }
 
-function show_attribute_sidebar(  ){
-    
-    $sidebar    = '';
-    $sizes      = [];
-    $colors     = [];
-    $attribute_array =  get_all_attributes();
-    foreach($attribute_array as $key => $attribute_options ){       
-        if($key =='Kích thước'  || $key == 'size' ){
-            foreach($attribute_options as $attribute_option ){
-                foreach($attribute_option as $option )
-                $sizes[] = $option;
-            }
-        }elseif($key =='color'  || $key == 'Màu sắc'){
-            foreach($attribute_options as $attribute_option ){
-                foreach($attribute_option as $option )
-                $colors[] = $option;
-            } 
+function show_sidebar_attribute(){
+    $sidebar = '';
+    $sizes = [];
+    $colors = [];
+
+    $taxonomies = get_object_taxonomies( 'product', 'objects' );
+    $attribute_taxonomies = array();
+    foreach ( $taxonomies as $taxonomy ) {
+        if ( strpos( $taxonomy->name, 'pa_' ) === 0 ) { // Lọc taxonomy thuộc tính (ví dụ: pa_size, pa_color)
+            $attribute_taxonomies[] = $taxonomy;
         }
     }
-
-    //---- array unique
-
-    $attribute_sizes = array_unique($sizes);
-    $attribute_colors = array_unique($colors);
     
-    $sidebar .= '<div class="widget widget-collapsible">
-                    <h3 class="widget-title">
-                        <a data-toggle="collapse" href="#widget-12" role="button" aria-expanded="true" aria-controls="widget-12">
-                        Kích thước
-                        </a>
-                    </h3>';
-    if($attribute_sizes){
-        $sidebar .= '<div class="collapse show" id="widget-12">
+    $all_attributes = array();
+    
+    foreach ( $attribute_taxonomies as $taxonomy ) {
+        
+        $terms = get_terms( array(
+            'taxonomy'   => $taxonomy->name,
+            'hide_empty' => false, // Hiển thị tất cả terms, kể cả các terms không có sản phẩm
+        ) );
+
+        if( $taxonomy->name  == 'pa_size' ){ 
+            //$label =  $taxonomy->label; 
+
+            $sidebar .= '<div class="widget widget-collapsible">
+                            <h3 class="widget-title">
+                                <a data-toggle="collapse" href="#widget-12" role="button" aria-expanded="true" aria-controls="widget-12">
+                                Kích thước
+                                </a>
+                            </h3>';
+            $sidebar .= '<div class="collapse show" id="widget-12">
                         <div class="widget-body">
                             <div class="filter-items">';
-        $taxonomy_size = 'pa_size';
-        foreach($attribute_sizes as $key => $size){
+            $taxonomy_size = 'pa_size';
+           
+            foreach($terms as  $key => $size){
+               // echo "<pre>";  print_r($size);  echo "</pre>";
+                $checked = isset( $_GET['filter_' . esc_attr( $taxonomy_size )] ) && in_array( $size->slug,   explode(',',($_GET['filter_' . esc_attr( $taxonomy_size )] )  ) ) ? ' checked' : '';
 
-            $checked = isset( $_GET['filter_' . esc_attr( $taxonomy_size )] ) && in_array( $size,   explode(',',($_GET['filter_' . esc_attr( $taxonomy_size )] )  ) ) ? ' checked' : '';
+                $sidebar .= '<div class="filter-item">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input size-filter-checkbox"  data-term="' . $size->slug. '" id="size-'.$key.'"  ' . $checked . '>
+                                    <label class="custom-control-label" for="size-'.$key.'">'.$size->slug.'</label>
+                                </div>
+                            </div>';
+            }
+           
+            $sidebar .= '</div></div></div>';
+            $sidebar .= '</div>';
 
-            $sidebar .= '<div class="filter-item">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input size-filter-checkbox"  data-term="' . $size  . '" id="size-'.$key.'"  ' . $checked . '>
-                                <label class="custom-control-label" for="size-'.$key.'">'.$size.'</label>
-                            </div>
-                        </div>';
-        }
-        $sidebar .= '</div></div></div>';
-    }
-    $sidebar .= '</div>';
-
-    //------ Color Filter
-    $sidebar .= '<div class="widget widget-collapsible">
+        }elseif( $taxonomy->name  == 'pa_color' ){ 
+                $sidebar .= '<div class="widget widget-collapsible">
                     <h3 class="widget-title">
                         <a data-toggle="collapse" href="#widget-22" role="button" aria-expanded="true" aria-controls="widget-22">
                             Màu sắc
                         </a>
                     </h3>';
-    if($attribute_colors){
-        $sidebar .= '<div class="collapse show" id="widget-22">
-                        <div class="widget-body">
-                            <div class="filter-colors">';
-        $color_list = [];
-        $taxonomy_color = 'pa_color';
-        //print_r( explode(',',($_GET['filter_' . esc_attr( $taxonomy_color )] )  ) );
-        foreach($attribute_colors as $color){
-            $color = strtolower(vn_to_str($color));
-            //echo $color."<br />";
-            $checked = isset( $_GET['filter_' . esc_attr( $taxonomy_color )] ) && in_array( $color,   explode(',',($_GET['filter_' . esc_attr( $taxonomy_color )] )  ) ) ? true : false;
-            $color_list[] = color_pattern($color,  $checked);
-        }
-        $colorlist = array_unique($color_list );
-        $sidebar .= join('', $colorlist);
-        $sidebar .= '</div></div></div>';
+                $sidebar .= '<div class="collapse show" id="widget-22">
+                                <div class="widget-body">
+                                    <div class="filter-colors">';
+                $color_list = [];
+                $taxonomy_color = 'pa_color'; 
+                foreach($terms as $key => $colors){
+                    $color = strtolower(vn_to_str($colors->slug));  
+                    //$checked = isset( $_GET['filter_' . esc_attr( $taxonomy_color )] ) && in_array( $color,   explode(',',($_GET['filter_' . esc_attr( $taxonomy_color )] )  ) ) ? true : false;
+                    $checked = isset( $_GET['filter_pa_color'] ) && in_array( $color,   explode(',',($_GET['filter_pa_color'] )  ) ) ?  ' checked' : '';
+                    //$color_list[] = color_pattern($color,  $checked); // use color patterm
+                    $color_list[] = '<div class="filter-item">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input color-filter-checkbox rd-color "  data-color="' . $color. '" id="color-'.$key.'"  ' . $checked . '>
+                                            <label class="custom-control-label rd-color '.get_color_name($color).'" for="color-'.$key.'">&nbsp;</label>
+                                        </div>
+                                    </div>';
+                }
+
+                $sidebar .= join('', $color_list);
+                $sidebar .= '</div></div></div>'; 
+                $sidebar .= '</div>';
+
+        }else{
+            
+            if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+                $all_attributes[ $taxonomy->name ] = $terms;
+                // Hiển thị các thuộc tính và giá trị của chúng
+                echo '<div class="product-attributes">';
+                foreach ( $all_attributes as $taxonomy => $terms ) {
+                    // Lấy tên của thuộc tính (ví dụ: 'Size', 'Color')
+                    $taxonomy_label = get_taxonomy( $taxonomy )->label;
+                    echo '<h3>' . esc_html( $taxonomy_label ) . '</h3>';
+                    echo '<ul>';
+                    // Hiển thị từng giá trị (term) của thuộc tính
+                    foreach ( $terms as $term ) {
+                        echo '<li><a href="' . esc_url( add_query_arg( 'filter_' . $taxonomy, $term->slug ) ) . '">' . esc_html( $term->name ) . '</a></li>';
+                    }
+                    echo '</ul>';
+                }
+                echo '</div>'; 
+            } 
+        } 
+        
     }
-    $sidebar .= '</div>';
-    echo $sidebar;     
+    echo $sidebar;
 }
+ 
 function price_progress_bar() {
     // Get the minimum and maximum prices of products
     global $wpdb;
@@ -953,28 +1087,7 @@ function price_progress_bar() {
                     </div>
                 </div>
             </div>
-        </div>';
-        /*
-        echo '<div class="widget widget-collapsible">
-                <h3 class="widget-title">
-                    <a data-toggle="collapse" href="#widget-5" role="button" aria-expanded="true" aria-controls="widget-5">
-                        Price
-                    </a>
-                </h3>';
-            echo '<div class="price-progress-bar">';
-            echo '<h2>Price Range</h2>';
-            echo '<div class="progress-bar-wrapper">';
-            echo '<span class="min-price">Min: ' . wc_price($min_price) . '</span>';
-            echo '<span class="max-price">Max: ' . wc_price($max_price) . '</span>';
-            echo '<div class="progress-bar">';
-            echo '<div class="progress" style="width:' . esc_attr($current_progress) . '%;"></div>';
-            echo '</div>';
-            echo '<span class="current-range">Current: ' . wc_price($current_min) . ' - ' . wc_price($current_max) . '</span>';
-            echo '</div>';
-            echo '</div>';
-
-        echo '</div>';
-        */
+        </div>'; 
     }
 }
 
@@ -982,24 +1095,54 @@ function price_progress_bar() {
 /**
  * ------------- products details
  */
+function filter_products_by_attributes( $query ) {
+    if ( ! is_admin() && $query->is_main_query() && is_shop() ) {
 
- /*
-function filter_by_size( $query ) {
-    if( ! is_admin() && is_shop() && isset($_GET['filter_pa_size']) ) {
-        $size = sanitize_text_field( $_GET['filter_pa_size'] );
-        
-        // Modify the query to filter by attribute
-        $query->set( 'tax_query', array(
-            array(
+        $tax_query = array();
+
+        if ( isset( $_GET['filter_pa_size'] ) ) {
+            $sizes = array_map( 'sanitize_text_field', explode( ',', $_GET['filter_pa_size'] ) );
+            $tax_query[] = array(
                 'taxonomy' => 'pa_size',
                 'field'    => 'slug',
-                'terms'    => $size,
-            ),
-        ));
+                'terms'    => $sizes,
+                'operator' => 'IN',
+            );
+        }
+
+        if ( isset( $_GET['filter_pa_color'] ) ) {
+            $colors = array_map( 'sanitize_text_field', explode( ',', $_GET['filter_pa_color'] ) );
+            $tax_query[] = array(
+                'taxonomy' => 'pa_color',
+                'field'    => 'slug',
+                'terms'    => $colors,
+                'operator' => 'IN',
+            );
+        }
+
+        if (isset($_GET['filter_pa_cate'])) {
+            // Get the raw value from URL and convert it to an array of integers
+            $cate_ids = array_map('intval', explode(',', $_GET['filter_pa_cate']));
+            
+            if (!empty($cate_ids)) {
+                // Filter by product category term IDs (taxonomy: 'product_cat')
+                $tax_query[] =  array(
+                    'taxonomy' => 'product_cat',
+                    'field'    => 'term_id',
+                    'terms'    => $cate_ids,
+                    'operator' => 'IN',
+                ); 
+            }
+        }
+        //echo "<pre>";  print_r( $tax_query);        echo "</pre>";
+        if ( ! empty( $tax_query ) ) {
+            $query->set( 'tax_query', $tax_query );
+        }
     }
 }
-add_action( 'pre_get_posts', 'filter_by_size' );
-*/
+add_action( 'pre_get_posts', 'filter_products_by_attributes' );
+ 
+  
 
 
 
@@ -1019,27 +1162,7 @@ function get_current_page_slug() {
     }
     return null;
 }
-function woocommerce_before_product_details_tag() { 
-    echo   '<div class="product-details-top mb-2">';
-}
-function woocommerce_before_product_tag() { 
-    echo   '<div class="col-lg-9">';
-}
-function woocommerce_after_product_tag() { 
-    echo   '</div>';
-}
-function woocommerce_add_end_row_tag() { 
-    echo   '</div>';
-} 
-function woocommerce_add_row_tag() {  
-    echo   '<div class="row">'; 
-}
-function woocommerce_before_sidebar() { 
-    echo   '<aside class="col-lg-3 order-lg-first"> <div class="sidebar sidebar-shop">'; 
-}
-function woocommerce_after_sidebar() { 
-    echo   '</div></aside>'; 
-}
+
 function before_shop_loop (){ 
     if ( is_shop() || is_product_category() || is_product_tag() ) { 
         if(isset($_GET['view'])){
@@ -1053,6 +1176,7 @@ function before_shop_loop (){
         }
     }
 }
+
 function after_shop_loop (){ 
     if ( is_shop() || is_product_category() || is_product_tag() ) { 
         if(isset($_GET['view'])){
@@ -1066,6 +1190,7 @@ function after_shop_loop (){
         }
     }
 }
+
 function before_shop_loop_item (){ 
     
     if ( is_shop() || is_product_category() || is_product_tag() ) { 
@@ -1109,6 +1234,31 @@ function before_shop_loop_item (){
     }
      
 }
+
+
+function woocommerce_before_product_details_tag() { 
+    echo   '<div class="product-details-top mb-2">';
+}
+function woocommerce_before_product_tag() { 
+    echo   '<div class="col-lg-9">';
+}
+function woocommerce_after_product_tag() { 
+    echo   '</div>';
+}
+function woocommerce_add_end_row_tag() { 
+    echo   '</div>';
+} 
+function woocommerce_add_row_tag() {  
+    echo   '<div class="row">'; 
+}
+function woocommerce_before_sidebar() { 
+    echo   '<aside class="col-lg-3 order-lg-first"> <div class="sidebar sidebar-shop">'; 
+}
+function woocommerce_after_sidebar() { 
+    echo   '</div></aside>'; 
+}
+
+
 function after_shop_loop_item(){  
     if ( is_shop() || is_product_category() || is_product_tag() ) {  
         if(isset($_GET['view'])){
@@ -1189,8 +1339,7 @@ function product_description() {
         echo '<div class="product-content">';
         echo wp_kses_post( $description ); // Ensure the description is output safely
         echo '</div>';
-    }  
-
+    }
 }
 function product_item_rate(){   
     echo    '<div class="ratings-container">
@@ -1221,73 +1370,122 @@ function add_breadcrumb_to_checkout_page() {
     }
 }
 
-/**
- *  billing form
-*/
-add_filter('woocommerce_checkout_fields', 'addBootstrapToCheckoutFields' );
-function addBootstrapToCheckoutFields($fields) {
-    foreach ($fields as &$fieldset) {
-        foreach ($fieldset as &$field) {
-            // if you want to add the form-group class around the label and the input
-            $field['class'][] = 'form-group'; 
 
-            // add form-control to the actual input
-            $field['input_class'][] = 'form-control';
+
+ /**
+  *  billing form
+  */
+
+ 
+/*
+add_action('wp', 'hide_woocommerce_variations', 20);
+function hide_woocommerce_variations() {
+    if (is_product()) {
+        // Loại bỏ dropdown chọn biến thể
+        remove_action('woocommerce_single_product_summary', 'woocommerce_single_variation', 20);
+        remove_action('woocommerce_single_product_summary', 'woocommerce_single_variation_add_to_cart_button', 30);
+        
+        // Loại bỏ nút "Add to Cart" mặc định
+        remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
+    }
+}
+*/
+ 
+/**
+ *  For ajax to get product variations
+ */
+
+
+
+function get_data() {
+    $cart_contents = WC()->cart->get_cart();
+    $items = array();
+    $total_count = WC()->cart->get_cart_contents_count();
+    $subtotal = WC()->cart->get_cart_subtotal();
+
+    foreach ($cart_contents as $cart_item_key => $cart_item) {
+        $product = $cart_item['data'];
+        $items[] = array(
+            'cart_item_key' => $cart_item_key,
+            'name' => $product->get_name(),
+            'permalink' => $product->get_permalink(),
+            'image' => $product->get_image(),
+            'price' => $product->get_price(),
+            'price_html' => $product->get_price_html(),
+            'quantity' => $cart_item['quantity'],
+            'subtotal' => wc_price($cart_item['line_subtotal'])
+        );
+    }
+
+    $data = array(
+        'items' => $items,
+        'total_count' => $total_count,
+        'subtotal' => $subtotal
+    );
+
+    wp_send_json_success($data);
+    wp_die(); 
+}
+
+add_action( 'wp_ajax_nopriv_get_data', 'get_data' );
+add_action( 'wp_ajax_get_data', 'get_data' );
+
+add_action('wp_ajax_get_product_variants', 'get_product_variants');
+add_action('wp_ajax_nopriv_get_product_variants', 'get_product_variants');
+
+function get_product_variants() {
+    if (!isset($_POST['product_id'])) {
+        wp_send_json_error(['message' => 'Product ID is required.']);
+    }
+
+    $product_id = intval($_POST['product_id']);
+    echo $product_id."nguyen huy";
+    $product = wc_get_product($product_id);
+
+    if (!$product || !$product->is_type('variable')) {
+        wp_send_json_error(['message' => 'Product not found or is not a variable product.']);
+    }
+
+    $variants = [];
+    foreach ($product->get_children() as $variation_id) {
+        $variation = wc_get_product($variation_id);
+        if ($variation) {
+
+            $variant_data = [
+                'attributes' => [],
+                'price' => (float) $variation->get_price(),
+                'regular_price' => (float) $variation->get_regular_price(),
+                'sale_price' => (float) $variation->get_sale_price(),
+                'stock_status' => $variation->get_stock_status(),
+                'image' => wp_get_attachment_image_url($variation->get_image_id(), 'full')
+            ];
+
+            // Lấy thuộc tính của biến thể
+            $attributes = $variation->get_attributes();
+            foreach ($attributes as $key => $value) {
+                $attribute_name = wc_attribute_label($key); // Chuyển slug thành tên hiển thị
+                $variant_data['attributes'][$attribute_name] = $value;
+            }
+
+            $variants[] = $variant_data;
+
         }
     }
 
-    //echo "<pre>";print_r($fields);echo "</pre>";
-    return $fields;
-} 
-
-add_filter( 'woocommerce_form_field', 'updated_woocommerce_form_field' );
-function updated_woocommerce_form_field( $field ) {
-    $field = str_replace(
-        'form-row',
-        '',
-        $field
-    );
-    return $field;
-}
-
-function my_custom_img_function($attachment_id, $main_image = false)
-{
-    $flexslider        = (bool) apply_filters('woocommerce_single_product_flexslider_enabled', get_theme_support('wc-product-gallery-slider'));
-    $gallery_thumbnail = wc_get_image_size('gallery_thumbnail');
-    $thumbnail_size    = apply_filters('woocommerce_gallery_thumbnail_size', array($gallery_thumbnail['width'], $gallery_thumbnail['height']));
-    $image_size        = apply_filters('woocommerce_gallery_image_size', $flexslider || $main_image ? 'woocommerce_single' : $thumbnail_size);
-    $full_size         = apply_filters('woocommerce_gallery_full_size', apply_filters('woocommerce_product_thumbnails_large_size', 'full'));
-    $thumbnail_src     = wp_get_attachment_image_src($attachment_id, $thumbnail_size);
-    $full_src          = wp_get_attachment_image_src($attachment_id, $full_size);
-    $alt_text          = trim(wp_strip_all_tags(get_post_meta($attachment_id, '_wp_attachment_image_alt', true)));
-    $image             = wp_get_attachment_image(
-        $attachment_id,
-        $image_size,
-        false,
-        apply_filters(
-            'woocommerce_gallery_image_html_attachment_image_params',
-            array(
-                'title'                   => _wp_specialchars(get_post_field('post_title', $attachment_id), ENT_QUOTES, 'UTF-8', true),
-                'data-caption'            => _wp_specialchars(get_post_field('post_excerpt', $attachment_id), ENT_QUOTES, 'UTF-8', true),
-                'data-src'                => esc_url($full_src[0]),
-                'data-large_image'        => esc_url($full_src[0]),
-                'data-large_image_width'  => esc_attr($full_src[1]),
-                'data-large_image_height' => esc_attr($full_src[2]),
-                'class'                   => esc_attr($main_image ? 'wp-post-image' : ''),
-            ),
-            $attachment_id,
-            $image_size,
-            $main_image
-        )
-    );
-    
-    return '<a class="product-gallery-item" href="#" 
-			data-image="' . esc_url( $full_src[0] ) . '" 
-			data-zoom-image="' . esc_url( $full_src[0] ) . '">
-				' . $image . '
-			</a> ';
+    wp_send_json_success($variants);
 }
 
 
- 
+
+
+/**
+ * Debug SQL query
+ */
+
+function debug_woocommerce_shop_query($query) {
+    if (is_shop() && $query->is_main_query()) {
+        // echo '<pre>';  print_r($query); echo '</pre>';
+    }
+}
+add_action('pre_get_posts', 'debug_woocommerce_shop_query');
 ?>
