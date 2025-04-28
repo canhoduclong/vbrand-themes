@@ -260,7 +260,7 @@ $themeData = vbrand_load_theme_data();
 <div class="container">
 	<ul class="nav nav-pills nav-border-anim nav-big mb-3" role="tablist">
 		<li class="nav-item">
-			<a class="nav-link active" id="products-featured-link" data-toggle="tab" href="#products-featured-tab" role="tab" aria-controls="products-featured-tab" aria-selected="true">Featured</a>
+			<a class="nav-link active" id="products-featured-link" data-toggle="tab" href="#products-featured-tab" role="tab" aria-controls="products-featured-tab" aria-selected="true">Sản phẩm nổi bật</a>
 		</li> 
 	</ul>
 </div><!-- End .container -->
@@ -377,28 +377,7 @@ $themeData = vbrand_load_theme_data();
 
 					//wc_get_template_part( 'content', 'product' );
 					?>
-					<div class="product product-11 text-center">
-						<figure class="product-media">
-							<a href="product.html">
-								<img src="<?=get_template_directory_uri()?>/assets/images/products/product-1-1.jpg" alt="Product image" class="product-image">
-								<img src="<?=get_template_directory_uri()?>/assets/images/products/product-1-2.jpg" alt="Product image" class="product-image-hover">
-							</a>
-
-							<div class="product-action-vertical">
-								<a href="#" class="btn-product-icon btn-wishlist"><span>add to wishlist</span></a>
-							</div><!-- End .product-action-vertical -->
-						</figure><!-- End .product-media -->
-
-						<div class="product-body">
-							<h3 class="product-title"><a href="product.html">Butler Stool Ladder</a></h3><!-- End .product-title -->
-							<div class="product-price">
-								$251,00
-							</div><!-- End .product-price -->
-						</div><!-- End .product-body -->
-						<div class="product-action">
-							<a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-						</div><!-- End .product-action -->
-					</div><!-- End .product -->
+					
 
 					<?php
 					$i++;
