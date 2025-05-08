@@ -1,28 +1,77 @@
 <?php $themeData = vbrand_load_theme_data(); ?>
 
 			</main>
-			<footer class="footer footer-2">
-				<div class="footer-bottom">
-					<div class="container">
-						<p class="footer-copyright">Copyright © 2023 Shop Funiture Store. All Rights Reserved.</p>
-						
-						<!-- End .footer-copyright -->
-						<ul class="footer-menu">
-							<li><a href="#">Terms Of Use</a></li>
-							<li><a href="#">Privacy Policy</a></li>
-						</ul>
-						
-						<!-- End .footer-menu -->
-						<div class="social-icons social-iscons-color">
-							<a href="#" class="social-icon social-facebook" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
-							<a href="#" class="social-icon social-twitter" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
-							<a href="#" class="social-icon social-instagram" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
-							<a href="#" class="social-icon social-youtube" title="Youtube" target="_blank"><i class="icon-youtube"></i></a>
-							<a href="#" class="social-icon social-pinterest" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
-						</div><!-- End .soial-icons -->
-					</div><!-- End .container -->
-				</div><!-- End .footer-bottom -->
-			</footer><!-- End .footer -->
+			<footer class="footer">  	 
+        	<div class="footer-middle">
+	            <div class="container">
+	            	<div class="row">
+	            		<div class="col-sm-6 col-lg-5">
+	            			<div class="widget widget-about"> 
+								<h4>CÔNG TY TNHH CÔNG NGHÊ MỚI</h4>
+								<div class="mr-4 pr-4">
+									<p class="mb-1 font-weight-bold">
+										Chúng tôi chuyên cung cấp các thiết bị điện tử chuyên nghiệp, đáp ứng nhu cầu người sử dụng 
+									</p> 
+									<p><strong>Tel: </strong><a href="tel:0908 89 89 89" class="me-4 pr-4"> 0908 89 89 89 </a><strong>Email:</strong>  <a href="mailto:support@logitech.com">support@logitech.com</a></p>  
+								</div>
+	            			</div><!-- End .widget about-widget -->
+	            		</div><!-- End .col-sm-6 col-lg-3 -->
+
+	            		<div class="col-sm-6 col-lg-3">
+	            			<div class="widget">
+	            				<h4 class="widget-title">Tính năng & Tiện ích</h4><!-- End .widget-title -->
+
+	            				<ul class="widget-list">
+	            					<li><a href="<?=site_url()?>/gioi-thieu">Về chúng tôi</a></li>
+									<li><a href="<?=site_url()?>/lien-he">Chính sách baoỏ hành</a></li> 
+	            					<li><a href="<?=site_url()?>/tin-tuc">Điều khoản sử dụng</a></li>
+	            					<li><a href="<?=site_url()?>/phan-hoi">Chính sách quyền riêng tư</a></li> 
+	            					<li><a href="<?=site_url()?>/lien-he">Hỗ trợ trực tuyến</a></li> 
+	            				</ul><!-- End .widget-list -->
+	            			</div><!-- End .widget -->
+	            		</div><!-- End .col-sm-6 col-lg-3 --> 
+
+	            		<div class="col-sm-6 col-lg-3">
+	            			<div class="widget">
+	            				<h4 class="widget-title">Thanh toán & Vận chuyển</h4><!-- End .widget-title --> 
+	            				<ul class="widget-list">
+	            					<li><a href="#">Sign In</a></li>
+	            					<li><a href="cart.html">View Cart</a></li>
+	            					<li><a href="#">My Wishlist</a></li> 
+	            				</ul><!-- End .widget-list -->
+								<div class="my-4"></div>
+								<h4 class="widget-title">Kết nối với chúng tôi</h4>
+								<div class="social-icons">
+									<a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
+									<a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
+									<a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
+									<a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
+									<a href="#" class="social-icon" target="_blank" title="Pinterest"><i class="icon-pinterest"></i></a>
+								</div><!-- End .soial-icons -->
+								
+	            			</div><!-- End .widget -->
+	            		</div><!-- End .col-sm-6 col-lg-3 -->
+	            	</div><!-- End .row -->
+	            </div><!-- End .container -->
+	        </div><!-- End .footer-middle -->
+
+	        <div class="footer-bottom">
+	        	<div class="container">
+				 	<div class="row"> 
+						<div class="col-md-6">
+							<P>Địa chỉ: 123 Nguyễn Trọng truyển, Phường 3, QUận Tân Bình, TP. Hồ Chí Minh</P>
+
+							
+						</div> 
+						<div class="col-md-6 d-flex justify-content-end">
+							<figure class="footer-payments">
+								 quyền @ 2024, Thiết kế bởi vBrand
+							</figure><!-- End .footer-payments --> 
+						</div>   	
+					</div>	  	
+	        	</div><!-- End .container -->
+	        </div><!-- End .footer-bottom -->
+        </footer>
 
 		</div><!-- End .page-wrapper -->
 

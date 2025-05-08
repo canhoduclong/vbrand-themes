@@ -321,7 +321,7 @@ $themeData = vbrand_load_theme_data();
  
 <div class="intro-slider-container mb-4">
 	<div id="banerslider" class="intro-slider owl-carousel owl-theme owl-nav-inside owl-light" data-toggle="owl" data-owl-options='{"nav": false, "dots": false}'>
-		<?php foreach($themeData->get('slider') as $slider): ?>
+		<?php foreach($themeData->get('bannerslider') as $slider): ?>
 			<div class="intro-slide" style="background-image: url(<?php echo $slider['anh']; ?>);">
 				<div class="container intro-content text-center">
 					<div class="intro-title text-white mb-0 lh-sm">THIẾT KẾ VÌ SỰ</div><!-- End .h3 intro-subtitle -->

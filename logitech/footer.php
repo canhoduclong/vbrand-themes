@@ -5,46 +5,49 @@
 	            <div class="container">
 	            	<div class="row">
 	            		<div class="col-sm-6 col-lg-5">
-	            			<div class="widget widget-about">
-								<?php if ($themeData->get('site_logo')) { ?>
-                                    <img src="<?php echo $themeData->get('site_logo'); ?>"  width="82" height="25">
-                                <?php } ?>
-	            				<p>Chuyên cung cấp sản phẩm chất lượng cao tới người tiêu dùng, rất mong được khách hàng ủng hộ. </p>
-
-	            				<div class="social-icons">
-	            					<a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
-	            					<a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
-	            					<a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
-	            					<a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
-	            					<a href="#" class="social-icon" target="_blank" title="Pinterest"><i class="icon-pinterest"></i></a>
-	            				</div><!-- End .soial-icons -->
+	            			<div class="widget widget-about"> 
+								<h4>CÔNG TY TNHH CÔNG NGHÊ MỚI</h4>
+								<div class="mr-4 pr-4">
+									<p class="mb-1 font-weight-bold">
+										Chúng tôi chuyên cung cấp các thiết bị điện tử chuyên nghiệp, đáp ứng nhu cầu người sử dụng 
+									</p> 
+									<p><strong>Tel: </strong><a href="tel:0908 89 89 89" class="me-4 pr-4"> 0908 89 89 89 </a><strong>Email:</strong>  <a href="mailto:support@logitech.com">support@logitech.com</a></p>  
+								</div>
 	            			</div><!-- End .widget about-widget -->
 	            		</div><!-- End .col-sm-6 col-lg-3 -->
 
 	            		<div class="col-sm-6 col-lg-3">
 	            			<div class="widget">
-	            				<h4 class="widget-title">Tiện ích</h4><!-- End .widget-title -->
+	            				<h4 class="widget-title">Tính năng & Tiện ích</h4><!-- End .widget-title -->
 
 	            				<ul class="widget-list">
-	            					<li><a href="<?=site_url()?>/gioi-thieu">Giới thiệu</a></li>
-	            					<li><a href="<?=site_url()?>/tin-tuc">Tin tức</a></li>
-	            					<li><a href="<?=site_url()?>/phan-hoi">Phản hồi</a></li>
-	            					<li><a href="<?=site_url()?>/lien-he">Liên hệ</a></li> 
+	            					<li><a href="<?=site_url()?>/gioi-thieu">Về chúng tôi</a></li>
+									<li><a href="<?=site_url()?>/lien-he">Chính sách baoỏ hành</a></li> 
+	            					<li><a href="<?=site_url()?>/tin-tuc">Điều khoản sử dụng</a></li>
+	            					<li><a href="<?=site_url()?>/phan-hoi">Chính sách quyền riêng tư</a></li> 
+	            					<li><a href="<?=site_url()?>/lien-he">Hỗ trợ trực tuyến</a></li> 
 	            				</ul><!-- End .widget-list -->
 	            			</div><!-- End .widget -->
 	            		</div><!-- End .col-sm-6 col-lg-3 --> 
 
 	            		<div class="col-sm-6 col-lg-3">
 	            			<div class="widget">
-	            				<h4 class="widget-title">My Account</h4><!-- End .widget-title -->
-
+	            				<h4 class="widget-title">Thanh toán & Vận chuyển</h4><!-- End .widget-title --> 
 	            				<ul class="widget-list">
 	            					<li><a href="#">Sign In</a></li>
 	            					<li><a href="cart.html">View Cart</a></li>
-	            					<li><a href="#">My Wishlist</a></li>
-	            					<li><a href="#">Track My Order</a></li>
-	            					<li><a href="#">Help</a></li>
+	            					<li><a href="#">My Wishlist</a></li> 
 	            				</ul><!-- End .widget-list -->
+								<div class="my-4"></div>
+								<h4 class="widget-title">Kết nối với chúng tôi</h4>
+								<div class="social-icons">
+									<a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
+									<a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
+									<a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
+									<a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
+									<a href="#" class="social-icon" target="_blank" title="Pinterest"><i class="icon-pinterest"></i></a>
+								</div><!-- End .soial-icons -->
+								
 	            			</div><!-- End .widget -->
 	            		</div><!-- End .col-sm-6 col-lg-3 -->
 	            	</div><!-- End .row -->
@@ -53,10 +56,18 @@
 
 	        <div class="footer-bottom">
 	        	<div class="container">
-	        		<p class="footer-copyright">Bản quyền @ 2024 </p> 
-	        		<figure class="footer-payments">
-	        			 Thiết kế bởi vBrand
-	        		</figure><!-- End .footer-payments -->
+				 	<div class="row"> 
+						<div class="col-md-6">
+							<P>Địa chỉ: 123 Nguyễn Trọng truyển, Phường 3, QUận Tân Bình, TP. Hồ Chí Minh</P>
+
+							
+						</div> 
+						<div class="col-md-6 d-flex justify-content-end">
+							<figure class="footer-payments">
+								 quyền @ 2024, Thiết kế bởi vBrand
+							</figure><!-- End .footer-payments --> 
+						</div>   	
+					</div>	  	
 	        	</div><!-- End .container -->
 	        </div><!-- End .footer-bottom -->
         </footer>
