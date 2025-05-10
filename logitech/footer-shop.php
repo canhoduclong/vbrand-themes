@@ -1,7 +1,6 @@
-<?php $themeData = vbrand_load_theme_data(); ?>
-
-			</main>
-			<footer class="footer">  	 
+		<?php $themeData = vbrand_load_theme_data(); ?>
+		</main>
+		<footer class="footer">  	 
         	<div class="footer-middle">
 	            <div class="container">
 	            	<div class="row">
@@ -23,7 +22,7 @@
 
 	            				<ul class="widget-list">
 	            					<li><a href="<?=site_url()?>/gioi-thieu">Về chúng tôi</a></li>
-									<li><a href="<?=site_url()?>/lien-he">Chính sách baoỏ hành</a></li> 
+									<li><a href="<?=site_url()?>/lien-he">Chính sách bảo hành</a></li> 
 	            					<li><a href="<?=site_url()?>/tin-tuc">Điều khoản sử dụng</a></li>
 	            					<li><a href="<?=site_url()?>/phan-hoi">Chính sách quyền riêng tư</a></li> 
 	            					<li><a href="<?=site_url()?>/lien-he">Hỗ trợ trực tuyến</a></li> 
@@ -34,7 +33,26 @@
 	            		<div class="col-sm-6 col-lg-3">
 	            			<div class="widget">
 	            				<h4 class="widget-title">Thanh toán & Vận chuyển</h4><!-- End .widget-title --> 
-	            				<div class="px-4 pb-4 pc:px-0 pc:pb-0"><p class="mb-3 pt-4 b2-semibold pc:mb-2 pc:pt-0 pc:b1-semibold FooterMain_footerTitle__lx2Oo">Hỗ trợ thanh toán</p><div class="flex flex-wrap gap-1 pc:grid pc:grid-cols-4"><div><img alt="VISA" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/visa_icon_44fe6e15ed.svg 1x, https://cdn2.fptshop.com.vn/svg/visa_icon_44fe6e15ed.svg 2x" src="https://cdn2.fptshop.com.vn/svg/visa_icon_44fe6e15ed.svg"></div><div><img alt="MasterCard" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/mastercard_icon_c75f94f6a5.svg 1x, https://cdn2.fptshop.com.vn/svg/mastercard_icon_c75f94f6a5.svg 2x" src="https://cdn2.fptshop.com.vn/svg/mastercard_icon_c75f94f6a5.svg"></div><div><img alt="JCB" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/jcb_icon_214783937c.svg 1x, https://cdn2.fptshop.com.vn/svg/jcb_icon_214783937c.svg 2x" src="https://cdn2.fptshop.com.vn/svg/jcb_icon_214783937c.svg"></div><div><img alt="American Express" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/amex_icon_d6fb68108d.svg 1x, https://cdn2.fptshop.com.vn/svg/amex_icon_d6fb68108d.svg 2x" src="https://cdn2.fptshop.com.vn/svg/amex_icon_d6fb68108d.svg"></div><div><img alt="VNPAY" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/vnpay_icon_f42045057d.svg 1x, https://cdn2.fptshop.com.vn/svg/vnpay_icon_f42045057d.svg 2x" src="https://cdn2.fptshop.com.vn/svg/vnpay_icon_f42045057d.svg"></div><div><img alt="ZaloPay" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/zalopay_icon_26d64ea93f.svg 1x, https://cdn2.fptshop.com.vn/svg/zalopay_icon_26d64ea93f.svg 2x" src="https://cdn2.fptshop.com.vn/svg/zalopay_icon_26d64ea93f.svg"></div><div><img alt="ATM" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/napas_icon_94d5330e3c.svg 1x, https://cdn2.fptshop.com.vn/svg/napas_icon_94d5330e3c.svg 2x" src="https://cdn2.fptshop.com.vn/svg/napas_icon_94d5330e3c.svg"></div><div><img alt="Kredivo" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/kredivo_icon_04f72baf36.svg 1x, https://cdn2.fptshop.com.vn/svg/kredivo_icon_04f72baf36.svg 2x" src="https://cdn2.fptshop.com.vn/svg/kredivo_icon_04f72baf36.svg"></div><div><img alt="MoMo" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/momo_icon_baef21b5f7.svg 1x, https://cdn2.fptshop.com.vn/svg/momo_icon_baef21b5f7.svg 2x" src="https://cdn2.fptshop.com.vn/svg/momo_icon_baef21b5f7.svg"></div><div><img alt="Foxpay" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/foxpay_icon_063b36c1f8.svg 1x, https://cdn2.fptshop.com.vn/svg/foxpay_icon_063b36c1f8.svg 2x" src="https://cdn2.fptshop.com.vn/svg/foxpay_icon_063b36c1f8.svg"></div><div><img alt="AlePay" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/alepay_icon_20d5310617.svg 1x, https://cdn2.fptshop.com.vn/svg/alepay_icon_20d5310617.svg 2x" src="https://cdn2.fptshop.com.vn/svg/alepay_icon_20d5310617.svg"></div><div><img alt="Muadee" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/muadee_icon_5e297d9e61.svg 1x, https://cdn2.fptshop.com.vn/svg/muadee_icon_5e297d9e61.svg 2x" src="https://cdn2.fptshop.com.vn/svg/muadee_icon_5e297d9e61.svg"></div><div><img alt="Home PayLater" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/homepaylater_icon_adef600842.svg 1x, https://cdn2.fptshop.com.vn/svg/homepaylater_icon_adef600842.svg 2x" src="https://cdn2.fptshop.com.vn/svg/homepaylater_icon_adef600842.svg"></div><div><img alt="Apple Pay" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/applepay_icon_cb6806a0d0.svg 1x, https://cdn2.fptshop.com.vn/svg/applepay_icon_cb6806a0d0.svg 2x" src="https://cdn2.fptshop.com.vn/svg/applepay_icon_cb6806a0d0.svg"></div><div><img alt="Samsung Pay" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/samsungpay_icon_0292aa9876.svg 1x, https://cdn2.fptshop.com.vn/svg/samsungpay_icon_0292aa9876.svg 2x" src="https://cdn2.fptshop.com.vn/svg/samsungpay_icon_0292aa9876.svg"></div><div><img alt="Google Pay" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/googlepay_icon_afa293cc14.svg 1x, https://cdn2.fptshop.com.vn/svg/googlepay_icon_afa293cc14.svg 2x" src="https://cdn2.fptshop.com.vn/svg/googlepay_icon_afa293cc14.svg"></div></div></div>
+	            				<div class="pb-4"> 
+									<div class="d-flex flex-wrap">
+										 
+										<img alt="VISA" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/visa_icon_44fe6e15ed.svg 1x, https://cdn2.fptshop.com.vn/svg/visa_icon_44fe6e15ed.svg 2x" src="https://cdn2.fptshop.com.vn/svg/visa_icon_44fe6e15ed.svg">
+										<img alt="MasterCard" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/mastercard_icon_c75f94f6a5.svg 1x, https://cdn2.fptshop.com.vn/svg/mastercard_icon_c75f94f6a5.svg 2x" src="https://cdn2.fptshop.com.vn/svg/mastercard_icon_c75f94f6a5.svg">
+										<img alt="JCB" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/jcb_icon_214783937c.svg 1x, https://cdn2.fptshop.com.vn/svg/jcb_icon_214783937c.svg 2x" src="https://cdn2.fptshop.com.vn/svg/jcb_icon_214783937c.svg">
+										<img alt="American Express" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/amex_icon_d6fb68108d.svg 1x, https://cdn2.fptshop.com.vn/svg/amex_icon_d6fb68108d.svg 2x" src="https://cdn2.fptshop.com.vn/svg/amex_icon_d6fb68108d.svg">
+										<img alt="VNPAY" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/vnpay_icon_f42045057d.svg 1x, https://cdn2.fptshop.com.vn/svg/vnpay_icon_f42045057d.svg 2x" src="https://cdn2.fptshop.com.vn/svg/vnpay_icon_f42045057d.svg">
+										<img alt="ZaloPay" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/zalopay_icon_26d64ea93f.svg 1x, https://cdn2.fptshop.com.vn/svg/zalopay_icon_26d64ea93f.svg 2x" src="https://cdn2.fptshop.com.vn/svg/zalopay_icon_26d64ea93f.svg">
+										<img alt="ATM" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/napas_icon_94d5330e3c.svg 1x, https://cdn2.fptshop.com.vn/svg/napas_icon_94d5330e3c.svg 2x" src="https://cdn2.fptshop.com.vn/svg/napas_icon_94d5330e3c.svg">
+										<img alt="Kredivo" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/kredivo_icon_04f72baf36.svg 1x, https://cdn2.fptshop.com.vn/svg/kredivo_icon_04f72baf36.svg 2x" src="https://cdn2.fptshop.com.vn/svg/kredivo_icon_04f72baf36.svg">
+										<img alt="MoMo" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/momo_icon_baef21b5f7.svg 1x, https://cdn2.fptshop.com.vn/svg/momo_icon_baef21b5f7.svg 2x" src="https://cdn2.fptshop.com.vn/svg/momo_icon_baef21b5f7.svg">
+										<img alt="Foxpay" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/foxpay_icon_063b36c1f8.svg 1x, https://cdn2.fptshop.com.vn/svg/foxpay_icon_063b36c1f8.svg 2x" src="https://cdn2.fptshop.com.vn/svg/foxpay_icon_063b36c1f8.svg">
+										<img alt="AlePay" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/alepay_icon_20d5310617.svg 1x, https://cdn2.fptshop.com.vn/svg/alepay_icon_20d5310617.svg 2x" src="https://cdn2.fptshop.com.vn/svg/alepay_icon_20d5310617.svg">
+										<img alt="Muadee" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/muadee_icon_5e297d9e61.svg 1x, https://cdn2.fptshop.com.vn/svg/muadee_icon_5e297d9e61.svg 2x" src="https://cdn2.fptshop.com.vn/svg/muadee_icon_5e297d9e61.svg">
+										<img alt="Home PayLater" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/homepaylater_icon_adef600842.svg 1x, https://cdn2.fptshop.com.vn/svg/homepaylater_icon_adef600842.svg 2x" src="https://cdn2.fptshop.com.vn/svg/homepaylater_icon_adef600842.svg">
+										<img alt="Apple Pay" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/applepay_icon_cb6806a0d0.svg 1x, https://cdn2.fptshop.com.vn/svg/applepay_icon_cb6806a0d0.svg 2x" src="https://cdn2.fptshop.com.vn/svg/applepay_icon_cb6806a0d0.svg">
+										<img alt="Samsung Pay" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/samsungpay_icon_0292aa9876.svg 1x, https://cdn2.fptshop.com.vn/svg/samsungpay_icon_0292aa9876.svg 2x" src="https://cdn2.fptshop.com.vn/svg/samsungpay_icon_0292aa9876.svg">
+										
+									</div>
 								<div class="my-4"></div>
 								<h4 class="widget-title">Kết nối với chúng tôi</h4>
 								<div class="social-icons">
@@ -76,11 +94,12 @@
 		<!-- Mobile Menu -->
 		<div class="mobile-menu-overlay"></div>
 		
-	  
+	 
+	 
  
 
-		<?php  wp_footer(); ?>
 
+		<?php  wp_footer(); ?>
 
 		<!-- Plugins JS File -->
 		<script src="<?=get_template_directory_uri()?>/assets/js/jquery.min.js"></script>

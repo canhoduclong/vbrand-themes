@@ -4,7 +4,6 @@
  */
 get_header();
 $themeData = vbrand_load_theme_data();
-
 ?>
 <div class="intro-slider-container mb-4">
 	<div class="intro-slider owl-carousel owl-theme owl-nav-inside owl-light" data-toggle="owl" data-owl-options='{"nav": false, "dots": false}'>
@@ -23,15 +22,12 @@ $themeData = vbrand_load_theme_data();
 					</div>
 					<a href="<?php echo $slider['morebtn']; ?>" class="btn btn-primary">TÌM HIỂU THÊM</a>
 					<a href="<?php echo $slider['buybtn']; ?>" class="btn btn-primary ml-3">MUA NGAY</a>
-				</div><!-- End .intro-content -->
-			</div><!-- End .intro-slide --> 
+				</div>
+			</div>
 		<?php endforeach?> 
-	</div><!-- End .intro-slider owl-carousel owl-theme -->
-
-	<span class="slider-loader text-white"></span><!-- End .slider-loader -->
-</div><!-- End .intro-slider-container -->
-
-
+	</div>
+	<span class="slider-loader text-white"></span>
+</div>
  <div class="blog-posts">
 	<div class="container"> 
 		<div class="row">
@@ -53,22 +49,18 @@ $themeData = vbrand_load_theme_data();
 									<a href="<?php the_permalink(); ?>">
 									<?php the_post_thumbnail('single-post-thumbnail', array('class' => 'image_fade')); ?> 
 									</a>
-								</figure><!-- End .entry-media -->
-
+								</figure>
 								<div class="entry-body "> 
-
 									<h3 class="entry-title">
 										<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-									</h3><!-- End .entry-title -->
-
+									</h3>
 									<div class="entry-content">
 										<p<?php echo the_excerpt();?> </p> 
 										<a href="<?php the_permalink(); ?>" class="read-more">Xem thêm</a>
-									</div><!-- End .entry-content -->
-								</div><!-- End .entry-body -->
+									</div>
+								</div>
 							</article> 
 						</div>
-
 					<?php
 						endforeach; 
 						wp_reset_postdata();
@@ -80,10 +72,10 @@ $themeData = vbrand_load_theme_data();
 			<div class="col-md-12 text-center">
 				<div class="more-container text-center mt-1">
 					<a href="<?=site_url()?>/tin-tuc" class="btn btn-outline-lightgray btn-more btn-round"><span>Xem thêm tin</span><i class="icon-long-arrow-right"></i></a>
-				</div><!-- End .more-container -->
+				</div>
 			</div>
 		</div>
-	</div><!-- End .container -->
+	</div>
 </div>
  
 <div class="icon-boxes-container  mb-4">
@@ -96,11 +88,11 @@ $themeData = vbrand_load_theme_data();
 					</span>
 
 					<div class="icon-box-content">
-						<h3 class="icon-box-title">Giao hàng miễn phí</h3><!-- End .icon-box-title -->
+						<h3 class="icon-box-title">Giao hàng miễn phí</h3>
 						<p>Đơn hàng từ 58.000 đ</p>
-					</div><!-- End .icon-box-content -->
-				</div><!-- End .icon-box -->
-			</div><!-- End .col-sm-6 col-lg-3 -->
+					</div>
+				</div>
+			</div>
 			
 			<div class="col-sm-6 col-lg-3">
 				<div class="icon-box icon-box-side">
@@ -109,11 +101,11 @@ $themeData = vbrand_load_theme_data();
 					</span>
 
 					<div class="icon-box-content">
-						<h3 class="icon-box-title">Miễn phí đổi trả</h3><!-- End .icon-box-title -->
+						<h3 class="icon-box-title">Miễn phí đổi trả</h3>
 						<p>Trong 30 ngày</p>
-					</div><!-- End .icon-box-content -->
-				</div><!-- End .icon-box -->
-			</div><!-- End .col-sm-6 col-lg-3 -->
+					</div>
+				</div>
+			</div>
 
 			<div class="col-sm-6 col-lg-3">
 				<div class="icon-box icon-box-side">
@@ -122,11 +114,11 @@ $themeData = vbrand_load_theme_data();
 					</span>
 
 					<div class="icon-box-content">
-						<h3 class="icon-box-title">Giảm tiếp 20% </h3><!-- End .icon-box-title -->
+						<h3 class="icon-box-title">Giảm tiếp 20% </h3>
 						<p>cho đơn hàng tiếp</p>
-					</div><!-- End .icon-box-content -->
-				</div><!-- End .icon-box -->
-			</div><!-- End .col-sm-6 col-lg-3 -->
+					</div>
+				</div>
+			</div>
 
 			<div class="col-sm-6 col-lg-3">
 				<div class="icon-box icon-box-side">
@@ -135,16 +127,16 @@ $themeData = vbrand_load_theme_data();
 					</span>
 
 					<div class="icon-box-content">
-						<h3 class="icon-box-title">Hỗ trợ</h3><!-- End .icon-box-title -->
+						<h3 class="icon-box-title">Hỗ trợ</h3>
 						<p>24/7 trực tuyến</p>
-					</div><!-- End .icon-box-content -->
-				</div><!-- End .icon-box -->
-			</div><!-- End .col-sm-6 col-lg-3 -->
-		</div><!-- End .row -->
-	</div><!-- End .container -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
  
-<div class="mb-3"></div><!-- End .mb-6 -->
+<div class="mb-3"></div>
 
 <div class="container">
 	<ul class="nav nav-pills nav-border-anim nav-big mb-3" role="tablist">
@@ -155,8 +147,7 @@ $themeData = vbrand_load_theme_data();
 </div>
  
 <div class="mb-5"></div> 
-
-<!-- End .mb-5 -->
+ 
 <div class="container">
 	<div class="products mb-3">
 		<div class="row"> 

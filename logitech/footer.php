@@ -22,7 +22,7 @@
 
 	            				<ul class="widget-list">
 	            					<li><a href="<?=site_url()?>/gioi-thieu">Về chúng tôi</a></li>
-									<li><a href="<?=site_url()?>/lien-he">Chính sách baoỏ hành</a></li> 
+									<li><a href="<?=site_url()?>/lien-he">Chính sách bảo hành</a></li> 
 	            					<li><a href="<?=site_url()?>/tin-tuc">Điều khoản sử dụng</a></li>
 	            					<li><a href="<?=site_url()?>/phan-hoi">Chính sách quyền riêng tư</a></li> 
 	            					<li><a href="<?=site_url()?>/lien-he">Hỗ trợ trực tuyến</a></li> 
@@ -33,10 +33,8 @@
 	            		<div class="col-sm-6 col-lg-3">
 	            			<div class="widget">
 	            				<h4 class="widget-title">Thanh toán & Vận chuyển</h4><!-- End .widget-title --> 
-	            				<div class="px-4 pb-4 pc:px-0 pc:pb-0">
-									 
+	            				<div class="pb-4">
 									<div class="d-flex flex-wrap">
-										 
 										<img alt="VISA" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/visa_icon_44fe6e15ed.svg 1x, https://cdn2.fptshop.com.vn/svg/visa_icon_44fe6e15ed.svg 2x" src="https://cdn2.fptshop.com.vn/svg/visa_icon_44fe6e15ed.svg">
 										<img alt="MasterCard" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/mastercard_icon_c75f94f6a5.svg 1x, https://cdn2.fptshop.com.vn/svg/mastercard_icon_c75f94f6a5.svg 2x" src="https://cdn2.fptshop.com.vn/svg/mastercard_icon_c75f94f6a5.svg">
 										<img alt="JCB" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/jcb_icon_214783937c.svg 1x, https://cdn2.fptshop.com.vn/svg/jcb_icon_214783937c.svg 2x" src="https://cdn2.fptshop.com.vn/svg/jcb_icon_214783937c.svg">
