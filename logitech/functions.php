@@ -497,10 +497,7 @@ function initial(){
     //-- listings for homepage product
     if(is_front_page()){
         add_action( 'wp_enqueue_scripts', 'custom_enqueue_scripts' );  
-
-        /**`
-         *  content-product.php
-         */
+        
         remove_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 10 ); 
         remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 10 );
         remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 );
@@ -536,66 +533,24 @@ function initial(){
         add_action( 'woocommerce_related_product', 'woocommerce_output_related_products' ); 
 
         // display for variation
-        
-        $product = wc_get_product( get_the_ID() ); 
-        
-        
-        //echo "<pre>"; print_r( $product);  echo "</pre>";
-        //echo "<pre>"; print_r( $upsells);  echo "</pre>";  
-        /*
-        product:
-             [category_ids] => Array
-                (
-                    [0] => 17
-                    [1] => 46
-                )
-
-            [tag_ids] => Array
-                (
-                    [0] => 18
-                    [1] => 21
-                )
-        */
+        $product = wc_get_product( get_the_ID() );
         
         if ($product) {
             
-           remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
-           remove_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_thumbnails', 20);
-           remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
-           remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10); 
-           add_action( 'woocommerce_single_product_summary', '_product_category', 7 ); 
-           add_action( 'woocommerce_single_product_summary', '_product_price', 8);
-            //add_action( 'woocommerce_single_product_summary', 'custom_quantity_input_position', 9 );
+            remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
+            remove_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_thumbnails', 20);
+            remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
+            remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10); 
+            add_action( 'woocommerce_single_product_summary', '_product_category', 7 ); 
+             add_action( 'woocommerce_single_product_summary', '_product_price', 8);
             add_action( 'woocommerce_before_single_product_summary', '_product_gellary', 20);
             add_action( 'woocommerce_product_thumbnails', '_product_thumbnails', 20);
-            
-            if( $product->is_type('variable')){
 
-                // Loại bỏ dropdown chọn biến thể
-                //    remove_action('woocommerce_single_product_summary', 'woocommerce_single_variation', 20);
-                //    remove_action('woocommerce_single_product_summary', 'woocommerce_single_variation_add_to_cart_button', 30);
-                
-                // Loại bỏ nút "Add to Cart" mặc định
-                //    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
-
-                // move excerpt
-                //    remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 ); 
-
-                // add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 35 ); 
-
-            }
-
-            if($product->is_type('simple')) {
-                
-                // Remove "Add to Cart" button on single product page
+            if($product->is_type('simple')) {                
                 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
-
                 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 ); 
-                
-                add_filter( 'woocommerce_get_price_html', 'custom_price_label', 10, 2 );
                 add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 35 );
                 add_action( 'woocommerce_single_product_summary', 'show_data_excerpt_content', 36 );
-
             }
 
         }

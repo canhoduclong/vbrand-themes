@@ -15,7 +15,7 @@ jQuery(document).ready(function ($) {
             }
             attributes[name].push(value);
         });
-
+        
         // Perform AJAX request
         $.ajax({
             url: wcvm_ajax.ajax_url,
