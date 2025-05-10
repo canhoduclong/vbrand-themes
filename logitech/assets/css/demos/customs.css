@@ -54,3 +54,30 @@
 .nav-pills.nav-big .nav-link{
     font-size: medium !important;
 }
+
+
+/* Ẩn dropdown-menu con */
+.dropdown:hover > .dropdown-menu {
+    display: block;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    margin-top: 0;
+}
+
+/* Gốc cha giữ tương đối để sub-menu định vị đúng */
+.dropdown {
+    position: relative;
+}
+
+/* Fix Bootstrap không hỗ trợ hover menu đa cấp */
+.dropdown-menu .dropdown {
+    position: relative;
+}
+
+.dropdown-menu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-left: 0.1rem;
+}
+

@@ -55,9 +55,9 @@
                 </div> 
             </div>
 
-            <header class="header header-7"> 
+            <header class="header header-5"> 
 
-                <div class="header-middle">
+                <div class="header-middle sticky-header">
                     <div class="container-fluid">
                         <div class="header-left">
                             <button class="mobile-menu-toggler">

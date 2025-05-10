@@ -2,7 +2,7 @@
 /**
  * Template Name: Sản phẩm define
  */
-get_header();
+get_header('home');
 $themeData = vbrand_load_theme_data();
 ?>
 <div class="intro-slider-container mb-4">
