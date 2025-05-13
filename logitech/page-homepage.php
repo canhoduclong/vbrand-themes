@@ -55,7 +55,7 @@ $themeData = vbrand_load_theme_data();
 										<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 									</h3>
 									<div class="entry-content">
-										<p<?php echo the_excerpt();?> </p> 
+										<p><?php echo the_excerpt();?> </p> 
 										<a href="<?php the_permalink(); ?>" class="read-more">Xem thêm</a>
 									</div>
 								</div>
@@ -153,7 +153,7 @@ $themeData = vbrand_load_theme_data();
 		<div class="row"> 
 		<?php if ($themeData->get('products_module_show')) { ?>
 		<?php
-			$count = $themeData->get('products_module_number');					
+			$count = 4;//$themeData->get('products_module_number');			
 			$case = $themeData->get('products_module_type');
 		?>
 		<?php
@@ -249,15 +249,35 @@ $themeData = vbrand_load_theme_data();
 		<div class="row">
 			<div class="col-md-12 col-lg-5">
 				<div class="banner banner-large banner-overlay banner-overlay-light">
+					<?php
+						// Shop 1
+						$shop_one = $themeData->get('shop_banner_one');
+						$shop_one_title = $themeData->get('shop_banner_one_title');
+						$shop_one_alias = $themeData->get('shop_banner_one_alias');
+						// Shop 2
+						$shop_banner_two = $themeData->get('shop_banner_two');
+						$shop_banner_two_title = $themeData->get('shop_banner_two_title');
+						$shop_banner_two_alias = $themeData->get('shop_banner_two_alias');
+						// Shop 3
+						$shop_banner_three = $themeData->get('shop_banner_three');
+						$shop_banner_three_title = $themeData->get('shop_banner_three_title');
+						$shop_banner_three_alias = $themeData->get('shop_banner_three_alias');
+						// Shop 4
+						$shop_banner_four = $themeData->get('shop_banner_four');
+						$shop_banner_four_title = $themeData->get('shop_banner_four_title');
+						$shop_banner_four_alias = $themeData->get('shop_banner_four_alias');
+
+
+					?>
 					<a href="#">
-						<img src="<?=get_template_directory_uri()?>/assets/images//banners/banner-1.jpg" alt="Banner">
+						<img src="<?=$shop_one?>" alt="Banner">
 					</a>
 
 					<div class="banner-content banner-content-top">
 						<h4 class="banner-subtitle">Clearence</h4><!-- End .banner-subtitle -->
-						<h3 class="banner-title">Coffee Tables</h3><!-- End .banner-title -->
-						<div class="banner-text">from $19.99</div><!-- End .banner-text -->
-						<a href="#" class="btn btn-outline-gray banner-link">Xem thêm<i class="icon-long-arrow-right"></i></a>
+						<h3 class="banner-title"><?=$shop_one_title?></h3><!-- End .banner-title -->
+						<div class="banner-text"><?=$shop_one_alias?></div><!-- End .banner-text -->
+						 
 					</div><!-- End .banner-content -->
 				</div><!-- End .banner -->
 			</div><!-- End .col-lg-5 -->
@@ -265,14 +285,13 @@ $themeData = vbrand_load_theme_data();
 			<div class="col-md-6 col-lg-3">
 				<div class="banner banner-overlay">
 					<a href="#">
-						<img src="<?=get_template_directory_uri()?>/assets/images//banners/banner-2.jpg" alt="Banner">
+						<img src="<?=$shop_banner_two?>" alt="Banner">
 					</a>
 
 					<div class="banner-content banner-content-bottom">
 						<h4 class="banner-subtitle text-grey">On Sale</h4><!-- End .banner-subtitle -->
-						<h3 class="banner-title text-white">Amazing <br>Armchairs</h3><!-- End .banner-title -->
-						<div class="banner-text text-white">from $39.99</div><!-- End .banner-text -->
-						<a href="#" class="btn btn-outline-white banner-link">Discover Now<i class="icon-long-arrow-right"></i></a>
+						<h3 class="banner-title text-white"><?=$shop_banner_two_title?></h3><!-- End .banner-title -->
+						<div class="banner-text text-white"><?=$shop_banner_two_alias?></div><!-- End .banner-text --> 
 					</div><!-- End .banner-content -->
 				</div><!-- End .banner -->
 			</div><!-- End .col-lg-3 -->
@@ -280,26 +299,25 @@ $themeData = vbrand_load_theme_data();
 			<div class="col-md-6 col-lg-4">
 				<div class="banner banner-overlay">
 					<a href="#">
-						<img src="<?=get_template_directory_uri()?>/assets/images//banners/banner-3.jpg" alt="Banner">
+						<img src="<?=$shop_banner_three?>" alt="Banner">
 					</a>
 
 					<div class="banner-content banner-content-top">
 						<h4 class="banner-subtitle text-grey">New Arrivals</h4><!-- End .banner-subtitle -->
-						<h3 class="banner-title text-white">Storage <br>Boxes & Baskets</h3><!-- End .banner-title -->
-						<a href="#" class="btn btn-outline-white banner-link">Discover Now<i class="icon-long-arrow-right"></i></a>
+						<h3 class="banner-title text-white"><?=$shop_banner_three_title?></h3><!-- End .banner-title -->
+						<a href="#" class="btn btn-outline-white banner-link"><?=$shop_banner_three_alias?><i class="icon-long-arrow-right"></i></a>
 					</div><!-- End .banner-content -->
 				</div><!-- End .banner -->
 
 				<div class="banner banner-overlay banner-overlay-light">
 					<a href="#">
-						<img src="<?=get_template_directory_uri()?>/assets/images//banners/banner-4.jpg" alt="Banner">
+						<img src="<?=$shop_banner_four?>" alt="Banner">
 					</a>
 
 					<div class="banner-content banner-content-top">
 						<h4 class="banner-subtitle">On Sale</h4><!-- End .banner-subtitle -->
-						<h3 class="banner-title">Lamps Offer</h3><!-- End .banner-title -->
-						<div class="banner-text">up to 30% off</div><!-- End .banner-text -->
-						<a href="#" class="btn btn-outline-gray banner-link">Xem thêm<i class="icon-long-arrow-right"></i></a>
+						<h3 class="banner-title"><?=$shop_banner_four_title?></h3><!-- End .banner-title -->
+						<div class="banner-text"><?=$shop_banner_four_alias?></div><!-- End .banner-text --> 
 					</div><!-- End .banner-content -->
 				</div><!-- End .banner -->
 			</div><!-- End .col-lg-4 -->

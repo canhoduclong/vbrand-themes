@@ -1,9 +1,15 @@
 <?php 
 /**
- * Template Name: Dịch vụ Page
+ * Template Name: Giới thiệu
  */
 get_header();
 ?>
+<div class="page-header text-center" style="background-image: url('<?=get_template_directory_uri()?>/assets/images/page-header-bg.jpg')">
+	<div class="container">
+		<h1 class="page-title">Giới thiệu<span>Về chúng tôi</span></h1>
+	</div>
+</div>
+
 <nav aria-label="breadcrumb" class="breadcrumb-nav">
     <div class="container">
         <ol class="breadcrumb">
@@ -12,10 +18,9 @@ get_header();
         </ol>
     </div><!-- End .container -->
 </nav><!-- End .breadcrumb-nav -->
-  <!-- About Start -->
-        
-  <div class="container"> 
-        <div class="about"> 
+
+<div class="container"> 
+    <div class="about"> 
         <div class="row align-items-center">
             <div class="col-lg-12">
                 <?php if ( have_posts() ) : while ( have_posts() ) : the_post();

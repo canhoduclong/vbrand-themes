@@ -383,37 +383,110 @@ return [
             ],
         ],
 
-        // WHY US MODULE
+        // CHUOI CUA HANG
+        //--- CUA HANG SO 1
         [
             'session' => 'home',
             'type' => 'boolean',
-            'name' => 'why_us_module_show',
-            'label' => 'Show Why Us Module',
+            'name' => 'shop_module_show',
+            'label' => 'Cửa hàng 1',
             'default' => true,
         ],
         [
             'session' => 'home',
             'type' => 'image',
-            'name' => 'why_us_module_banner',
-            'label' => 'Why Us Module: Banner',
-            'default' => get_template_directory_uri() . '/images/why-choose-us-img.jpg',
+            'name' => 'shop_banner_one',
+            'label' => 'Shop Banner 1',
+            'default' => get_template_directory_uri() . '/assets/images//banners/banner-1.jpg',
+            
         ],
         [
             'session' => 'home',
             'type' => 'text',
-            'name' => 'why_us_module_title',
-            'label' => 'Why Us Module Title',
-            'default' => 'Tại sao Chọn Chúng Tôi',
+            'name' => 'shop_banner_one_title',
+            'label' => 'Shop Banner Title',
+            'default' => 'Coffee Table',
         ],
         [
             'session' => 'home',
             'type' => 'textarea',
-            'name' => 'why_us_module_description',
-            'label' => 'Why Us Module Description',
-            'default' => 'chúng tôi mang lại sự kết hợp hoàn hảo giữa thiết
-                kế độc đáo và chất lượng xuất sắc. Chúng tôi tôn trọng nguyên
-                liệu tự nhiên và sử dụng chúng để tạo ra những sản phẩm nội thất đẹp mắt và bền bỉ.',
+            'name' => 'shop_banner_one_alias',
+            'label' => 'Shop Banner Alias',
+            'default' => 'From $19,000.',
         ],
+        //--- CUA HANG SO 2 
+        [
+            'session' => 'home',
+            'type' => 'image',
+            'name' => 'shop_banner_two',
+            'label' => 'Shop Banner 1',
+            'default' => get_template_directory_uri() . '/assets/images//banners/banner-2.jpg',
+            
+        ],
+        [
+            'session' => 'home',
+            'type' => 'text',
+            'name' => 'shop_banner_two_title',
+            'label' => 'Shop Banner Title',
+            'default' => 'Coffee Table',
+        ],
+        [
+            'session' => 'home',
+            'type' => 'textarea',
+            'name' => 'shop_banner_two_alias',
+            'label' => 'Shop Banner Alias',
+            'default' => 'From $19,000.',
+        ],
+        
+        //--- CUA HANG SO 3
+        [
+            'session' => 'home',
+            'type' => 'image',
+            'name' => 'shop_banner_three',
+            'label' => 'Shop Banner 1',
+            'default' => get_template_directory_uri() . '/assets/images//banners/banner-3.jpg',
+            
+        ],
+        [
+            'session' => 'home',
+            'type' => 'text',
+            'name' => 'shop_banner_three_title',
+            'label' => 'Shop Banner Title',
+            'default' => 'Coffee Table',
+        ],
+        [
+            'session' => 'home',
+            'type' => 'textarea',
+            'name' => 'shop_banner_three_alias',
+            'label' => 'Shop Banner Alias',
+            'default' => 'From $19,000.',
+        ],
+        //--- CUA HANG SO 4
+        [
+            'session' => 'home',
+            'type' => 'image',
+            'name' => 'shop_banner_four',
+            'label' => 'Shop Banner 1',
+            'default' => get_template_directory_uri() . '/assets/images//banners/banner-4.jpg',
+        ],
+        [
+            'session' => 'home',
+            'type' => 'text',
+            'name' => 'shop_banner_four_title',
+            'label' => 'Shop Banner Title',
+            'default' => 'Coffee Table',
+        ],
+        [
+            'session' => 'home',
+            'type' => 'textarea',
+            'name' => 'shop_banner_four_alias',
+            'label' => 'Shop Banner Alias',
+            'default' => 'From $19,000.',
+        ],
+
+        //--- 3 posts
+
+
         [
             'session' => 'home',
             'type' => 'text',
