@@ -5,6 +5,7 @@
 get_header('home');
 $themeData = vbrand_load_theme_data();
 ?>
+
 <div class="intro-slider-container mb-4">
 	<div class="intro-slider owl-carousel owl-theme owl-nav-inside owl-light" data-toggle="owl" data-owl-options='{"nav": false, "dots": false}'>
 		<?php foreach($themeData->get('slider') as $slider): ?>
@@ -353,15 +354,5 @@ $themeData = vbrand_load_theme_data();
 
 
 <?php
-	get_footer();
+	get_footer('home');
 ?> 
-<script>
-	$('#banerslider').owlCarousel({
-	center: true,
-	items:1,
-	loop:true,
-	//margin:5,
-	animateOut: 'slideInLeft',
-	animateIn: 'slideOutRight'
-	});
-</script>

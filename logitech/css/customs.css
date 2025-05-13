@@ -1,4 +1,38 @@
- 
+.intro-content {
+  position: static;
+  left: auto;
+  top: auto;
+  transform: translateY(0);
+  -ms-transform: translateY(0);
+}
+.intro-title {
+  font-weight: 600;
+  letter-spacing: -.025em;
+  font-family:Arial, Helvetica, sans-serif;
+}
+@media screen and (min-width: 768px) {
+  .intro-title {
+    margin-bottom: 2.5rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  .intro-title {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 4.3rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .intro-title {
+    font-size: 5rem;
+  }
+}
+
+
+
+  
+
+
 .header-search-extended .btn-primary {
     background-color: transparent;
   }
@@ -53,31 +87,27 @@
 }
 .nav-pills.nav-big .nav-link{
     font-size: medium !important;
+} 
+
+.header-top .container, .header-top .container-fluid {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.header-5{
+  top: 33px;
 }
 
-
-/* Ẩn dropdown-menu con */
-.dropdown:hover > .dropdown-menu {
-    display: block;
-    position: absolute;
-    left: 100%;
-    top: 0;
-    margin-top: 0;
+.nav.nav-pills .nav-item.show .nav-link, .nav.nav-pills .nav-item .nav-link.active {
+  color: #090909;
+  border-bottom-color: #c66;
 }
-
-/* Gốc cha giữ tương đối để sub-menu định vị đúng */
-.dropdown {
-    position: relative;
+.header-5 .sticky-header.fixed{
+  background-image: url(http://kimkhi.com/wp-content/themes/logitech/assets/images/mx-banner.jpg);
+  align-items: center;
+  background-size: cover;
+  background-position: top center;
 }
-
-/* Fix Bootstrap không hỗ trợ hover menu đa cấp */
-.dropdown-menu .dropdown {
-    position: relative;
+.cart-dropdown:hover .dropdown-toggle{
+  color: #ffffff;
 }
-
-.dropdown-menu .dropdown-menu {
-    top: 0;
-    left: 100%;
-    margin-left: 0.1rem;
-}
-

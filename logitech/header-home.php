@@ -7,9 +7,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
          
-        <title><?php echo $themeData->get('site_name', 'Shop Funiture'); ?></title>
-        <meta name="keywords" content="<?php echo $themeData->get('site_name', 'Shop Funiture'); ?>">
-        <meta name="description" content="<?php echo $themeData->get('site_desctiption', 'Shop Funiture plays a crucial role in shaping the ambiance and functionality of retail spaces'); ?>">
+        <title><?php echo $themeData->get('site_name', 'Logitech Shop'); ?></title>
+        <meta name="keywords" content="<?php echo $themeData->get('site_name', 'Logitech Shop'); ?>">
+        <meta name="description" content="<?php echo $themeData->get('site_desctiption', 'Logitech Shop plays a crucial role in shaping the ambiance and functionality of retail spaces'); ?>">
         <meta name="author" content="vBrand">
 
         <!-- Favicon -->
@@ -36,28 +36,65 @@
 
         <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/plugins/jquery.countdown.css">
         <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/style.css">
-        <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/skins/skin-demo-2.css">
-        <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/demos/demo-2.css">
-        <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/demos/customs.css">
-    </head>
-    <body>
-        <div class="page-wrapper">
-            <div style="display:block; position:relative;background-color: #efefef;">
-                <div class="container">
-                    <div class="col col-md-6">
-                        <div class="my-3">
-                            <img src="<?=get_template_directory_uri()?>/assets/images/logitechg.svg" alt="">
-                        </div>
-                    </div>
-                    <div class="col col-md-6">
+        <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/skins/skin-demo-5.css">
+        <link rel="stylesheet" href="<?=get_template_directory_uri()?>/assets/css/demos/demo-5.css"> 
+        <link rel="stylesheet" href="<?=get_template_directory_uri()?>/css/skin.css">
+        <link rel="stylesheet" href="<?=get_template_directory_uri()?>/css/customs.css">
 
-                    </div>
-                </div> 
+    </head>
+    <body> 
+
+        <div class="page-wrapper"> 
+            <div class="hottop">
+                 <div class="header-top">
+                    <div class="container">
+                        <div class="header-left">
+                            <a href="tel:#"><i class="icon-phone"></i>Call: +0123 456 789</a>
+                        </div><!-- End .header-left -->
+
+                        <div class="header-right">
+
+                            <ul class="top-menu">
+                                <li>
+                                    <a href="#">Links</a>
+                                    <ul>
+                                        <li>
+                                            <div class="header-dropdown">
+                                                <a href="#">USD</a>
+                                                <div class="header-menu">
+                                                    <ul>
+                                                        <li><a href="#">Eur</a></li>
+                                                        <li><a href="#">Usd</a></li>
+                                                    </ul>
+                                                </div><!-- End .header-menu -->
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="header-dropdown">
+                                                <a href="#">English</a>
+                                                <div class="header-menu">
+                                                    <ul>
+                                                        <li><a href="#">English</a></li>
+                                                        <li><a href="#">French</a></li>
+                                                        <li><a href="#">Spanish</a></li>
+                                                    </ul>
+                                                </div><!-- End .header-menu -->
+                                            </div>
+                                        </li> 
+                                    </ul>
+                                </li>
+                            </ul><!-- End .top-menu -->
+                        </div><!-- End .header-right -->
+
+                    </div><!-- End .container -->
+                </div>
             </div>
 
             <header class="header header-5"> 
-
+               
                 <div class="header-middle sticky-header">
+                    
+
                     <div class="container-fluid">
                         <div class="header-left">
                             <button class="mobile-menu-toggler">
@@ -92,10 +129,8 @@
 
                                             } else if ($menu['type'] == 'shop') { 
                                                 if (class_exists('WooCommerce')) { 
-                                                    if(get_option( 'woocommerce_shop_page_id' )){
-                                                        //$menuLink = get_permalink( get_option( 'woocommerce_shop_page_id' ) ); 
-                                                        $menuLink = get_permalink( wc_get_page_id( 'shop' ) );
-                                                        
+                                                    if(get_option( 'woocommerce_shop_page_id' )){ 
+                                                        $menuLink = get_permalink( wc_get_page_id( 'shop' ) ); 
                                                     }else{
                                                         echo "không tim thấy trang shop, vui lòng kiểm tra cấu hình của woocomerce";
                                                     }
@@ -122,55 +157,45 @@
                                 </ul>
                             </nav>
                         
-                        </div><!-- End .header-left -->
+                        </div>
 
                         <div class="header-right">
                             <div class="header-search header-search-extended header-search-visible">
                                 <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
                                 <div class="mt-1">
-                                    <?php echo do_shortcode('[custom_product_search]'); ?>
+                                    <?php //echo do_shortcode('[custom_product_search]'); ?>
                                 </div>
-                            </div><!-- End .header-search -->
-                            
+                            </div>
                             <a href="<?php echo home_url('/');?>/wishlist" class="wishlist-link">
                                 <i class="icon-heart-o"></i>
-                                    <span class="wishlist-count">3</span>
-                            </a>
- 
+                                <span class="wishlist-count"></span>
+                            </a> 
                             <div class="dropdown cart-dropdown">
                                 <a href="<?php echo home_url('/');?>/card" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                                     <i class="icon-shopping-cart"></i>
                                     <span class="cart-count">0</span>
                                     <span class="cart-txt">0</span>
-                                </a> 
-
+                                </a>
                                 <div class="dropdown-menu dropdown-menu-right" id="minicart">
                                     <div id="minicart-content">
                                         <a href="javascript:;" id="close-minicart">×</a>
                                         <div class="dropdown-cart-products" id="minicart-items"> 
-
-                                        </div><!-- End .cart-product -->
-
+                                        </div>
                                         <div class="dropdown-cart-total">
                                             <span>Tổng tiền</span>
-
                                             <span class="cart-total-price" id="minicart-subtotal">00</span>
-                                        </div><!-- End .dropdown-cart-total -->
-
+                                        </div>
                                         <div class="dropdown-cart-action">
-                                            <a href="/cart" class="btn btn-primary">Giỏ hàng</a>
-                                            <a href="/checkout" class="btn btn-outline-primary-2"><span>Thanh toán</span><i class="icon-long-arrow-right"></i></a>
-                                        </div><!-- End .dropdown-cart-total -->
+                                            <a href="<?php echo home_url('/');?>/cart" class="btn btn-primary">Giỏ hàng</a>
+                                            <a href="<?php echo home_url('/');?>/checkout" class="btn btn-outline-primary-2"><span>Thanh toán</span><i class="icon-long-arrow-right"></i></a>
+                                        </div>
                                     </div>
-                                </div> 
-                                <!-- End .dropdown-menu -->
-                            </div><!-- End .cart-dropdown -->
-                            
-                        </div><!-- End .header-right -->
-                    </div><!-- End .container-fluid -->
-                </div><!-- End .header-middle -->
-            </header><!-- End .header -->
-
+                                </div>  
+                            </div>                             
+                        </div>
+                    </div>
+                </div>
+            </header>
             <main class="main">
            
 

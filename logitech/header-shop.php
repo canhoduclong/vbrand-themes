@@ -7,9 +7,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
          
-        <title><?php echo $themeData->get('site_name', 'Shop Funiture'); ?></title>
-        <meta name="keywords" content="<?php echo $themeData->get('site_name', 'Shop Funiture'); ?>">
-        <meta name="description" content="<?php echo $themeData->get('site_desctiption', 'Shop Funiture plays a crucial role in shaping the ambiance and functionality of retail spaces'); ?>">
+        <title><?php echo $themeData->get('site_name', 'Logitech Shop'); ?></title>
+        <meta name="keywords" content="<?php echo $themeData->get('site_name', 'Logitech Shop'); ?>">
+        <meta name="description" content="<?php echo $themeData->get('site_desctiption', 'Logitech Shopplays a crucial role in shaping the ambiance and functionality of retail spaces'); ?>">
         <meta name="author" content="vBrand">
 
         <!-- Favicon -->
