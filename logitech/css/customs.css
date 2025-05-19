@@ -103,11 +103,62 @@
   border-bottom-color: #c66;
 }
 .header-5 .sticky-header.fixed{
-  background-image: url(http://kimkhi.com/wp-content/themes/logitech/assets/images/mx-banner.jpg);
+  background-image: url(../../images/mx-banner.jpg);
   align-items: center;
   background-size: cover;
   background-position: top center;
 }
 .cart-dropdown:hover .dropdown-toggle{
   color: #ffffff;
+}
+
+
+
+/*
+  New style
+*/
+
+
+.trending-products {
+  padding: 4.5rem 5rem 5rem;
+}
+.trending-products .owl-simple .owl-nav .owl-prev {
+  left: -40px;
+}
+.trending-products .owl-simple .owl-nav .owl-next {
+  right: -40px;
+}
+.trending-products .owl-dots {
+  margin-top: 0.5rem;
+}
+.trending-products .product-media {
+  padding: 2rem 2rem;
+  background-color: #fff;
+}
+.trending-products .product-body {
+  padding-top: 0;
+  padding-bottom: 2.8rem;
+}
+.heading.heading-flex {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+@media screen and (min-width: 992px) {
+  .heading.heading-flex {
+    align-items: center;
+    flex-direction: row;
+    text-align: left;
+  }
+}
+@media screen and (min-width: 992px) {
+  .heading.heading-flex {
+    text-align: left;
+  }
+}
+@media screen and (min-width: 992px) {
+  .heading-right {
+    margin-top: 0;
+    margin-left: auto;
+  }
 }
