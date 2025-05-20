@@ -397,7 +397,7 @@ return [
             'type' => 'image',
             'name' => 'shop_banner_one',
             'label' => 'Shop Banner 1',
-            'default' => get_template_directory_uri() . '/assets/images//banners/banner-1.jpg',
+            'default' => get_template_directory_uri() . '/assets/images/banners/shop-1.jpg',
             
         ],
         [
@@ -420,7 +420,7 @@ return [
             'type' => 'image',
             'name' => 'shop_banner_two',
             'label' => 'Shop Banner 1',
-            'default' => get_template_directory_uri() . '/assets/images//banners/banner-2.jpg',
+            'default' => get_template_directory_uri() . '/assets/images/banners/shop-2.jpg',
             
         ],
         [
@@ -444,7 +444,7 @@ return [
             'type' => 'image',
             'name' => 'shop_banner_three',
             'label' => 'Shop Banner 1',
-            'default' => get_template_directory_uri() . '/assets/images//banners/banner-3.jpg',
+            'default' => get_template_directory_uri() . '/assets/images/banners/shop-3.jpg',
             
         ],
         [
@@ -467,7 +467,7 @@ return [
             'type' => 'image',
             'name' => 'shop_banner_four',
             'label' => 'Shop Banner 1',
-            'default' => get_template_directory_uri() . '/assets/images//banners/banner-4.jpg',
+            'default' => get_template_directory_uri() . '/assets/images/banners/shop-4.jpg',
         ],
         [
             'session' => 'home',
@@ -483,6 +483,33 @@ return [
             'label' => 'Shop Banner Alias',
             'default' => 'From $19,000.',
         ],
+
+        //--- CUA HANG SO 5
+        [
+            'session' => 'home',
+            'type' => 'image',
+            'name' => 'shop_banner_five',
+            'label' => 'Shop Banner 1',
+            'default' => get_template_directory_uri() . '/assets/images/banners/shop-5.jpg',
+        ],
+        [
+            'session' => 'home',
+            'type' => 'text',
+            'name' => 'shop_banner_five_title',
+            'label' => 'Shop Banner Title',
+            'default' => 'Coffee Table',
+        ],
+        [
+            'session' => 'home',
+            'type' => 'textarea',
+            'name' => 'shop_banner_five_alias',
+            'label' => 'Shop Banner Alias',
+            'default' => 'From $19,000.',
+        ],
+
+        
+
+
 
         //--- 3 posts
 

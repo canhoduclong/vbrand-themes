@@ -162,3 +162,16 @@
     margin-left: auto;
   }
 }
+
+.banner-title{
+  font-size: 1.7rem;
+}
+.banner-overlay{
+  overflow: hidden;
+}
+.banner-overlay img {
+  transition: transform .5s ease;
+}
+.banner-overlay:hover img {
+  transform: scale(1.2);
+}
