@@ -1166,7 +1166,7 @@ $themeData = vbrand_load_theme_data();
 </div>
 <div class="mb-5"></div>
    
-<div class="intro-slider-container mb-4">
+<div class="intro-slider-container ">
 	<div id="banerslider" class="intro-slider owl-carousel owl-theme owl-nav-inside owl-light" data-toggle="owl" data-owl-options='{"nav": false, "dots": false}'>
 		<?php foreach($themeData->get('bannerslider') as $slider): ?>
 			<div class="intro-slide" style="background-image: url(<?php echo $slider['anh']; ?>);">
