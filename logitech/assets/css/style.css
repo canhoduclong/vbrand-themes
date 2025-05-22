@@ -565,9 +565,10 @@ blockquote.text-white cite span {
   min-height: 25px;
 }
 .logo img{
-  display: block;
-  max-height: 82px;
+ display: block;
+  height: 35px;
   width: auto;
+  color: #fff;
 }
 .header-top {
   font-weight: 300;
