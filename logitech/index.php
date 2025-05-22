@@ -10,7 +10,7 @@
                 </h2>
                 <p> 
                 </p>
-            </div> 
+            </div>
             <div class="col-lg-12">
                 <?php if ( have_posts() ) : ?>
                     <?php while ( have_posts() ) : the_post();?>
