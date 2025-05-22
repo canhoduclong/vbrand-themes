@@ -49,7 +49,7 @@
                  <div class="header-top">
                     <div class="container">
                         <div class="header-left">
-                            <a href="tel:#"><i class="icon-phone"></i>Call: +0123 456 789</a>
+                            <a href="tel:#"><i class="icon-phone"></i>Call: 0909.09.09.09</a>
                         </div><!-- End .header-left -->
 
                         <div class="header-right">
@@ -95,7 +95,7 @@
                 <div class="header-middle sticky-header">
                     
 
-                    <div class="container-fluid">
+                    <div class="container">
                         <div class="header-left">
                             <button class="mobile-menu-toggler">
                                 <span class="sr-only">Toggle mobile menu</span>
@@ -103,13 +103,11 @@
                             </button>
                             <div class="logo"> 
                                 <a class="logo" href="<?php echo home_url('/');?>">
-                                    <?php if ($themeData->get('site_logo')) { ?>
-                                        <img src="<?php echo $themeData->get('site_logo'); ?>"  width="82" height="25">
-                                    <?php } else { ?>
-                                        Logo Here
-                                    <?php } ?> 
+                                    <img src="<?=get_template_directory_uri()?>/assets/images/logitechg.svg" alt="">
                                 </a> 
                             </div>
+                        </div>
+                        <div class="header-center">
                             <nav class="main-nav">
                                 <ul class="menu sf-arrows">
  
@@ -163,13 +161,9 @@
                             <div class="header-search header-search-extended header-search-visible">
                                 <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
                                 <div class="mt-1">
-                                    <?php //echo do_shortcode('[custom_product_search]'); ?>
+                                    <?php echo do_shortcode('[custom_product_search]'); ?>
                                 </div>
-                            </div>
-                            <a href="<?php echo home_url('/');?>/wishlist" class="wishlist-link">
-                                <i class="icon-heart-o"></i>
-                                <span class="wishlist-count"></span>
-                            </a> 
+                            </div> 
                             <div class="dropdown cart-dropdown">
                                 <a href="<?php echo home_url('/');?>/card" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                                     <i class="icon-shopping-cart"></i>

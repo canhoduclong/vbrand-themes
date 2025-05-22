@@ -405,14 +405,14 @@ return [
             'type' => 'text',
             'name' => 'shop_banner_one_title',
             'label' => 'Shop Banner Title',
-            'default' => 'Coffee Table',
+            'default' => 'DÒNG ERGO',
         ],
         [
             'session' => 'home',
             'type' => 'textarea',
             'name' => 'shop_banner_one_alias',
             'label' => 'Shop Banner Alias',
-            'default' => 'From $19,000.',
+            'default' => '',
         ],
         //--- CUA HANG SO 2 
         [
@@ -428,14 +428,14 @@ return [
             'type' => 'text',
             'name' => 'shop_banner_two_title',
             'label' => 'Shop Banner Title',
-            'default' => 'Coffee Table',
+            'default' => 'DÒNG MX MASTER',
         ],
         [
             'session' => 'home',
             'type' => 'textarea',
             'name' => 'shop_banner_two_alias',
             'label' => 'Shop Banner Alias',
-            'default' => 'From $19,000.',
+            'default' => '',
         ],
         
         //--- CUA HANG SO 3
@@ -452,14 +452,14 @@ return [
             'type' => 'text',
             'name' => 'shop_banner_three_title',
             'label' => 'Shop Banner Title',
-            'default' => 'Coffee Table',
+            'default' => 'DÀNH CHO LẬP TRÌNH VIÊN',
         ],
         [
             'session' => 'home',
             'type' => 'textarea',
             'name' => 'shop_banner_three_alias',
             'label' => 'Shop Banner Alias',
-            'default' => 'From $19,000.',
+            'default' => '',
         ],
         //--- CUA HANG SO 4
         [
@@ -474,14 +474,14 @@ return [
             'type' => 'text',
             'name' => 'shop_banner_four_title',
             'label' => 'Shop Banner Title',
-            'default' => 'Coffee Table',
+            'default' => 'DÀNH CHO CÔNG VIỆC SÁNG TẠO',
         ],
         [
             'session' => 'home',
             'type' => 'textarea',
             'name' => 'shop_banner_four_alias',
             'label' => 'Shop Banner Alias',
-            'default' => 'From $19,000.',
+            'default' => '',
         ],
 
         //--- CUA HANG SO 5
@@ -497,18 +497,16 @@ return [
             'type' => 'text',
             'name' => 'shop_banner_five_title',
             'label' => 'Shop Banner Title',
-            'default' => 'Coffee Table',
+            'default' => 'SẴN SÀNG MANG THEO',
         ],
         [
             'session' => 'home',
             'type' => 'textarea',
             'name' => 'shop_banner_five_alias',
             'label' => 'Shop Banner Alias',
-            'default' => 'From $19,000.',
+            'default' => '',
         ],
-
-        
-
+ 
 
 
         //--- 3 posts

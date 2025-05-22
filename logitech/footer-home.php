@@ -1,69 +1,83 @@
 <?php $themeData = vbrand_load_theme_data(); ?>
-</main>
-<footer class="footer footer-2">
-				<div class="footer-bottom">
-					<div class="container">
-						<p class="footer-copyright">Copyright © 2023 Shop Funiture Store. All Rights Reserved.</p>
-						
-						<ul class="footer-menu">
-							<li><a href="#">Terms Of Use</a></li>
-							<li><a href="#">Privacy Policy</a></li>
-						</ul>
-						
-						<div class="social-icons social-icons-color">
-							<a href="#" class="social-icon social-facebook" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
-							<a href="#" class="social-icon social-twitter" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
-							<a href="#" class="social-icon social-instagram" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
-							<a href="#" class="social-icon social-youtube" title="Youtube" target="_blank"><i class="icon-youtube"></i></a>
-							<a href="#" class="social-icon social-pinterest" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
-						</div>
-					</div>
-				</div>
-			</footer> 
+</main> 
 
-		</div> 
+ <footer class="footer footer-dark">
+                <div class="footer-middle">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="widget widget-about">
+                                    <img src="assets/images/demos/demo-19/logo-footer.png" class="footer-logo" alt="Footer Logo" width="105" height="25">
+                                    <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. </p>
 
-		<button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
+                                    <div class="social-icons">
+                                        <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+                                        <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+                                        <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+                                        <a href="#" class="social-icon" title="Youtube" target="_blank"><i class="icon-youtube"></i></a>
+                                        <a href="#" class="social-icon" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
+                                    </div><!-- End .soial-icons -->
+                                </div><!-- End .widget about-widget -->
+                            </div><!-- End .col-sm-6 col-lg-3 -->
 
-		<!-- Mobile Menu -->
-		<div class="mobile-menu-overlay"></div>
-		 
-		
-		<!-- End .mobile-menu-container -->
-		<div class="container newsletter-popup-container mfp-hide" id="newsletter-popup-form">
-			<div class="row justify-content-center">
-				<div class="col-10">
-					<div class="row no-gutters bg-white newsletter-popup-content">
-						<div class="col-xl-3-5col col-lg-7 banner-content-wrap">
-							<div class="banner-content text-center">
-								<?php if ($themeData->get('site_logo')) { ?>
-                                    <img src="<?php echo $themeData->get('site_logo'); ?>" class="logo" alt="logo" width="60" height="15">
-                                <?php }?>
-								<h2 class="banner-title">get <span>25<light>%</light></span> off</h2>
-								<p>Subscribe to the Molla eCommerce newsletter to receive timely updates from your favorite products.</p>
-								<form action="#">
-									<div class="input-group input-group-round">
-										<input type="email" class="form-control form-control-white" placeholder="Your Email Address" aria-label="Email Adress" required>
-										<div class="input-group-append">
-											<button class="btn" type="submit"><span>go</span></button>
-										</div><!-- .End .input-group-append -->
-									</div><!-- .End .input-group -->
-								</form>
-								<div class="custom-control custom-checkbox">
-									<input type="checkbox" class="custom-control-input" id="register-policy-2" required>
-									<label class="custom-control-label" for="register-policy-2">Do not show this popup again</label>
-								</div><!-- End .custom-checkbox -->
-							</div>
-						</div>
-						<div class="col-xl-2-5col col-lg-5 ">
-							News Letter Img 
-						</div>
-					</div>
-				</div>
-			</div>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="widget">
+                                    <h4 class="widget-title">Useful Links</h4><!-- End .widget-title -->
+
+                                    <ul class="widget-list">
+                                        <li><a href="about.html">About Molla</a></li>
+                                        <li><a href="#">How to shop on Molla</a></li>
+                                        <li><a href="#">FAQ</a></li>
+                                        <li><a href="contact.html">Contact us</a></li>
+                                        <li><a href="login.html">Log in</a></li>
+                                    </ul><!-- End .widget-list -->
+                                </div><!-- End .widget -->
+                            </div><!-- End .col-sm-6 col-lg-3 -->
+
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="widget">
+                                    <h4 class="widget-title">Customer Service</h4><!-- End .widget-title -->
+
+                                    <ul class="widget-list">
+                                        <li><a href="#">Payment Methods</a></li>
+                                        <li><a href="#">Money-back guarantee!</a></li>
+                                        <li><a href="#">Returns</a></li>
+                                        <li><a href="#">Shipping</a></li>
+                                        <li><a href="#">Terms and conditions</a></li>
+                                        <li><a href="#">Privacy Policy</a></li>
+                                    </ul><!-- End .widget-list -->
+                                </div><!-- End .widget -->
+                            </div><!-- End .col-sm-6 col-lg-3 -->
+
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="widget">
+                                    <h4 class="widget-title">My Account</h4><!-- End .widget-title -->
+
+                                    <ul class="widget-list">
+                                        <li><a href="#">Sign In</a></li>
+                                        <li><a href="cart.html">View Cart</a></li>
+                                        <li><a href="#">My Wishlist</a></li>
+                                        <li><a href="#">Track My Order</a></li>
+                                        <li><a href="#">Help</a></li>
+                                    </ul><!-- End .widget-list -->
+                                </div><!-- End .widget -->
+                            </div><!-- End .col-sm-6 col-lg-3 -->
+                        </div><!-- End .row -->
+                    </div><!-- End .container -->
+                </div><!-- End .footer-middle -->
+
+                <div class="footer-bottom">
+                    <div class="container">
+                        <p class="footer-copyright">Copyright © 2019 Molla Store. All Rights Reserved.</p><!-- End .footer-copyright -->
+                        <figure class="footer-payments">
+                            <img src="assets/images/payments.png" alt="Payment methods" width="272" height="20">
+                        </figure><!-- End .footer-payments -->
+                    </div><!-- End .container -->
+                </div><!-- End .footer-bottom -->
+            </footer>
+	
 		</div>
-		
- 
+
 		<?php  wp_footer(); ?>
 
 		<!-- Plugins JS File -->

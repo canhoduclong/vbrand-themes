@@ -547,6 +547,7 @@ blockquote.text-white cite span {
 .header-right {
   display: flex;
   align-items: center;
+  min-width: 12%;
 }
 .header-right {
   margin-left: auto;
@@ -9537,10 +9538,11 @@ button:focus {
   margin-bottom: 0.8rem;
 }
 .blog-posts .entry-title {
-  font-weight: 500;
+  font-weight: 700;
   font-size: 1.8rem;
   letter-spacing: -0.01em;
   margin-bottom: 0.5rem;
+  text-transform: uppercase;
 }
 .blog-posts .read-more {
   padding-right: 0;

@@ -51,15 +51,9 @@
                                 <span class="sr-only">Toggle mobile menu</span>
                                 <i class="icon-bars"></i>
                             </button>
-
                             <a class="logo" href="<?php echo home_url('/');?>">
-                                <?php if ($themeData->get('site_logo')) { ?>
-                                    <img src="<?php echo $themeData->get('site_logo'); ?>" >
-                                <?php } else { ?>
-                                    Shop Funiture
-                                <?php } ?> 
-                            </a>
- 
+                                <img src="<?=get_template_directory_uri()?>/assets/images/logitechg.svg" alt="">
+                            </a> 
                             <nav class="main-nav">
                                 <ul class="menu sf-arrows">
 
