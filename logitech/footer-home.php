@@ -6,74 +6,81 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-6 col-lg-3">
-                                <div class="widget widget-about">
-                                    <img src="assets/images/demos/demo-19/logo-footer.png" class="footer-logo" alt="Footer Logo" width="105" height="25">
-                                    <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. </p>
-
-                                    <div class="social-icons">
-                                        <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
-                                        <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
-                                        <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
-                                        <a href="#" class="social-icon" title="Youtube" target="_blank"><i class="icon-youtube"></i></a>
-                                        <a href="#" class="social-icon" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
-                                    </div><!-- End .soial-icons -->
-                                </div><!-- End .widget about-widget -->
-                            </div><!-- End .col-sm-6 col-lg-3 -->
+                                <div class="widget">
+                                    <h4 class="widget-title">Giới thiệu</h4>
+                                    <ul class="widget-list">
+                                        <li><a href="about.html">Câu chuyện về Logitech</a></li>
+                                        <li><a href="#">Nghề nghiệp</a></li>
+                                        <li><a href="#">Nhà đầu tư</a></li>
+                                        <li><a href="contact.html">Blog</a></li>
+                                        <li><a href="login.html">Báo chí</a></li>
+                                        <li><a href="login.html">Liên hệ với chúng tôi</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="widget">                                    
+                                    <h4 class="widget-title">Giá trị</h4>
+                                    <ul class="widget-list">
+                                        <li><a href="#"> Con người</a></li>
+                                        <li><a href="#"> Hành tinh</a></li>
+                                        <li><a href="#">Tái chế</a></li>
+                                    </ul>
+                                </div>
+                            </div>
 
                             <div class="col-sm-6 col-lg-3">
                                 <div class="widget">
-                                    <h4 class="widget-title">Useful Links</h4><!-- End .widget-title -->
-
+                                    <h4 class="widget-title">Đối tác</h4> 
                                     <ul class="widget-list">
-                                        <li><a href="about.html">About Molla</a></li>
-                                        <li><a href="#">How to shop on Molla</a></li>
-                                        <li><a href="#">FAQ</a></li>
-                                        <li><a href="contact.html">Contact us</a></li>
-                                        <li><a href="login.html">Log in</a></li>
-                                    </ul><!-- End .widget-list -->
-                                </div><!-- End .widget -->
-                            </div><!-- End .col-sm-6 col-lg-3 -->
+                                        <li><a href="#">Tìm đại lý</a></li>
+                                        <li><a href="#">Trở thành Đối tác</a></li>
+                                        <li><a href="#">Trở thành Đối tác của Liên minh</a></li>
+                                        <li><a href="#">Cổng thông tin đối tác</a></li> 
+                                    </ul>
+                                </div>
+                            </div>
 
                             <div class="col-sm-6 col-lg-3">
                                 <div class="widget">
-                                    <h4 class="widget-title">Customer Service</h4><!-- End .widget-title -->
-
+                                    <h4 class="widget-title">KHÁCH HÀNG</h4> 
                                     <ul class="widget-list">
-                                        <li><a href="#">Payment Methods</a></li>
-                                        <li><a href="#">Money-back guarantee!</a></li>
-                                        <li><a href="#">Returns</a></li>
-                                        <li><a href="#">Shipping</a></li>
-                                        <li><a href="#">Terms and conditions</a></li>
-                                        <li><a href="#">Privacy Policy</a></li>
-                                    </ul><!-- End .widget-list -->
-                                </div><!-- End .widget -->
-                            </div><!-- End .col-sm-6 col-lg-3 -->
-
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="widget">
-                                    <h4 class="widget-title">My Account</h4><!-- End .widget-title -->
-
-                                    <ul class="widget-list">
-                                        <li><a href="#">Sign In</a></li>
-                                        <li><a href="cart.html">View Cart</a></li>
-                                        <li><a href="#">My Wishlist</a></li>
-                                        <li><a href="#">Track My Order</a></li>
-                                        <li><a href="#">Help</a></li>
-                                    </ul><!-- End .widget-list -->
-                                </div><!-- End .widget -->
-                            </div><!-- End .col-sm-6 col-lg-3 -->
+                                        <li><a href="#">Tùy chọn email</a></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div><!-- End .row -->
                     </div><!-- End .container -->
-                </div><!-- End .footer-middle -->
+                </div>
 
                 <div class="footer-bottom">
+                    <div class="container"> 
+                        <div class="col-sm-12 col-lg-12">
+                            <div class="my-4">
+                                <div class="social-icons">
+                                    <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+                                    <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+                                    <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+                                    <a href="#" class="social-icon" title="Youtube" target="_blank"><i class="icon-youtube"></i></a>
+                                    <a href="#" class="social-icon" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
                     <div class="container">
-                        <p class="footer-copyright">Copyright © 2019 Molla Store. All Rights Reserved.</p><!-- End .footer-copyright -->
-                        <figure class="footer-payments">
-                            <img src="assets/images/payments.png" alt="Payment methods" width="272" height="20">
-                        </figure><!-- End .footer-payments -->
-                    </div><!-- End .container -->
-                </div><!-- End .footer-bottom -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="copyright">
+                                    <a href="#">©2025 Logitech. Bảo lưu mọi quyền.</a>
+                                    <a href="#"> Điều khoản Sử dụng</a>
+                                    <a href="#"> Chính sách về Quyền riêng tư của</a>
+                                    <a href="#">Cài đặt cookie</a>
+                                    <a href="#"> Bản đồ trang web</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </footer>
 	
 		</div>

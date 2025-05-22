@@ -68,14 +68,7 @@ $themeData = vbrand_load_theme_data();
 					}?>
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12 text-center">
-				<div class="more-container text-center mt-1">
-					<a href="<?=site_url()?>/tin-tuc" class="btn btn-outline-lightgray btn-more btn-round"><span>Xem thêm tin</span><i class="icon-long-arrow-right"></i></a>
-				</div>
-			</div>
-		</div>
+		</div> 
 	</div>
 </div>
  

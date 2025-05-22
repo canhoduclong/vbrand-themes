@@ -4810,9 +4810,7 @@ p {
   position: relative;
   display: flex;
   align-content: center;
-  flex-direction: column;
-  padding-top: 2.1rem;
-  padding-bottom: 2.9rem;
+  flex-direction: column; 
 }
 .footer-bottom .container:before,
 .footer-bottom .container-fluid:before {
@@ -9582,6 +9580,7 @@ button:focus {
 }
 .footer .widget-title {
   font-weight: 600;
+  text-transform: uppercase;
 }
  
 .cross-txt {

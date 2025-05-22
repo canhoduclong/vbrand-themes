@@ -175,3 +175,9 @@
 .banner-overlay:hover img {
   transform: scale(1.2);
 }
+.nav-item a{
+  color:#000000;
+}
+.copyright a{
+  padding-right: 12px; 
+}
