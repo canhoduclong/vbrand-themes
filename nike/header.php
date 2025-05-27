@@ -74,13 +74,11 @@
                     <div class="header-right">
                         <ul class="top-menu">
                             <li>
-                                <a href="#">Links</a>
+                                <a href="#">Tiện ích</a>
                                 <ul>
-                                    <li><a href="tel:#"><i class="icon-phone"></i>Call: +0123 456 789</a></li>
-                                    <li><a href="wishlist.html"><i class="icon-heart-o"></i>My Wishlist <span>(3)</span></a></li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
-                                    <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Login</a></li>
+                                    <li><a href="tel:#"><i class="icon-phone"></i>Liên hệ: +0123 456 789</a></li>
+                                    <li><a href="about.html">Về chúng tôi</a></li>
+                                    <li><a href="contact.html">Liên hệ</a></li> 
                                 </ul>
                             </li>
                         </ul><!-- End .top-menu -->
@@ -201,14 +199,14 @@
                                 </div><!-- End .cart-product -->
 
                                 <div class="dropdown-cart-total">
-                                    <span>Total</span>
+                                    <span>Tổng cộng</span>
 
                                     <span class="cart-total-price">$160.00</span>
                                 </div><!-- End .dropdown-cart-total -->
 
                                 <div class="dropdown-cart-action">
-                                    <a href="cart.html" class="btn btn-primary">View Cart</a>
-                                    <a href="checkout.html" class="btn btn-outline-primary-2"><span>Checkout</span><i class="icon-long-arrow-right"></i></a>
+                                    <a href="cart.html" class="btn btn-primary">Xem giỏ hàng</a>
+                                    <a href="checkout.html" class="btn btn-outline-primary-2"><span>Thanh toán</span><i class="icon-long-arrow-right"></i></a>
                                 </div><!-- End .dropdown-cart-total -->
                             </div><!-- End .dropdown-menu -->
                         </div><!-- End .cart-dropdown -->
