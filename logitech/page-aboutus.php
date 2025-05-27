@@ -27,13 +27,23 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-10 offset-lg-1">
-				 <?php if ( have_posts() ) : ?>
-                    <?php while ( have_posts() ) : the_post();?>
-                        <?php the_content(); ?>
-                    <?php endwhile;  ?>
-                <?php else: ?>
-                    <p>!Sorry no posts here</p>
-                <?php endif; ?>
+                <div class="about-text text-center mt-3">
+
+                    <h2 class="title text-center mb-2">Chúng tôi là ai</h2>
+                    <p>Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, uctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. </p>
+                    <img src="assets/images/about/about-2/signature.png" alt="signature" class="mx-auto mb-5">
+
+                    <img src="<?=get_template_directory_uri()?>/assets/images/about-2.jpg" alt="image" class="mx-auto mb-6">
+               
+                    <?php if ( have_posts() ) : ?>
+                        <?php while ( have_posts() ) : the_post();?>
+                            <?php the_content(); ?>
+                        <?php endwhile;  ?>
+                    <?php else: ?>
+                        <p>!Sorry no posts here</p>
+                    <?php endif; ?>
+
+                </div>
 			</div>
 		</div>
 	</div>
