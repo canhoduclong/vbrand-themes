@@ -1,183 +1,21 @@
-.intro-content {
-  position: static;
-  left: auto;
-  top: auto;
-  transform: translateY(0);
-  -ms-transform: translateY(0);
-}
-.intro-title {
-  font-weight: 600;
-  letter-spacing: -.025em;
-  font-family:Arial, Helvetica, sans-serif;
-}
-@media screen and (min-width: 768px) {
-  .intro-title {
-    margin-bottom: 2.5rem;
-  }
-}
-@media screen and (min-width: 992px) {
-  .intro-title {
-    font-size: 4rem;
-    line-height: 1.1;
-    margin-bottom: 4.3rem;
-  }
+
+.logo img { 
+  height: 75px;
 }
 @media screen and (min-width: 1200px) {
-  .intro-title {
-    font-size: 5rem;
+  .header-8 .main-nav {
+    margin-right: 0;
   }
 }
-
-
-
-  
-
-
-.header-search-extended .btn-primary {
-    background-color: transparent;
-  }
-  .header-search-extended .btn-primary:hover,
-  .header-search-extended .btn-primary:focus {
-    color: #c66;
-  }
-  .header-search-extended .btn-primary:not(:disabled):not(.disabled):active,
-  .header-search-extended .btn-primary:not(:disabled):not(.disabled).active,
-  .header-search-extended .show > .btn-primary.dropdown-toggle {
-    background-color: transparent;
-    border: none;
-    color: #c66;
-  }
-
-  
-.owl-theme .owl-nav [class*="owl-"] {
-    width: 3.2rem;
-    height: 3.2rem;
-    font-size: 2rem;
-    margin-top: -1.6rem;
-  }
-  .owl-theme.owl-light .owl-nav [class*="owl-"] {
-    border-color: #fff;
-    color: #fff;
-  }
-  .brands-border .brand {
-    height: 100px;
-    border: 0.1rem solid #ebebeb;
-    border-left-width: 0;
-  }
-  .brands-carousel-full {
-    border-bottom: 0.1rem solid #ebebeb;
-  }
-  .brands-carousel-full.brands-border .brand {
-    border-right-width: 0;
-    border-top-width: 0;
-    border-bottom-width: 0;
-  }
-  .brands-carousel-full.brands-border .owl-item:first-child .brand {
-    border-left-width: 0;
-  }
-
-.header-5 .header-search .header-search-wrapper{
-    background-color: transparent;
-    border: none;
-    border-bottom-width: medium;
-    border-bottom-style: none;
-    border-bottom-color: currentcolor;
-    border-radius: 0; 
-    min-width: 150px;
+.header.header-8 .logo, .logo{
+  margin-top: 7px;
+  margin-bottom: 9px;
 }
-.nav-pills.nav-big .nav-link{
-    font-size: medium !important;
-} 
-
-.header-top .container, .header-top .container-fluid {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-.header-5{
-  top: 33px;
-}
-
-.nav.nav-pills .nav-item.show .nav-link, .nav.nav-pills .nav-item .nav-link.active {
-  color: #090909;
-  border-bottom-color: #c66;
-}
-.header-5 .sticky-header.fixed{
-  background-image: url(../../images/mx-banner.jpg);
-  align-items: center;
-  background-size: cover;
-  background-position: top center;
-}
-.cart-dropdown:hover .dropdown-toggle{
-  color: #ffffff;
-}
-
-
-
-/*
-  New style
-*/
-
-
-.trending-products {
-  padding: 4.5rem 5rem 5rem;
-}
-.trending-products .owl-simple .owl-nav .owl-prev {
-  left: -40px;
-}
-.trending-products .owl-simple .owl-nav .owl-next {
-  right: -40px;
-}
-.trending-products .owl-dots {
-  margin-top: 0.5rem;
-}
-.trending-products .product-media {
-  padding: 2rem 2rem;
-  background-color: #fff;
-}
-.trending-products .product-body {
+.header.header-8 .menu > li > a{
   padding-top: 0;
-  padding-bottom: 2.8rem;
+  padding-bottom: 0;
 }
-.heading.heading-flex {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-@media screen and (min-width: 992px) {
-  .heading.heading-flex {
-    align-items: center;
-    flex-direction: row;
-    text-align: left;
-  }
-}
-@media screen and (min-width: 992px) {
-  .heading.heading-flex {
-    text-align: left;
-  }
-}
-@media screen and (min-width: 992px) {
-  .heading-right {
-    margin-top: 0;
-    margin-left: auto;
-  }
-}
-
-.banner-title{
-  font-size: 1.7rem;
-}
-.banner-overlay{
-  overflow: hidden;
-}
-.banner-overlay img {
-  transition: transform .5s ease;
-}
-.banner-overlay:hover img {
-  transform: scale(1.2);
-}
-.nav-item a{
-  color:#000000;
-}
-.copyright a{
-  padding-right: 12px; 
+.menu li > a{
+  padding-right: 3rem;
+  font-weight: 700;
 }

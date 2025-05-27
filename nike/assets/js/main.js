@@ -751,7 +751,6 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
-    /*
     if(document.getElementById('newsletter-popup-form')) {
         setTimeout(function() {
             var mpInstance = $.magnificPopup.instance;
@@ -780,5 +779,4 @@ $(document).ready(function () {
             }, 500)
         }, 10000)
     }
-    */
 });
