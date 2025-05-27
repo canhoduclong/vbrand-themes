@@ -312,85 +312,64 @@ $themeData = vbrand_load_theme_data();
 <!--mua sắm sản -->
 <div class="mb-5"></div>
 <div class="banner-group">
-	<div class="container">
+    <div class="container">
         <h2 class="title-lg text-center mb-4 text-upper">MUA SẮM SẢN 'PHẨM</h2>
-    
         <div class="pt-3 pb-3">
             <div class="container">
                 <div class="banner-group">
                     <div class="row">
-
+                        <?php
+                        $banners = $themeData->get('shopping_banner_group');
+                        // Split banners into columns as in the original layout
+                        $col1 = array_slice($banners, 0, 2);
+                        $col2 = array_slice($banners, 2, 2);
+                        $col3 = array_slice($banners, 4, 2);
+                        ?>
                         <div class="col-sm-6 col-lg-4">
-                            <div class="banner banner-overlay banner-lg"> 
-                                <a href="#">
-                                    <img src="<?=get_template_directory_uri()?>/assets/images/products/chuot.jpg" alt="Banner">
-                                </a>
-                                <div class="banner-content banner-content-top">
-                                    <h4 class="banner-title"><a href="#">Chuột</a></h4> 
+                            <?php foreach ($col1 as $banner): ?>
+                                <div class="banner banner-overlay banner-lg">
+                                    <a href="<?= esc_url($banner['link']) ?>">
+                                        <img src="<?= esc_url($banner['image']) ?>" alt="Banner">
+                                    </a>
+                                    <div class="banner-content banner-content-top">
+                                        <h4 class="banner-title"><a href="<?= esc_url($banner['link']) ?>"><?= esc_html($banner['title']) ?></a></h4>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="banner banner-overlay banner-lg"> 
-                                <a href="#">
-                                    <img src="<?=get_template_directory_uri()?>/assets/images/products/ipad-devaices.jpg" alt="Banner">
-                                </a>
-                                <div class="banner-content banner-content-top">
-                                    <h4 class="banner-title"><a href="#">Các trường họp bàn phím ipad</a></h4> 
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
-
                         <div class="col-sm-6 col-lg-4">
-                            <div class="banner banner-overlay banner-lg">
-                                <a href="#">
-                                    <img src="<?=get_template_directory_uri()?>/assets/images/products/keyboards-horizontal-gallery-desktop-2.jpg" alt="Banner">
-                                </a>
-                                <div class="banner-content banner-content-top">
-                                    <h4 class="banner-title"><a href="#">Bàn phím</a></h4>
+                            <?php foreach ($col2 as $banner): ?>
+                                <div class="banner banner-overlay banner-lg">
+                                    <a href="<?= esc_url($banner['link']) ?>">
+                                        <img src="<?= esc_url($banner['image']) ?>" alt="Banner">
+                                    </a>
+                                    <div class="banner-content banner-content-top">
+                                        <h4 class="banner-title"><a href="<?= esc_url($banner['link']) ?>"><?= esc_html($banner['title']) ?></a></h4>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="banner banner-overlay banner-lg">
-                                <a href="#">
-                                    <img src="<?=get_template_directory_uri()?>/assets/images/products/bo-doi.jpg" alt="Banner">
-                                </a>
-                                <div class="banner-content banner-content-top">
-                                    <h4 class="banner-title"><a href="#">Bộ đôi</a></h4>
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
-
                         <div class="col-12 col-lg-4">
                             <div class="row">
-                                <div class="col-sm-6 col-lg-12">
-                                    <div class="banner banner-overlay">
-                                        <a href="#">
-                                            <img src="<?=get_template_directory_uri()?>/assets/images/products/tai-nghe.jpg" alt="Banner">
-                                        </a>
-                                        <div class="banner-content banner-content-top">
-                                            <h4 class="banner-title"><a href="#">Tai nghe & Erabuds</a></h4>
+                                <?php foreach ($col3 as $banner): ?>
+                                    <div class="col-sm-6 col-lg-12">
+                                        <div class="banner banner-overlay">
+                                            <a href="<?= esc_url($banner['link']) ?>">
+                                                <img src="<?= esc_url($banner['image']) ?>" alt="Banner">
+                                            </a>
+                                            <div class="banner-content banner-content-top">
+                                                <h4 class="banner-title"><a href="<?= esc_url($banner['link']) ?>"><?= esc_html($banner['title']) ?></a></h4>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="col-sm-6 col-lg-12">
-                                    <div class="banner banner-overlay">
-                                        <a href="#">
-                                            <img src="<?=get_template_directory_uri()?>/assets/images/products/webcam.jpg" alt="Banner">
-                                        </a>
-                                        <div class="banner-content banner-content-top">
-                                            <h4 class="banner-title"><a href="#">WEBCAM</a></h4>
-                                                
-                                        </div>
-                                    </div>
-                                </div>
-
+                                <?php endforeach; ?>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-	</div>
+    </div>
 </div>
 <div class="mb-5"></div>
    

@@ -2,85 +2,74 @@
 </main> 
 
  <footer class="footer footer-dark">
-                <div class="footer-middle">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="widget">
-                                    <h4 class="widget-title">Giới thiệu</h4>
-                                    <ul class="widget-list">
-                                        <li><a href="about.html">Câu chuyện về Logitech</a></li>
-                                        <li><a href="#">Nghề nghiệp</a></li>
-                                        <li><a href="#">Nhà đầu tư</a></li>
-                                        <li><a href="contact.html">Blog</a></li>
-                                        <li><a href="login.html">Báo chí</a></li>
-                                        <li><a href="login.html">Liên hệ với chúng tôi</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="widget">                                    
-                                    <h4 class="widget-title">Giá trị</h4>
-                                    <ul class="widget-list">
-                                        <li><a href="#"> Con người</a></li>
-                                        <li><a href="#"> Hành tinh</a></li>
-                                        <li><a href="#">Tái chế</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="widget">
-                                    <h4 class="widget-title">Đối tác</h4> 
-                                    <ul class="widget-list">
-                                        <li><a href="#">Tìm đại lý</a></li>
-                                        <li><a href="#">Trở thành Đối tác</a></li>
-                                        <li><a href="#">Trở thành Đối tác của Liên minh</a></li>
-                                        <li><a href="#">Cổng thông tin đối tác</a></li> 
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="widget">
-                                    <h4 class="widget-title">KHÁCH HÀNG</h4> 
-                                    <ul class="widget-list">
-                                        <li><a href="#">Tùy chọn email</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div><!-- End .row -->
-                    </div><!-- End .container -->
-                </div>
-
-                <div class="footer-bottom">
-                    <div class="container"> 
-                        <div class="col-sm-12 col-lg-12">
-                            <div class="my-4">
-                                <div class="social-icons">
-                                    <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
-                                    <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
-                                    <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
-                                    <a href="#" class="social-icon" title="Youtube" target="_blank"><i class="icon-youtube"></i></a>
-                                    <a href="#" class="social-icon" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
-                                </div>
-                            </div>
-                        </div>    
-                    </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="copyright">
-                                    <a href="#">©2025 Logitech. Bảo lưu mọi quyền.</a>
-                                    <a href="#"> Điều khoản Sử dụng</a>
-                                    <a href="#"> Chính sách về Quyền riêng tư của</a>
-                                    <a href="#">Cài đặt cookie</a>
-                                    <a href="#"> Bản đồ trang web</a>
-                                </div>
-                            </div>
+                 <div class="footer-middle">
+        <div class="container">
+            <div class="row">
+                <?php
+                $widgets = [
+                    [
+                        'title' => 'Giới thiệu',
+                        'data' => $themeData->get('footer_widget_1'),
+                    ],
+                    [
+                        'title' => 'Giá trị',
+                        'data' => $themeData->get('footer_widget_2'),
+                    ],
+                    [
+                        'title' => 'Đối tác',
+                        'data' => $themeData->get('footer_widget_3'),
+                    ],
+                    [
+                        'title' => 'KHÁCH HÀNG',
+                        'data' => $themeData->get('footer_widget_4'),
+                    ],
+                ];
+                foreach ($widgets as $widget): ?>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="widget">
+                            <h4 class="widget-title"><?= esc_html($widget['title']) ?></h4>
+                            <ul class="widget-list">
+                                <?php foreach ($widget['data'] as $item): ?>
+                                    <li>
+                                        <a href="<?= esc_url($item['url']) ?>">
+                                            <?= esc_html($item['label']) ?>
+                                        </a>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
                         </div>
                     </div>
+                <?php endforeach; ?>
+            </div><!-- End .row -->
+        </div><!-- End .container -->
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container"> 
+            <div class="col-sm-12 col-lg-12">
+                <div class="my-4">
+                    <div class="social-icons">
+                        <?php foreach ($themeData->get('footer_social_icons') as $icon): ?>
+                            <a href="<?= esc_url($icon['url']) ?>" class="social-icon" title="<?= esc_attr($icon['title']) ?>" target="_blank">
+                                <i class="<?= esc_attr($icon['icon_class']) ?>"></i>
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
+            </div>    
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="copyright">
+                        <?php foreach ($themeData->get('footer_copyright_links') as $link): ?>
+                            <a href="<?= esc_url($link['url']) ?>"><?= esc_html($link['label']) ?></a>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
             </footer>
 	
 		</div>
