@@ -30,7 +30,7 @@
                         <p>!Sorry no posts here</p>
                 <?php endif; ?>
 			</div>
-			<aside class="col-lg-3"> 
+			<aside class="col-lg-3">
 				<div class="sidebar">
 					<div class="widget widget-search">
 						<form action="#">
