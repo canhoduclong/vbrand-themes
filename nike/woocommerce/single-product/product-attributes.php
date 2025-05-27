@@ -24,7 +24,7 @@ if ( ! $product_attributes ) {
 }
 ?>
 
- 
+
 
 <table class="woocommerce-product-attributes shop_attributes">
 	<?php foreach ( $product_attributes as $product_attribute_key => $product_attribute ) : ?>		

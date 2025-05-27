@@ -58,24 +58,19 @@
             <header class="header header-7"> 
 
                 <div class="header-middle">
-                    <div class="container-fluid">
+                    <div class="container">
                         <div class="header-left">
                             <button class="mobile-menu-toggler">
                                 <span class="sr-only">Toggle mobile menu</span>
                                 <i class="icon-bars"></i>
                             </button>
-                            <div class="logo"> 
-                                <a class="logo" href="<?php echo home_url('/');?>">
-                                    <?php if ($themeData->get('site_logo')) { ?>
-                                        <img src="<?php echo $themeData->get('site_logo'); ?>"  width="82" height="25">
-                                    <?php } else { ?>
-                                        Logo Here
-                                    <?php } ?> 
-                                </a> 
+                            <div> 
+                               <a class="logo" href="<?php echo home_url('/');?>">
+                                    <img src="<?=get_template_directory_uri()?>/assets/images/logitechg.svg" alt="">
+                                </a>  
                             </div>
                             <nav class="main-nav">
-                                <ul class="menu sf-arrows">
- 
+                                <ul class="menu sf-arrows"> 
                                     <?php 
                                   
                                     foreach ($themeData->get('menus') as $key => $menu) { 
@@ -122,7 +117,7 @@
                                 </ul>
                             </nav>
                         
-                        </div><!-- End .header-left -->
+                        </div> 
 
                         <div class="header-right">
                             <div class="header-search header-search-extended header-search-visible">

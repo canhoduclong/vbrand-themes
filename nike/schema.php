@@ -183,7 +183,19 @@ return [
                 [
                     'type' => 'text',
                     'name' => 'slidertitle',
-                    'label' => 'Tieu de cho slide',
+                    'label' => 'Tiêu đề slider',
+                    'default' => '',
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'slidertitlesub',
+                    'label' => 'Tiêu đề slider dòng 2',
+                    'default' => '',
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'slidertitlesecond',
+                    'label' => 'Tiêu đề slider dòng 3',
                     'default' => '',
                 ],
                 [
@@ -192,19 +204,48 @@ return [
                     'label' => 'Diễn giải ngắn',
                     'default' => '',
                 ],
+                [
+                    'type' => 'text',
+                    'name' => 'morebtn',
+                    'label' => 'Xem thêm',
+                    'default' => '',
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'buybtn',
+                    'label' => 'Mua ngay',
+                    'default' => '',
+                ],
             ],
 
             // ĐÂY LÀ DỮ LIỆU MẪU
             'default'=>[
                 [
-                    'anh' => 'https://i1-vnexpress.vnecdn.net/2024/07/05/20240703T155611Z1080573106RC2R-8723-3443-1720151605.jpg?w=680&h=408&q=100&dpr=2&fit=crop&s=WoTgSfID0xPgRfxDjajYOQ',
-                    'slidertitle' => 'Slide thu 1',
-                    'slideralias' => 'Thong tin diên giai so 1', 
+                    'anh' => get_template_directory_uri().'/assets/images/mx-banner.jpg',
+                    'slidertitle' => 'Họp mặt',
+                    'slidertitlesub' => 'Truyền phát',
+                    'slidertitlesecond' => 'Chinh phục', 
+                    'slideralias' => 'Giới thiệu MX Brio. Trải nghiệm video ultra HD 4K sắc nét với webcam tiên tiến nhất từ trước tới nay của chúng tôi. ',
+                    'morebtn' => 'Tìm hiểu thêm',
+                    'buybtn' => 'Mua ngay',
                 ],
                 [
-                    'anh' => 'https://i1-vnexpress.vnecdn.net/2024/07/05/20240703T155611Z1080573106RC2R-8723-3443-1720151605.jpg?w=680&h=408&q=100&dpr=2&fit=crop&s=WoTgSfID0xPgRfxDjajYOQ',
-                    'slidertitle' => 'Slide thu 2',
-                    'slideralias' => 'Thong tin diên giai so 2', 
+                    'anh' => get_template_directory_uri().'/assets/images/challenge-desktop.jpg',
+                    'slidertitle' => 'Họp mặt',
+                    'slidertitlesub' => 'Truyền phát',
+                    'slidertitlesecond' => 'Chinh phục', 
+                    'slideralias' => 'Giới thiệu MX Brio. Trải nghiệm video ultra HD 4K sắc nét với webcam tiên tiến nhất từ trước tới nay của chúng tôi. ',
+                    'morebtn' => 'Tìm hiểu thêm',
+                    'buybtn' => 'Mua ngay',
+                ],
+                [
+                    'anh' => get_template_directory_uri().'/assets/images/banner-desktop.jpg',
+                    'slidertitle' => 'Họp mặt',
+                    'slidertitlesub' => 'Truyền phát',
+                    'slidertitlesecond' => 'Chinh phục', 
+                    'slideralias' => 'Giới thiệu MX Brio. Trải nghiệm video ultra HD 4K sắc nét với webcam tiên tiến nhất từ trước tới nay của chúng tôi. ',
+                    'morebtn' => 'Tìm hiểu thêm',
+                    'buybtn' => 'Mua ngay',
                 ],
             ],
         ],
@@ -230,6 +271,68 @@ return [
             'name' => 'banner_description',
             'label' => 'Banner Description',
             'default' => 'Thiết kế nội thất hiện đại kết hợp sự tiện nghi và thẩm mỹ, tập trung vào sự đơn giản, linh hoạt và sử dụng tối đa ánh sáng tự nhiên. Vật liệu công nghệ cao như kính, thép không gỉ được ưa chuộng, tạo không gian mở rộng và hiện đại. Màu sắc trung tính kết hợp với điểm nhấn màu sắc táo bạo, đèn led và ánh sáng mềm mại tạo điểm nhấn và sự ấm áp cho không gian. Thiết kế này không chỉ tiện nghi mà còn thể hiện phong cách và cá nhân của gia chủ.',
+        ],
+
+         //  Banner Slider
+         [
+            'session'=>'home',
+            'type'=>'list',
+            'label' => 'Banner Slider',
+            'name'=>'bannerslider',
+            'max' => 10,
+
+            //  ĐỊNH NGHĨA MỖI SLIDER GỒM CÓ CÁC CẤU TRÚC SAU
+            'schema'=>[
+                [
+                    'type' => 'image',
+                    'name' => 'banner',
+                    'label' => 'Tải ảnh',
+                    'default' => '',
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'bannertitle',
+                    'label' => 'Tiêu đề banner',
+                    'default' => '',
+                ], 
+                [
+                    'type' => 'textarea',
+                    'name' => 'banneralias',
+                    'label' => 'Diễn giải ngắn',
+                    'default' => '',
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'morelink',
+                    'label' => 'URL xem thêm',
+                    'default' => '',
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'mortitle',
+                    'label' => 'Tiêu đề link',
+                    'default' => '',
+                ],
+            ],
+
+            // ĐÂY LÀ DỮ LIỆU MẪU
+            'default'=>[ 
+                [
+                    'anh' => get_template_directory_uri().'/assets/images/challenge-desktop.jpg',
+                    'bannertitle' => 'Họp mặt', 
+                    'banneralias' => 'Giới thiệu MX Brio. Trải nghiệm video ultra HD 4K sắc nét với webcam tiên tiến nhất từ trước tới nay của chúng tôi. ',
+                    'morelink' => 'Tìm hiểu thêm',
+                    'mortitle' => 'Mua ngay',
+                ],
+                [
+                    'anh' => get_template_directory_uri().'/assets/images/banner-desktop.jpg',
+                    'bannertitle' => 'Họp mặt', 
+                    'banneralias' => 'Giới thiệu MX Brio. Trải nghiệm video ultra HD 4K sắc nét với webcam tiên tiến nhất từ trước tới nay của chúng tôi. ',
+                    'morelink' => 'Tìm hiểu thêm',
+                    'mortitle' => 'Mua ngay',
+                ],
+
+            ],
         ],
         
         // PRODUCTS MODULE
@@ -280,37 +383,135 @@ return [
             ],
         ],
 
-        // WHY US MODULE
+        // CHUOI CUA HANG
+        //--- CUA HANG SO 1
         [
             'session' => 'home',
             'type' => 'boolean',
-            'name' => 'why_us_module_show',
-            'label' => 'Show Why Us Module',
+            'name' => 'shop_module_show',
+            'label' => 'Cửa hàng 1',
             'default' => true,
         ],
         [
             'session' => 'home',
             'type' => 'image',
-            'name' => 'why_us_module_banner',
-            'label' => 'Why Us Module: Banner',
-            'default' => get_template_directory_uri() . '/images/why-choose-us-img.jpg',
+            'name' => 'shop_banner_one',
+            'label' => 'Shop Banner 1',
+            'default' => get_template_directory_uri() . '/assets/images/banners/shop-1.jpg',
+            
         ],
         [
             'session' => 'home',
             'type' => 'text',
-            'name' => 'why_us_module_title',
-            'label' => 'Why Us Module Title',
-            'default' => 'Tại sao Chọn Chúng Tôi',
+            'name' => 'shop_banner_one_title',
+            'label' => 'Shop Banner Title',
+            'default' => 'DÒNG ERGO',
         ],
         [
             'session' => 'home',
             'type' => 'textarea',
-            'name' => 'why_us_module_description',
-            'label' => 'Why Us Module Description',
-            'default' => 'chúng tôi mang lại sự kết hợp hoàn hảo giữa thiết
-                kế độc đáo và chất lượng xuất sắc. Chúng tôi tôn trọng nguyên
-                liệu tự nhiên và sử dụng chúng để tạo ra những sản phẩm nội thất đẹp mắt và bền bỉ.',
+            'name' => 'shop_banner_one_alias',
+            'label' => 'Shop Banner Alias',
+            'default' => '',
         ],
+        //--- CUA HANG SO 2 
+        [
+            'session' => 'home',
+            'type' => 'image',
+            'name' => 'shop_banner_two',
+            'label' => 'Shop Banner 1',
+            'default' => get_template_directory_uri() . '/assets/images/banners/shop-2.jpg',
+            
+        ],
+        [
+            'session' => 'home',
+            'type' => 'text',
+            'name' => 'shop_banner_two_title',
+            'label' => 'Shop Banner Title',
+            'default' => 'DÒNG MX MASTER',
+        ],
+        [
+            'session' => 'home',
+            'type' => 'textarea',
+            'name' => 'shop_banner_two_alias',
+            'label' => 'Shop Banner Alias',
+            'default' => '',
+        ],
+        
+        //--- CUA HANG SO 3
+        [
+            'session' => 'home',
+            'type' => 'image',
+            'name' => 'shop_banner_three',
+            'label' => 'Shop Banner 1',
+            'default' => get_template_directory_uri() . '/assets/images/banners/shop-3.jpg',
+            
+        ],
+        [
+            'session' => 'home',
+            'type' => 'text',
+            'name' => 'shop_banner_three_title',
+            'label' => 'Shop Banner Title',
+            'default' => 'DÀNH CHO LẬP TRÌNH VIÊN',
+        ],
+        [
+            'session' => 'home',
+            'type' => 'textarea',
+            'name' => 'shop_banner_three_alias',
+            'label' => 'Shop Banner Alias',
+            'default' => '',
+        ],
+        //--- CUA HANG SO 4
+        [
+            'session' => 'home',
+            'type' => 'image',
+            'name' => 'shop_banner_four',
+            'label' => 'Shop Banner 1',
+            'default' => get_template_directory_uri() . '/assets/images/banners/shop-4.jpg',
+        ],
+        [
+            'session' => 'home',
+            'type' => 'text',
+            'name' => 'shop_banner_four_title',
+            'label' => 'Shop Banner Title',
+            'default' => 'DÀNH CHO CÔNG VIỆC SÁNG TẠO',
+        ],
+        [
+            'session' => 'home',
+            'type' => 'textarea',
+            'name' => 'shop_banner_four_alias',
+            'label' => 'Shop Banner Alias',
+            'default' => '',
+        ],
+
+        //--- CUA HANG SO 5
+        [
+            'session' => 'home',
+            'type' => 'image',
+            'name' => 'shop_banner_five',
+            'label' => 'Shop Banner 1',
+            'default' => get_template_directory_uri() . '/assets/images/banners/shop-5.jpg',
+        ],
+        [
+            'session' => 'home',
+            'type' => 'text',
+            'name' => 'shop_banner_five_title',
+            'label' => 'Shop Banner Title',
+            'default' => 'SẴN SÀNG MANG THEO',
+        ],
+        [
+            'session' => 'home',
+            'type' => 'textarea',
+            'name' => 'shop_banner_five_alias',
+            'label' => 'Shop Banner Alias',
+            'default' => '',
+        ],
+ 
+
+
+        //--- 3 posts
+
+
         [
             'session' => 'home',
             'type' => 'text',

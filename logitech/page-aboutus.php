@@ -9,35 +9,38 @@
 <?php
     $themeData = vbrand_load_theme_data();
 ?>
-
+<div class="page-header text-center" style="background-image: url('<?=get_template_directory_uri()?>/assets/images/page-header-bg.jpg')">
+	<div class="container">
+		<h1 class="page-title">Giới thiêu<span>Về chúng tôi</span></h1>
+	</div>
+</div>
+<nav aria-label="breadcrumb" class="breadcrumb-nav">
+    <div class="container">
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="<?php echo home_url('/');?>">Trang chủ</a></li> 
+            <li class="breadcrumb-item active" aria-current="page">Giới thiêu</li>
+        </ol>
+    </div>
+</nav>
 <?php if ($themeData->get('about_us_show') == 'true') { ?>
-	<!-- Start Why Choose Us Section -->
-	<div class="why-choose-section" id="about-us">
-		<div class="container"> 
-			<div class="row justify-content-center">
-				<div class="col-lg-12 mb-4 pb-4 text-center">
-					<h2 class="section-title">
-						<?php echo $themeData->get('aboutus_title');?>
-					</h2> 
-				</div>
-			</div>
-			<div class="row justify-content-between mt-4 pt-4"> 
-				<div class="col-lg-6"> 
-					 <?php echo $themeData->get('aboutus_content');?> 	 
-				</div> 
-				<div class="col-lg-5">
-					<div class="img-wrap">
-						<img src="<?php echo $themeData->get('aboutus_image');?>" alt="Image" class="img-fluid">
-					</div>
-				</div>
-
+<div class="page-content pb-3">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-10 offset-lg-1">
+				 <?php if ( have_posts() ) : ?>
+                    <?php while ( have_posts() ) : the_post();?>
+                        <?php the_content(); ?>
+                    <?php endwhile;  ?>
+                <?php else: ?>
+                    <p>!Sorry no posts here</p>
+                <?php endif; ?>
 			</div>
 		</div>
 	</div>
-	<!-- End Why Choose Us Section -->
+</div>
+	
+ 
 <?php } ?>
-   
-
 <?php
 	get_footer();
 ?>

@@ -5,7 +5,12 @@
 get_header();
 ?>
    
-  <!-- About Start -->
+<div class="page-header text-center" style="background-image: url('<?=get_template_directory_uri()?>/assets/images/page-header-bg.jpg')">
+	<div class="container">
+		<h1 class="page-title">Liên hệ<span>Gủi liên hệ cho chúng tôi</span></h1>
+	</div>
+</div>
+
         
   <div class="container">
          

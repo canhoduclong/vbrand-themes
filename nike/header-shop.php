@@ -7,9 +7,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
          
-        <title><?php echo $themeData->get('site_name', 'Shop Funiture'); ?></title>
-        <meta name="keywords" content="<?php echo $themeData->get('site_name', 'Shop Funiture'); ?>">
-        <meta name="description" content="<?php echo $themeData->get('site_desctiption', 'Shop Funiture plays a crucial role in shaping the ambiance and functionality of retail spaces'); ?>">
+        <title><?php echo $themeData->get('site_name', 'Logitech Shop'); ?></title>
+        <meta name="keywords" content="<?php echo $themeData->get('site_name', 'Logitech Shop'); ?>">
+        <meta name="description" content="<?php echo $themeData->get('site_desctiption', 'Logitech Shopplays a crucial role in shaping the ambiance and functionality of retail spaces'); ?>">
         <meta name="author" content="vBrand">
 
         <!-- Favicon -->
@@ -51,15 +51,9 @@
                                 <span class="sr-only">Toggle mobile menu</span>
                                 <i class="icon-bars"></i>
                             </button>
-
                             <a class="logo" href="<?php echo home_url('/');?>">
-                                <?php if ($themeData->get('site_logo')) { ?>
-                                    <img src="<?php echo $themeData->get('site_logo'); ?>" >
-                                <?php } else { ?>
-                                    Shop Funiture
-                                <?php } ?> 
-                            </a>
- 
+                                <img src="<?=get_template_directory_uri()?>/assets/images/logitechg.svg" alt="">
+                            </a> 
                             <nav class="main-nav">
                                 <ul class="menu sf-arrows">
 
