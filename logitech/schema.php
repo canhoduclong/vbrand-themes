@@ -212,8 +212,20 @@ return [
                 ],
                 [
                     'type' => 'text',
+                    'name' => 'morebtn_link',
+                    'label' => 'URL xem thêm',
+                    'default' => '',
+                ],
+                [
+                    'type' => 'text',
                     'name' => 'buybtn',
                     'label' => 'Mua ngay',
+                    'default' => '',
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'buybtn_link',
+                    'label' => 'URL mua ngay',
                     'default' => '',
                 ],
             ],
@@ -227,25 +239,9 @@ return [
                     'slidertitlesecond' => 'Chinh phục', 
                     'slideralias' => 'Giới thiệu MX Brio. Trải nghiệm video ultra HD 4K sắc nét với webcam tiên tiến nhất từ trước tới nay của chúng tôi. ',
                     'morebtn' => 'Tìm hiểu thêm',
+                    'morebtn_link' => '/ve-chung-toi/',
                     'buybtn' => 'Mua ngay',
-                ],
-                [
-                    'anh' => get_template_directory_uri().'/assets/images/challenge-desktop.jpg',
-                    'slidertitle' => 'Họp mặt',
-                    'slidertitlesub' => 'Truyền phát',
-                    'slidertitlesecond' => 'Chinh phục', 
-                    'slideralias' => 'Giới thiệu MX Brio. Trải nghiệm video ultra HD 4K sắc nét với webcam tiên tiến nhất từ trước tới nay của chúng tôi. ',
-                    'morebtn' => 'Tìm hiểu thêm',
-                    'buybtn' => 'Mua ngay',
-                ],
-                [
-                    'anh' => get_template_directory_uri().'/assets/images/banner-desktop.jpg',
-                    'slidertitle' => 'Họp mặt',
-                    'slidertitlesub' => 'Truyền phát',
-                    'slidertitlesecond' => 'Chinh phục', 
-                    'slideralias' => 'Giới thiệu MX Brio. Trải nghiệm video ultra HD 4K sắc nét với webcam tiên tiến nhất từ trước tới nay của chúng tôi. ',
-                    'morebtn' => 'Tìm hiểu thêm',
-                    'buybtn' => 'Mua ngay',
+                    'buybtn_link' => '/gian-hang/',
                 ],
             ],
         ],
@@ -274,7 +270,7 @@ return [
         ],
 
          //  Banner Slider
-         [
+        [
             'session'=>'home',
             'type'=>'list',
             'label' => 'Banner Slider',
@@ -309,7 +305,7 @@ return [
                 ],
                 [
                     'type' => 'text',
-                    'name' => 'mortitle',
+                    'name' => 'moretitle',
                     'label' => 'Tiêu đề link',
                     'default' => '',
                 ],
@@ -318,20 +314,84 @@ return [
             // ĐÂY LÀ DỮ LIỆU MẪU
             'default'=>[ 
                 [
-                    'anh' => get_template_directory_uri().'/assets/images/challenge-desktop.jpg',
-                    'bannertitle' => 'Họp mặt', 
-                    'banneralias' => 'Giới thiệu MX Brio. Trải nghiệm video ultra HD 4K sắc nét với webcam tiên tiến nhất từ trước tới nay của chúng tôi. ',
-                    'morelink' => 'Tìm hiểu thêm',
-                    'mortitle' => 'Mua ngay',
+                    'banner' => get_template_directory_uri().'/assets/images/challenge-desktop.jpg',
+                    'bannertitle' => 'THIẾT KẾ VÌ SỰ<br>BỀN VỮNG', 
+                    'banneralias' => 'Giới thiệu MX Brio. Trải nghiệm video ultra HD 4K sắc nét với webcam tiên tiến nhất từ trước tới nay của chúng tôi.',
+                    'morelink' => '/gian-hang/',
+                    'moretitle' => 'Sản phẩm của chúng tôi',
                 ],
                 [
-                    'anh' => get_template_directory_uri().'/assets/images/banner-desktop.jpg',
-                    'bannertitle' => 'Họp mặt', 
-                    'banneralias' => 'Giới thiệu MX Brio. Trải nghiệm video ultra HD 4K sắc nét với webcam tiên tiến nhất từ trước tới nay của chúng tôi. ',
-                    'morelink' => 'Tìm hiểu thêm',
-                    'mortitle' => 'Mua ngay',
+                    'banner' => get_template_directory_uri().'/assets/images/banner-desktop.jpg',
+                    'bannertitle' => ' Future Positive Challenge', 
+                    'banneralias' => 'Một thách thức về công nghệ và kỹ thuật dành cho những người phá cách có mong muốn tạo ra đóng góp có ý nghĩa cho một tương lai tích cực.',
+                    'morelink' => '/ve-chung-toi/',
+                    'moretitle' => 'Tìm hiểu thêm',
                 ],
 
+            ],
+        ],
+
+
+
+        // HOME PAGE: PRODUCTS TABS
+        [
+            'session'=>'home',
+            'type'=>'list',
+            'label' => 'Products Tabs',
+            'name'=>'products_tabs',
+            'max' => 5,
+
+            //  ĐỊNH NGHĨA MỖI SLIDER GỒM CÓ CÁC CẤU TRÚC SAU
+            'schema'=>[
+                [
+                    'type' => 'text',
+                    'name' => 'tab_name',
+                    'label' => 'Tab name',
+                    'default' => '',
+                ],
+                [
+                    'type' => 'select',
+                    'name' => 'type',
+                    'label' => 'Type',
+                    'default' => 'all',
+                    'options' => [
+                        ['value' => 'all', 'text' => 'Mặc định'],
+                        ['value' => 'hot', 'text' => 'Hot'],
+                        ['value' => 'featured', 'text' => 'Featured'],
+                        ['value' => 'new', 'text' => 'New'],
+                    ],
+                ],
+                [
+                    'type' => 'select',
+                    'name' => 'limit',
+                    'label' => 'Number of Products',
+                    'default' => 10,
+                    'options' => [
+                        ['value' => 5, 'text' => 5],
+                        ['value' => 10, 'text' => 10],
+                        ['value' => 15, 'text' => 15],
+                        ['value' => 20, 'text' => 20],
+                    ],
+                ],
+            ],
+
+            // ĐÂY LÀ DỮ LIỆU MẪU
+            'default'=>[ 
+                [
+                    'tab_name' => 'MỚI NHẤT',
+                    'type' => 'new', 
+                    'limit' => 10,
+                ],
+                [
+                    'tab_name' => 'BÁN CHẠY',
+                    'type' => 'hot', 
+                    'limit' => 10,
+                ],
+                [
+                    'tab_name' => 'ĐƯỢC KHUYẾN NGHỊ',
+                    'type' => 'featured', 
+                    'limit' => 10,
+                ],
             ],
         ],
         
@@ -356,31 +416,6 @@ return [
             'name' => 'products_module_description',
             'label' => 'Products Module Description',
             'default' => 'Mẫu sản phẩm mới nhất được chúng tôi cập nhật hàng ngày',
-        ],
-        [
-            'session' => 'home',
-            'type' => 'select',
-            'name' => 'products_module_type',
-            'label' => 'Products Module: Type',
-            'default' => 'all',
-            'options' => [
-                ['value' => 'all', 'text' => 'Mặc định'],
-                ['value' => 'hot', 'text' => 'Hot'],
-                ['value' => 'feature', 'text' => 'Feature'],
-                ['value' => 'new', 'text' => 'New'],
-            ],
-        ],
-        [
-            'session' => 'home',
-            'type' => 'select',
-            'name' => 'products_module_number',
-            'label' => 'Products Module: Number of Products',
-            'default' => 3,
-            'options' => [
-                ['value' => 2, 'text' => 2],
-                ['value' => 3, 'text' => 3],
-                ['value' => 5, 'text' => 5],
-            ],
         ],
 
         // CHUOI CUA HANG
