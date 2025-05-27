@@ -21,8 +21,8 @@ $themeData = vbrand_load_theme_data();
 							</div>
 						</div>
 					</div>
-					<a href="<?php echo $slider['morebtn']; ?>" class="btn btn-primary">TÌM HIỂU THÊM</a>
-					<a href="<?php echo $slider['buybtn']; ?>" class="btn btn-primary ml-3">MUA NGAY</a>
+					<a href="<?php echo $slider['morebtn_link']; ?>" class="btn btn-primary"><?php echo $slider['morebtn']; ?></a>
+					<a href="<?php echo $slider['buybtn_link']; ?>" class="btn btn-primary ml-3"><?php echo $slider['buybtn']; ?></a>
 				</div>
 			</div>
 		<?php endforeach?> 
@@ -80,890 +80,125 @@ $themeData = vbrand_load_theme_data();
                 <div class="heading heading-flex mb-3"> 
                     <div class="heading-left">
                         <ul class="nav nav-pills justify-content-center title" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="trending-all-link" data-toggle="tab" href="#trending-all-tab" role="tab" aria-controls="trending-all-tab" aria-selected="true">MỚI</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="trending-elec-link" data-toggle="tab" href="#trending-elec-tab" role="tab" aria-controls="trending-elec-tab" aria-selected="false">NHỮNG NGƯỜI BÁN CHẠY NHẤT</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="trending-furn-link" data-toggle="tab" href="#trending-furn-tab" role="tab" aria-controls="trending-furn-tab" aria-selected="false">ĐƯỢC KHUYẾN NGHỊ</a>
-                            </li>
-                            
+                            <?php foreach($themeData->get('products_tabs') as $index => $products_tab): ?>
+                                <li class="nav-item">
+                                    <a class="nav-link <?php echo $index == 0 ? 'active' : '' ?>" id="trending-all-link" data-toggle="tab" href="#product-tab-<?php echo $index ?>" role="tab" aria-controls="product-tab-<?php echo $index ?>" aria-selected="true">
+                                        <?php echo $products_tab['tab_name']; ?>
+                                    </a>
+                                </li>
+                            <?php endforeach ?>
                         </ul>
                     </div><!-- End .heading-right -->
                 </div><!-- End .heading -->
                 
 
                 <div class="tab-content tab-content-carousel">
-                    <div class="tab-pane p-0 fade show active" id="trending-all-tab" role="tabpanel" aria-labelledby="trending-all-link">
-                        <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
-                            data-owl-options='{
-                                "nav": false, 
-                                "dots": true,
-                                "margin": 20,
-                                "loop": false,
-                                "responsive": {
-                                    "0": {
-                                        "items":1
-                                    },
-                                    "480": {
-                                        "items":2
-                                    },
-                                    "768": {
-                                        "items":3
-                                    },
-                                    "992": {
-                                        "items":4
-                                    },
-                                    "1200": {
-                                        "items":5,
-                                        "nav": true
-                                    },
-                                    "1600": {
-                                        "items":6,
-                                        "nav": true
+                    <?php foreach($themeData->get('products_tabs') as $index => $products_tab): ?>
+                        <?php
+                            $type = $products_tab['type']; // new | hot | feature
+                            $limit = $products_tab['limit'];
+
+                            // Fetch products based on type
+                            $args = [
+                                'post_type'      => 'product',
+                                'posts_per_page' => $limit,
+                                'post_status'    => 'publish',
+                            ];
+
+                            // Filter by type
+                            if ($type === 'new') {
+                                $args['orderby'] = 'date';
+                                $args['order'] = 'DESC';
+                            } elseif ($type === 'hot') {
+                                $args['meta_key'] = 'total_sales';
+                                $args['orderby'] = 'meta_value_num';
+                                $args['order'] = 'DESC';
+                            } elseif ($type === 'feature') {
+                                $args['tax_query'][] = [
+                                    'taxonomy' => 'product_visibility',
+                                    'field'    => 'name',
+                                    'terms'    => 'featured',
+                                    'operator' => 'IN',
+                                ];
+                            }
+
+                            $products = wc_get_products($args);
+                        ?>
+
+                        <div class="tab-pane p-0 fade show <?php echo $index == 0 ? 'active' : '' ?>" id="product-tab-<?php echo $index ?>" role="tabpanel" aria-labelledby="product-tab-<?php echo $index ?>">
+                            <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                                data-owl-options='{
+                                    "nav": false, 
+                                    "dots": true,
+                                    "margin": 20,
+                                    "loop": false,
+                                    "responsive": {
+                                        "0": {"items":1},
+                                        "480": {"items":2},
+                                        "768": {"items":3},
+                                        "992": {"items":4},
+                                        "1200": {"items":5,"nav": true},
+                                        "1600": {"items":6,"nav": true}
                                     }
-                                }
-                            }'>
-                            <div class="product text-center">
-                                <figure class="product-media">
-                                    <span class="product-label label-sale">Sale</span>
-                                    <a href="product.html">
-                                        <img src="<?=get_template_directory_uri()?>/assets/images/products/14/product-1.jpg" alt="Product image" class="product-image">
-                                    </a>
+                                }'>
 
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
+                                <?php foreach ($products as $product): ?>
+                                    <div class="product text-center">
+                                        <figure class="product-media">
+                                            <?php if ($product->is_on_sale()): ?>
+                                                <span class="product-label label-sale">Sale</span>
+                                            <?php endif; ?>
+                                            <a href="<?php echo esc_url(get_permalink($product->get_id())); ?>">
+                                                <img src="<?php echo esc_url(wp_get_attachment_url($product->get_image_id())); ?>" alt="<?php echo esc_attr($product->get_name()); ?>" class="product-image">
+                                            </a>
 
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                </figure>
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                                                <a href="#" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                                <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                                            </div>
 
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Furniture</a>
-                                    </div>
-                                    <h3 class="product-title"><a href="product.html">Butler Stool Ladder</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        <span class="new-price">$251.99</span>
-                                        <span class="old-price">Was $290.00</span>
-                                    </div>
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 100%;"></div>
+                                            <div class="product-action">
+                                                <a href="<?php echo esc_url( '?add-to-cart=' . $product->get_id() ); ?>" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                                            </div>
+                                        </figure>
+
+                                        <div class="product-body">
+                                            <div class="product-cat">
+                                                <?php
+                                                    $terms = get_the_terms($product->get_id(), 'product_cat');
+                                                    if ($terms && !is_wp_error($terms)) {
+                                                        foreach ($terms as $term) {
+                                                            echo '<a href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a> ';
+                                                        }
+                                                    }
+                                                ?>
+                                            </div>
+                                            <h3 class="product-title">
+                                                <a href="<?php echo esc_url(get_permalink($product->get_id())); ?>">
+                                                    <?php echo esc_html($product->get_name()); ?>
+                                                </a>
+                                            </h3>
+                                            <div class="product-price">
+                                                <?php echo $product->get_price_html(); ?>
+                                            </div>
+                                            <div class="ratings-container">
+                                                <div class="ratings">
+                                                    <?php
+                                                        $average = $product->get_average_rating();
+                                                        $percent = $average ? ($average / 5) * 100 : 0;
+                                                    ?>
+                                                    <div class="ratings-val" style="width: <?php echo esc_attr($percent); ?>%;"></div>
+                                                </div>
+                                                <span class="ratings-text">( <?php echo esc_html($product->get_review_count()); ?> Reviews )</span>
+                                            </div>
                                         </div>
-                                        <span class="ratings-text">( 2 Reviews )</span>
                                     </div>
-                                </div>
-                            </div>
+                                <?php endforeach ?>
 
-                            <div class="product text-center">
-                                <figure class="product-media">
-                                    <span class="product-label label-sale">Sale</span>
-                                    <a href="product.html">
-                                        <img src="<?=get_template_directory_uri()?>/assets/images/products/14/product-2.jpg" alt="Product image" class="product-image">
-                                    </a>
-
-                                    <div class="product-countdown" data-until="+55h" data-relative="true" data-labels-short="true"></div><!-- End .product-countdown -->
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                </figure>
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Electronics</a>
-                                    </div>
-                                    <h3 class="product-title"><a href="product.html">Bose - SoundSport wireless headphones</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        <span class="new-price">$179.99</span>
-                                        <span class="old-price">Was $199.00</span>
-                                    </div>
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 100%;"></div>
-                                        </div>
-                                        <span class="ratings-text">( 4 Reviews )</span>
-                                    </div>
-
-                                    <div class="product-nav product-nav-dots">
-                                        <a href="#" class="active" style="background: #69b4ff;"><span class="sr-only">Color name</span></a>
-                                        <a href="#" style="background: #ff887f;"><span class="sr-only">Color name</span></a>
-                                        <a href="#" style="background: #333333;"><span class="sr-only">Color name</span></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product text-center">
-                                <figure class="product-media">
-                                    <a href="product.html">
-                                        <img src="<?=get_template_directory_uri()?>/assets/images/products/14/product-3.jpg" alt="Product image" class="product-image">
-                                    </a>
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                </figure>
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Furniture</a>
-                                    </div>
-                                    <h3 class="product-title"><a href="product.html">Can 2-Seater Sofa frame charcoal</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        $3,050.00
-                                    </div>
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 60%;"></div>
-                                        </div>
-                                        <span class="ratings-text">( 8 Reviews )</span>
-                                    </div>
-
-                                    <div class="product-nav product-nav-dots">
-                                        <a href="#" class="active" style="background: #b58555;"><span class="sr-only">Color name</span></a>
-                                        <a href="#" style="background: #93a6b0;"><span class="sr-only">Color name</span></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product text-center">
-                                <figure class="product-media">
-                                    <a href="product.html">
-                                        <img src="<?=get_template_directory_uri()?>/assets/images/products/14/product-4.jpg" alt="Product image" class="product-image">
-                                    </a>
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                </figure>
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Clothes</a>
-                                    </div>
-                                    <h3 class="product-title"><a href="product.html">Tan suede biker jacket</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        $240.00
-                                    </div>
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 80%;"></div>
-                                        </div>
-                                        <span class="ratings-text">( 4 Reviews )</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product text-center">
-                                <figure class="product-media">
-                                    <span class="product-label label-top">Top</span>
-                                    <a href="product.html">
-                                        <img src="<?=get_template_directory_uri()?>/assets/images/products/14/product-5.jpg" alt="Product image" class="product-image">
-                                    </a>
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                </figure>
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Electronics</a>
-                                    </div>
-                                    <h3 class="product-title"><a href="product.html">Sony - Class LED 2160p Smart <br>4K Ultra HD</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        $1,699.99
-                                    </div>
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 80%;"></div>
-                                        </div>
-                                        <span class="ratings-text">( 10 Reviews )</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product text-center">
-                                <figure class="product-media">
-                                    <span class="product-label label-top">Top</span>
-                                    <a href="product.html">
-                                        <img src="<?=get_template_directory_uri()?>/assets/images/products/14//product-6.jpg" alt="Product image" class="product-image">
-                                    </a>
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                </figure>
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Laptops</a>
-                                    </div>
-                                    <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        $1,199.99
-                                    </div>
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 100%;"></div>
-                                        </div>
-                                        <span class="ratings-text">( 4 Reviews )</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            
-                            <div class="product text-center">
-                                <figure class="product-media">
-                                    <a href="product.html">
-                                        <img src="<?=get_template_directory_uri()?>/assets/images/products/14/product-4.jpg" alt="Product image" class="product-image">
-                                    </a>
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                </figure>
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Clothes</a>
-                                    </div>
-                                    <h3 class="product-title"><a href="product.html">Tan suede biker jacket</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        $240.00
-                                    </div>
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 80%;"></div>
-                                        </div>
-                                        <span class="ratings-text">( 4 Reviews )</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product text-center">
-                                <figure class="product-media">
-                                    <span class="product-label label-top">Top</span>
-                                    <a href="product.html">
-                                        <img src="<?=get_template_directory_uri()?>/assets/images/products/14/product-5.jpg" alt="Product image" class="product-image">
-                                    </a>
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                </figure>
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Electronics</a>
-                                    </div>
-                                    <h3 class="product-title"><a href="product.html">Sony - Class LED 2160p Smart <br>4K Ultra HD</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        $1,699.99
-                                    </div>
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 80%;"></div>
-                                        </div>
-                                        <span class="ratings-text">( 10 Reviews )</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product text-center">
-                                <figure class="product-media">
-                                    <span class="product-label label-top">Top</span>
-                                    <a href="product.html">
-                                        <img src="<?=get_template_directory_uri()?>/assets/images/products/14//product-6.jpg" alt="Product image" class="product-image">
-                                    </a>
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                </figure>
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Laptops</a>
-                                    </div>
-                                    <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        $1,199.99
-                                    </div>
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 100%;"></div>
-                                        </div>
-                                        <span class="ratings-text">( 4 Reviews )</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="tab-pane p-0 fade" id="trending-elec-tab" role="tabpanel" aria-labelledby="trending-elec-link">
-                        <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
-                            data-owl-options='{
-                                "nav": false, 
-                                "dots": true,
-                                "margin": 20,
-                                "loop": false,
-                                "responsive": {
-                                    "0": {
-                                        "items":1
-                                    },
-                                    "480": {
-                                        "items":2
-                                    },
-                                    "768": {
-                                        "items":3
-                                    },
-                                    "992": {
-                                        "items":4
-                                    },
-                                    "1200": {
-                                        "items":5,
-                                        "nav": true
-                                    },
-                                    "1600": {
-                                        "items":6,
-                                        "nav": true
-                                    }
-                                }
-                            }'>
-                            <div class="product text-center">
-                                <figure class="product-media">
-                                    <a href="product.html">
-                                        <img src="<?=get_template_directory_uri()?>/assets/images/products/product-3.jpg" alt="Product image" class="product-image">
-                                    </a>
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                </figure>
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Furniture</a>
-                                    </div>
-                                    <h3 class="product-title"><a href="product.html">Can 2-Seater Sofa frame charcoal</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        $3,050.00
-                                    </div>
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 60%;"></div>
-                                        </div>
-                                        <span class="ratings-text">( 8 Reviews )</span>
-                                    </div>
-
-                                    <div class="product-nav product-nav-dots">
-                                        <a href="#" class="active" style="background: #b58555;"><span class="sr-only">Color name</span></a>
-                                        <a href="#" style="background: #93a6b0;"><span class="sr-only">Color name</span></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product text-center">
-                                <figure class="product-media">
-                                    <a href="product.html">
-                                        <img src="<?=get_template_directory_uri()?>/assets/images/products/product-4.jpg" alt="Product image" class="product-image">
-                                    </a>
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                </figure>
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Clothes</a>
-                                    </div>
-                                    <h3 class="product-title"><a href="product.html">Tan suede biker jacket</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        $240.00
-                                    </div>
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 80%;"></div>
-                                        </div>
-                                        <span class="ratings-text">( 4 Reviews )</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product text-center">
-                                <figure class="product-media">
-                                    <span class="product-label label-sale">Sale</span>
-                                    <a href="product.html">
-                                        <img src="<?=get_template_directory_uri()?>/assets/images/products/product-1.jpg" alt="Product image" class="product-image">
-                                    </a>
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                </figure>
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Furniture</a>
-                                    </div>
-                                    <h3 class="product-title"><a href="product.html">Butler Stool Ladder</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        <span class="new-price">$251.99</span>
-                                        <span class="old-price">Was $290.00</span>
-                                    </div>
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 100%;"></div>
-                                        </div>
-                                        <span class="ratings-text">( 2 Reviews )</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product text-center">
-                                <figure class="product-media">
-                                    <span class="product-label label-sale">Sale</span>
-                                    <a href="product.html">
-                                        <img src="<?=get_template_directory_uri()?>/assets/images/products/product-2.jpg" alt="Product image" class="product-image">
-                                    </a>
-
-                                    <div class="product-countdown" data-until="+55h" data-relative="true" data-labels-short="true"></div><!-- End .product-countdown -->
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                </figure>
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Electronics</a>
-                                    </div>
-                                    <h3 class="product-title"><a href="product.html">Bose - SoundSport wireless headphones</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        <span class="new-price">$179.99</span>
-                                        <span class="old-price">Was $199.00</span>
-                                    </div>
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 100%;"></div>
-                                        </div>
-                                        <span class="ratings-text">( 4 Reviews )</span>
-                                    </div>
-
-                                    <div class="product-nav product-nav-dots">
-                                        <a href="#" class="active" style="background: #69b4ff;"><span class="sr-only">Color name</span></a>
-                                        <a href="#" style="background: #ff887f;"><span class="sr-only">Color name</span></a>
-                                        <a href="#" style="background: #333333;"><span class="sr-only">Color name</span></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product text-center">
-                                <figure class="product-media">
-                                    <span class="product-label label-top">Top</span>
-                                    <a href="product.html">
-                                        <img src="<?=get_template_directory_uri()?>/assets/images/products/product-6.jpg" alt="Product image" class="product-image">
-                                    </a>
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                </figure>
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Laptops</a>
-                                    </div>
-                                    <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        $1,199.99
-                                    </div>
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 100%;"></div>
-                                        </div>
-                                        <span class="ratings-text">( 4 Reviews )</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product text-center">
-                                <figure class="product-media">
-                                    <span class="product-label label-top">Top</span>
-                                    <a href="product.html">
-                                        <img src="<?=get_template_directory_uri()?>/assets/images/products/product-5.jpg" alt="Product image" class="product-image">
-                                    </a>
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                </figure>
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Electronics</a>
-                                    </div>
-                                    <h3 class="product-title"><a href="product.html">Sony - Class LED 2160p Smart <br>4K Ultra HD</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        $1,699.99
-                                    </div>
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 80%;"></div>
-                                        </div>
-                                        <span class="ratings-text">( 10 Reviews )</span>
-                                    </div>
-                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="tab-pane p-0 fade" id="trending-furn-tab" role="tabpanel" aria-labelledby="trending-furn-link">
-                        <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
-                            data-owl-options='{
-                                "nav": false, 
-                                "dots": true,
-                                "margin": 20,
-                                "loop": false,
-                                "responsive": {
-                                    "0": {
-                                        "items":1
-                                    },
-                                    "480": {
-                                        "items":2
-                                    },
-                                    "768": {
-                                        "items":3
-                                    },
-                                    "992": {
-                                        "items":4
-                                    },
-                                    "1200": {
-                                        "items":5,
-                                        "nav": true
-                                    },
-                                    "1600": {
-                                        "items":6,
-                                        "nav": true
-                                    }
-                                }
-                            }'>
-                            <div class="product text-center">
-                                <figure class="product-media">
-                                    <span class="product-label label-top">Top</span>
-                                    <a href="product.html">
-                                        <img src="<?=get_template_directory_uri()?>/assets/images/products/product-6.jpg" alt="Product image" class="product-image">
-                                    </a>
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                </figure>
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Laptops</a>
-                                    </div>
-                                    <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        $1,199.99
-                                    </div>
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 100%;"></div>
-                                        </div>
-                                        <span class="ratings-text">( 4 Reviews )</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product text-center">
-                                <figure class="product-media">
-                                    <span class="product-label label-sale">Sale</span>
-                                    <a href="product.html">
-                                        <img src="<?=get_template_directory_uri()?>/assets/images/products/product-2.jpg" alt="Product image" class="product-image">
-                                    </a>
-
-                                    <div class="product-countdown" data-until="+55h" data-relative="true" data-labels-short="true"></div><!-- End .product-countdown -->
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                </figure>
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Electronics</a>
-                                    </div>
-                                    <h3 class="product-title"><a href="product.html">Bose - SoundSport wireless headphones</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        <span class="new-price">$179.99</span>
-                                        <span class="old-price">Was $199.00</span>
-                                    </div>
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 100%;"></div>
-                                        </div>
-                                        <span class="ratings-text">( 4 Reviews )</span>
-                                    </div>
-
-                                    <div class="product-nav product-nav-dots">
-                                        <a href="#" class="active" style="background: #69b4ff;"><span class="sr-only">Color name</span></a>
-                                        <a href="#" style="background: #ff887f;"><span class="sr-only">Color name</span></a>
-                                        <a href="#" style="background: #333333;"><span class="sr-only">Color name</span></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product text-center">
-                                <figure class="product-media">
-                                    <a href="product.html">
-                                        <img src="<?=get_template_directory_uri()?>/assets/images/products/product-3.jpg" alt="Product image" class="product-image">
-                                    </a>
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                </figure>
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Furniture</a>
-                                    </div>
-                                    <h3 class="product-title"><a href="product.html">Can 2-Seater Sofa frame charcoal</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        $3,050.00
-                                    </div>
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 60%;"></div>
-                                        </div>
-                                        <span class="ratings-text">( 8 Reviews )</span>
-                                    </div>
-
-                                    <div class="product-nav product-nav-dots">
-                                        <a href="#" class="active" style="background: #b58555;"><span class="sr-only">Color name</span></a>
-                                        <a href="#" style="background: #93a6b0;"><span class="sr-only">Color name</span></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product text-center">
-                                <figure class="product-media">
-                                    <span class="product-label label-sale">Sale</span>
-                                    <a href="product.html">
-                                        <img src="<?=get_template_directory_uri()?>/assets/images/products/product-1.jpg" alt="Product image" class="product-image">
-                                    </a>
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                </figure>
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Furniture</a>
-                                    </div>
-                                    <h3 class="product-title"><a href="product.html">Butler Stool Ladder</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        <span class="new-price">$251.99</span>
-                                        <span class="old-price">Was $290.00</span>
-                                    </div>
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 100%;"></div>
-                                        </div>
-                                        <span class="ratings-text">( 2 Reviews )</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product text-center">
-                                <figure class="product-media">
-                                    <span class="product-label label-top">Top</span>
-                                    <a href="product.html">
-                                        <img src="<?=get_template_directory_uri()?>/assets/images/products/product-5.jpg" alt="Product image" class="product-image">
-                                    </a>
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                </figure>
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Electronics</a>
-                                    </div>
-                                    <h3 class="product-title"><a href="product.html">Sony - Class LED 2160p Smart <br>4K Ultra HD</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        $1,699.99
-                                    </div>
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 80%;"></div>
-                                        </div>
-                                        <span class="ratings-text">( 10 Reviews )</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product text-center">
-                                <figure class="product-media">
-                                    <a href="product.html">
-                                        <img src="<?=get_template_directory_uri()?>/assets/images/products/product-4.jpg" alt="Product image" class="product-image">
-                                    </a>
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                </figure>
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Clothes</a>
-                                    </div>
-                                    <h3 class="product-title"><a href="product.html">Tan suede biker jacket</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        $240.00
-                                    </div>
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 80%;"></div>
-                                        </div>
-                                        <span class="ratings-text">( 4 Reviews )</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
+                    <?php endforeach ?>
                     
                 </div>
 
@@ -1077,103 +312,81 @@ $themeData = vbrand_load_theme_data();
 <!--mua sắm sản -->
 <div class="mb-5"></div>
 <div class="banner-group">
-	<div class="container">
+    <div class="container">
         <h2 class="title-lg text-center mb-4 text-upper">MUA SẮM SẢN 'PHẨM</h2>
-    
         <div class="pt-3 pb-3">
             <div class="container">
                 <div class="banner-group">
                     <div class="row">
-
+                        <?php
+                        $banners = $themeData->get('shopping_banner_group');
+                        // Split banners into columns as in the original layout
+                        $col1 = array_slice($banners, 0, 2);
+                        $col2 = array_slice($banners, 2, 2);
+                        $col3 = array_slice($banners, 4, 2);
+                        ?>
                         <div class="col-sm-6 col-lg-4">
-                            <div class="banner banner-overlay banner-lg"> 
-                                <a href="#">
-                                    <img src="<?=get_template_directory_uri()?>/assets/images/products/chuot.jpg" alt="Banner">
-                                </a>
-                                <div class="banner-content banner-content-top">
-                                    <h4 class="banner-title"><a href="#">Chuột</a></h4> 
+                            <?php foreach ($col1 as $banner): ?>
+                                <div class="banner banner-overlay banner-lg">
+                                    <a href="<?= esc_url($banner['link']) ?>">
+                                        <img src="<?= esc_url($banner['image']) ?>" alt="Banner">
+                                    </a>
+                                    <div class="banner-content banner-content-top">
+                                        <h4 class="banner-title"><a href="<?= esc_url($banner['link']) ?>"><?= esc_html($banner['title']) ?></a></h4>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="banner banner-overlay banner-lg"> 
-                                <a href="#">
-                                    <img src="<?=get_template_directory_uri()?>/assets/images/products/ipad-devaices.jpg" alt="Banner">
-                                </a>
-                                <div class="banner-content banner-content-top">
-                                    <h4 class="banner-title"><a href="#">Các trường họp bàn phím ipad</a></h4> 
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
-
                         <div class="col-sm-6 col-lg-4">
-                            <div class="banner banner-overlay banner-lg">
-                                <a href="#">
-                                    <img src="<?=get_template_directory_uri()?>/assets/images/products/keyboards-horizontal-gallery-desktop-2.jpg" alt="Banner">
-                                </a>
-                                <div class="banner-content banner-content-top">
-                                    <h4 class="banner-title"><a href="#">Bàn phím</a></h4>
+                            <?php foreach ($col2 as $banner): ?>
+                                <div class="banner banner-overlay banner-lg">
+                                    <a href="<?= esc_url($banner['link']) ?>">
+                                        <img src="<?= esc_url($banner['image']) ?>" alt="Banner">
+                                    </a>
+                                    <div class="banner-content banner-content-top">
+                                        <h4 class="banner-title"><a href="<?= esc_url($banner['link']) ?>"><?= esc_html($banner['title']) ?></a></h4>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="banner banner-overlay banner-lg">
-                                <a href="#">
-                                    <img src="<?=get_template_directory_uri()?>/assets/images/products/bo-doi.jpg" alt="Banner">
-                                </a>
-                                <div class="banner-content banner-content-top">
-                                    <h4 class="banner-title"><a href="#">Bộ đôi</a></h4>
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
-
                         <div class="col-12 col-lg-4">
                             <div class="row">
-                                <div class="col-sm-6 col-lg-12">
-                                    <div class="banner banner-overlay">
-                                        <a href="#">
-                                            <img src="<?=get_template_directory_uri()?>/assets/images/products/tai-nghe.jpg" alt="Banner">
-                                        </a>
-                                        <div class="banner-content banner-content-top">
-                                            <h4 class="banner-title"><a href="#">Tai nghe & Erabuds</a></h4>
+                                <?php foreach ($col3 as $banner): ?>
+                                    <div class="col-sm-6 col-lg-12">
+                                        <div class="banner banner-overlay">
+                                            <a href="<?= esc_url($banner['link']) ?>">
+                                                <img src="<?= esc_url($banner['image']) ?>" alt="Banner">
+                                            </a>
+                                            <div class="banner-content banner-content-top">
+                                                <h4 class="banner-title"><a href="<?= esc_url($banner['link']) ?>"><?= esc_html($banner['title']) ?></a></h4>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="col-sm-6 col-lg-12">
-                                    <div class="banner banner-overlay">
-                                        <a href="#">
-                                            <img src="<?=get_template_directory_uri()?>/assets/images/products/webcam.jpg" alt="Banner">
-                                        </a>
-                                        <div class="banner-content banner-content-top">
-                                            <h4 class="banner-title"><a href="#">WEBCAM</a></h4>
-                                                
-                                        </div>
-                                    </div>
-                                </div>
-
+                                <?php endforeach; ?>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-	</div>
+    </div>
 </div>
 <div class="mb-5"></div>
    
 <div class="intro-slider-container ">
 	<div id="banerslider" class="intro-slider owl-carousel owl-theme owl-nav-inside owl-light" data-toggle="owl" data-owl-options='{"nav": false, "dots": false}'>
 		<?php foreach($themeData->get('bannerslider') as $slider): ?>
-			<div class="intro-slide" style="background-image: url(<?php echo $slider['anh']; ?>);">
+			<div class="intro-slide" style="background-image: url(<?php echo $slider['banner']; ?>);">
 				<div class="container intro-content text-center">
-					<div class="intro-title text-white mb-0 lh-sm">THIẾT KẾ VÌ SỰ</div><!-- End .h3 intro-subtitle -->
-					<div class="intro-title text-white mb-0 lh-sm">BỀN VỮNG</div><!-- End .intro-title --> 
+					<div class="intro-title text-white mb-0 lh-sm"><?php echo $slider['bannertitle']; ?></div><!-- End .intro-title --> 
 					<div class="row mb-2 justify-content-center">
 						<div class="col col-md-4">
 							<div class="fs-5 text-white">
-								Giới thiệu MX Brio. Trải nghiệm video ultra HD 4K sắc nét với webcam tiên tiến nhất từ trước tới nay của chúng tôi. 
+								<?php echo $slider['banneralias']; ?>
 							</div>
 						</div>
 					</div>
-					<a href="category.html" class="btn btn-primary">TÌM HIỂU THÊM</a> 
+					<a href="<?php echo $slider['morelink']; ?>" class="btn btn-primary"><?php echo $slider['moretitle']; ?></a> 
 				</div><!-- End .intro-content -->
 			</div><!-- End .intro-slide --> 
 		<?php endforeach?> 
