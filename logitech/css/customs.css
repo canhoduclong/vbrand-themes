@@ -181,3 +181,6 @@
 .copyright a{
   padding-right: 12px; 
 }
+.page-content img{
+  max-width: 100% !important;
+}
