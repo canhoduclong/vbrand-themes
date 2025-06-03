@@ -25,32 +25,16 @@
 		<div class="row">
 			<div class="col-lg-9">
 				<?php
-				$themeData = vbrand_load_theme_data();
-				if ($themeData->get('articles_module_show')) :  
-					$number_of_posts = $themeData->get('articles_module_number');
-
+				  
 					// Truy vấn các bài viết mới nhất
 					$args = array(
-						'post_type' => 'post', // Loại bài viết
-						'posts_per_page' => $number_of_posts, // Số lượng bài viết muốn hiển thị
+						'post_type' => 'post', // Loại bài viết 
 						'post_status' => 'publish',
-						// 'orderby' => 'date', // Sắp xếp theo ngày đăng
-						// 'order' => 'DESC', // Thứ tự giảm dần (mới nhất trước)
+						'orderby' => 'date', // Sắp xếp theo ngày đăng
+						'order' => 'DESC', // Thứ tự giảm dần (mới nhất trước)
 						'posts_per_page' => 10,      // Number of posts per page
 						'paged'          => get_query_var('paged') ? get_query_var('paged') : 1, 
 					);
-
-					$sort = $themeData->get('articles_module_sort');	
-					if ($sort == 'newest') {
-						$args['order'] = 'DESC';
-						$args['orderby'] = 'post_date';
-					} else if ($sort == 'oldest') {
-						$args['order'] = 'ASC';
-						$args['orderby'] = 'post_date';
-					} else {
-						$args['order'] = 'DESC';
-						$args['orderby'] = 'post_date';
-					}
 
 					$query = new WP_Query($args);
 
@@ -128,8 +112,7 @@
 							 
 						 
 					<!-- End Blog Section --> 
-					<?php endif ?>
-				<?php endif ?>
+					<?php endif ?> 
 			</div>
 			<aside class="col-lg-3">
 				<div class="sidebar">
