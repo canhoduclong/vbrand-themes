@@ -1,13 +1,9 @@
-<?php 
-/**
-* Template Name: vBrand Template One News
-*/?>
+<?php get_header(); ?>
 
-<?php include 'header.php'; ?>
-         
 <div class="page-header text-center" style="background-image: url('<?=get_template_directory_uri()?>/assets/images/page-header-bg.jpg')">
-	<div class="container">
-		<h1 class="page-title">Tin tức<span>Bản tin mới nhát</span></h1>
+	<div class="container"> 
+        <h1 class="page-title">Posts & Pages tagged: <?php single_tag_title(); ?></h1>
+        
 	</div>
 </div>
 
@@ -15,7 +11,9 @@
     <div class="container">
         <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="<?php echo home_url('/');?>">Trang chủ</a></li> 
-            <li class="breadcrumb-item active" aria-current="page">Tin tức</li>
+        <li class="breadcrumb-item" aria-current="page">tag</li>
+        <li class="breadcrumb-item active" aria-current="page"><?php single_tag_title(); ?></li>
+
         </ol>
     </div>
 </nav>
@@ -24,24 +22,11 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-9">
-				<?php
-				  
-					// Truy vấn các bài viết mới nhất
-					$args = array(
-						'post_type' => 'post', // Loại bài viết 
-						'post_status' => 'publish',
-						'orderby' => 'date', // Sắp xếp theo ngày đăng
-						'order' => 'DESC', // Thứ tự giảm dần (mới nhất trước)
-						'posts_per_page' => 10,      // Number of posts per page
-						'paged'          => get_query_var('paged') ? get_query_var('paged') : 1, 
-					);
-
-					$query = new WP_Query($args);
-
-					if ($query->have_posts()) :
+                <?php
+					if (have_posts()) :
 						// Bắt đầu vòng lặp để hiển thị bài viết
-						while ($query->have_posts()):
-							$query->the_post();
+						while ( have_posts() ):
+							the_post();
 
 							$content = get_the_content();
 							$content = strip_tags($content);
@@ -76,7 +61,7 @@
 											</div><!-- End .entry-meta -->
 
 											<h2 class="entry-title">
-												<a href="<?=get_permalink()?>"><?=get_the_title()?></a>
+												<a href="<?=get_permalink()?>"><?=get_the_title()?> </a>
 											</h2><!-- End .entry-title -->
 											<?php 
 											$categories = get_the_category( get_the_ID() );
@@ -100,19 +85,14 @@
 
 							<?php endwhile ?> 
 
-							<?php
-								// Pagination
-								the_posts_pagination(array(
-									'mid_size'  => 2,
-									'prev_text' => __('Previous', 'textdomain'),
-									'next_text' => __('Next', 'textdomain'),
-								));
-							?>
+							 
 							<?php  wp_reset_postdata();?>
 							 
 						 
 					<!-- End Blog Section --> 
 					<?php endif ?> 
+
+ 
 			</div>
 			<aside class="col-lg-3">
 				<div class="sidebar">
@@ -195,6 +175,7 @@
 	</div>
 </div>
 		
-<?php
-	get_footer();
-?>
+ 
+
+
+<?php get_footer(); ?>
