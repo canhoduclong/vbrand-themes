@@ -537,7 +537,7 @@ function initial(){
         
         if ($product) {
             
-            remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
+            //remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
             remove_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_thumbnails', 20);
             remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
             remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10); 
