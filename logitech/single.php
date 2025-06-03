@@ -59,15 +59,15 @@
 						</h1>
 						<div class="entry-cats">
 							<?php
-								$categories = get_the_category();
-								if ( ! empty( $categories ) ) {
-									foreach ( $categories as $category ) {
-										echo '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" class="post-category">';
-										echo esc_html( $category->name );
-										echo '</a> ';
-									}
+							$categories = get_the_category();
+							if ( ! empty( $categories ) ) {
+								foreach ( $categories as $category ) {
+									echo '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" class="post-category">';
+									echo esc_html( $category->name );
+									echo '</a> ';
 								}
-								?> 
+							}
+							?>
 						</div>
 						<div class="entry-content editor-content">
 							<?php the_content();?>
@@ -94,8 +94,21 @@
 						</div>
 					</div> 
 					<div class="related-posts">
-						<h3 class="title">Related Posts</h3>
-						<div class="owl-carousel owl-simple owl-loaded owl-drag" data-toggle="owl" data-owl-options="{
+						<h3 class="title">Bài viết liên quan</h3>
+<?php
+$categories = wp_get_post_categories( get_the_ID() );
+if ( $categories ) {
+    $args = array(
+        'category__in'   => $categories,
+        'post__not_in'   => array( get_the_ID() ),
+        'posts_per_page' => 4,
+        'ignore_sticky_posts' => 1,
+    );
+    $related = new WP_Query( $args );
+    if ( $related->have_posts() ) {
+?>
+
+							<div class="owl-carousel owl-simple owl-loaded owl-drag" data-toggle="owl" data-owl-options="{
                                         &quot;nav&quot;: false, 
                                         &quot;dots&quot;: true,
                                         &quot;margin&quot;: 20,
@@ -112,42 +125,43 @@
                                             }
                                         }
                                     }">
-                                    <!-- End .entry -->
-
-                                    <!-- End .entry -->
-
-                                    <!-- End .entry -->
-
-                                    <!-- End .entry -->
+                                    
                                 <div class="owl-stage-outer">
 									<div class="owl-stage">
-										 
+									<?php
+									while ( $related->have_posts() ) {
+										$related->the_post();?>
 										<div class="owl-item active">
 											<article class="entry entry-grid">
 												<figure class="entry-media">
-													<a href="single.html">
-														<img src="assets/images/blog/grid/3cols/post-2.jpg" alt="image desc">
-													</a>
-												</figure><!-- End .entry-media -->
-
+													<?php
+														if ( has_post_thumbnail() ) {
+															$img_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+															echo '<a href="'.get_permalink().'"><img src="' . esc_url($img_url) . '" alt=""></a>';
+														}
+														?>
+												</figure>
 												<div class="entry-body">
 													<div class="entry-meta">
-														<a href="#">Nov 21, 2018</a>
+														<a href="#"><?php echo get_the_date(); ?></a>
 														<span class="meta-separator">|</span>
-														<a href="#">0 Comments</a>
-													</div><!-- End .entry-meta -->
+														<a href="#"><?php echo get_the_author(); ?></a>
+													</div>
 
 													<h2 class="entry-title">
-														<a href="single.html">Vivamus ntulla necante.</a>
-													</h2><!-- End .entry-title -->
-
-													<div class="entry-cats">
-														in <a href="#">Lifestyle</a>
-													</div><!-- End .entry-cats -->
-												</div><!-- End .entry-body -->
+														<a href="<?=get_permalink()?>"><?=get_the_title()?>.</a>
+													</h2> 
+													<div class="entry-body">
+														 <a href="<?=get_permalink()?>"><?=get_the_excerpt()?>.</a>
+													</div>
+												</div>
 											</article>
 										</div>
 
+									<?php
+										}        
+										wp_reset_postdata();
+									?>
 									</div>
 								</div>
 								<div class="owl-nav disabled">
@@ -157,6 +171,12 @@
 								<div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button>
 								<button role="button" class="owl-dot"><span></span></button>
 							</div>
+<?php
+    }
+}
+?>
+
+								
 						</div>
 					</div> 
 
