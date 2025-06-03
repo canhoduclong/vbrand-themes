@@ -40,7 +40,7 @@ $wrapper_classes   = apply_filters(
 
 <div class="product-gallery product-gallery-vertical">
 	<div class="row">
-		<figure class="product-main-image">
+		<figure class="product-main-image">sssssssssss
 			<?php  
 				$image = wp_get_attachment_image_src(  $post_thumbnail_id, 'single-post-thumbnail' );    
 				$image_src =  $image[0];

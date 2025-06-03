@@ -31,10 +31,10 @@
 
                    <h2 class="title text-center mb-2">Chúng tôi là ai</h2>
                     <p>Giá trị cốt lõi của chúng tôi là chất lượng và sự tận tâm. Chúng tôi cam kết mang đến dịch vụ tốt nhất với tinh thần trách nhiệm cao. Với đội ngũ giàu kinh nghiệm và sáng tạo, chúng tôi luôn không ngừng nỗ lực để tạo ra những giá trị bền vững cho khách hàng. Chúng tôi tin rằng sự hài lòng của khách hàng chính là thành công lớn nhất của mình.</p>
-                    <img src="assets/images/about/about-2/signature.png" alt="Chữ ký" class="mx-auto mb-5">
+                    <img src="<?=get_template_directory_uri()?>/assets/images/signature.png" alt="Chữ ký" class="mx-auto mb-5">
 
 
-                    <img src="<?=get_template_directory_uri()?>/assets/images/about-2.jpg" alt="image" class="mx-auto mb-6">
+                    <img src="<?=get_template_directory_uri()?>/assets/images/img-1.jpg" alt="image" class="mx-auto mb-6">
                
                     <?php if ( have_posts() ) : ?>
                         <?php while ( have_posts() ) : the_post();?>
