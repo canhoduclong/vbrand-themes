@@ -124,7 +124,9 @@ $themeData = vbrand_load_theme_data();
                                 ];
                             }
 
-                            $products = wc_get_products($args);
+                            //$products = wc_get_products($args);
+                            $products = new WP_Query($args);
+
                         ?>
 
                         <div class="tab-pane p-0 fade show <?php echo $index == 0 ? 'active' : '' ?>" id="product-tab-<?php echo $index ?>" role="tabpanel" aria-labelledby="product-tab-<?php echo $index ?>">
@@ -143,67 +145,26 @@ $themeData = vbrand_load_theme_data();
                                         "1600": {"items":4,"nav": true}
                                     }
                                 }'>
+                                 <?php if ($products->have_posts()) {
+    while ($products->have_posts()) {
+        $products->the_post();
 
-                                <?php foreach ($products as $product): ?>
-                                    <div class="product text-center">
-                                        <figure class="product-media">
-                                            <?php if ($product->is_on_sale()): ?>
-                                                <span class="product-label label-sale">Giảm giá</span>
-                                            <?php endif; ?>
-                                            <a href="<?php echo esc_url(get_permalink($product->get_id())); ?>">
-                                                <img src="<?php echo esc_url(wp_get_attachment_url($product->get_image_id())); ?>" alt="<?php echo esc_attr($product->get_name()); ?>" class="product-image">
-                                            </a>
+        /**
+         * Hook: woocommerce_shop_loop.
+         */
+        do_action('woocommerce_shop_loop');
 
-                                            <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist" title="Thêm Yêu thích"><span>Thêm Yêu thích</span></a>
-                                                <a href="#" class="btn-product-icon btn-quickview" title="Xem nhanh"><span>Xem nhanh</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare" title="So sánh"><span>So sánh</span></a>
-                                            </div>
+        wc_get_template_part('content', 'product');
+    }
 
-                                            <div class="product-action">
-                                                <a href="<?php echo esc_url( '?add-to-cart=' . $product->get_id() ); ?>" class="btn-product btn-cart" title="Add to cart"><span class="fs-5">Thêm vào giỏ</span></a>
-                                            </div>
-                                        </figure>
-
-                                        <div class="product-body">
-                                            <div class="product-cat">
-                                                <?php
-                                                    $terms = get_the_terms($product->get_id(), 'product_cat');
-                                                    if ($terms && !is_wp_error($terms)) {
-                                                        foreach ($terms as $term) {
-                                                            echo '<a clas="fs-6" href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a> ';
-                                                        }
-                                                    }
-                                                ?>
-                                            </div>
-                                            <h3 class="product-title">
-                                                <a class="fs-6" href="<?php echo esc_url(get_permalink($product->get_id())); ?>">
-                                                    <?php echo esc_html($product->get_name()); ?>
-                                                </a>
-                                            </h3>
-                                            <div class="product-price d-flex   flex-row  fs-6">
-                                                <?php echo $product->get_price_html(); ?>
-                                            </div>
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <?php
-                                                        $average = $product->get_average_rating();
-                                                        $percent = $average ? ($average / 5) * 100 : 0;
-                                                    ?>
-                                                    <div class="ratings-val" style="width: <?php echo esc_attr($percent); ?>%;"></div>
-                                                </div>
-                                                <span class="ratings-text">( <?php echo esc_html($product->get_review_count()); ?> lượt xem )</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php endforeach ?>
+    wp_reset_postdata();
+} ?>
 
                             </div>
                         </div>
                     <?php endforeach ?>
                     
                 </div>
-
             </div>
         </div>
     </div>
