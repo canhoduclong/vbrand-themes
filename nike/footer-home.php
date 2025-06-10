@@ -45,41 +45,45 @@
                                 <h4 class="widget-title">Useful Links</h4><!-- End .widget-title -->
 
                                 <ul class="widget-list">
-                                    <li><a href="about.html">About Molla</a></li>
-                                    <li><a href="#">How to shop on Molla</a></li>
-                                    <li><a href="faq.html">FAQ</a></li>
-                                    <li><a href="contact.html">Contact us</a></li>
-                                    <li><a href="login.html">Log in</a></li>
+                                   <li><a href="">Trợ giúp</a></li>
+                                    <li><a href="">Nhận hỗ trợ</a></li>
+                                    <li><a href="">Tình trạng đơn hàng</a></li>
+                                    <li><a href="">Giao hàng</a></li>
+                                    <li><a href="">Trả hàng</a></li>
+                                    <li><a href="">Phương thức thanh toán</a></li>
+                                    <li><a href="">Liên hệ với chúng tôi</a></li>
+
                                 </ul><!-- End .widget-list -->
                             </div><!-- End .widget -->
                         </div><!-- End .col-sm-6 col-lg-3 -->
 
                         <div class="col-sm-6 col-lg-3">
                             <div class="widget">
-                                <h4 class="widget-title">Customer Service</h4><!-- End .widget-title -->
+                                <h4 class="widget-title">Dịch vụ khách hàng</h4>
 
                                 <ul class="widget-list">
-                                    <li><a href="#">Payment Methods</a></li>
-                                    <li><a href="#">Money-back guarantee!</a></li>
-                                    <li><a href="#">Returns</a></li>
-                                    <li><a href="#">Shipping</a></li>
-                                    <li><a href="#">Terms and conditions</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Phương thức thanh toán</a></li>
+                                    <li><a href="#">Đảm bảo hoàn tiền!</a></li>
+                                    <li><a href="#">Trả hàng</a></li>
+                                    <li><a href="#">Vận chuyển</a></li>
+                                    <li><a href="#">Điều khoản và điều kiện</a></li>
+                                    <li><a href="#">Chính sách bảo mật</a></li>
+                                </ul>
+
                                 </ul><!-- End .widget-list -->
                             </div><!-- End .widget -->
-                        </div><!-- End .col-sm-6 col-lg-3 -->
+                        </div>
 
                         <div class="col-sm-6 col-lg-3">
                             <div class="widget">
-                                <h4 class="widget-title">My Account</h4><!-- End .widget-title -->
-
-                                <ul class="widget-list">
-                                    <li><a href="#">Sign In</a></li>
-                                    <li><a href="cart.html">View Cart</a></li>
-                                    <li><a href="#">My Wishlist</a></li>
-                                    <li><a href="#">Track My Order</a></li>
-                                    <li><a href="#">Help</a></li>
-                                </ul><!-- End .widget-list -->
+                                <h4 class="widget-title">Hình thức thanh toán</h4> 
+                                <div class="d-flex flex-wrap gap-1 gap-md-2 d-md-grid grid-cols-4 mb-4">
+                                    <div>
+                                        <img alt="VISA" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/visa_icon_44fe6e15ed.svg 1x, https://cdn2.fptshop.com.vn/svg/visa_icon_44fe6e15ed.svg 2x" src="https://cdn2.fptshop.com.vn/svg/visa_icon_44fe6e15ed.svg"></div><div><img alt="MasterCard" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/mastercard_icon_c75f94f6a5.svg 1x, https://cdn2.fptshop.com.vn/svg/mastercard_icon_c75f94f6a5.svg 2x" src="https://cdn2.fptshop.com.vn/svg/mastercard_icon_c75f94f6a5.svg"></div><div><img alt="JCB" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/jcb_icon_214783937c.svg 1x, https://cdn2.fptshop.com.vn/svg/jcb_icon_214783937c.svg 2x" src="https://cdn2.fptshop.com.vn/svg/jcb_icon_214783937c.svg"></div><div><img alt="American Express" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/amex_icon_d6fb68108d.svg 1x, https://cdn2.fptshop.com.vn/svg/amex_icon_d6fb68108d.svg 2x" src="https://cdn2.fptshop.com.vn/svg/amex_icon_d6fb68108d.svg"></div><div><img alt="VNPAY" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/vnpay_icon_f42045057d.svg 1x, https://cdn2.fptshop.com.vn/svg/vnpay_icon_f42045057d.svg 2x" src="https://cdn2.fptshop.com.vn/svg/vnpay_icon_f42045057d.svg"></div><div><img alt="ZaloPay" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/zalopay_icon_26d64ea93f.svg 1x, https://cdn2.fptshop.com.vn/svg/zalopay_icon_26d64ea93f.svg 2x" src="https://cdn2.fptshop.com.vn/svg/zalopay_icon_26d64ea93f.svg"></div><div><img alt="ATM" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/napas_icon_94d5330e3c.svg 1x, https://cdn2.fptshop.com.vn/svg/napas_icon_94d5330e3c.svg 2x" src="https://cdn2.fptshop.com.vn/svg/napas_icon_94d5330e3c.svg"></div><div><img alt="Kredivo" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/kredivo_icon_04f72baf36.svg 1x, https://cdn2.fptshop.com.vn/svg/kredivo_icon_04f72baf36.svg 2x" src="https://cdn2.fptshop.com.vn/svg/kredivo_icon_04f72baf36.svg"></div><div><img alt="MoMo" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/momo_icon_baef21b5f7.svg 1x, https://cdn2.fptshop.com.vn/svg/momo_icon_baef21b5f7.svg 2x" src="https://cdn2.fptshop.com.vn/svg/momo_icon_baef21b5f7.svg"></div><div><img alt="Foxpay" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/foxpay_icon_063b36c1f8.svg 1x, https://cdn2.fptshop.com.vn/svg/foxpay_icon_063b36c1f8.svg 2x" src="https://cdn2.fptshop.com.vn/svg/foxpay_icon_063b36c1f8.svg"></div><div><img alt="AlePay" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/alepay_icon_20d5310617.svg 1x, https://cdn2.fptshop.com.vn/svg/alepay_icon_20d5310617.svg 2x" src="https://cdn2.fptshop.com.vn/svg/alepay_icon_20d5310617.svg"></div><div><img alt="Muadee" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/muadee_icon_5e297d9e61.svg 1x, https://cdn2.fptshop.com.vn/svg/muadee_icon_5e297d9e61.svg 2x" src="https://cdn2.fptshop.com.vn/svg/muadee_icon_5e297d9e61.svg"></div><div><img alt="Home PayLater" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/homepaylater_icon_adef600842.svg 1x, https://cdn2.fptshop.com.vn/svg/homepaylater_icon_adef600842.svg 2x" src="https://cdn2.fptshop.com.vn/svg/homepaylater_icon_adef600842.svg"></div><div><img alt="Apple Pay" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/applepay_icon_cb6806a0d0.svg 1x, https://cdn2.fptshop.com.vn/svg/applepay_icon_cb6806a0d0.svg 2x" src="https://cdn2.fptshop.com.vn/svg/applepay_icon_cb6806a0d0.svg"></div><div><img alt="Samsung Pay" loading="lazy" width="48" height="30" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/samsungpay_icon_0292aa9876.svg 1x, https://cdn2.fptshop.com.vn/svg/samsungpay_icon_0292aa9876.svg 2x" src="https://cdn2.fptshop.com.vn/svg/samsungpay_icon_0292aa9876.svg">   
+                                    </div>
+                                </div>
+                                <h4 class="widget-title" >Giấy chứng nhận</h4> 
+                                <div class="d-flex flex-wrap gap-1 gap-md-2 d-md-grid grid-cols-4 mb-4"><img alt="DMCA" loading="lazy" width="52" height="32" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/dmca_icon_8fc6622bd5.svg 1x, https://cdn2.fptshop.com.vn/svg/dmca_icon_8fc6622bd5.svg 2x" src="https://cdn2.fptshop.com.vn/svg/dmca_icon_8fc6622bd5.svg"><img alt="Thương hiệu mạnh Việt Nam 2013" loading="lazy" width="52" height="32" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/thuong_hieu_manh_2013_icon_b56f772475.svg 1x, https://cdn2.fptshop.com.vn/svg/thuong_hieu_manh_2013_icon_b56f772475.svg 2x" src="https://cdn2.fptshop.com.vn/svg/thuong_hieu_manh_2013_icon_b56f772475.svg"><img alt="Sản phẩm - Dịch vụ hàng đầu Việt Nam 2014" loading="lazy" width="52" height="32" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/san_pham_dich_vu_hang_dau_viet_nam_icon_282a9ba4f7.svg 1x, https://cdn2.fptshop.com.vn/svg/san_pham_dich_vu_hang_dau_viet_nam_icon_282a9ba4f7.svg 2x" src="https://cdn2.fptshop.com.vn/svg/san_pham_dich_vu_hang_dau_viet_nam_icon_282a9ba4f7.svg"><img alt="Nói không với hàng giả" loading="lazy" width="32" height="32" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/noi_khong_voi_hang_gia_icon_e16037d9cb.svg 1x, https://cdn2.fptshop.com.vn/svg/noi_khong_voi_hang_gia_icon_e16037d9cb.svg 2x" src="https://cdn2.fptshop.com.vn/svg/noi_khong_voi_hang_gia_icon_e16037d9cb.svg"><a rel="nofollow" target="_blank" href="http://online.gov.vn/Home/WebDetails/21883"><img alt="Đã thông báo Bộ Công Thương" loading="lazy" width="86" height="32" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/da_thong_bao_bo_cong_thuong_icon_64785fb3f7.svg 1x, https://cdn2.fptshop.com.vn/svg/da_thong_bao_bo_cong_thuong_icon_64785fb3f7.svg 2x" src="https://cdn2.fptshop.com.vn/svg/da_thong_bao_bo_cong_thuong_icon_64785fb3f7.svg"></a></div>
                             </div><!-- End .widget -->
                         </div><!-- End .col-sm-6 col-lg-3 -->
                     </div><!-- End .row -->
@@ -88,7 +92,7 @@
 
             <div class="footer-bottom">
                 <div class="container">
-                    <p class="footer-copyright">Copyright © 2019 Molla Store. All Rights Reserved.</p><!-- End .footer-copyright -->
+                    <p class="footer-copyright">Bản quyền @2024 bởi vBrand.</p>
                     <figure class="footer-payments">
                         <img src="assets/images/payments.png" alt="Payment methods" width="272" height="20">
                     </figure><!-- End .footer-payments -->
