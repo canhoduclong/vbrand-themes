@@ -1154,7 +1154,7 @@ function before_shop_loop_item (){
 function after_shop_loop_item(){  
     if ( is_shop() || is_product_category() || is_product_tag() ) {  
         if(isset($_GET['view'])){
-           if( $_GET['view'] =='list'){ 
+           if( $_GET['view'] =='list'){
             echo '</div>';
             }else{   
                 $cols= isset($_GET['grid']) ? $_GET['grid'] : 2;
@@ -1170,6 +1170,29 @@ function after_shop_loop_item(){
     }
 }
 
+// Đổi text "Add to cart", "Select options", "View product" sang tiếng Việt
+add_filter('woocommerce_product_add_to_cart_text', 'custom_archive_add_to_cart_text');  // Trang danh sách sản phẩm
+add_filter('woocommerce_product_single_add_to_cart_text', 'custom_single_add_to_cart_text');  // Trang chi tiết
+
+function custom_archive_add_to_cart_text() {
+    global $product;
+
+    if ($product->is_type('variable')) {
+        return 'Chọn tùy chọn';
+    } elseif ($product->is_type('grouped')) {
+        return 'Xem nhóm sản phẩm';
+    } elseif ($product->is_type('external')) {
+        return 'Mua tại website khác';
+    } elseif ($product->is_type('simple')) {
+        return 'Thêm vào giỏ hàng';
+    } else {
+        return 'Xem sản phẩm';
+    }
+}
+
+function custom_single_add_to_cart_text() {
+    return 'Thêm vào giỏ hàng';
+}
 
 
 function woocommerce_before_product_details_tag() { 
