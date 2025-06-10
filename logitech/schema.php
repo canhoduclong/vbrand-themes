@@ -29,6 +29,7 @@ return [
             'label' => 'Tên webiste',
             'default' => 'vBrand Theme One',
         ],
+
         // MENU AND ASSIGN TO PAGE
         [
             'session' => 'menu',
@@ -241,7 +242,75 @@ return [
             ],
         ],
 
+        // HOME PAGE: NEWS 
+        [
+            'session'=>'home',
+            'type'=>'list', 
+            'label' => 'News',
+            'name'=>'news',
+            'max' => 10,
 
+            //  ĐỊNH NGHĨA MỖI SLIDER GỒM CÓ CÁC CẤU TRÚC SAU
+            'schema'=>[
+                [
+                    'type' => 'image',
+                    'name' => 'banner',
+                    'label' => 'Tải ảnh',
+                    'default' => '',
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'bannertitle',
+                    'label' => 'Tiêu đề Tin',
+                    'default' => '',
+                ], 
+                [
+                    'type' => 'textarea',
+                    'name' => 'banneralias',
+                    'label' => 'Diễn giải ngắn',
+                    'default' => '',
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'morelink',
+                    'label' => 'URL xem thêm',
+                    'default' => '',
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'moretitle',
+                    'label' => 'Tiêu đề link',
+                    'default' => '',
+                ],
+            ],
+
+            // ĐÂY LÀ DỮ LIỆU MẪU
+            'default'=>[ 
+               
+                [
+                    'banner' => get_template_directory_uri().'/assets/images/news/tin-2.png',
+                    'bannertitle' => 'TAI NGHE CÔNG NGHỆ AI', 
+                    'banneralias' => 'Dòng sản phẩm mới dành cho Nội Thất Gia Đình lần này tập trung vào các nhóm sản phẩm: Bàn ghế gấp, Bàn ghế ăn, Bàn ghế sofa,…  Bên cạnh đó, Nội thất 190 cũng ra mắt các màu vải mới, với những tông màu nhẹ nhàng như kem, be để đáp ứng thêm sở thích.',
+                        'morelink' => '',
+                    'moretitle' => '',
+                ],
+                 [
+                    'banner' => get_template_directory_uri().'/assets/images/news/tin-3.png',
+                    'bannertitle' => 'TAI NGHE CÔNG NGHỆ AI', 
+                    'banneralias' => 'Bàn ghế mây tre phòng khách đóng vai trò cực kỳ quan trọng trong ngôi nhà. Bởi đây không chỉ là điểm nhấn giúp ghi điểm trong lòng các vị khách ghé chơi mà còn thể hiện cá tính và độ tư duy thẩm mỹ của gia chủ. Ngày nay khi lối sống xanh lan.',
+                    'morelink' => '',
+                    'moretitle' => '',
+                ],
+                 [
+                    'banner' => get_template_directory_uri().'/assets/images/news/tin-1.png',
+                    'bannertitle' => 'Giải pháp kinh doanh', 
+                    'banneralias' => 'Ngày Quốc tế Gia đình là ngày nào? Ngày Quốc tế Gia đình (International Day of Families) được kỷ niệm vào ngày 15 tháng 5 hàng năm. Đây là một sự kiềm nhằm tôn vinh và đánh giá cao vai trò quan trọng của gia đình trong xã hội. Nguồn gốc ra đời ngày Quốc.',
+                    'morelink' => '',
+                    'moretitle' => '',
+                ],
+
+            ],
+        ],
 
         // HOME PAGE: PRODUCTS TABS
         [

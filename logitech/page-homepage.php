@@ -33,41 +33,72 @@ $themeData = vbrand_load_theme_data();
 	<div class="container"> 
 		<div class="row">
 			<?php 
-				$args=array(
-					'post_type'     	=> 'post',
-					'post_status'   	=> 'publish',
-					'posts_per_page' 	=> 3,
-				); 
-				$my_posts = get_posts( $args );
-				if ( $my_posts ) {
-					foreach ( $my_posts as $index=>$post ) :
-						setup_postdata( $post ); 
-						$featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full'); 
-						?>
-						<div class="col-sm-4"> 
+                $lnews = $themeData->get('news');
+                 
+                if($lnews){ 
+                    ?>
+                    <?php foreach($lnews as $index => $news): ?>
+                        <div class="col-sm-4"> 
 							<article class="entry">
 								<figure class="entry-media">
-									<a href="<?php the_permalink(); ?>">
-									<?php the_post_thumbnail('single-post-thumbnail', array('class' => 'image_fade')); ?> 
+									<a href="<?php echo $news['morelink'];?>">
+									    <img src="<?php echo $news['banner'];?> " alt="" class="image_fade"> 
 									</a>
 								</figure>
 								<div class="entry-body "> 
 									<h3 class="entry-title fs-5 ">
-										<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+										<a href="<?php echo $news['morelink'];?>"><?php echo $news['bannertitle'];?> </a>
 									</h3>
 									<div class="entry-content">
 										<div class="fs-6">
-                                            <?php echo strip_tags(get_the_excerpt());?> 
+                                            <?php echo $news['banneralias'];?> 
                                         </div> 
-										<a href="<?php the_permalink(); ?>" class="read-more fs-6">Xem thêm</a>
+                                        <?php if($news['morelink']) {?> 
+                                            <a href="<?php echo $news['morelink'];?>" class="read-more fs-6"><?php echo $news['moretitle'];?></a>
+                                        <?php }?>
 									</div>
 								</div>
 							</article> 
 						</div>
-					<?php
-						endforeach; 
-						wp_reset_postdata();
-					}?>
+
+                    <?php endforeach ?>
+                <?php }else{ ?>
+                        <?php $args=array(
+                            'post_type'     	=> 'post',
+                            'post_status'   	=> 'publish',
+                            'posts_per_page' 	=> 3,
+                        ); 
+                        $my_posts = get_posts( $args );
+                        if ( $my_posts ) {
+                            foreach ( $my_posts as $index=>$post ) :
+                                setup_postdata( $post ); 
+                                $featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full'); 
+                                ?>
+                                <div class="col-sm-4"> 
+                                    <article class="entry">
+                                        <figure class="entry-media">
+                                            <a href="<?php the_permalink(); ?>">
+                                            <?php the_post_thumbnail('single-post-thumbnail', array('class' => 'image_fade')); ?> 
+                                            </a>
+                                        </figure>
+                                        <div class="entry-body "> 
+                                            <h3 class="entry-title fs-5 ">
+                                                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                            </h3>
+                                            <div class="entry-content">
+                                                <div class="fs-6">
+                                                    <?php echo strip_tags(get_the_excerpt());?> 
+                                                </div> 
+                                                <a href="<?php the_permalink(); ?>" class="read-more fs-6">Xem thêm</a>
+                                            </div>
+                                        </div>
+                                    </article> 
+                                </div>
+                            <?php
+                            endforeach; 
+                            wp_reset_postdata();
+                        }?>
+                <?php } ?>
 				</div>
 			</div>
 		</div> 
