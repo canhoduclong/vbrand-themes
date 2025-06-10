@@ -59,7 +59,7 @@ $themeData = vbrand_load_theme_data();
 										<div class="fs-6">
                                             <?php echo strip_tags(get_the_excerpt());?> 
                                         </div> 
-										<a href="<?php the_permalink(); ?>" class="read-more">Xem thêm</a>
+										<a href="<?php the_permalink(); ?>" class="read-more fs-6">Xem thêm</a>
 									</div>
 								</div>
 							</article> 
@@ -161,7 +161,7 @@ $themeData = vbrand_load_theme_data();
                                             </div>
 
                                             <div class="product-action">
-                                                <a href="<?php echo esc_url( '?add-to-cart=' . $product->get_id() ); ?>" class="btn-product btn-cart fs-5" title="Add to cart"><span>Thêm vào giỏ</span></a>
+                                                <a href="<?php echo esc_url( '?add-to-cart=' . $product->get_id() ); ?>" class="btn-product btn-cart" title="Add to cart"><span class="fs-5">Thêm vào giỏ</span></a>
                                             </div>
                                         </figure>
 
@@ -218,7 +218,7 @@ $themeData = vbrand_load_theme_data();
 
 <div class="banner-group">
 	<div class="container">
-		<h2 class="title-lg text-center mb-4 text-upper">CHUỖI CỬA HÀNG</h2>
+		<h2 class="title-lg text-center mb-4 text-upper fs-3">CHUỖI CỬA HÀNG</h2>
 		<div class="row">
 			<div class="col-md-4 col-lg-4">
 				<div class="banner banner-large banner-overlay banner-overlay-light">
@@ -264,8 +264,8 @@ $themeData = vbrand_load_theme_data();
 					</a>
 
 					<div class="banner-content  banner-overlay-light banner-content-top"> 
-						<h3 class="banner-title text-white"><?=$shop_banner_two_title?></h3>
-						<div class="banner-text text-white"><?=$shop_banner_two_alias?></div> 
+						<h3 class="banner-title text-white fs-5"><?=$shop_banner_two_title?></h3>
+						<div class="banner-text text-white fs-5"><?=$shop_banner_two_alias?></div> 
 					</div>
 				</div>
 			</div>
@@ -277,8 +277,8 @@ $themeData = vbrand_load_theme_data();
 					</a>
 
 					<div class="banner-content  banner-overlay-light banner-content-top"> 
-						<h3 class="banner-title text-white"><?=$shop_banner_three_title?></h3>
-						<div class="banner-text text-white"><?=$shop_banner_three_alias?></div> 
+						<h3 class="banner-title text-white fs-4"><?=$shop_banner_three_title?></h3>
+						<div class="banner-text text-white fs-5"><?=$shop_banner_three_alias?></div> 
 					</div>
 				</div>
 			</div>
@@ -289,8 +289,8 @@ $themeData = vbrand_load_theme_data();
 					</a>
 
 					<div class="banner-content  banner-overlay-light banner-content-top"> 
-						<h3 class="banner-title text-white"><?=$shop_banner_four_title?></h3>
-						<a href="#" class="btn btn-outline-white banner-link"><?=$shop_banner_four_alias?></a> 
+						<h3 class="banner-title text-white fs-4"><?=$shop_banner_four_title?></h3>
+						<a href="#" class="btn btn-outline-white banner-link fs-5"><?=$shop_banner_four_alias?></a> 
 					</div>
 				</div>
 			</div><!-- End .col-lg-4 -->
@@ -301,8 +301,8 @@ $themeData = vbrand_load_theme_data();
 						<img src="<?=$shop_banner_five?>" alt="Banner">
 					</a>
 					<div class="banner-content banner-overlay-light banner-content-top"> 
-						<h3 class="banner-title text-white"><?=$shop_banner_five_title?></h3>
-						<a href="#" class="btn btn-outline-white banner-link"><?=$shop_banner_five_alias?><i class="icon-long-arrow-right"></i></a>
+						<h3 class="banner-title text-white fs-4"><?=$shop_banner_five_title?></h3>
+						<a href="#" class="btn btn-outline-white banner-link fs-5"><?=$shop_banner_five_alias?><i class="icon-long-arrow-right"></i></a>
 					</div>
 				</div>
 			</div> 
@@ -315,7 +315,7 @@ $themeData = vbrand_load_theme_data();
 <div class="mb-5"></div>
 <div class="banner-group">
     <div class="container">
-        <h2 class="title-lg text-center mb-4 text-upper">MUA SẮM SẢN 'PHẨM</h2>
+        <h2 class="title-lg text-center mb-4 text-upper fs-3">MUA SẮM SẢN 'PHẨM</h2>
         <div class="pt-3 pb-3">
             <div class="container">
                 <div class="banner-group">
@@ -334,7 +334,7 @@ $themeData = vbrand_load_theme_data();
                                         <img src="<?= esc_url($banner['image']) ?>" alt="Banner">
                                     </a>
                                     <div class="banner-content banner-content-top">
-                                        <h4 class="banner-title"><a href="<?= esc_url($banner['link']) ?>"><?= esc_html($banner['title']) ?></a></h4>
+                                        <h4 class="banner-title fs-6"><a href="<?= esc_url($banner['link']) ?>"><?= esc_html($banner['title']) ?></a></h4>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
@@ -346,7 +346,7 @@ $themeData = vbrand_load_theme_data();
                                         <img src="<?= esc_url($banner['image']) ?>" alt="Banner">
                                     </a>
                                     <div class="banner-content banner-content-top">
-                                        <h4 class="banner-title"><a href="<?= esc_url($banner['link']) ?>"><?= esc_html($banner['title']) ?></a></h4>
+                                        <h4 class="banner-title fs-6"><a href="<?= esc_url($banner['link']) ?>"><?= esc_html($banner['title']) ?></a></h4>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
@@ -360,7 +360,7 @@ $themeData = vbrand_load_theme_data();
                                                 <img src="<?= esc_url($banner['image']) ?>" alt="Banner">
                                             </a>
                                             <div class="banner-content banner-content-top">
-                                                <h4 class="banner-title"><a href="<?= esc_url($banner['link']) ?>"><?= esc_html($banner['title']) ?></a></h4>
+                                                <h4 class="banner-title fs-6"><a href="<?= esc_url($banner['link']) ?>"><?= esc_html($banner['title']) ?></a></h4>
                                             </div>
                                         </div>
                                     </div>
