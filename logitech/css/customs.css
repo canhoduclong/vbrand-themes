@@ -1,3 +1,33 @@
+  :root {
+  --fontsize: 16px;
+	--fontheader: 16px;
+	--fontbody: 16px;
+	--fontmenu: 16px;
+  --fslider: 68px;
+  --fs1: 48px;
+  --fs2: 40px;
+  --fs3: 32px;
+  --fs4: 28px;
+  --fs5: 24px;
+  --fs6: 20px;
+  --fs7: 18px;
+  --fs8: 16px;
+  --fs9: 14px;
+}
+.fontsize{
+	 font-size: var(--fontsize);
+}
+.fs-1{  font-size: var(--fs1) !important;}
+.fs-2{  font-size: var(--fs2) !important;}
+.fs-3{  font-size: var(--fs3) !important;}
+.fs-4{  font-size: var(--fs4) !important;}
+.fs-5{  font-size: var(--fs5) !important;}
+.fs-6{  font-size: var(--fs6) !important;}
+.fs-7{  font-size: var(--fs7) !important;}
+.fs-8{  font-size: var(--fs8) !important;}
+.fs-9{  font-size: var(--fs9) !important;}
+ 
+
 .intro-content {
   position: static;
   left: auto;
@@ -183,4 +213,37 @@
 }
 .page-content img{
   max-width: 100% !important;
+}
+/*
+  For custom fontsize
+*/
+
+.font { 
+  align-items: center;
+  justify-content: space-between; 
+} 
+
+.font button {
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 700;
+  background: transparent;
+}
+.font button:hover{
+	background-color: #ede9e9;
+}
+.font button sup{
+	font-size: 15px;
+}
+.font button:first-child {
+	width: 35px;
+  	height: 35px;
+ 	margin-right: 5px;
+	font-size: 13px;
+}
+.font button:first-child sup{ 
+	font-size: 13px;
 }

@@ -144,27 +144,25 @@
                                         <a href="javascript:;" id="close-minicart">×</a>
                                         <div class="dropdown-cart-products" id="minicart-items"> 
 
-                                        </div><!-- End .cart-product -->
+                                        </div>
 
                                         <div class="dropdown-cart-total">
                                             <span>Tổng tiền</span>
 
                                             <span class="cart-total-price" id="minicart-subtotal">00</span>
-                                        </div><!-- End .dropdown-cart-total -->
+                                        </div>
 
                                         <div class="dropdown-cart-action">
                                             <a href="/cart" class="btn btn-primary">Giỏ hàng</a>
                                             <a href="/checkout" class="btn btn-outline-primary-2"><span>Thanh toán</span><i class="icon-long-arrow-right"></i></a>
-                                        </div><!-- End .dropdown-cart-total -->
+                                        </div>
                                     </div>
-                                </div> 
-                                <!-- End .dropdown-menu -->
-                            </div><!-- End .cart-dropdown -->
-                            
-                        </div><!-- End .header-right -->
-                    </div><!-- End .container-fluid -->
-                </div><!-- End .header-middle -->
-            </header><!-- End .header -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
 
             <main class="main">
            

@@ -750,35 +750,182 @@ $(document).ready(function () {
         
         e.preventDefault();
     });
+    /**
+     * for fontsize
+     */
+    
+    //--- resize font size
+    const increment = document.getElementById("up");
+    const decrement = document.getElementById("down");
+    const reset = document.getElementById("reset");
+    var fsize = document.querySelector("body");
 
-    /*
-    if(document.getElementById('newsletter-popup-form')) {
-        setTimeout(function() {
-            var mpInstance = $.magnificPopup.instance;
-            if (mpInstance.isOpen) {
-                mpInstance.close();
-            }
 
-            setTimeout(function() {
-                $.magnificPopup.open({
-                    items: {
-                        src: '#newsletter-popup-form'
-                    },
-                    type: 'inline',
-                    removalDelay: 350,
-                    callbacks: {
-                        open: function() {
-                            $('body').css('overflow-x', 'visible');
-                            $('.sticky-header.fixed').css('padding-right', '1.7rem');
-                        },
-                        close: function() {
-                            $('body').css('overflow-x', 'hidden');
-                            $('.sticky-header.fixed').css('padding-right', '0');
-                        }
-                    }
-                });
-            }, 500)
-        }, 10000)
+    //--- changse font size area 
+
+    var step = 1;
+    var fontsize  = document.querySelector(".fontsize");
+	var fontheader = document.querySelector(".fontheader");
+	var fontbody = document.querySelector(".fontbody");
+	var fontmenu = document.querySelector(".fontmenu");
+	
+	var fonttags = document.querySelector(".fonttags");
+	var fontcomments = document.querySelector(".fontcomments");
+	var fonthotline = document.querySelector(".fonthotline");
+	var fontsupporrt = document.querySelector(".fontsupporrt");
+	var fontslider = document.querySelector(".fontslider");
+	var fontslideralias = document.querySelector(".fontslideralias");
+	var fontsliderbutton = document.querySelector(".fontsliderbutton");
+
+	var fontcategory = document.querySelector(".fontcategory");
+	var fontcategoryitem = document.querySelector(".fontcategoryitem");
+	var fontcategoryheader = document.querySelector(".fontcategoryheader");
+	var fontcategorysub = document.querySelector(".fontcategorysub");
+
+	/* 	Listing products	*/
+	var fontprolisttitle = document.querySelector(".fontprolisttitle");
+	var fontprolistsub = document.querySelector(".fontprolistsub");
+	var fontprolistprice = document.querySelector(".fontprolistprice");
+
+	/*	Details product 	*/
+	var fontprotitle = document.querySelector(".fontprotitle");
+	var fontproalias = document.querySelector(".fontproalias");
+	var fontprodetails= document.querySelector(".fontprodetails");
+
+    const root = document.documentElement;
+    
+    
+    loadFontSize();
+ 
+    // Parse the number from the string
+    var current_fontsize =get_curent_fontsize('fontsize');
+    var fslider=get_curent_fontsize('fslider');
+
+    var fs1 = get_curent_fontsize('fs1');
+    var fs2 = get_curent_fontsize('fs2');
+    var fs3 = get_curent_fontsize('fs3');
+    var fs4 = get_curent_fontsize('fs4');
+    var fs5 = get_curent_fontsize('fs5');
+    var fs6 = get_curent_fontsize('fs6');
+    var fs7 = get_curent_fontsize('fs7');
+    var fs8 = get_curent_fontsize('fs8');
+    var fs9 = get_curent_fontsize('fs9');
+
+
+    increment.onclick= () => changece( step, 2 );
+    decrement.onclick= () => changece( step, 1 );
+    reset.onclick= () => resetFontSize();
+
+    function changece( step, kind ) { 
+        if( kind > 1 ){     //---- increace
+            current_fontsize = current_fontsize + step;
+            fslider = fslider + step; 
+            fs1 = fs1 + step;
+            fs2 = fs2 + step;
+            fs3 = fs3 + step;
+            fs4 = fs4 + step;
+            fs5 = fs5 + step;
+            fs6 = fs6 + step;
+            fs7 = fs7 + step;
+            fs8 = fs8 + step;
+            fs9 = fs9 + step;
+        }else{              //---- Decreace
+            current_fontsize = current_fontsize - step;
+            fslider = fslider - step; 
+            fs1 = fs1 - step;
+            fs2 = fs2 - step;
+            fs3 = fs3 - step;
+            fs4 = fs4 - step;
+            fs5 = fs5 - step;
+            fs6 = fs6 - step;
+            fs7 = fs7 - step;
+            fs8 = fs8 - step;
+            fs9 = fs9 - step;
+        }
+        setFontSize('fontsize',current_fontsize); 
+        setFontSize('fslider', fslider);
+        setFontSize('fs1', fs1); 
+        setFontSize('fs2', fs2); 
+        setFontSize('fs3', fs3); 
+        setFontSize('fs4', fs4); 
+        setFontSize('fs5', fs5); 
+        setFontSize('fs6', fs6); 
+        setFontSize('fs7', fs7); 
+        setFontSize('fs8', fs8); 
+        setFontSize('fs9', fs9);   
+        
+        localStorage.setItem('fslider', fslider); 
+        localStorage.setItem('fs1', fs1); 
+        localStorage.setItem('fs2', fs2); 
+        localStorage.setItem('fs3', fs3); 
+        localStorage.setItem('fs4', fs4); 
+        localStorage.setItem('fs5', fs5); 
+        localStorage.setItem('fs6', fs6); 
+        localStorage.setItem('fs7', fs7); 
+        localStorage.setItem('fs8', fs8); 
+        localStorage.setItem('fs9', fs9); 
+    }; 
+    function get_curent_fontsize(fname){
+        const curent_fontsize = getComputedStyle(root).getPropertyValue('--'+ fname ).trim();
+        return  parseFloat(curent_fontsize);
     }
-    */
+    function loadFontSize(size) {
+        var savedfontsize = localStorage.getItem('fontsize');
+        var fs1 = localStorage.getItem('fs-1');
+        var fs2 = localStorage.getItem('fs-2');
+        var fs3 = localStorage.getItem('fs-3');
+        var fs4 = localStorage.getItem('fs-4');
+        var fs5 = localStorage.getItem('fs-5');
+        var fs6 = localStorage.getItem('fs-6');
+        var fs7 = localStorage.getItem('fs-7');
+        var fs8 = localStorage.getItem('fs-8');
+        var fs9 = localStorage.getItem('fs-9');
+        if (savedfontsize) {  document.documentElement.style.setProperty('--fontsize', savedfontsize + 'px');  }
+        if (fs1) {  document.documentElement.style.setProperty('--fs1', fs1 + 'px');  }
+        if (fs2) {  document.documentElement.style.setProperty('--fs1', fs2 + 'px');  }
+        if (fs3) {  document.documentElement.style.setProperty('--fs1', fs3 + 'px');  }
+        if (fs4) {  document.documentElement.style.setProperty('--fs1', fs4 + 'px');  }
+        if (fs5) {  document.documentElement.style.setProperty('--fs1', fs5 + 'px');  }
+        if (fs6) {  document.documentElement.style.setProperty('--fs1', fs6 + 'px');  }
+        if (fs7) {  document.documentElement.style.setProperty('--fs1', fs7 + 'px');  }
+        if (fs8) {  document.documentElement.style.setProperty('--fs1', fs8 + 'px');  }
+        if (fs9) {  document.documentElement.style.setProperty('--fs1', fs9 + 'px');  }
+    }
+    function setFontSize(obj, size) {
+        root.style.setProperty('--'+obj, size + 'px'); 
+    }
+    
+    function resetFontSize() {
+        localStorage.removeItem('fontsize'); // Xoá dữ liệu đã lưu 
+        localStorage.removeItem('fs1');
+        localStorage.removeItem('fs2');
+        localStorage.removeItem('fs3');
+        localStorage.removeItem('fs4');
+        localStorage.removeItem('fs5');
+        localStorage.removeItem('fs6');
+        localStorage.removeItem('fs7');
+        localStorage.removeItem('fs8');
+        localStorage.removeItem('fs9');
+        document.documentElement.style.removeProperty('--fontsize'); // Xoá override
+        document.documentElement.style.removeProperty('--fs1' );  
+        document.documentElement.style.removeProperty('--fs2' );  
+        document.documentElement.style.removeProperty('--fs3' );  
+        document.documentElement.style.removeProperty('--fs4' );  
+        document.documentElement.style.removeProperty('--fs5' );  
+        document.documentElement.style.removeProperty('--fs6' );  
+        document.documentElement.style.removeProperty('--fs7' );  
+        document.documentElement.style.removeProperty('--fs8' );  
+        document.documentElement.style.removeProperty('--fs9' );
+        setFontSize('fontsize', parseFloat(getComputedStyle(root).getPropertyValue('--fontsize').trim()) );
+        setFontSize('fs1', parseFloat(getComputedStyle(root).getPropertyValue('--fs1').trim()) );
+        setFontSize('fs2', parseFloat(getComputedStyle(root).getPropertyValue('--fs2').trim()) );
+        setFontSize('fs3', parseFloat(getComputedStyle(root).getPropertyValue('--fs3').trim()) );
+        setFontSize('fs4', parseFloat(getComputedStyle(root).getPropertyValue('--fs4').trim()) );
+        setFontSize('fs5', parseFloat(getComputedStyle(root).getPropertyValue('--fs5').trim()) );
+        setFontSize('fs6', parseFloat(getComputedStyle(root).getPropertyValue('--fs6').trim()) );
+        setFontSize('fs7', parseFloat(getComputedStyle(root).getPropertyValue('--fs7').trim()) );
+        setFontSize('fs8', parseFloat(getComputedStyle(root).getPropertyValue('--fs8').trim()) );
+        setFontSize('fs9', parseFloat(getComputedStyle(root).getPropertyValue('--fs9').trim()) );
+    }
+
 });

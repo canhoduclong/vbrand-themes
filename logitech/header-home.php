@@ -50,15 +50,21 @@
                     <div class="container">
                         <div class="header-left">
                             <a href="tel:#"><i class="icon-phone"></i>Call: 0909.09.09.09</a>
-                        </div><!-- End .header-left -->
-
+                            <li class="fontsize">Vì sức khỏe cộng đồng</li>
+                        </div>
                         <div class="header-right">
-
                             <ul class="top-menu">
-                                <li>
-                                    <a href="#">Links</a>
+                                
+                                <li> 
                                     <ul>
                                         <li>
+                                            <div class="font"> 
+                                                <button id="down">A <sup>-</sup></button>
+                                                <button id="reset">A </button>
+                                                <button id="up">A <sup>+</sup></button>
+                                            </div> 
+                                        </li>
+                                        <li>    
                                             <div class="header-dropdown">
                                                 <a href="#">USD</a>
                                                 <div class="header-menu">
@@ -66,7 +72,7 @@
                                                         <li><a href="#">Eur</a></li>
                                                         <li><a href="#">Usd</a></li>
                                                     </ul>
-                                                </div><!-- End .header-menu -->
+                                                </div>
                                             </div>
                                         </li>
                                         <li>
@@ -78,23 +84,18 @@
                                                         <li><a href="#">French</a></li>
                                                         <li><a href="#">Spanish</a></li>
                                                     </ul>
-                                                </div><!-- End .header-menu -->
+                                                </div>
                                             </div>
                                         </li> 
                                     </ul>
                                 </li>
-                            </ul><!-- End .top-menu -->
-                        </div><!-- End .header-right -->
-
-                    </div><!-- End .container -->
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <header class="header header-5"> 
-               
+            <header class="header header-5">                
                 <div class="header-middle sticky-header">
-                    
-
                     <div class="container">
                         <div class="header-left">
                             <button class="mobile-menu-toggler">
@@ -110,9 +111,7 @@
                         <div class="header-center">
                             <nav class="main-nav">
                                 <ul class="menu sf-arrows">
- 
                                     <?php 
-                                  
                                     foreach ($themeData->get('menus') as $key => $menu) { 
                                         if ($menu['show'] == 'true') {
                                             if ($menu['type'] == 'page-homepage.php')
@@ -153,10 +152,8 @@
                                         }
                                     } ?>
                                 </ul>
-                            </nav>
-                        
+                            </nav>                        
                         </div>
-
                         <div class="header-right">
                             <div class="header-search header-search-extended header-search-visible">
                                 <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>

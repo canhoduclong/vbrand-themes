@@ -11,18 +11,18 @@ $themeData = vbrand_load_theme_data();
 		<?php foreach($themeData->get('slider') as $slider): ?>
 			<div class="intro-slide" style="background-image: url(<?php echo $slider['anh']; ?>);">
 				<div class="container intro-content">
-					<div class="intro-title text-white mb-0 lh-sm text-uppercase"><?php echo $slider['slidertitle']; ?></div><!-- End .h3 intro-subtitle -->
-					<div class="intro-title text-white mb-0 lh-sm text-uppercase"><?php echo $slider['slidertitlesub']; ?></div><!-- End .intro-title -->
-					<div class="intro-title text-white mb-0 lh-sm text-uppercase"><?php echo $slider['slidertitlesecond']; ?></div><!-- End .intro-text -->
+					<div class="intro-title text-white mb-0 lh-sm text-uppercase fs-1"><?php echo $slider['slidertitle']; ?></div>
+					<div class="intro-title text-white mb-0 lh-sm text-uppercase fs-1"><?php echo $slider['slidertitlesub']; ?></div>
+					<div class="intro-title text-white mb-0 lh-sm text-uppercase fs-1"><?php echo $slider['slidertitlesecond']; ?></div>
 					<div class="row mb-2">
 						<div class="col col-md-4"> 
-							<div class="fs-5 text-white">
+							<div class="fs-6 text-white">
 								<?php echo $slider['slideralias']; ?>
 							</div>
 						</div>
 					</div>
-					<a href="<?php echo $slider['morebtn_link']; ?>" class="btn btn-primary"><?php echo $slider['morebtn']; ?></a>
-					<a href="<?php echo $slider['buybtn_link']; ?>" class="btn btn-primary ml-3"><?php echo $slider['buybtn']; ?></a>
+					<a href="<?php echo $slider['morebtn_link']; ?>" class="btn btn-primary fs-7"><?php echo $slider['morebtn']; ?></a>
+					<a href="<?php echo $slider['buybtn_link']; ?>" class="btn btn-primary ml-3 fs-7"><?php echo $slider['buybtn']; ?></a>
 				</div>
 			</div>
 		<?php endforeach?> 
@@ -52,11 +52,13 @@ $themeData = vbrand_load_theme_data();
 									</a>
 								</figure>
 								<div class="entry-body "> 
-									<h3 class="entry-title">
+									<h3 class="entry-title fs-5 ">
 										<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 									</h3>
 									<div class="entry-content">
-										<p><?php echo the_excerpt();?> </p> 
+										<div class="fs-6">
+                                            <?php echo strip_tags(get_the_excerpt());?> 
+                                        </div> 
 										<a href="<?php the_permalink(); ?>" class="read-more">Xem thêm</a>
 									</div>
 								</div>
@@ -75,14 +77,14 @@ $themeData = vbrand_load_theme_data();
 <div class="bg-lighter trending-products">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-sm-11">
+            <div class="col-sm-12">
 
                 <div class="heading heading-flex mb-3"> 
                     <div class="heading-left">
                         <ul class="nav nav-pills justify-content-center title" role="tablist">
                             <?php foreach($themeData->get('products_tabs') as $index => $products_tab): ?>
                                 <li class="nav-item">
-                                    <a class="nav-link <?php echo $index == 0 ? 'active' : '' ?>" id="trending-all-link" data-toggle="tab" href="#product-tab-<?php echo $index ?>" role="tab" aria-controls="product-tab-<?php echo $index ?>" aria-selected="true">
+                                    <a class=" fs-6 nav-link <?php echo $index == 0 ? 'active' : '' ?>" id="trending-all-link" data-toggle="tab" href="#product-tab-<?php echo $index ?>" role="tab" aria-controls="product-tab-<?php echo $index ?>" aria-selected="true">
                                         <?php echo $products_tab['tab_name']; ?>
                                     </a>
                                 </li>
@@ -136,9 +138,9 @@ $themeData = vbrand_load_theme_data();
                                         "0": {"items":1},
                                         "480": {"items":2},
                                         "768": {"items":3},
-                                        "992": {"items":4},
-                                        "1200": {"items":5,"nav": true},
-                                        "1600": {"items":6,"nav": true}
+                                        "992": {"items":3},
+                                        "1200": {"items":4,"nav": true},
+                                        "1600": {"items":4,"nav": true}
                                     }
                                 }'>
 
@@ -146,20 +148,20 @@ $themeData = vbrand_load_theme_data();
                                     <div class="product text-center">
                                         <figure class="product-media">
                                             <?php if ($product->is_on_sale()): ?>
-                                                <span class="product-label label-sale">Sale</span>
+                                                <span class="product-label label-sale">Giảm giá</span>
                                             <?php endif; ?>
                                             <a href="<?php echo esc_url(get_permalink($product->get_id())); ?>">
                                                 <img src="<?php echo esc_url(wp_get_attachment_url($product->get_image_id())); ?>" alt="<?php echo esc_attr($product->get_name()); ?>" class="product-image">
                                             </a>
 
                                             <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                                <a href="#" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                                                <a href="#" class="btn-product-icon btn-wishlist" title="Thêm Yêu thích"><span>Thêm Yêu thích</span></a>
+                                                <a href="#" class="btn-product-icon btn-quickview" title="Xem nhanh"><span>Xem nhanh</span></a>
+                                                <a href="#" class="btn-product-icon btn-compare" title="So sánh"><span>So sánh</span></a>
                                             </div>
 
                                             <div class="product-action">
-                                                <a href="<?php echo esc_url( '?add-to-cart=' . $product->get_id() ); ?>" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                                                <a href="<?php echo esc_url( '?add-to-cart=' . $product->get_id() ); ?>" class="btn-product btn-cart fs-5" title="Add to cart"><span>Thêm vào giỏ</span></a>
                                             </div>
                                         </figure>
 
@@ -169,17 +171,17 @@ $themeData = vbrand_load_theme_data();
                                                     $terms = get_the_terms($product->get_id(), 'product_cat');
                                                     if ($terms && !is_wp_error($terms)) {
                                                         foreach ($terms as $term) {
-                                                            echo '<a href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a> ';
+                                                            echo '<a clas="fs-6" href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a> ';
                                                         }
                                                     }
                                                 ?>
                                             </div>
                                             <h3 class="product-title">
-                                                <a href="<?php echo esc_url(get_permalink($product->get_id())); ?>">
+                                                <a class="fs-6" href="<?php echo esc_url(get_permalink($product->get_id())); ?>">
                                                     <?php echo esc_html($product->get_name()); ?>
                                                 </a>
                                             </h3>
-                                            <div class="product-price">
+                                            <div class="product-price d-flex   flex-row  fs-6">
                                                 <?php echo $product->get_price_html(); ?>
                                             </div>
                                             <div class="ratings-container">
@@ -190,7 +192,7 @@ $themeData = vbrand_load_theme_data();
                                                     ?>
                                                     <div class="ratings-val" style="width: <?php echo esc_attr($percent); ?>%;"></div>
                                                 </div>
-                                                <span class="ratings-text">( <?php echo esc_html($product->get_review_count()); ?> Reviews )</span>
+                                                <span class="ratings-text">( <?php echo esc_html($product->get_review_count()); ?> lượt xem )</span>
                                             </div>
                                         </div>
                                     </div>
