@@ -1393,6 +1393,8 @@ function get_product_variants() {
 }
 
 
+/*
+
 // Mở wrapper trước danh sách sản phẩm
 add_action('woocommerce_before_shop_loop', 'custom_wrapper_start', 15);
 function custom_wrapper_start() {
@@ -1418,7 +1420,7 @@ function custom_product_wrapper_end() {
     echo '</div><!-- .custom-product-item -->';
 }
 
-
+*/
 
 
 
