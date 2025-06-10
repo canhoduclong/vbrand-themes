@@ -29,73 +29,6 @@ return [
             'label' => 'Tên webiste',
             'default' => 'vBrand Theme One',
         ],
-        // Email
-        [
-            'session' => 'general',
-            'type' => 'text',
-            'name' => 'site_email',
-            'label' => 'Email Liên hệ',
-            'default' => 'support@google.com',
-        ],
-        // Phone
-        [
-            'session' => 'general',
-            'type' => 'list',
-            'layout_admin' => 'text',
-            'name' => 'site_phone',
-            'label' => 'Số điện thoại liên hệ', 
-            'max' => 10, 
-            'schema' => [
-                [
-                    'type' => 'text',
-                    'name' => 'site_phone_number',
-                    'label' => 'Số điện thoại',
-                    'default' => 'Ex: 0904.049.522',
-                ],
-                [
-                    'type' => 'text',
-                    'name' => 'site_phone_title',
-                    'label' => 'Tiêu đề',
-                    'default' => 'Ex: Phòng Kinh Doanh',
-                ],
-                [
-                    'type' => 'text',
-                    'name' => 'site_phone_alias',
-                    'label' => 'Diễn giải',
-                    'default' => 'Ex: Liên hệ 24/7 ',
-                ],
-
-            ],
-            'default' =>[
-                [
-                    
-                ]
-            ]
-        ],
-        // Facebook link
-        [
-            'session' => 'general',
-            'type' => 'text',
-            'name' => 'site_link_facebook',
-            'label' => 'Link Fanpage',
-            'default' => 'Đường dân trang facebook',
-        ],
-        // TicTok Link
-        [
-            'session' => 'general',
-            'type' => 'text',
-            'name' => 'site_link_tictok',
-            'label' => 'link TicTok',
-            'default' => 'Đường dân trang TicTok',
-        ],
-        // SIDE LOGO
-        [
-            'session' => 'general',
-            'type' => 'image',      // LOẠI DỮ LIỆU LÀ IMAGE
-            'name' => 'site_logo',
-            'label' => 'Site logo',
-            'default' => null,
-        ],
         // MENU AND ASSIGN TO PAGE
         [
             'session' => 'menu',
@@ -189,7 +122,7 @@ return [
                 [
                     'type' => 'text',
                     'name' => 'slidertitlesub',
-                    'label' => 'Tiêu đề slider chinh',
+                    'label' => 'Tiêu đề slider dòng 2',
                     'default' => '',
                 ],
                 [
@@ -206,14 +139,26 @@ return [
                 ],
                 [
                     'type' => 'text',
-                    'name' => 'morelink',
-                    'label' => 'Link xem thêm',
+                    'name' => 'morebtn',
+                    'label' => 'Xem thêm',
                     'default' => '',
                 ],
                 [
                     'type' => 'text',
-                    'name' => 'moretext',
+                    'name' => 'morebtn_link',
+                    'label' => 'URL xem thêm',
+                    'default' => '',
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'buybtn',
                     'label' => 'Mua ngay',
+                    'default' => '',
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'buybtn_link',
+                    'label' => 'URL mua ngay',
                     'default' => '',
                 ],
             ],
@@ -225,56 +170,17 @@ return [
                     'slidertitle' => 'Họp mặt',
                     'slidertitlesub' => 'Truyền phát',
                     'slidertitlesecond' => 'Chinh phục', 
-                    'slideralias' => 'Trải nghiệm video ',
-                    'morelink' => 'Tìm hiểu thêm',
-                    'moretext' => 'Mua ngay',
-                ],
-                [
-                    'anh' => get_template_directory_uri().'/assets/images/challenge-desktop.jpg',
-                    'slidertitle' => 'Họp mặt',
-                    'slidertitlesub' => 'Truyền phát',
-                    'slidertitlesecond' => 'Chinh phục', 
-                    'slideralias' => 'Giới thiệu MX Brio.. ',
-                    'morelink' => 'Tìm hiểu thêm',
-                    'moretext' => 'Mua chung',
-                ],
-                [
-                    'anh' => get_template_directory_uri().'/assets/images/banner-desktop.jpg',
-                    'slidertitle' => 'Họp mặt',
-                    'slidertitlesub' => 'Truyền phát',
-                    'slidertitlesecond' => 'Chinh phục', 
-                    'slideralias' => 'Trải nghiệm video ultra HD 4K ',
-                    'morelink' => 'Tìm hiểu thêm',
-                    'moretext' => 'Chốt hạ',
+                    'slideralias' => 'Giới thiệu MX Brio. Trải nghiệm video ultra HD 4K sắc nét với webcam tiên tiến nhất từ trước tới nay của chúng tôi. ',
+                    'morebtn' => 'Tìm hiểu thêm',
+                    'morebtn_link' => '/ve-chung-toi/',
+                    'buybtn' => 'Mua ngay',
+                    'buybtn_link' => '/gian-hang/',
                 ],
             ],
         ],
-        
-        // BANNER
-        [
-            'session' => 'home',
-            'type' => 'image',
-            'name' => 'banner_image',
-            'label' => 'Banner Image',
-            'default' => get_template_directory_uri() . '/images/couch.png',
-        ],
-        [
-            'session' => 'home',
-            'type' => 'textarea',
-            'name' => 'banner_title',
-            'label' => 'Banner Title',
-            'default' => 'Thiết kế nội thất<span clsas="d-block">hiện đại</span>',
-        ],
-        [
-            'session' => 'home',
-            'type' => 'textarea',
-            'name' => 'banner_description',
-            'label' => 'Banner Description',
-            'default' => 'Thiết kế nội thất hiện đại kết hợp sự tiện nghi và thẩm mỹ, tập trung vào sự đơn giản, linh hoạt và sử dụng tối đa ánh sáng tự nhiên. Vật liệu công nghệ cao như kính, thép không gỉ được ưa chuộng, tạo không gian mở rộng và hiện đại. Màu sắc trung tính kết hợp với điểm nhấn màu sắc táo bạo, đèn led và ánh sáng mềm mại tạo điểm nhấn và sự ấm áp cho không gian. Thiết kế này không chỉ tiện nghi mà còn thể hiện phong cách và cá nhân của gia chủ.',
-        ],
 
-         //  Banner Slider
-         [
+        //  Banner Slider
+        [
             'session'=>'home',
             'type'=>'list',
             'label' => 'Banner Slider',
@@ -309,7 +215,7 @@ return [
                 ],
                 [
                     'type' => 'text',
-                    'name' => 'mortitle',
+                    'name' => 'moretitle',
                     'label' => 'Tiêu đề link',
                     'default' => '',
                 ],
@@ -318,20 +224,84 @@ return [
             // ĐÂY LÀ DỮ LIỆU MẪU
             'default'=>[ 
                 [
-                    'anh' => get_template_directory_uri().'/assets/images/challenge-desktop.jpg',
-                    'bannertitle' => 'Họp mặt', 
-                    'banneralias' => 'Giới thiệu MX Brio. Trải nghiệm video ultra HD 4K sắc nét với webcam tiên tiến nhất từ trước tới nay của chúng tôi. ',
-                    'morelink' => 'Tìm hiểu thêm',
-                    'mortitle' => 'Mua ngay',
+                    'banner' => get_template_directory_uri().'/assets/images/challenge-desktop.jpg',
+                    'bannertitle' => 'THIẾT KẾ VÌ SỰ<br>BỀN VỮNG', 
+                    'banneralias' => 'Giới thiệu MX Brio. Trải nghiệm video ultra HD 4K sắc nét với webcam tiên tiến nhất từ trước tới nay của chúng tôi.',
+                    'morelink' => '/gian-hang/',
+                    'moretitle' => 'Sản phẩm của chúng tôi',
                 ],
                 [
-                    'anh' => get_template_directory_uri().'/assets/images/banner-desktop.jpg',
-                    'bannertitle' => 'Họp mặt', 
-                    'banneralias' => 'Giới thiệu MX Brio. Trải nghiệm video ultra HD 4K sắc nét với webcam tiên tiến nhất từ trước tới nay của chúng tôi. ',
-                    'morelink' => 'Tìm hiểu thêm',
-                    'mortitle' => 'Mua ngay',
+                    'banner' => get_template_directory_uri().'/assets/images/banner-desktop.jpg',
+                    'bannertitle' => ' Future Positive Challenge', 
+                    'banneralias' => 'Một thách thức về công nghệ và kỹ thuật dành cho những người phá cách có mong muốn tạo ra đóng góp có ý nghĩa cho một tương lai tích cực.',
+                    'morelink' => '/ve-chung-toi/',
+                    'moretitle' => 'Tìm hiểu thêm',
                 ],
 
+            ],
+        ],
+
+
+
+        // HOME PAGE: PRODUCTS TABS
+        [
+            'session'=>'home',
+            'type'=>'list',
+            'label' => 'Products Tabs',
+            'name'=>'products_tabs',
+            'max' => 5,
+
+            //  ĐỊNH NGHĨA MỖI SLIDER GỒM CÓ CÁC CẤU TRÚC SAU
+            'schema'=>[
+                [
+                    'type' => 'text',
+                    'name' => 'tab_name',
+                    'label' => 'Tab name',
+                    'default' => '',
+                ],
+                [
+                    'type' => 'select',
+                    'name' => 'type',
+                    'label' => 'Type',
+                    'default' => 'all',
+                    'options' => [
+                        ['value' => 'all', 'text' => 'Mặc định'],
+                        ['value' => 'hot', 'text' => 'Hot'],
+                        ['value' => 'featured', 'text' => 'Featured'],
+                        ['value' => 'new', 'text' => 'New'],
+                    ],
+                ],
+                [
+                    'type' => 'select',
+                    'name' => 'limit',
+                    'label' => 'Number of Products',
+                    'default' => 10,
+                    'options' => [
+                        ['value' => 5, 'text' => 5],
+                        ['value' => 10, 'text' => 10],
+                        ['value' => 15, 'text' => 15],
+                        ['value' => 20, 'text' => 20],
+                    ],
+                ],
+            ],
+
+            // ĐÂY LÀ DỮ LIỆU MẪU
+            'default'=>[ 
+                [
+                    'tab_name' => 'MỚI NHẤT',
+                    'type' => 'new', 
+                    'limit' => 10,
+                ],
+                [
+                    'tab_name' => 'BÁN CHẠY',
+                    'type' => 'hot', 
+                    'limit' => 10,
+                ],
+                [
+                    'tab_name' => 'ĐƯỢC KHUYẾN NGHỊ',
+                    'type' => 'featured', 
+                    'limit' => 10,
+                ],
             ],
         ],
         
@@ -342,45 +312,6 @@ return [
             'name' => 'products_module_show',
             'label' => 'Show Products Module',
             'default' => true,
-        ],
-        [
-            'session' => 'home',
-            'type' => 'text',
-            'name' => 'products_module_title',
-            'label' => 'Products Module Title',
-            'default' => 'SẢN PHẨM MỚI',
-        ],
-        [
-            'session' => 'home',
-            'type' => 'textarea',
-            'name' => 'products_module_description',
-            'label' => 'Products Module Description',
-            'default' => 'Mẫu sản phẩm mới nhất được chúng tôi cập nhật hàng ngày',
-        ],
-        [
-            'session' => 'home',
-            'type' => 'select',
-            'name' => 'products_module_type',
-            'label' => 'Products Module: Type',
-            'default' => 'all',
-            'options' => [
-                ['value' => 'all', 'text' => 'Mặc định'],
-                ['value' => 'hot', 'text' => 'Hot'],
-                ['value' => 'feature', 'text' => 'Feature'],
-                ['value' => 'new', 'text' => 'New'],
-            ],
-        ],
-        [
-            'session' => 'home',
-            'type' => 'select',
-            'name' => 'products_module_number',
-            'label' => 'Products Module: Number of Products',
-            'default' => 3,
-            'options' => [
-                ['value' => 2, 'text' => 2],
-                ['value' => 3, 'text' => 3],
-                ['value' => 5, 'text' => 5],
-            ],
         ],
 
         // CHUOI CUA HANG
@@ -506,201 +437,6 @@ return [
             'label' => 'Shop Banner Alias',
             'default' => '',
         ],
- 
-
-
-        //--- 3 posts
-
-
-        [
-            'session' => 'home',
-            'type' => 'text',
-            'name' => 'why_us_module_block_1_title',
-            'label' => 'Why Us Module: Block 1 Title',
-            'default' => 'Nhanh & Vận chuyển Free',
-        ],
-        [
-            'session' => 'home',
-            'type' => 'textarea',
-            'name' => 'why_us_module_block_1_description',
-            'label' => 'Why Us Module: Block 1 Description',
-            'default' => 'Vận chuyển nhanh chóng, không phát sinh chi phí vì dịch vụ hoàn toàn miễn phí',
-        ],
-        [
-            'session' => 'home',
-            'type' => 'image',
-            'name' => 'why_us_module_block_1_icon',
-            'label' => 'Why Us Module: Block 1 Icon',
-            'default' => get_template_directory_uri() . '/images/truck.svg',
-        ],
-        [
-            'session' => 'home',
-            'type' => 'text',
-            'name' => 'why_us_module_block_2_title',
-            'label' => 'Why Us Module: Block 2 Title',
-            'default' => 'Nhanh & Vận chuyển Free',
-        ],
-        [
-            'session' => 'home',
-            'type' => 'textarea',
-            'name' => 'why_us_module_block_2_description',
-            'label' => 'Why Us Module: Block 2 Description',
-            'default' => 'Vận chuyển nhanh chóng, không phát sinh chi phí vì dịch vụ hoàn toàn miễn phí',
-        ],
-        [
-            'session' => 'home',
-            'type' => 'image',
-            'name' => 'why_us_module_block_2_icon',
-            'label' => 'Why Us Module: Block 2 Icon',
-            'default' => get_template_directory_uri() . '/images/bag.svg',
-        ],
-        [
-            'session' => 'home',
-            'type' => 'text',
-            'name' => 'why_us_module_block_3_title',
-            'label' => 'Why Us Module: Block 3 Title',
-            'default' => '24/7 Hỗ trợ',
-        ],
-        [
-            'session' => 'home',
-            'type' => 'textarea',
-            'name' => 'why_us_module_block_3_description',
-            'label' => 'Why Us Module: Block 3 Description',
-            'default' => 'Chúng tôi Luôn luôn ở đây, 24/7. Hãy tin tưởng chúng tôi khi bạn cần gấp.',
-        ],
-        [
-            'session' => 'home',
-            'type' => 'image',
-            'name' => 'why_us_module_block_3_icon',
-            'label' => 'Why Us Module: Block 3 Icon',
-            'default' => get_template_directory_uri() . '/images/support.svg',
-        ],
-        [
-            'session' => 'home',
-            'type' => 'text',
-            'name' => 'why_us_module_block_4_title',
-            'label' => 'Why Us Module: Block 4 Title',
-            'default' => 'Thiết kế sáng tạo, hiện đại',
-        ],
-        [
-            'session' => 'home',
-            'type' => 'textarea',
-            'name' => 'why_us_module_block_4_description',
-            'label' => 'Why Us Module: Block 4 Description',
-            'default' => 'Với nhiều thiết kế đẹp, sáng tạo, luôn mang đến cho bạn sức sống mới.',
-        ],
-        [
-            'session' => 'home',
-            'type' => 'image',
-            'name' => 'why_us_module_block_4_icon',
-            'label' => 'Why Us Module: Block 4 Icon',
-            'default' => get_template_directory_uri() . '/images/return.svg',
-        ],
-
-        
-        // OURS project
-        [
-            'session' => 'home',
-            'type' => 'boolean',
-            'name' => 'our_project_module_show',
-            'label' => 'Show Our Project Module',
-            'default' => true,
-        ],
-        [
-            'session' => 'home',
-            'type' => 'text',
-            'name' => 'our_project_module_title',
-            'label' => 'Our Project Module Title',
-            'default' => 'Dự án',
-        ],
-        [
-            'session' => 'home',
-            'type' => 'text',
-            'name' => 'our_project_module_alias',
-            'label' => 'Our Project Module Alias',
-            'default' => 'Dự án đã triển khai',
-        ],
-        [
-            'session' => 'home',
-            'type' => 'text',
-            'name' => 'our_project_module_description',
-            'label' => 'Our Project Module Description',
-            'default' => 'Trải nghiệm các dự án do chúng tôi trực tiếp thiết kế và thi công',
-        ],
-        [
-            'session' => 'home',
-            'type' => 'image',
-            'name' => 'our_project_project_1',
-            'label' => 'Our Project Module: Project 1',
-            'default' => get_template_directory_uri() . '/images/project-1.jpg',
-        ],
-        [
-            'session' => 'home',
-            'type' => 'image',
-            'name' => 'our_project_project_2',
-            'label' => 'Our Project Module: Project 2',
-            'default' => get_template_directory_uri() . '/images/project-2.jpg',
-        ], 
-
-
-        // ARTICLES
-        [
-            'session' => 'home',
-            'type' => 'boolean',
-            'name' => 'articles_module_show',
-            'label' => 'Show Articles Module',
-            'default' => true,
-        ],
-        [
-            'session' => 'home',
-            'type' => 'select',
-            'name' => 'articles_module_number',
-            'label' => 'Articles Module: Number of Articles',
-            'default' => 3,
-            'options' => [
-                ['value' => 2, 'text' => 2],
-                ['value' => 3, 'text' => 3],
-                ['value' => 4, 'text' => 4],
-            ],
-        ],
-        [
-            'session' => 'home',
-            'type' => 'select',
-            'name' => 'articles_module_sort',
-            'label' => 'Articles Module: Sort',
-            'default' => 'newest',
-            'options' => [
-                ['value' => 'newest', 'text' => 'Newest'],
-                ['value' => 'oldest', 'text' => 'Oldest'],
-            ],
-        ],
-
-        // FOOTER
-        [
-            'session' => 'general',
-            'type' => 'textarea',
-            'name' => 'copyright_line',
-            'label' => 'Copyright Line',
-            'default' => '© 2017–2023 vBrand Company, Inc. · <a href="#" class="fw-semibold">Privacy</a> · <a href="#" class="fw-semibold">Terms</a>',
-        ],
-
-        // FOOTER LOGO
-        [
-            'session' => 'general',
-            'type' => 'image',
-            'name' => 'footer_logo',
-            'label' => 'Footer Logo',
-            'default' => get_template_directory_uri() . '/images/sofa.png',
-        ],
-        
-        // FOOTER LOGO
-        [
-            'session' => 'general',
-            'type' => 'image',
-            'name' => 'aboutus_image',
-            'label' => 'Image About Us',
-            'default' => get_template_directory_uri() . '/images/why-choose-us-img.jpg',
-        ],
 
         // ABOUT US
         [
@@ -710,65 +446,250 @@ return [
             'label' => 'Show About Us Module',
             'default' => true,
         ],
-        [
-            'session' => 'about-us',
-            'type' => 'text',
-            'name' => 'aboutus_title',
-            'label' => 'About Us title',
-            'default' => 'Giới thiệu',
-        ],
-        [
-            'session' => 'about-us',
-            'type' => 'textarea',
-            'name' => 'aboutus_content',
-            'label' => 'About Us content',
-            'default' => '<p>chúng tôi mang lại sự kết hợp hoàn hảo giữa thiết kế độc đáo và chất lượng xuất sắc. Chúng tôi tôn trọng nguyên liệu tự nhiên và sử dụng chúng để tạo ra những sản phẩm nội thất đẹp mắt và bền bỉ. </p>   ',
-        ],
-
-
 
         [
-            'session' => 'chung',
-            'type' => 'select',
-            'name' => 'module_home_articles_number',
-            'label' => 'So luong bai viet',
-            'default' => 4,
-            'options' => [
-                ['value' => 2, 'text' => 2],
-                ['value' => 3, 'text' => 3],
-                ['value' => 4, 'text' => 4],
+            'session' => 'home',
+            'type' => 'list',
+            'label' => "Banner Group: Mua Sắm Sản Phẩm",
+            'name' => 'shopping_banner_group',
+            'max' => 10,
+            'schema' => [
+                [
+                    'type' => 'image',
+                    'name' => 'image',
+                    'label' => 'Banner Image',
+                    'default' => '',
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'title',
+                    'label' => 'Banner Title',
+                    'default' => '',
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'link',
+                    'label' => 'Banner Link',
+                    'default' => '#',
+                ],
             ],
-
-        ],
-
-        [
-            'session' => 'chung',
-            'type' => 'text',
-            'name' => 'module_home_articles_title',
-            'label' => 'TIeu de cho model bai viet ỏ trang chu',
-            'default' => 'Bai Viet Gan Day',
-        ],
-
-        [
-            'session' => 'chung',
-            'type' => 'textarea',
-            'name' => 'module_home_articles_déc',
-            'label' => 'dong mo ta cua module, de trong thi khong hien',
-            'default' => '',
-        ],
-
-        [
-            'session' => 'chung',
-            'type' => 'select',
-            'name' => 'module_home_articles_order',
-            'label' => 'Bai viet hien thi',
-            'default' => 'new',
-            'options' => [
-                ['value' => 'new', 'text' => 'Bai viet moi nhat'],
-                ['value' => 'read_count', 'text' => 'Bai viet xem nhieu'],
-                ['value' => 'old', 'text' => 'Bai cu nhat'],
+            'default' => [
+                [
+                    'image' => get_template_directory_uri().'/assets/images/products/chuot.jpg',
+                    'title' => 'Chuột',
+                    'link' => '#',
+                ],
+                [
+                    'image' => get_template_directory_uri().'/assets/images/products/ipad-devaices.jpg',
+                    'title' => 'Các trường họp bàn phím ipad',
+                    'link' => '#',
+                ],
+                [
+                    'image' => get_template_directory_uri().'/assets/images/products/keyboards-horizontal-gallery-desktop-2.jpg',
+                    'title' => 'Bàn phím',
+                    'link' => '#',
+                ],
+                [
+                    'image' => get_template_directory_uri().'/assets/images/products/bo-doi.jpg',
+                    'title' => 'Bộ đôi',
+                    'link' => '#',
+                ],
+                [
+                    'image' => get_template_directory_uri().'/assets/images/products/tai-nghe.jpg',
+                    'title' => 'Tai nghe & Erabuds',
+                    'link' => '#',
+                ],
+                [
+                    'image' => get_template_directory_uri().'/assets/images/products/webcam.jpg',
+                    'title' => 'WEBCAM',
+                    'link' => '#',
+                ],
             ],
-
         ],
+
+
+        // FOOTER WIDGETS
+        [
+            'session' => 'general',
+            'type' => 'list',
+            'name' => 'footer_widget_1',
+            'label' => 'Footer Widget 1: Giới thiệu',
+            'max' => 10,
+            'schema' => [
+                [
+                    'type' => 'text',
+                    'name' => 'label',
+                    'label' => 'Tên liên kết',
+                    'default' => '',
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'url',
+                    'label' => 'URL',
+                    'default' => '#',
+                ],
+            ],
+            'default' => [
+                ['label' => 'Câu chuyện về Logitech', 'url' => 'about.html'],
+                ['label' => 'Nghề nghiệp', 'url' => '#'],
+                ['label' => 'Nhà đầu tư', 'url' => '#'],
+                ['label' => 'Blog', 'url' => 'contact.html'],
+                ['label' => 'Báo chí', 'url' => 'login.html'],
+                ['label' => 'Liên hệ với chúng tôi', 'url' => 'login.html'],
+            ],
+        ],
+        [
+            'session' => 'general',
+            'type' => 'list',
+            'name' => 'footer_widget_2',
+            'label' => 'Footer Widget 2: Giá trị',
+            'max' => 10,
+            'schema' => [
+                [
+                    'type' => 'text',
+                    'name' => 'label',
+                    'label' => 'Tên liên kết',
+                    'default' => '',
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'url',
+                    'label' => 'URL',
+                    'default' => '#',
+                ],
+            ],
+            'default' => [
+                ['label' => 'Con người', 'url' => '#'],
+                ['label' => 'Hành tinh', 'url' => '#'],
+                ['label' => 'Tái chế', 'url' => '#'],
+            ],
+        ],
+        [
+            'session' => 'general',
+            'type' => 'list',
+            'name' => 'footer_widget_3',
+            'label' => 'Footer Widget 3: Đối tác',
+            'max' => 10,
+            'schema' => [
+                [
+                    'type' => 'text',
+                    'name' => 'label',
+                    'label' => 'Tên liên kết',
+                    'default' => '',
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'url',
+                    'label' => 'URL',
+                    'default' => '#',
+                ],
+            ],
+            'default' => [
+                ['label' => 'Tìm đại lý', 'url' => '#'],
+                ['label' => 'Trở thành Đối tác', 'url' => '#'],
+                ['label' => 'Trở thành Đối tác của Liên minh', 'url' => '#'],
+                ['label' => 'Cổng thông tin đối tác', 'url' => '#'],
+            ],
+        ],
+        [
+            'session' => 'general',
+            'type' => 'list',
+            'name' => 'footer_widget_4',
+            'label' => 'Footer Widget 4: Khách hàng',
+            'max' => 10,
+            'schema' => [
+                [
+                    'type' => 'text',
+                    'name' => 'label',
+                    'label' => 'Tên liên kết',
+                    'default' => '',
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'url',
+                    'label' => 'URL',
+                    'default' => '#',
+                ],
+            ],
+            'default' => [
+                ['label' => 'Tùy chọn email', 'url' => '#'],
+            ],
+        ],
+
+        // FOOTER SOCIAL ICONS
+        [
+            'session' => 'general',
+            'type' => 'list',
+            'name' => 'footer_social_icons',
+            'label' => 'Footer Social Icons',
+            'max' => 10,
+            'schema' => [
+                [
+                    'type' => 'select',
+                    'name' => 'icon_class',
+                    'label' => 'Icon Class (FontAwesome or similar)',
+                    'default' => 'icon-facebook-f',
+                    'options' => [
+                        ['value' => 'icon-facebook-f', 'text' => 'Facebook'],
+                        ['value' => 'icon-twitter', 'text' => 'Twitter'],
+                        ['value' => 'icon-instagram', 'text' => 'Instagram'],
+                        ['value' => 'icon-youtube', 'text' => 'Youtube'],
+                        ['value' => 'icon-pinterest', 'text' => 'Pinterest'],
+                        // Add more icons here if needed
+                    ],
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'url',
+                    'label' => 'URL',
+                    'default' => '#',
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'title',
+                    'label' => 'Title',
+                    'default' => '',
+                ],
+            ],
+            'default' => [
+                ['icon_class' => 'icon-facebook-f', 'url' => '#', 'title' => 'Facebook'],
+                ['icon_class' => 'icon-twitter', 'url' => '#', 'title' => 'Twitter'],
+                ['icon_class' => 'icon-instagram', 'url' => '#', 'title' => 'Instagram'],
+                ['icon_class' => 'icon-youtube', 'url' => '#', 'title' => 'Youtube'],
+                ['icon_class' => 'icon-pinterest', 'url' => '#', 'title' => 'Pinterest'],
+            ],
+        ],
+
+        // FOOTER COPYRIGHT LINKS
+        [
+            'session' => 'general',
+            'type' => 'list',
+            'name' => 'footer_copyright_links',
+            'label' => 'Footer Copyright Links',
+            'max' => 10,
+            'schema' => [
+                [
+                    'type' => 'text',
+                    'name' => 'label',
+                    'label' => 'Tên liên kết',
+                    'default' => '',
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'url',
+                    'label' => 'URL',
+                    'default' => '#',
+                ],
+            ],
+            'default' => [
+                ['label' => '©2025 Logitech. Bảo lưu mọi quyền.', 'url' => '#'],
+                ['label' => 'Điều khoản Sử dụng', 'url' => '#'],
+                ['label' => 'Chính sách về Quyền riêng tư của', 'url' => '#'],
+                ['label' => 'Cài đặt cookie', 'url' => '#'],
+                ['label' => 'Bản đồ trang web', 'url' => '#'],
+            ],
+        ],
+
+        
     ],
 ];
