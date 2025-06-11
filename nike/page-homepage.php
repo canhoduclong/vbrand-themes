@@ -1,12 +1,12 @@
 <?php
 /**
- * Template Name: Sản phẩm define
+ * Template Name: Trang chủ
  */
-get_header();
+get_header('home');
 $themeData = vbrand_load_theme_data();
 
 ?>
-
+<?php if($themeData->get('slider')):?>
 <div class="container">
 	<div class="intro-slider-container slider-container-ratio mb-2">
 		<div class="intro-slider owl-carousel owl-simple owl-light owl-nav-inside" data-toggle="owl" data-owl-options='{"nav": false}'>
@@ -17,28 +17,25 @@ $themeData = vbrand_load_theme_data();
 						<source media="(max-width: 480px)" srcset="<?php echo $slider['anh']; ?>">
 						<img src="<?php echo $slider['anh']; ?>" alt="Image Desc">
 					</picture>
-				</figure><!-- End .slide-image -->
-
+				</figure>
 				<div class="intro-content">
-					<h3 class="intro-subtitle"><?php echo $slider['slidertitlesub'];?></h3><!-- End .h3 intro-subtitle -->
-					<h1 class="intro-title text-white"><?php echo $slider['slidertitle'];?></h1><!-- End .intro-title -->
-
-					<div class="intro-price text-white"><?php echo $slider['slideralias'];?></div><!-- End .intro-price -->
-
-					<a href="<?php echo $slider['morelink'];?><" class="btn btn-white-primary btn-round">
-						<span class="text-uppercase"><?php echo $slider['moretext'];?></span>
+					<h3 class="intro-subtitle"><?php echo $slider['slidertitlesub'];?></h3>
+					<h1 class="intro-title text-white"><?php echo $slider['slidertitle'];?></h1> 
+					<div class="intro-price text-white"><?php echo $slider['slideralias'];?></div> 
+					<a href="<?php echo isset($slider['morebtn_link'])? $slider['morebtn_link'] :'';?><" class="btn btn-white-primary btn-round">
+						<span class="text-uppercase"><?php echo $slider['morebtn'];?></span>
 						<i class="icon-long-arrow-right"></i>
 					</a>
-				</div><!-- End .intro-content -->
-			</div><!-- End .intro-slide -->
+				</div>
+			</div>
 			<?php endforeach ?>
  
-		</div><!-- End .intro-slider owl-carousel owl-simple -->
-		<span class="slider-loader"></span><!-- End .slider-loader -->
-	</div><!-- End .intro-slider-container -->
-</div><!-- End .container -->
+		</div>
+		<span class="slider-loader"></span>
+	</div>
+</div>
 
-
+<?php endif ?>
 
 <div class="banner-group">
 	<div class="container">
@@ -184,7 +181,7 @@ $themeData = vbrand_load_theme_data();
 					<a class="nav-link" id="new-men-link" data-toggle="tab" href="#new-men-tab" role="tab" aria-controls="new-men-tab" aria-selected="false">Men's</a>
 				</li>
 			</ul>
-		</div><!-- End .heading -->
+		</div>
 
 		<div class="tab-content tab-content-carousel">
 			<div class="tab-pane tab-pane-shadow p-0 fade show active" id="new-all-tab" role="tabpanel" aria-labelledby="new-all-link">
