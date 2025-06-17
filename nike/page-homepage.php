@@ -22,164 +22,166 @@ $themeData = vbrand_load_theme_data();
 					<h3 class="intro-subtitle"><?php echo $slider['slidertitlesub'];?></h3>
 					<h1 class="intro-title text-white"><?php echo $slider['slidertitle'];?></h1> 
 					<div class="intro-price text-white"><?php echo $slider['slideralias'];?></div> 
-					<a href="<?php echo isset($slider['morebtn_link'])? $slider['morebtn_link'] :'';?><" class="btn btn-white-primary btn-round">
-						<span class="text-uppercase"><?php echo $slider['morebtn'];?></span>
+					<a href="<?php echo isset($slider['buybtn_link'])? $slider['buybtn_link'] :'';?><" class="btn btn-white-primary btn-round">
+						<span class="text-uppercase"><?php echo $slider['buybtn'];?></span>
 						<i class="icon-long-arrow-right"></i>
 					</a>
 				</div>
 			</div>
-			<?php endforeach ?>
- 
+			<?php endforeach ?> 
 		</div>
 		<span class="slider-loader"></span>
 	</div>
 </div>
 
 <?php endif ?>
-
+<?php
+$banners  = $themeData->get('bannerslider'); 
+?>
 <div class="banner-group">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8">
 				<div class="row">
+					<?php if($banners[0]){ ?>
 					<div class="col-sm-6">
-						<div class="banner banner-overlay">
-							<a href="#">
-								<img src="<?=get_template_directory_uri()?>/assets/images/banner-1.jpg" alt="Banner">
+						<div class="banner banner-overlay"> 
+							<a href="<?=$banners[0]['morelink']?>">
+								<img src="<?=$banners[0]['banner']?>" alt="Banner">
 							</a>
-
 							<div class="banner-content banner-content-right">
-								<h4 class="banner-subtitle"><a href="#">New Arrivals</a></h4><!-- End .banner-subtitle -->
-								<h3 class="banner-title text-white"><a href="#">Sneakers & <br>Athletic Shoes</a></h3><!-- End .banner-title -->
-								<a href="#" class="btn btn-outline-white banner-link btn-round">Discover Now</a>
-							</div><!-- End .banner-content -->
-						</div><!-- End .banner -->
-					</div><!-- End .col-sm-6 -->
+								<h4 class="banner-subtitle"><a href="<?=$banners[0]['morelink']?>"><?=$banners[0]['banneralias']?></a></h4>
+								<h3 class="banner-title text-white"><a href="<?=$banners[0]['morelink']?>"><?=$banners[0]['bannertitle']?></a></h3>
+								<a href="<?=$banners[0]['morelink']?>" class="btn btn-outline-white banner-link btn-round"><?=$banners[0]['moretitle']?></a>
+							</div>
+						</div>
+					</div>
+					<?php }?>
 
 					<div class="col-sm-6">
 						<div class="banner banner-overlay banner-overlay-light">
-							<a href="#">
-								<img src="<?=get_template_directory_uri()?>/assets/images/banner-2.jpg" alt="Banner">
+							<a href="<?=$banners[1]['morelink']?>">
+								<img src="<?=$banners[1]['banner']?>" alt="Banner">
 							</a>
-
 							<div class="banner-content">
-								<h4 class="banner-subtitle bright-black"><a href="#">Clearance</a></h4><!-- End .banner-subtitle -->
-								<h3 class="banner-title"><a href="#">Sandals</a></h3><!-- End .banner-title -->
-								<div class="banner-text"><a href="#">up to 70% off</a></div><!-- End .banner-text -->
-								<a href="#" class="btn btn-outline-gray banner-link btn-round">Shop Now</a>
-							</div><!-- End .banner-content -->
-						</div><!-- End .banner -->
-					</div><!-- End .col-sm-6 -->
-				</div><!-- End .row -->
+								<h4 class="banner-subtitle bright-black"><a href="<?=$banners[1]['morelink']?>"><?=$banners[1]['saleoff']?></a></h4>
+								<h3 class="banner-title"><a href="<?=$banners[1]['morelink']?>"><?=$banners[1]['bannertitle']?></a></h3>
+								<div class="banner-text"><a href="<?=$banners[1]['morelink']?>"><?=$banners[1]['banneralias']?></a></div>
+								<a href="<?=$banners[1]['morelink']?>" class="btn btn-outline-gray banner-link btn-round"><?=$banners[1]['moretitle']?></a>
+							</div>
+						</div>
+					</div>
+				</div>
 
 				<div class="banner banner-large banner-overlay d-none d-sm-block">
-					<a href="#">
-						<img src="<?=get_template_directory_uri()?>/assets/images/banner-3.jpg" alt="Banner">
+					<a href="<?=$banners[2]['morelink']?>">
+						<img src="<?=$banners[2]['banner']?>" alt="Banner">
 					</a>
-
 					<div class="banner-content">
-						<h4 class="banner-subtitle text-white"><a href="#">On Sale</a></h4><!-- End .banner-subtitle -->
-						<h3 class="banner-title text-white"><a href="#">Slip-On Loafers</a></h3><!-- End .banner-title -->
-						<div class="banner-text text-white"><a href="#">up to 30% off</a></div><!-- End .banner-text -->
-						<a href="#" class="btn btn-outline-white banner-link btn-round">Shop Now</a>
-					</div><!-- End .banner-content -->
-				</div><!-- End .banner -->
-			</div><!-- End .col-lg-8 -->
+						<h4 class="banner-subtitle text-white"><a href="<?=$banners[2]['morelink']?>"><?=$banners[2]['saleoff']?></a></h4>
+						<h3 class="banner-title text-white"><a href="<?=$banners[2]['morelink']?>"><?=$banners[2]['bannertitle']?></a></h3>
+						<div class="banner-text text-white"><a href="<?=$banners[2]['morelink']?>"><?=$banners[2]['banneralias']?></a></div>
+						<a href="<?=$banners[2]['morelink']?>" class="btn btn-outline-white banner-link btn-round"><?=$banners[2]['moretitle']?></a>
+					</div>
+				</div>
+			</div>
 
 			<div class="col-lg-4 d-sm-none d-lg-block">
 				<div class="banner banner-middle banner-overlay">
-					<a href="#">
-						<img src="<?=get_template_directory_uri()?>/assets/images/banner-4.jpg" alt="Banner">
+					<a href="<?=$banners[3]['morelink']?>">
+						<img src="<?=$banners[3]['banner']?>" alt="Banner">
 					</a>
-
 					<div class="banner-content banner-content-bottom">
-						<h4 class="banner-subtitle text-white"><a href="#">On Sale</a></h4><!-- End .banner-subtitle -->
-						<h3 class="banner-title text-white"><a href="#">Amazing <br>Lace Up Boots</a></h3><!-- End .banner-title -->
-						<div class="banner-text text-white"><a href="#">from $39.00</a></div><!-- End .banner-text -->
-						<a href="#" class="btn btn-outline-white banner-link btn-round">Discover Now</a>
-					</div><!-- End .banner-content -->
-				</div><!-- End .banner -->
-			</div><!-- End .col-lg-4 -->
-		</div><!-- End .row -->
-	</div><!-- End .container -->
-</div><!-- End .banner-group -->
+						<h4 class="banner-subtitle text-white"><a href="<?=$banners[3]['morelink']?>"><?=$banners[3]['saleoff']?></a></h4>
+						<h3 class="banner-title text-white"><a href="<?=$banners[3]['morelink']?>"><?=$banners[3]['bannertitle']?></a></h3>
+						<div class="banner-text text-white"><a href="<?=$banners[3]['morelink']?>"><?=$banners[3]['banneralias']?></a></div>
+						<a href="<?=$banners[3]['morelink']?>" class="btn btn-outline-white banner-link btn-round"><?=$banners[3]['moretitle']?></a>
+					</div>
+				</div>
+			</div>
+			
 
+		</div>
+	</div>
+</div>
 
-<!-- icons free shipping --> 
+<?php
+$supports  = $themeData->get('support'); 
+?>
+
 <div class="icon-boxes-container icon-boxes-separator bg-transparent">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-6 col-lg-3">
 				<div class="icon-box icon-box-side">
 					<span class="icon-box-icon text-primary">
-						<i class="icon-rocket"></i>
+						<i class="<?=$supports[0]['icon']?>"></i>
 					</span>
 
 					<div class="icon-box-content">
-						<h3 class="icon-box-title">Free Shipping</h3><!-- End .icon-box-title -->
-						<p>Orders $50 or more</p>
-					</div><!-- End .icon-box-content -->
-				</div><!-- End .icon-box -->
-			</div><!-- End .col-sm-6 col-lg-3 -->
+						<h3 class="icon-box-title"><?=$supports[0]['title']?></h3>
+						<p><?=$supports[0]['alias']?></p>
+					</div>
+				</div>
+			</div>
 			
 			<div class="col-sm-6 col-lg-3">
 				<div class="icon-box icon-box-side">
 					<span class="icon-box-icon text-primary">
-						<i class="icon-rotate-left"></i>
+						<i class="<?=$supports[1]['icon']?>"></i>
 					</span>
 
 					<div class="icon-box-content">
-						<h3 class="icon-box-title">Free Returns</h3><!-- End .icon-box-title -->
-						<p>Within 30 days</p>
-					</div><!-- End .icon-box-content -->
-				</div><!-- End .icon-box -->
-			</div><!-- End .col-sm-6 col-lg-3 -->
+						<h3 class="icon-box-title"><?=$supports[1]['title']?></h3>
+						<p><?=$supports[1]['alias']?></p>
+					</div>
+				</div>
+			</div>
 
 			<div class="col-sm-6 col-lg-3">
 				<div class="icon-box icon-box-side">
 					<span class="icon-box-icon text-primary">
-						<i class="icon-info-circle"></i>
+						<i class="<?=$supports[2]['icon']?>"></i>
 					</span>
 
 					<div class="icon-box-content">
-						<h3 class="icon-box-title">Get 20% Off 1 Item</h3><!-- End .icon-box-title -->
-						<p>when you sign up</p>
-					</div><!-- End .icon-box-content -->
-				</div><!-- End .icon-box -->
-			</div><!-- End .col-sm-6 col-lg-3 -->
+						<h3 class="icon-box-title"><?=$supports[2]['title']?></h3>
+						<p><?=$supports[2]['alias']?></p>
+					</div>
+				</div>
+			</div>
 
 			<div class="col-sm-6 col-lg-3">
 				<div class="icon-box icon-box-side">
 					<span class="icon-box-icon text-primary">
-						<i class="icon-life-ring"></i>
+						<i class="<?=$supports[3]['icon']?>"></i>
 					</span>
 
 					<div class="icon-box-content">
-						<h3 class="icon-box-title">We Support</h3><!-- End .icon-box-title -->
-						<p>24/7 amazing services</p>
-					</div><!-- End .icon-box-content -->
-				</div><!-- End .icon-box -->
-			</div><!-- End .col-sm-6 col-lg-3 -->
-		</div><!-- End .row -->
-	</div><!-- End .container -->
+						<h3 class="icon-box-title"><?=$supports[3]['title']?></h3>
+						<p><?=$supports[3]['alias']?></p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
 </div>
 
 <!--Sản phẩm đang khuyễn mãi-->
 <div class="bg-light pt-5 pb-10 mb-3">
 	<div class="container">
 		<div class="heading heading-center mb-3">
-			<h2 class="title-lg">Sản phẩm đang khuyễn mãi</h2>
+			<h2 class="title-lg text-uppercase">Sản phẩm đang khuyễn mãi</h2>
 
 			<ul class="nav nav-pills justify-content-center" role="tablist">
-				<li class="nav-item">
-					<a class="nav-link active" id="new-all-link" data-toggle="tab" href="#new-all-tab" role="tab" aria-controls="new-all-tab" aria-selected="true">All</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" id="new-women-link" data-toggle="tab" href="#new-women-tab" role="tab" aria-controls="new-women-tab" aria-selected="false">Women's</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" id="new-men-link" data-toggle="tab" href="#new-men-tab" role="tab" aria-controls="new-men-tab" aria-selected="false">Men's</a>
-				</li>
+				<?php foreach($themeData->get('products_tabs') as $index => $products_tab): ?>
+					<li class="nav-item">
+						<a class=" fs-6 nav-link <?php echo $index == 0 ? 'active' : '' ?>" id="trending-all-link" data-toggle="tab" href="#product-tab-<?php echo $index ?>" role="tab" aria-controls="product-tab-<?php echo $index ?>" aria-selected="true">
+							<?php echo $products_tab['tab_name']; ?>
+						</a>
+					</li>
+				<?php endforeach ?> 
 			</ul>
 		</div>
 
@@ -413,6 +415,8 @@ $themeData = vbrand_load_theme_data();
 							</div><!-- End .product-action -->
 						</div><!-- End .product-footer -->
 					</div><!-- End .product -->
+
+					
 				</div><!-- End .owl-carousel -->
 			</div><!-- .End .tab-pane -->
 			<div class="tab-pane tab-pane-shadow p-0 fade" id="new-women-tab" role="tabpanel" aria-labelledby="new-women-link">

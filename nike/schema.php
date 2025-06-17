@@ -139,18 +139,6 @@ return [
                 ],
                 [
                     'type' => 'text',
-                    'name' => 'morebtn',
-                    'label' => 'Xem thêm',
-                    'default' => '',
-                ],
-                [
-                    'type' => 'text',
-                    'name' => 'morebtn_link',
-                    'label' => 'URL xem thêm',
-                    'default' => '',
-                ],
-                [
-                    'type' => 'text',
                     'name' => 'buybtn',
                     'label' => 'Mua ngay',
                     'default' => '',
@@ -166,13 +154,20 @@ return [
             // ĐÂY LÀ DỮ LIỆU MẪU
             'default'=>[
                 [
-                    'anh' => get_template_directory_uri().'/assets/images/mx-banner.jpg',
-                    'slidertitle' => 'Họp mặt',
-                    'slidertitlesub' => 'Truyền phát',
-                    'slidertitlesecond' => 'Chinh phục', 
-                    'slideralias' => 'Giới thiệu MX Brio. Trải nghiệm video ultra HD 4K sắc nét với webcam tiên tiến nhất từ trước tới nay của chúng tôi. ',
-                    'morebtn' => 'Tìm hiểu thêm',
-                    'morebtn_link' => '/ve-chung-toi/',
+                    'anh' => get_template_directory_uri().'/assets/images/slide-2.jpg',
+                    'slidertitle' => 'Phong cách mạnh mẽ',
+                    'slidertitlesub' => 'Nổi bật',
+                    'slidertitlesecond' => '', 
+                    'slideralias' => 'Chỉ từ 2.000.000 VNĐ ',
+                    'buybtn' => 'Mua ngay',
+                    'buybtn_link' => '/gian-hang/',
+                ],
+                [
+                    'anh' => get_template_directory_uri().'/assets/images/slide-3.jpg',
+                    'slidertitle' => 'Phong cách thanh lịch mang đậm chất',
+                    'slidertitlesub' => 'Nổi bật hơn',
+                    'slidertitlesecond' => '', 
+                    'slideralias' => 'Chỉ từ 1.000.000 VNĐ ',
                     'buybtn' => 'Mua ngay',
                     'buybtn_link' => '/gian-hang/',
                 ],
@@ -185,7 +180,7 @@ return [
             'type'=>'list',
             'label' => 'Banner Slider',
             'name'=>'bannerslider',
-            'max' => 10,
+            'max' => 4,
 
             //  ĐỊNH NGHĨA MỖI SLIDER GỒM CÓ CÁC CẤU TRÚC SAU
             'schema'=>[
@@ -209,6 +204,12 @@ return [
                 ],
                 [
                     'type' => 'text',
+                    'name' => 'saleoff',
+                    'label' => 'saleoff',
+                    'default' => '',
+                ],
+                [
+                    'type' => 'text',
                     'name' => 'morelink',
                     'label' => 'URL xem thêm',
                     'default' => '',
@@ -224,24 +225,96 @@ return [
             // ĐÂY LÀ DỮ LIỆU MẪU
             'default'=>[ 
                 [
-                    'banner' => get_template_directory_uri().'/assets/images/challenge-desktop.jpg',
+                    'banner' => get_template_directory_uri().'/assets/images/banner-1.jpg',
                     'bannertitle' => 'THIẾT KẾ VÌ SỰ<br>BỀN VỮNG', 
-                    'banneralias' => 'Giới thiệu MX Brio. Trải nghiệm video ultra HD 4K sắc nét với webcam tiên tiến nhất từ trước tới nay của chúng tôi.',
+                    'banneralias' => 'sắc nét với webcam tiên tiến nhất ',
+                    'saleoff' => 'Sale Off',
                     'morelink' => '/gian-hang/',
-                    'moretitle' => 'Sản phẩm của chúng tôi',
+                    'moretitle' => 'Xem thêm',
                 ],
                 [
-                    'banner' => get_template_directory_uri().'/assets/images/banner-desktop.jpg',
-                    'bannertitle' => ' Future Positive Challenge', 
-                    'banneralias' => 'Một thách thức về công nghệ và kỹ thuật dành cho những người phá cách có mong muốn tạo ra đóng góp có ý nghĩa cho một tương lai tích cực.',
+                    'banner' => get_template_directory_uri().'/assets/images/banner-2.jpg',
+                    'bannertitle' => 'Phong Cách', 
+                    'banneralias' => 'người Tốt',
+                    'saleoff' => 'Sale Off',
                     'morelink' => '/ve-chung-toi/',
-                    'moretitle' => 'Tìm hiểu thêm',
+                    'moretitle' => 'Chi tiết',
+                ],
+                [
+                    'banner' => get_template_directory_uri().'/assets/images/banner-3.jpg',
+                    'bannertitle' => 'THIẾT KẾ VÌ SỰ<br>BỀN VỮNG', 
+                    'banneralias' => 'tới nay của chúng tôi.',
+                    'saleoff' => 'Sale Off',
+                    'morelink' => '/gian-hang/',
+                    'moretitle' => 'Mua ngay',
+                ],
+                [
+                    'banner' => get_template_directory_uri().'/assets/images/banner-4.jpg',
+                    'bannertitle' => ' Future Positive Challenge', 
+                    'banneralias' => 'Một thách thức.',
+                    'saleoff' => 'Sale Off',
+                    'morelink' => '/ve-chung-toi/',
+                    'moretitle' => 'Mua ngay',
                 ],
 
             ],
         ],
 
 
+        //  Banner Slider
+        [
+            'session'=>'home',
+            'type'=>'list',
+            'label' => 'Support Icons',
+            'name'=>'support',
+            'max' => 4,
+
+            //  ĐỊNH NGHĨA MỖI SLIDER GỒM CÓ CÁC CẤU TRÚC SAU
+            'schema'=>[
+                [
+                    'type' => 'text',
+                    'name' => 'icon',
+                    'label' => 'Biểu tượng',
+                    'default' => 'icon-rotate-left',
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'title',
+                    'label' => 'Tiêu đề',
+                    'default' => '',
+                ], 
+                [
+                    'type' => 'text',
+                    'name' => 'alias',
+                    'label' => 'Diễn giải ngắn',
+                    'default' => '',
+                ]
+            ],
+
+            // ĐÂY LÀ DỮ LIỆU MẪU
+            'default'=>[ 
+                [
+                    'icon' => 'icon-rocket',
+                    'title' => 'MIỄN PHÍ SHIP', 
+                    'alias' => 'Cho đơn từ 500.000 đ', 
+                ],
+                [
+                   'icon' => 'icon-rotate-left',
+                    'title' => 'TRẢ HÀNG MIỄN PHÍ', 
+                    'alias' => 'Trong 30 ngày', 
+                ],
+                [
+                    'icon' => 'icon-info-circle',
+                    'title' => 'Giảm 20% cho 1 sản phẩm', 
+                    'alias' => 'khi bạn đăng ký', 
+                ],
+                [
+                    'icon' => 'icon-box-content',
+                    'title' => 'CHÚNG TÔI HỖ TRỢ', 
+                    'alias' => '24/7 trực tuyến',
+                ]
+            ]
+        ], 
 
         // HOME PAGE: PRODUCTS TABS
         [
