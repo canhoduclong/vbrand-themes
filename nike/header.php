@@ -50,24 +50,11 @@
                 <div class="container">
                     <div class="header-left">
                         <div class="header-dropdown">
-                            <a href="#">USD</a>
-                            <div class="header-menu">
-                                <ul>
-                                    <li><a href="#">Eur</a></li>
-                                    <li><a href="#">Usd</a></li>
-                                </ul>
-                            </div><!-- End .header-menu -->
+                            
                         </div><!-- End .header-dropdown -->
 
                         <div class="header-dropdown">
-                            <a href="#">Eng</a>
-                            <div class="header-menu">
-                                <ul>
-                                    <li><a href="#">English</a></li>
-                                    <li><a href="#">French</a></li>
-                                    <li><a href="#">Spanish</a></li>
-                                </ul>
-                            </div><!-- End .header-menu -->
+                            
                         </div><!-- End .header-dropdown -->
                     </div><!-- End .header-left -->
 
@@ -77,8 +64,8 @@
                                 <a href="#">Tiện ích</a>
                                 <ul>
                                     <li><a href="tel:#"><i class="icon-phone"></i>Liên hệ: +0123 456 789</a></li>
-                                    <li><a href="about.html">Về chúng tôi</a></li>
-                                    <li><a href="contact.html">Liên hệ</a></li> 
+                                    <li><a href="<?=get_permalink( get_page_by_path( 'gioi-thieu' ) )?>">Về chúng tôi</a></li>
+                                    <li><a href="<?=get_permalink( get_page_by_path( 'lien-he' ) )?>">Liên hệ</a></li> 
                                 </ul>
                             </li>
                         </ul><!-- End .top-menu -->
@@ -155,60 +142,25 @@
                                 <span class="cart-count">2</span>
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <div class="dropdown-cart-products">
-                                    <div class="product">
-                                        <div class="product-cart-details">
-                                            <h4 class="product-title">
-                                                <a href="product.html">Beige knitted elastic runner shoes</a>
-                                            </h4>
+                              <div class="dropdown-menu dropdown-menu-right" id="minicart">
+                                    <div id="minicart-content">
+                                        <a href="javascript:;" id="close-minicart">×</a>
+                                        <div class="dropdown-cart-products" id="minicart-items"> 
 
-                                            <span class="cart-product-info">
-                                                <span class="cart-product-qty">1</span>
-                                                x $84.00
-                                            </span>
-                                        </div><!-- End .product-cart-details -->
+                                        </div>
 
-                                        <figure class="product-image-container">
-                                            <a href="product.html" class="product-image">
-                                                <img src="assets/images/products/cart/product-1.jpg" alt="product">
-                                            </a>
-                                        </figure>
-                                        <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                                    </div><!-- End .product -->
+                                        <div class="dropdown-cart-total">
+                                            <span>Tổng tiền</span>
 
-                                    <div class="product">
-                                        <div class="product-cart-details">
-                                            <h4 class="product-title">
-                                                <a href="product.html">Blue utility pinafore denim dress</a>
-                                            </h4>
+                                            <span class="cart-total-price" id="minicart-subtotal">00</span>
+                                        </div>
 
-                                            <span class="cart-product-info">
-                                                <span class="cart-product-qty">1</span>
-                                                x $76.00
-                                            </span>
-                                        </div><!-- End .product-cart-details -->
-
-                                        <figure class="product-image-container">
-                                            <a href="product.html" class="product-image">
-                                                <img src="assets/images/products/cart/product-2.jpg" alt="product">
-                                            </a>
-                                        </figure>
-                                        <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                                    </div><!-- End .product -->
-                                </div><!-- End .cart-product -->
-
-                                <div class="dropdown-cart-total">
-                                    <span>Tổng cộng</span>
-
-                                    <span class="cart-total-price">$160.00</span>
-                                </div><!-- End .dropdown-cart-total -->
-
-                                <div class="dropdown-cart-action">
-                                    <a href="cart.html" class="btn btn-primary">Xem giỏ hàng</a>
-                                    <a href="checkout.html" class="btn btn-outline-primary-2"><span>Thanh toán</span><i class="icon-long-arrow-right"></i></a>
-                                </div><!-- End .dropdown-cart-total -->
-                            </div><!-- End .dropdown-menu -->
+                                        <div class="dropdown-cart-action">
+                                            <a href="/cart" class="btn btn-primary">Giỏ hàng</a>
+                                            <a href="/checkout" class="btn btn-outline-primary-2"><span>Thanh toán</span><i class="icon-long-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
                         </div><!-- End .cart-dropdown -->
                     </div><!-- End .header-right -->
                 </div><!-- End .container -->

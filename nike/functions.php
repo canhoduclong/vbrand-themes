@@ -422,6 +422,8 @@ add_action('wp_ajax_get_cart_data', 'get_cart_data');
 add_action('wp_ajax_nopriv_get_cart_data', 'get_cart_data');
 
  
+
+
 function initial(){ 
 
     //-- listings for shop and category pages
@@ -1058,10 +1060,6 @@ function filter_products_by_attributes( $query ) {
     }
 }
 add_action( 'pre_get_posts', 'filter_products_by_attributes' );
- 
-  
-
-
 
 function woocommerce_template_loop_product_title() {
     global $product;
@@ -1107,7 +1105,6 @@ function after_shop_loop (){
         }
     }
 }
-
 function before_shop_loop_item (){ 
     
     if ( is_shop() || is_product_category() || is_product_tag() ) { 
@@ -1151,8 +1148,6 @@ function before_shop_loop_item (){
     }
      
 }
-
-
 function woocommerce_before_product_details_tag() { 
     echo   '<div class="product-details-top mb-2">';
 }
@@ -1369,6 +1364,33 @@ function get_product_variants() {
 }
 
 
+
+// define add to cart in front page
+add_filter( 'woocommerce_loop_add_to_cart_link', 'custom_add_to_cart_on_home', 10, 2 );
+function custom_add_to_cart_on_home( $html, $product ) {
+    // Chỉ thay thế nếu đang ở TRANG CHỦ
+    if ( is_front_page() ) {
+        // Tự bạn cấu trúc nút theo nhu cầu:
+        $html = sprintf(
+           '<a rel="nofollow" 
+                   href="%s" 
+                   data-quantity="1" 
+                   data-product_id="%s" 
+                   class="button custom-home-add-to-cart"><i class="fas fa-shopping-cart mr-1"></i> Mua luôn</a>',
+            esc_url( $product->add_to_cart_url() ),
+            esc_attr( $product->get_id() )
+        );
+    }
+    return $html;
+}
+
+
+// thêm nút chi tiết sau add to cart
+add_action( 'woocommerce_after_shop_loop_item', 'add_view_more_button', 15 );
+function add_view_more_button(){
+    global $product;
+    echo'<a href="' . esc_url( get_permalink( $product->get_id() ) ) . '" class="btn-product btn-quickview"><span>Chi tiết</span></a>';
+}
 
 
 /**
