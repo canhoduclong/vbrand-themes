@@ -1,6 +1,4 @@
-<?php
-    $themeData = vbrand_load_theme_data();
-?>
+<?php  $themeData = vbrand_load_theme_data(); ?>
 <!doctype html>
 <html lang="vi">
     <head>
@@ -11,7 +9,7 @@
         <meta name="keywords" content="<?php echo $themeData->get('site_name', 'Logitech Shop'); ?>">
         <meta name="description" content="<?php echo $themeData->get('site_desctiption', 'Logitech Shop plays a crucial role in shaping the ambiance and functionality of retail spaces'); ?>">
         <meta name="author" content="vBrand">
-
+        
         <!-- Favicon -->
         <link rel="apple-touch-icon" sizes="180x180" href="<?=get_template_directory_uri()?>/assets/images/icons/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="<?=get_template_directory_uri()?>/assets/images/icons/favicon-32x32.png">
@@ -44,20 +42,19 @@
     </head>
     <body> 
 
-        <div class="page-wrapper">
+    <div class="page-wrapper">
         <header class="header header-8">
             <div class="header-top">
                 <div class="container">
                     <div class="header-left">
                         <div class="header-dropdown">
                             
-                        </div><!-- End .header-dropdown -->
+                        </div>
 
                         <div class="header-dropdown">
                            
-                        </div><!-- End .header-dropdown -->
-                    </div><!-- End .header-left -->
-
+                        </div>
+                    </div>
                     <div class="header-right">
                         <ul class="top-menu">
                             <li>
@@ -68,10 +65,10 @@
                                     <li><a href="<?=get_permalink( get_page_by_path( 'lien-he' ) )?>">Liên hệ</a></li>  
                                 </ul>
                             </li>
-                        </ul><!-- End .top-menu -->
-                    </div><!-- End .header-right -->
-                </div><!-- End .container -->
-            </div><!-- End .header-top -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
             <div class="header-middle sticky-header">
                 <div class="container">
@@ -84,7 +81,7 @@
                         <a href="index.html" class="logo">
                             <img src="<?=get_template_directory_uri()?>/assets/images/nike.jpg" alt="Molla Logo"  height="75">
                         </a>
-                    </div><!-- End .header-left -->
+                    </div>
 
                     <div class="header-right">
                         <nav class="main-nav">
@@ -128,13 +125,13 @@
                                         </li><?php 
                                         }
                                     } ?> 
-                            </ul><!-- End .menu -->
-                        </nav><!-- End .main-nav -->
+                            </ul>
+                        </nav>
 
                         <div class="header-search">
                             <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
                             <?php echo do_shortcode('[custom_product_search]'); ?>
-                        </div><!-- End .header-search -->
+                        </div>
 
                         <div class="dropdown cart-dropdown">
                             <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
@@ -162,12 +159,11 @@
                                     </div>
                                 </div>
 
-                        </div><!-- End .cart-dropdown -->
-                    </div><!-- End .header-right -->
-                </div><!-- End .container -->
-            </div><!-- End .header-middle -->
-        </header><!-- End .header -->
-
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
         <main class="main">
 
 

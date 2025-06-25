@@ -371,37 +371,33 @@ $supports  = $themeData->get('support');
 		<div class="tab-pane p-0 fade show active" id="top-all-tab" role="tabpanel" aria-labelledby="top-all-link">
 			<div class="products just-action-icons-sm">
 				<div class="row">
-<?php 
-$args = [
-	'post_type'      => 'product',
-	'posts_per_page' => $limit,
-	'post_status'    => 'publish',
-];
-$products = new WP_Query($args);
-if ($products->have_posts()) {
-		while ($products->have_posts()) {
-			$products->the_post(); 
-			wc_get_template_part('content', 'product-homesmall'); 
-		}
 
-		wp_reset_postdata();
-} ?>
+					<?php 
+					$args = [
+						'post_type'      => 'product',
+						'posts_per_page' => $limit,
+						'post_status'    => 'publish',
+					];
+					$products = new WP_Query($args);
+					if ($products->have_posts()) {
+							while ($products->have_posts()) {
+								$products->the_post(); 
+								wc_get_template_part('content', 'product-homesmall'); 
+							}
 
- 
+							wp_reset_postdata();
+					} ?>
 
-				</div><!-- End .row -->
-			</div><!-- End .products -->
-		</div><!-- .End .tab-pane --> 
-	</div><!-- End .tab-content -->
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<div class="more-container text-center mt-5"> 
 		<a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="btn btn-outline-lightgray btn-more btn-round"><span>Xem tất cả</span><i class="icon-long-arrow-right"></i></a>
-	</div><!-- End .more-container -->
-</div><!-- End .container -->
+	</div>
+</div>
 <?php }?> 
-
- 
-
 
 <div class="container">
 	<div class="cta cta-horizontal cta-horizontal-box bg-image mb-4 mb-lg-6" style="background-image: url(<?=get_template_directory_uri()?>/assets/images/bg-1.jpg);">
@@ -417,7 +413,6 @@ if ($products->have_posts()) {
 		</div><!-- End .row -->
 	</div><!-- End .cta-horizontal -->
 </div>
-
 
 <div class="blog-posts">
 	<div class="container">
@@ -542,7 +537,6 @@ if ($products->have_posts()) {
 		</div><!-- End .more-container -->
 	</div><!-- End .container -->
 </div>
- 
  
 <?php
 	get_footer('home');
