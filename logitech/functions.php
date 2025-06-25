@@ -1171,11 +1171,9 @@ function after_shop_loop_item(){
 }
 
 // Đổi text "Add to cart", "Select options", "View product" sang tiếng Việt
-
 /*
 add_filter('woocommerce_product_add_to_cart_text', 'custom_archive_add_to_cart_text');  // Trang danh sách sản phẩm
 add_filter('woocommerce_product_single_add_to_cart_text', 'custom_single_add_to_cart_text');  // Trang chi tiết
-
 function custom_archive_add_to_cart_text() {
     global $product;
 

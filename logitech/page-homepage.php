@@ -177,19 +177,13 @@ $themeData = vbrand_load_theme_data();
                                     }
                                 }'>
                                  <?php if ($products->have_posts()) {
-    while ($products->have_posts()) {
-        $products->the_post();
-
-        /**
-         * Hook: woocommerce_shop_loop.
-         */
-        do_action('woocommerce_shop_loop');
-
-        wc_get_template_part('content', 'product');
-    }
-
-    wp_reset_postdata();
-} ?>
+                                    while ($products->have_posts()) {
+                                        $products->the_post();
+                                        do_action('woocommerce_shop_loop');
+                                        wc_get_template_part('content', 'product');
+                                    }
+                                    wp_reset_postdata();
+                                } ?>
 
                             </div>
                         </div>
@@ -314,7 +308,6 @@ $themeData = vbrand_load_theme_data();
                     <div class="row">
                         <?php
                         $banners = $themeData->get('shopping_banner_group');
-                        // Split banners into columns as in the original layout
                         $col1 = array_slice($banners, 0, 2);
                         $col2 = array_slice($banners, 2, 2);
                         $col3 = array_slice($banners, 4, 2);
@@ -372,7 +365,7 @@ $themeData = vbrand_load_theme_data();
 		<?php foreach($themeData->get('bannerslider') as $slider): ?>
 			<div class="intro-slide" style="background-image: url(<?php echo $slider['banner']; ?>);">
 				<div class="container intro-content text-center">
-					<div class="intro-title text-white mb-0 lh-sm"><?php echo $slider['bannertitle']; ?></div><!-- End .intro-title --> 
+					<div class="intro-title text-white mb-0 lh-sm"><?php echo $slider['bannertitle']; ?></div>
 					<div class="row mb-2 justify-content-center">
 						<div class="col col-md-4">
 							<div class="fs-5 text-white">
@@ -381,12 +374,11 @@ $themeData = vbrand_load_theme_data();
 						</div>
 					</div>
 					<a href="<?php echo $slider['morelink']; ?>" class="btn btn-primary"><?php echo $slider['moretitle']; ?></a> 
-				</div><!-- End .intro-content -->
-			</div><!-- End .intro-slide --> 
+				</div>
+			</div>
 		<?php endforeach?> 
-	</div><!-- End .intro-slider owl-carousel owl-theme -->
-
-	<span class="slider-loader text-white"></span><!-- End .slider-loader -->
+	</div>
+	<span class="slider-loader text-white"></span>
 </div>
 
 <?php

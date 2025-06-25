@@ -503,6 +503,15 @@ return [
             'label' => 'Shop Banner Title',
             'default' => 'SẴN SÀNG MANG THEO',
         ],
+
+        [
+            'session' => 'home',
+            'type' => 'text',
+            'name' => 'footer_description',
+            'label' => 'Description',
+            'default' => 'Giới thiệu công ty dưới footêr',
+        ],
+
         [
             'session' => 'home',
             'type' => 'textarea',

@@ -416,7 +416,7 @@ $supports  = $themeData->get('support');
 
 <div class="blog-posts">
 	<div class="container">
-		<h2 class="title-lg text-center mb-4">From Our Blog</h2><!-- End .title-lg text-center -->
+		<h2 class="title-lg text-center mb-4">Tin tức</h2>
 
 		<div class="owl-carousel owl-simple mb-4 owl-loaded owl-drag" data-toggle="owl" data-owl-options="{
 				&quot;nav&quot;: false, 
@@ -439,98 +439,86 @@ $supports  = $themeData->get('support');
 					}
 				}
 			}">
-			<!-- End .entry -->
-		
-			<!-- End .entry -->
+		<div class="owl-stage-outer">
+			<div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all; width: 1188px;">
+			
+			<?php
 
-			<!-- End .entry -->
+			 $lnews = $themeData->get('news');
+                 
+                if($lnews){ 
+                    ?>
+                    <?php foreach($lnews as $index => $news): ?>
+                        <div class="col-sm-4"> 
+							<article class="entry">
+								<figure class="entry-media">
+									<a href="<?php echo $news['morelink'];?>">
+									    <img src="<?php echo $news['banner'];?> " alt="" class="image_fade"> 
+									</a>
+								</figure>
+								<div class="entry-body "> 
+									<h3 class="entry-title fs-5 ">
+										<a href="<?php echo $news['morelink'];?>"><?php echo $news['bannertitle'];?> </a>
+									</h3>
+									<div class="entry-content">
+										<div class="fs-6">
+                                            <?php echo $news['banneralias'];?> 
+                                        </div> 
+                                        <?php if($news['morelink']) {?> 
+                                            <a href="<?php echo $news['morelink'];?>" class="read-more fs-6"><?php echo $news['moretitle'];?></a>
+                                        <?php }?>
+									</div>
+								</div>
+							</article> 
+						</div>
 
-			<!-- End .entry -->
-		<div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all; width: 1188px;"><div class="owl-item active" style="width: 277px; margin-right: 20px;"><article class="entry">
-				<figure class="entry-media">
-					<a href="single.html">
-						<img src="<?=get_template_directory_uri()?>/assets/images/post-1.jpg" alt="image desc">
-					</a>
-				</figure><!-- End .entry-media -->
+                    <?php endforeach ?>
+                <?php }else{ ?>
+                        <?php $args=array(
+                            'post_type'     	=> 'post',
+                            'post_status'   	=> 'publish',
+                            'posts_per_page' 	=> 3,
+                        ); 
+                        $my_posts = get_posts( $args );
+                        if ( $my_posts ) {
+                            foreach ( $my_posts as $index=>$post ) :
+                                setup_postdata( $post ); 
+                                $featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full'); 
+                                ?>
+								<div class="owl-item active">
+									<article class="entry">
+										<figure class="entry-media">
+											<a href="<?php the_permalink(); ?>">
+												<?php the_post_thumbnail('single-post-thumbnail', array('class' => 'image_fade')); ?> 
+											</a>
+										</figure>
 
-				<div class="entry-body text-center">
-					<div class="entry-meta">
-						<a href="#">Nov 22, 2018</a>, 0 Comments
-					</div><!-- End .entry-meta -->
+										<div class="entry-body text-center">
+											<div class="entry-meta">
+												<a href="#">Nov 22, 2018</a>, 0 Comments
+											</div>
 
-					<h3 class="entry-title">
-						<a href="single.html">Sed adipiscing ornare.</a>
-					</h3><!-- End .entry-title -->
+											<h3 class="entry-title">
+												<a href="<?php the_permalink(); ?>"><?php the_title(); ?>.</a>
+											</h3>
 
-					<div class="entry-content">
-						<p>Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. </p> 
-						<a href="single.html" class="read-more">READ MORE</a>
-					</div><!-- End .entry-content -->
-				</div><!-- End .entry-body -->
-			</article></div><div class="owl-item active" style="width: 277px; margin-right: 20px;"><article class="entry">
-				<figure class="entry-media">
-					<a href="single.html">
-						<img src="<?=get_template_directory_uri()?>/assets/images/post-2.jpg" alt="image desc">
-					</a>
-				</figure><!-- End .entry-media -->
+											<div class="entry-content">
+												<p><?php echo strip_tags(get_the_excerpt());?> . </p> 
+												<a href="<?php the_permalink(); ?>" class="read-more">Xem thêm</a>
+											</div>
+										</div>
+									</article>
+								</div>
+								 
+                            <?php
+                            endforeach; 
+                            wp_reset_postdata();
+                        }?>
+                <?php } ?>
 
-				<div class="entry-body text-center">
-					<div class="entry-meta">
-						<a href="#">Dec 12, 2018</a>, 0 Comments
-					</div><!-- End .entry-meta -->
 
-					<h3 class="entry-title">
-						<a href="single.html">Fusce lacinia arcuet nulla.</a>
-					</h3><!-- End .entry-title -->
 
-					<div class="entry-content">
-						<p>Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. </p>
-						<a href="single.html" class="read-more">READ MORE</a>
-					</div><!-- End .entry-content -->
-				</div><!-- End .entry-body -->
-			</article></div><div class="owl-item active" style="width: 277px; margin-right: 20px;"><article class="entry">
-				<figure class="entry-media">
-					<a href="single.html">
-						<img src="<?=get_template_directory_uri()?>/assets/images/post-3.jpg" alt="image desc">
-					</a>
-				</figure><!-- End .entry-media -->
-
-				<div class="entry-body text-center">
-					<div class="entry-meta">
-						<a href="#">Dec 19, 2018</a>, 2 Comments
-					</div><!-- End .entry-meta -->
-
-					<h3 class="entry-title">
-						<a href="single.html">Aliquam erat volutpat.</a>
-					</h3><!-- End .entry-title -->
-
-					<div class="entry-content">
-						<p>Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. </p>
-						<a href="single.html" class="read-more">READ MORE</a>
-					</div><!-- End .entry-content -->
-				</div><!-- End .entry-body -->
-			</article></div><div class="owl-item active" style="width: 277px; margin-right: 20px;"><article class="entry">
-				<figure class="entry-media">
-					<a href="single.html">
-						<img src="<?=get_template_directory_uri()?>/assets/images/post-4.jpg" alt="image desc">
-					</a>
-				</figure><!-- End .entry-media -->
-
-				<div class="entry-body text-center">
-					<div class="entry-meta">
-						<a href="#">Dec 19, 2018</a>, 2 Comments
-					</div><!-- End .entry-meta -->
-
-					<h3 class="entry-title">
-						<a href="single.html">Quisque a lectus.</a>
-					</h3><!-- End .entry-title -->
-
-					<div class="entry-content">
-						<p>Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. </p>
-						<a href="single.html" class="read-more">READ MORE</a>
-					</div><!-- End .entry-content -->
-				</div><!-- End .entry-body -->
-			</article></div></div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><i class="icon-angle-left"></i></button><button type="button" role="presentation" class="owl-next"><i class="icon-angle-right"></i></button></div><div class="owl-dots disabled"><button role="button" class="owl-dot active"><span></span></button></div></div><!-- End .owl-carousel -->
+ </div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><i class="icon-angle-left"></i></button><button type="button" role="presentation" class="owl-next"><i class="icon-angle-right"></i></button></div><div class="owl-dots disabled"><button role="button" class="owl-dot active"><span></span></button></div></div><!-- End .owl-carousel -->
 
 		<div class="more-container text-center mt-1">
 			<a href="blog.html" class="btn btn-outline-lightgray btn-more btn-round"><span>View more articles</span><i class="icon-long-arrow-right"></i></a>

@@ -1,4 +1,5 @@
-    </main>
+   <?php $themeData = vbrand_load_theme_data(); ?>
+   </main>
 
     <footer class="footer footer-dark">
             <div class="cta bg-image bg-dark pt-4 pb-5 mb-0" style="background-image: url(<?=get_template_directory_uri()?>/assets/images/bg-2.jpg);">
@@ -8,71 +9,65 @@
                             <div class="cta-heading text-center">
                                 <h3 class="cta-title text-white text-uppercase">Đăng ký nhận tin qua email</h3>
                                 <p class="cta-desc text-white">Để nhận <span class="font-weight-normal">ƯU ĐÃI</span> hàng tháng</p>
-                            </div><!-- End .text-center -->
+                            </div>
                         
                             <form action="#">
                                 <div class="input-group input-group-round">
                                     <input type="email" class="form-control form-control-white" placeholder="Nhập email của bạn" aria-label="Email Adress" required>
                                     <div class="input-group-append">
                                         <button class="btn btn-white" type="submit"><span>Đăng ký ngay</span><i class="icon-long-arrow-right"></i></button>
-                                    </div><!-- .End .input-group-append -->
-                                </div><!-- .End .input-group -->
+                                    </div>
+                                </div>
                             </form>
-                        </div><!-- End .col-sm-10 col-md-8 col-lg-6 -->
-                    </div><!-- End .row -->
-                </div><!-- End .container -->
-            </div><!-- End .cta -->
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="footer-middle">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-6 col-lg-3">
                             <div class="widget widget-about">
                                 <img src="<?=get_template_directory_uri()?>/assets/images/nike.png" class="footer-logo" alt="Footer Logo" width="105" height="25">
-                                <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. </p>
+                                <p><?=$themeData->get('footer_description');?></p>
 
                                 <div class="social-icons">
-                                    <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
-                                    <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
-                                    <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
-                                    <a href="#" class="social-icon" title="Youtube" target="_blank"><i class="icon-youtube"></i></a>
-                                    <a href="#" class="social-icon" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
-                                </div><!-- End .soial-icons -->
-                            </div><!-- End .widget about-widget -->
-                        </div><!-- End .col-sm-6 col-lg-3 -->
-
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="widget">
-                                <h4 class="widget-title">Useful Links</h4><!-- End .widget-title -->
-
-                                <ul class="widget-list">
-                                   <li><a href="">Trợ giúp</a></li>
-                                    <li><a href="">Nhận hỗ trợ</a></li>
-                                    <li><a href="">Tình trạng đơn hàng</a></li>
-                                    <li><a href="">Giao hàng</a></li>
-                                    <li><a href="">Trả hàng</a></li>
-                                    <li><a href="">Phương thức thanh toán</a></li>
-                                    <li><a href="">Liên hệ với chúng tôi</a></li>
-
-                                </ul><!-- End .widget-list -->
-                            </div><!-- End .widget -->
-                        </div><!-- End .col-sm-6 col-lg-3 -->
-
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="widget">
-                                <h4 class="widget-title fs-4">Dịch vụ khách hàng</h4>
-
-                                <ul class="widget-list">
-                                    <li><a href="#" class="fs-6">Phương thức thanh toán</a></li>
-                                    <li><a href="#" class="fs-6">Đảm bảo hoàn tiền!</a></li>
-                                    <li><a href="#" class="fs-6">Trả hàng</a></li>
-                                    <li><a href="#" class="fs-6">Vận chuyển</a></li>
-                                    <li><a href="#" class="fs-6">Điều khoản và điều kiện</a></li>
-                                    <li><a href="#" class="fs-6">Chính sách bảo mật</a></li>
-                                </ul>
-
-                                </ul><!-- End .widget-list -->
-                            </div><!-- End .widget -->
+                                    <?php foreach ($themeData->get('footer_social_icons') as $icon): ?>
+                                        <a href="<?= esc_url($icon['url']) ?>" class="social-icon" title="<?= esc_attr($icon['title']) ?>" target="_blank">
+                                            <i class="<?= esc_attr($icon['icon_class']) ?>"></i>
+                                        </a>
+                                    <?php endforeach; ?> 
+                                </div>
+                            </div>
                         </div>
+                        <?php
+                        $widgets = [
+                            [
+                                'title' => 'Giới thiệu',
+                                'data' => $themeData->get('footer_widget_1'),
+                            ],
+                        
+                            [
+                                'title' => 'Đối tác',
+                                'data' => $themeData->get('footer_widget_3'),
+                            ],
+                        ];
+                        foreach ($widgets as $widget): ?>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="widget">
+                                    <h4 class="widget-title"><?= esc_html($widget['title']) ?></h4>
+                                    <ul class="widget-list">
+                                        <?php foreach ($widget['data'] as $item): ?>
+                                            <li>
+                                                <a href="<?= esc_url($item['url']) ?>">
+                                                    <?= esc_html($item['label']) ?>
+                                                </a>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                            </div>
+                        <?php endforeach; ?> 
 
                         <div class="col-sm-6 col-lg-3">
                             <div class="widget">
@@ -84,10 +79,10 @@
                                 </div>
                                 <h4 class="widget-title fs-4" >Giấy chứng nhận</h4> 
                                 <div class="d-flex flex-wrap gap-1 gap-md-2 d-md-grid grid-cols-4 mb-4"><img alt="DMCA" loading="lazy" width="52" height="32" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/dmca_icon_8fc6622bd5.svg 1x, https://cdn2.fptshop.com.vn/svg/dmca_icon_8fc6622bd5.svg 2x" src="https://cdn2.fptshop.com.vn/svg/dmca_icon_8fc6622bd5.svg"><img alt="Thương hiệu mạnh Việt Nam 2013" loading="lazy" width="52" height="32" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/thuong_hieu_manh_2013_icon_b56f772475.svg 1x, https://cdn2.fptshop.com.vn/svg/thuong_hieu_manh_2013_icon_b56f772475.svg 2x" src="https://cdn2.fptshop.com.vn/svg/thuong_hieu_manh_2013_icon_b56f772475.svg"><img alt="Sản phẩm - Dịch vụ hàng đầu Việt Nam 2014" loading="lazy" width="52" height="32" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/san_pham_dich_vu_hang_dau_viet_nam_icon_282a9ba4f7.svg 1x, https://cdn2.fptshop.com.vn/svg/san_pham_dich_vu_hang_dau_viet_nam_icon_282a9ba4f7.svg 2x" src="https://cdn2.fptshop.com.vn/svg/san_pham_dich_vu_hang_dau_viet_nam_icon_282a9ba4f7.svg"><img alt="Nói không với hàng giả" loading="lazy" width="32" height="32" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/noi_khong_voi_hang_gia_icon_e16037d9cb.svg 1x, https://cdn2.fptshop.com.vn/svg/noi_khong_voi_hang_gia_icon_e16037d9cb.svg 2x" src="https://cdn2.fptshop.com.vn/svg/noi_khong_voi_hang_gia_icon_e16037d9cb.svg"><a rel="nofollow" target="_blank" href="http://online.gov.vn/Home/WebDetails/21883"><img alt="Đã thông báo Bộ Công Thương" loading="lazy" width="86" height="32" decoding="async" data-nimg="1" style="color: transparent;" srcset="https://cdn2.fptshop.com.vn/svg/da_thong_bao_bo_cong_thuong_icon_64785fb3f7.svg 1x, https://cdn2.fptshop.com.vn/svg/da_thong_bao_bo_cong_thuong_icon_64785fb3f7.svg 2x" src="https://cdn2.fptshop.com.vn/svg/da_thong_bao_bo_cong_thuong_icon_64785fb3f7.svg"></a></div>
-                            </div><!-- End .widget -->
-                        </div><!-- End .col-sm-6 col-lg-3 -->
-                    </div><!-- End .row -->
-                </div><!-- End .container -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div><!-- End .footer-middle -->
 
             <div class="footer-bottom">
@@ -96,7 +91,7 @@
                     <figure class="footer-payments">
                         <img src="assets/images/payments.png" alt="Payment methods" width="272" height="20">
                     </figure><!-- End .footer-payments -->
-                </div><!-- End .container -->
+                </div>
             </div><!-- End .footer-bottom -->
         </footer><!-- End .footer -->
 
@@ -296,8 +291,8 @@
                                     <input type="email" class="form-control form-control-white" placeholder="Your Email Address" aria-label="Email Adress" required>
                                     <div class="input-group-append">
                                         <button class="btn" type="submit"><span>go</span></button>
-                                    </div><!-- .End .input-group-append -->
-                                </div><!-- .End .input-group -->
+                                    </div>
+                                </div>
                             </form>
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="register-policy-2" required>
