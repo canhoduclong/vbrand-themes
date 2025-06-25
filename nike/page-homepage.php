@@ -449,28 +449,30 @@ $supports  = $themeData->get('support');
                 if($lnews){ 
                     ?>
                     <?php foreach($lnews as $index => $news): ?>
-                        <div class="col-sm-4"> 
+						<div class="owl-item active">
 							<article class="entry">
 								<figure class="entry-media">
 									<a href="<?php echo $news['morelink'];?>">
 									    <img src="<?php echo $news['banner'];?> " alt="" class="image_fade"> 
 									</a>
 								</figure>
-								<div class="entry-body "> 
-									<h3 class="entry-title fs-5 ">
-										<a href="<?php echo $news['morelink'];?>"><?php echo $news['bannertitle'];?> </a>
+
+								<div class="entry-body text-center">
+									<div class="entry-meta">
+										<a href="#">Nov 22, 2018</a>, 0 Comments
+									</div>
+
+									<h3 class="entry-title">
+										<a href="<?php echo $news['morelink'];?>"><?php echo $news['moretitle'];?>.</a>
 									</h3>
+
 									<div class="entry-content">
-										<div class="fs-6">
-                                            <?php echo $news['banneralias'];?> 
-                                        </div> 
-                                        <?php if($news['morelink']) {?> 
-                                            <a href="<?php echo $news['morelink'];?>" class="read-more fs-6"><?php echo $news['moretitle'];?></a>
-                                        <?php }?>
+										<p><?php echo $news['banneralias'];?> . </p> 
+										<a href="<?php echo $news['morelink'];?>" class="read-more">Xem thêm</a>
 									</div>
 								</div>
-							</article> 
-						</div>
+							</article>
+						</div> 
 
                     <?php endforeach ?>
                 <?php }else{ ?>
