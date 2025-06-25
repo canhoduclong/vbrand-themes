@@ -515,15 +515,15 @@ $supports  = $themeData->get('support');
                             wp_reset_postdata();
                         }?>
                 <?php } ?>
-
-
-
- </div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><i class="icon-angle-left"></i></button><button type="button" role="presentation" class="owl-next"><i class="icon-angle-right"></i></button></div><div class="owl-dots disabled"><button role="button" class="owl-dot active"><span></span></button></div></div><!-- End .owl-carousel -->
+			 </div>
+		</div>
+		 >
+	</div> 
 
 		<div class="more-container text-center mt-1">
-			<a href="blog.html" class="btn btn-outline-lightgray btn-more btn-round"><span>View more articles</span><i class="icon-long-arrow-right"></i></a>
-		</div><!-- End .more-container -->
-	</div><!-- End .container -->
+			<a href="<?php echo home_url('/');?>tin-tuc/" class="btn btn-outline-lightgray btn-more btn-round"><span>Xem thêm</span><i class="icon-long-arrow-right"></i></a>
+		</div>
+	</div>
 </div>
  
 <?php
