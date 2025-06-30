@@ -399,25 +399,31 @@ $supports  = $themeData->get('support');
 </div>
 <?php }?> 
 
+<?php if ($themeData->get('banner_freeship')) {?>
+ 
+<?php
+	print_r($themeData);
+?>
+
 <div class="container">
 	<div class="cta cta-horizontal cta-horizontal-box bg-image mb-4 mb-lg-6" style="background-image: url(<?=get_template_directory_uri()?>/assets/images/bg-1.jpg);">
 		<div class="row flex-column flex-lg-row align-items-lg-center">
 			<div class="col">
-				<h3 class="cta-title text-primary">New Deals! Start Daily at 12pm e.t.</h3><!-- End .cta-title -->
+				<h3 class="cta-title text-primary">New Deals! Start Daily at 12pm e.t.</h3>
 				<p class="cta-desc">Get <em class="font-weight-medium">FREE SHIPPING* &amp; 5% rewards</em> on every order with Molla Theme rewards program</p><!-- End .cta-desc -->
-			</div><!-- End .col -->
+			</div>
 			
 			<div class="col-auto">
 				<a href="#" class="btn btn-white-primary btn-round"><span>Add to Cart for $50.00/yr</span><i class="icon-long-arrow-right"></i></a>
-			</div><!-- End .col-auto -->
-		</div><!-- End .row -->
-	</div><!-- End .cta-horizontal -->
+			</div>
+		</div>
+	</div>
 </div>
+<?php } ?>
 
 <div class="blog-posts">
 	<div class="container">
 		<h2 class="title-lg text-center mb-4">Tin tức</h2>
-
 		<div class="owl-carousel owl-simple mb-4 owl-loaded owl-drag" data-toggle="owl" data-owl-options="{
 				&quot;nav&quot;: false, 
 				&quot;dots&quot;: true,
@@ -441,11 +447,8 @@ $supports  = $themeData->get('support');
 			}">
 		<div class="owl-stage-outer">
 			<div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all; width: 1188px;">
-			
 			<?php
-
 			 $lnews = $themeData->get('news');
-                 
                 if($lnews){ 
                     ?>
                     <?php foreach($lnews as $index => $news): ?>

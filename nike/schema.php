@@ -329,8 +329,56 @@ return [
             ],
         ],
 
+        //  Banner freeship
+        [
+            'session'=>'home',
+            'type'=>'list',
+            'label' => 'Banner freeship',
+            'name'=>'bannerfreeship',
+            'max' => 4,
 
-        //  Banner Slider
+            //  ĐỊNH NGHĨA MỖI SLIDER GỒM CÓ CÁC CẤU TRÚC SAU
+            'schema'=>[
+                [
+                    'type' => 'image',
+                    'name' => 'banner',
+                    'label' => 'Tải ảnh',
+                    'default' => '',
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'bannertitle',
+                    'label' => 'Tiêu đề banner',
+                    'default' => '',
+                ], 
+                [
+                    'type' => 'text',
+                    'name' => 'morelink',
+                    'label' => 'URL xem thêm',
+                    'default' => '',
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'moretitle',
+                    'label' => 'Tiêu đề link',
+                    'default' => '',
+                ],
+            ],
+
+            // ĐÂY LÀ DỮ LIỆU MẪU
+            'default'=>[ 
+                [
+                    'banner' => get_template_directory_uri().'/assets/images/banner-1.jpg',
+                    'bannertitle' => 'New Deals! Start Daily at 12pm e.t.', 
+                    'banneralias' => 'Get <em class="font-weight-medium">FREE SHIPPING* &amp; 5% rewards</em> on every order with Molla Theme rewards program', 
+                    'morelink' => '/gian-hang/',
+                    'moretitle' => 'Add to Cart for $50.00/yr',
+                ]
+
+            ],
+        ],
+
+        //  Banner Icons Support
         [
             'session'=>'home',
             'type'=>'list',
