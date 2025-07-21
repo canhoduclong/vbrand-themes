@@ -1,5 +1,4 @@
 <aside id="secondary" class="widget-area">
-     
     <div class="widget">
         <h2 class="widget-title">Sản phẩm</h2>
         <ul>
