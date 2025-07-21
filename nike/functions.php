@@ -1375,18 +1375,24 @@ function custom_add_to_cart_on_home( $html, $product ) {
 }
 
 
-// thêm nút chi tiết sau add to cart
-
+// Add view more àter add to cart
 add_filter('woocommerce_loop_add_to_cart_link', 'custom_add_view_more_button', 10, 2);
 function custom_add_view_more_button($html, $product) {
-    // Link tới trang chi tiết sản phẩm
     $view_more_url = get_permalink($product->get_id());
-    // Nút Xem thêm
-    $view_more_button = '<a href="' . esc_url($view_more_url) . '" class="btn-product btn-quickview"><span>Chi tiết</span></a>';
-    // Chèn nút Xem thêm vào sau nút thêm giỏ
+    $view_more_button = '<a href="' . esc_url($view_more_url) . '" class="btn-product btn-quickview"><span>Chi tiết</span></a>'; 
     $html = str_replace('</div>', $view_more_button . '</div>', $html);
     return $html;
 }
+
+//--- changce text add to cart to shorter
+add_filter('woocommerce_product_add_to_cart_text', 'custom_woocommerce_product_add_to_cart_text', 10, 2);
+function custom_woocommerce_product_add_to_cart_text($text, $product) {
+    if ($product->is_type('variable')) {
+        return 'Chọn';
+    }
+    return $text;
+}
+
 
 
 //--- Debug SQL query
