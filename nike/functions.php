@@ -767,10 +767,7 @@ function remove_add_to_cart_buttons() {
 
 
 
-/**
- * ------------- List product
- * ------------- SideBar
- */
+// List product 
 function _product_categories( ) {
     // Get product categories
     $selecteds = [0] ;
@@ -817,11 +814,6 @@ function _product_categories( ) {
     }
 }
 
-
-/**
- * ------------- List product
- * ------------- SideBar
- */
 function color_pattern($color ='', $selected = false){
     
     $taxonomy = 'pa_color'; 
@@ -1011,9 +1003,7 @@ function price_progress_bar() {
 }
 
 
-/**
- * ------------- products details
- */
+ 
 function filter_products_by_attributes( $query ) {
     if ( ! is_admin() && $query->is_main_query() && is_shop() ) {
 
@@ -1386,16 +1376,20 @@ function custom_add_to_cart_on_home( $html, $product ) {
 
 
 // thêm nút chi tiết sau add to cart
-add_action( 'woocommerce_after_shop_loop_item', 'add_view_more_button', 15 );
-function add_view_more_button(){
-    global $product;
-    echo'<a href="' . esc_url( get_permalink( $product->get_id() ) ) . '" class="btn-product btn-quickview"><span>Chi tiết</span></a>';
+
+add_filter('woocommerce_loop_add_to_cart_link', 'custom_add_view_more_button', 10, 2);
+function custom_add_view_more_button($html, $product) {
+    // Link tới trang chi tiết sản phẩm
+    $view_more_url = get_permalink($product->get_id());
+    // Nút Xem thêm
+    $view_more_button = '<a href="' . esc_url($view_more_url) . '" class="btn-product btn-quickview"><span>Chi tiết</span></a>';
+    // Chèn nút Xem thêm vào sau nút thêm giỏ
+    $html = str_replace('</div>', $view_more_button . '</div>', $html);
+    return $html;
 }
 
 
-/**
- * Debug SQL query
- */
+//--- Debug SQL query
 
 function debug_woocommerce_shop_query($query) {
     if (is_shop() && $query->is_main_query()) {
@@ -1403,4 +1397,5 @@ function debug_woocommerce_shop_query($query) {
     }
 }
 add_action('pre_get_posts', 'debug_woocommerce_shop_query');
+
 ?>

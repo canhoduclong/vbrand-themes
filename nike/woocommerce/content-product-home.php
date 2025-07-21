@@ -36,7 +36,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
     <div class="product-footer">
         <div class="ratings-container">
             <div class="ratings">
-                <div class="ratings-val" style="width: <?php echo ( $product->get_average_rating() / 5 ) * 100; ?>%;"></div><!-- End .ratings-val -->
+                <div class="ratings-val" style="width: <?php echo ( $product->get_average_rating() / 5 ) * 100; ?>%;"></div>
             </div>
             <span class="ratings-text">( <?php echo $product->get_review_count(); ?> Reviews )</span>
         </div>
