@@ -537,9 +537,8 @@ function initial(){
         // display for variation
         $product = wc_get_product( get_the_ID() );
         
-        if ($product) {
-            
-            remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
+        if ($product) { 
+            //remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
             remove_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_thumbnails', 20);
             remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
             remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10); 
@@ -962,12 +961,10 @@ function show_attribute_sidebar(  ){
     echo $sidebar;     
 }
 function price_progress_bar() {
-    // Get the minimum and maximum prices of products
     global $wpdb;
     $min_price = $wpdb->get_var("SELECT MIN(meta_value + 0) FROM {$wpdb->postmeta} WHERE meta_key='_price'");
     $max_price = $wpdb->get_var("SELECT MAX(meta_value + 0) FROM {$wpdb->postmeta} WHERE meta_key='_price'");
 
-    // Calculate the current range
     $current_range = (isset($_GET['min_price']) && isset($_GET['max_price'])) ? [$_GET['min_price'], $_GET['max_price']] : [$min_price, $max_price];
 
     if ($min_price !== null && $max_price !== null) {
@@ -1002,8 +999,6 @@ function price_progress_bar() {
     }
 }
 
-
- 
 function filter_products_by_attributes( $query ) {
     if ( ! is_admin() && $query->is_main_query() && is_shop() ) {
 
