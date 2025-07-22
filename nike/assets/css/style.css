@@ -1,5 +1,6 @@
 ﻿@import url("https://fonts.googleapis.com/css?family=Poppins:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800");
-html { 
+html {
+  font-size: 75.5%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   font-size-adjust: 100%;
@@ -2648,11 +2649,15 @@ blockquote.text-white cite span {
   li
   a:not(:hover):not(:focus).mobile-cats-lead {
   color: #333;
-} 
+}
+a {
+  
+}
 p {
   margin-bottom: 0;
   font-size: 1.4rem;
-  font-weight: 300; 
+  font-weight: 300;
+  
   letter-spacing: 0;
   color: #777;
 }
@@ -2672,7 +2677,8 @@ p {
   height: 38px;
 }
 .header-2 .header-search-extended .form-control {
-  padding: 1.2rem 2.4rem 1rem 2rem; 
+  padding: 1.2rem 2.4rem 1rem 2rem;
+  
   letter-spacing: -0.01em;
 }
 .header-2 .header-search-extended .btn {
@@ -5062,7 +5068,8 @@ p {
   background-repeat: no-repeat;
 }
 .page-header h1 {
-  color: #333; 
+  color: #333;
+  font: normal 400 3.2rem/1.1 "Poppins", sans-serif;
   letter-spacing: -0.025em;
   margin-bottom: 0;
 }
@@ -5781,7 +5788,8 @@ p {
   border-bottom: 0.1rem solid transparent;
   letter-spacing: 0;
   font-size: 1.4rem;
-  min-width: 0; 
+  min-width: 0;
+  font-family: "Poppins", sans-serif;
 }
 .btn-link.btn-link-dark {
   color: #333;
@@ -7467,7 +7475,8 @@ p {
 }
 .product.product-10 .product-title a {
   font-size: 1.3rem;
-  font-weight: 400; 
+  font-weight: 400;
+  
   letter-spacing: 0;
   color: #333;
 }
@@ -7478,7 +7487,8 @@ p {
 .product.product-10 .product-price {
   margin-top: 0.8rem;
   font-size: 1.3rem;
-  font-weight: 700; 
+  font-weight: 700;
+  
   letter-spacing: 0;
   color: #333333;
 }
