@@ -41,7 +41,16 @@ if ( empty( $product ) || ! $product->is_visible() ) {
             <span class="ratings-text">( <?php echo $product->get_review_count(); ?> Reviews )</span>
         </div>
 
-		<?php wc_get_template( 'loop/add-to-cart-home.php', [], get_stylesheet_directory() . "/nike/" ); ?>
+		<?php 
+        wc_get_template(
+                'loop/add-to-cart-home.php',
+                [],
+                'woocommerce', // template path
+                get_stylesheet_directory() . '/woocommerce' // fallback path
+            );
+
+        ?>
+          
         
     </div>
 </div>

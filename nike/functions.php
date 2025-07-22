@@ -1366,7 +1366,7 @@ function custom_add_to_cart_on_home( $html, $product ) {
                    href="%s" 
                    data-quantity="1" 
                    data-product_id="%s" 
-                   class="button custom-home-add-to-cart"><i class="fas fa-shopping-cart mr-1"></i> Mua luôn</a>',
+                   class="btn-product btn-cart"><span>Mua luôn</span></a>',
             esc_url( $product->add_to_cart_url() ),
             esc_attr( $product->get_id() )
         );

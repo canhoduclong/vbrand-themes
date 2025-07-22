@@ -59,7 +59,7 @@ if ( $terms && ! is_wp_error( $terms ) ) {
                 // Nút add to cart
                 echo apply_filters( 'woocommerce_loop_add_to_cart_link',
                     sprintf(
-                       '<a href="%s" data-quantity="%s" class="%s btn-product btn-cart" %s><span>%s</span></a>',
+                       '<a href="%s" data-quantity="%s" class="%s button btn-product btn-cart " %s><span>%s</span></a>',
                         esc_url( $product->add_to_cart_url() ),
                         esc_attr( 1 ),
                         esc_attr( 'button ajax_add_to_cart add_to_cart_button product_type_' . $product->get_type() ),
