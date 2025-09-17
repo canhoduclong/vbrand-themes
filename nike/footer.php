@@ -88,7 +88,7 @@
             <nav class="mobile-nav">
                 <ul class="mobile-menu">
                     <li class="active">
-                        <a href="index.html">Home</a>
+                        <a href="<?php echo home_url('/'); ?>">Home</a>
 
                         <ul>
                             <li><a href="index-1.html">01 - furniture store</a></li>

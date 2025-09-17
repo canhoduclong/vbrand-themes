@@ -92,14 +92,14 @@
                             <i class="icon-bars"></i>
                         </button>
 
-                        <a href="index.html" class="logo">
+                        <a href="<?php echo home_url('/'); ?>" class="logo">
                             <img src="<?=get_template_directory_uri()?>/assets/images/logo.png" alt="Molla Logo" width="105" height="25">
                         </a>
 
                         <nav class="main-nav">
                             <ul class="menu sf-arrows">
                                 <li class="megamenu-container active">
-                                    <a href="index.html" class="sf-with-ul">Home</a>
+                                    <a href="<?php echo home_url('/'); ?>" class="sf-with-ul">Home</a>
 
                                     <div class="megamenu demo">
                                         <div class="menu-col">
@@ -575,7 +575,7 @@
             <nav aria-label="breadcrumb" class="breadcrumb-nav mb-2">
                 <div class="container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo home_url('/'); ?>">Home</a></li>
                         <li class="breadcrumb-item"><a href="#">Shop</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Grid 4 Columns</li>
                     </ol>
@@ -1536,7 +1536,7 @@
             <nav class="mobile-nav">
                 <ul class="mobile-menu">
                     <li class="active">
-                        <a href="index.html">Home</a>
+                        <a href="<?php echo home_url('/'); ?>">Home</a>
 
                         <ul>
                             <li><a href="index-1.html">01 - furniture store</a></li>

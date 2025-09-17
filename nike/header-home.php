@@ -78,7 +78,7 @@
                             <i class="icon-bars"></i>
                         </button>
 
-                        <a href="index.html" class="logo">
+                        <a href="<?php echo home_url('/'); ?>" class="logo">
                             <img src="<?=get_template_directory_uri()?>/assets/images/nike.jpg" alt="Molla Logo"  height="75">
                         </a>
                     </div>
