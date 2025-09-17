@@ -1155,7 +1155,7 @@ function woocommerce_after_sidebar() {
     echo   '</div></aside>'; 
 }
 
-
+// ghu chú moi de test
 function after_shop_loop_item(){  
     if ( is_shop() || is_product_category() || is_product_tag() ) {  
         if(isset($_GET['view'])){
@@ -1399,4 +1399,8 @@ function debug_woocommerce_shop_query($query) {
 }
 add_action('pre_get_posts', 'debug_woocommerce_shop_query');
 
-?>
+
+
+function check(){
+    echo "tẽt cgiu ";
+}
