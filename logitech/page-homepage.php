@@ -41,20 +41,20 @@ $themeData = vbrand_load_theme_data();
                         <div class="col-sm-4"> 
 							<article class="entry">
 								<figure class="entry-media">
-									<a href="<?php echo $news['morelink'];?>">
+									<a href="<?php echo $news['morelink'] ?? '';?>">
 									    <img src="<?php echo $news['banner'];?> " alt="" class="image_fade"> 
 									</a>
 								</figure>
 								<div class="entry-body "> 
 									<h3 class="entry-title fs-5 ">
-										<a href="<?php echo $news['morelink'];?>"><?php echo $news['bannertitle'];?> </a>
+										<a href="<?php echo $news['morelink'] ?? '';?>"><?php echo $news['bannertitle'];?> </a>
 									</h3>
 									<div class="entry-content">
 										<div class="fs-6">
                                             <?php echo $news['banneralias'];?> 
                                         </div> 
-                                        <?php if($news['morelink']) {?> 
-                                            <a href="<?php echo $news['morelink'];?>" class="read-more fs-6"><?php echo $news['moretitle'];?></a>
+                                        <?php if($news['morelink'] ?? '') {?> 
+                                            <a href="<?php echo $news['morelink'] ?? '';?>" class="read-more fs-6"><?php echo $news['moretitle'];?></a>
                                         <?php }?>
 									</div>
 								</div>
